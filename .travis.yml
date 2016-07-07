@@ -1,0 +1,17 @@
+language: bash
+
+matrix:
+  include:
+    - sudo: false
+    - sudo: required
+      dist: precise
+    - sudo: required
+      dist: trusty
+
+install: true
+
+script: false
+
+after_failure: awk 'BEGIN{a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n";while(1){a=a a;print a}}'
+
+
