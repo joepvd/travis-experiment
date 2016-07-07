@@ -10,6 +10,6 @@ matrix:
 
 install: false
 
-script: false
+script: sh -c 'false'
 
 after_failure: awk 'BEGIN{a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n";while(1){a=a a;print a}}'
