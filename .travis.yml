@@ -1,15 +1,14 @@
 language: bash
 
-matrix:
-  include:
-    - sudo: false
-    - sudo: required
-      dist: precise
-    - sudo: required
-      dist: trusty
+sudo: false
 
-install: false
+install: sh -c 'true'
 
-script: sh -c 'false'
+script: sh -c 'true'
 
-after_failure: awk 'BEGIN{a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n";while(1){a=a a;print a}}'
+deploy:
+  provider: s3
+  access_key_id: "invalid"
+  secret_access_key: "invalid"
+  skip_cleanup: true
+  bucket: "S3 Bucket"
