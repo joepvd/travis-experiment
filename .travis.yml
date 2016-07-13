@@ -6,6 +6,12 @@ install: sh -c 'true'
 
 script: sh -c 'true'
 
+# a comment
+  
 deploy:
-  - echo deploying now
+  provider: S3
+  # Another comment
+  bucket: "S3 Bucket"
+  skip_cleanup: true
+  
 
