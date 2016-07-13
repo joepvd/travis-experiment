@@ -6,9 +6,12 @@ install: sh -c 'true'
 
 script: sh -c 'true'
 
+before_deploy:
+  - echo before_deploy!!!
+
 deploy:
-  provider: s3
-  access_key_id: "invalid"
-  secret_access_key: "invalid"
-  skip_cleanup: true
-  bucket: "S3 Bucket"
+  - echo deploying now
+
+after_deploy:
+  - echo after deploy
+  - sh -c 'false'
