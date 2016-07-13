@@ -6,12 +6,6 @@ install: sh -c 'true'
 
 script: sh -c 'true'
 
-before_deploy:
-  - echo before_deploy!!!
-
 deploy:
   - echo deploying now
 
-after_deploy:
-  - echo after deploy
-  - sh -c 'false'
