@@ -1,17 +1,21 @@
-language: bash
+language: csharp
 
-sudo: false
+sudo: true
+
+dist: trusty
+
+services:
+  - postgresql
+
+addons:
+  - postgresql: "9.4"
 
 install: sh -c 'true'
 
-script: sh -c 'true'
+script:
+  - uname -a
+  - date
+  - travis_debug
 
-# a comment
-  
-deploy:
-  provider: S3
-  # Another comment
-  bucket: "S3 Bucket"
-  skip_cleanup: true
-  
+
 
