@@ -1,21 +1,9 @@
-language: csharp
-
-sudo: true
-
-dist: trusty
-
-services:
-  - postgresql
-
-addons:
-  - postgresql: "9.4"
-
-install: sh -c 'true'
+language: objective-c # or objective-c
+osx_image: xcode7.3
 
 script:
-  - uname -a
-  - date
-  - travis_debug
+  - ./test.sh
+  - bundle exec cucumber
 
 
 
