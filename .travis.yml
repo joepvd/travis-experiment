@@ -1,15 +1,10 @@
-sudo: required
-dist: trusty
-language: c
 
-os:
-  - osx
+language: php
 
-before_install: true
-
-install: true
+php:
+  - 5.5
+  - 5.6
+  - 7.0
 
 script:
-    - uname -a
-    - date
-    - travis_debug
+  - ./php_ssl.php
