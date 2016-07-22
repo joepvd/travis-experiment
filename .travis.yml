@@ -1,5 +1,12 @@
 language: bash
 
+sudo: false
+
+before_install:
+    - "while sleep 1; do netstat -i; done | awk '{print \"netstat:\", $0}' &"
+
+install:
+    - "echo installing..."
+
 script:
-    - "echo TRAVIS_COMMIT: $TRAVIS_COMMIT"
-    - "echo Short Commit: ${TRAVIS_COMMIT:0:7}"
+    - "for i in 1 2 3 4 5; do sleep 1; echo $i; done"
