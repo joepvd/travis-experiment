@@ -2,11 +2,12 @@ language: bash
 
 sudo: false
 
-before_install:
-    - "while sleep 1; do netstat -i; done | awk '{print \"netstat:\", $0}' &"
-
 install:
     - "echo installing..."
 
 script:
-    - "for i in 1 2 3 4 5; do sleep 1; echo $i; done"
+    - commanddoesnotexist || exit
+    - echo after failed command
+
+after_failure:
+    - echo after failure
