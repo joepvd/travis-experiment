@@ -6,7 +6,8 @@ install:
     - "echo installing..."
 
 script:
-    - commanddoesnotexist || exit
+    - set -e
+    - commanddoesnotexist
     - echo after failed command
 
 after_failure:
