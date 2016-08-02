@@ -1,14 +1,17 @@
 language: bash
 
-sudo: false
+sudo: true
 
 install:
     - "echo installing..."
 
 script:
-    - set -e
-    - commanddoesnotexist
-    - echo after failed command
+    - git clone https://anongit.freedesktop.org/git/cairo || echo failed
+    - sudo apt-get update && sudo apt-get install -y ca-certificates
+    - git clone https://anongit.freedesktop.org/git/cairo && echo after update OK || echo after apt update failed
+    - echo -n | openssl s_client -connect anongit.freedesktop.org:443| sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-certificates.crt
+    - git clone https://anongit.freedesktop.org/git/cairo && echo after cert dl OK || echo after cert dl failed
+
 
 after_failure:
     - echo after failure
