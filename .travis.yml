@@ -1,12 +1,17 @@
-language: bash
+language: php
 
 sudo: false
 
+dist: precise
+
+group: stable
+
 install:
     - "echo installing..."
+    - debug_vm
 
 script:
-    - git clone https://anongit.freedesktop.org/git/cairo || echo failed
+    - echo script
 
 after_failure:
     - echo after failure
