@@ -7,6 +7,7 @@ install:
 
 script:
   - ping -c2 openrct2.org || true
+  - travis_debug
   - curl -svf 'https://openrct2.org/altapi/?command=push-build' || true
 
 notifications:
