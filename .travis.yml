@@ -1,17 +1,13 @@
-language: php
+language: ruby
 
-sudo: true
-
-dist: precise
-
-group: stable
+sudo: false
 
 install:
-    - "echo installing..."
-    - travis_debug
+  - true
 
 script:
-    - echo script
+  - ping -c2 openrct2.org || true
+  - curl -svf 'https://openrct2.org/altapi/?command=push-build' || true
 
-after_failure:
-    - echo after failure
+notifications:
+  email: false
