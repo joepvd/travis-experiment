@@ -1,13 +1,12 @@
 language: ruby
 
-sudo: required
+sudo: false
 
 install:
-  - sudo apt-get install -y libudev1
+  - echo install
 
 script:
-  - ping -c2 openrct2.org || true
-  - travis_debug
+  - echo script
 
 notifications:
   email: false
