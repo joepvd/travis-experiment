@@ -10,7 +10,7 @@ services:
 
 script:
     - mysql --user=travis <<<"SHOW SESSION VARIABLES LIKE '%timeout';"
-    - stdbuf -i0 -o0 -e0 echo "select now()"; sleep 500; echo "select now()" | mysql --user=travis  
+    - stdbuf -i0 -o0 -e0 { echo "select now()"; sleep 500; echo "select now()"; } | mysql --user=travis  
 
 notifications:
   email: false
