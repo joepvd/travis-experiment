@@ -1,8 +1,9 @@
 language: ruby
 
-sudo: required
+sudo: false
 
 install:
+<<<<<<< HEAD
     install:
         install:
             yes
