@@ -3,15 +3,13 @@ language: ruby
 sudo: false
 
 install:
-<<<<<<< HEAD
-    install:
-        install:
-            yes
+    echo install
+
+services:
+    - mysql
 
 script:
-    script:
-        script:
-            yes
+    - mysql --user=travis  <<<"select now(); select sleep(500); select now()"
 
 notifications:
   email: false
