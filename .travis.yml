@@ -5,11 +5,11 @@ sudo: false
 install:
     echo install
 
-services:
-    - mysql
 
 script:
-    - stdbuf -i0 -o0 -e0 awk 'BEGIN{print "SHOW SESSION VARIABLES LIKE \047%timeout\047;"; system("sleep 500"); print "select now()"}' | mysql --user=travis  
+    - { sleep 3 && echo job 1; } &
+    - { sleep 1 && echo job 2; } &
+    - wait && echo done
 
 notifications:
   email: false
