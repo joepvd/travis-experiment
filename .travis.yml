@@ -7,9 +7,9 @@ install:
 
 
 script:
-    - { sleep 3 && echo job 1; } &
-    - { sleep 1 && echo job 2; } &
-    - wait && echo done
+    - "{ sleep 3 && echo job 1; } &"
+    - "{ sleep 1 && echo job 2; } &"
+    - "wait && echo done"
 
 notifications:
   email: false
