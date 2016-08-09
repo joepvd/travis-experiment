@@ -3,13 +3,15 @@ language: ruby
 sudo: false
 
 install:
-    echo install
-
+<<<<<<< HEAD
+    install:
+        install:
+            yes
 
 script:
-    - "{ sleep 3 && echo job 1; } &"
-    - "{ sleep 1 && echo job 2; } &"
-    - "wait && echo done"
+    script:
+        script:
+            yes
 
 notifications:
   email: false
