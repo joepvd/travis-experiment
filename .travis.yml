@@ -6,7 +6,7 @@ dist: trusty
 
 install:
     - "dpkg -L xvfb"
-    - "awk '{print FILENAME}' /etc/init.d/xvfb $(which xvfb-run) || echo yes"
+    - "awk '{print FILENAME, $0}' /etc/init.d/xvfb $(which xvfb-run) || echo yes"
     - "apt-cache show xvfb || echo yes"
 
 
