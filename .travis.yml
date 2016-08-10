@@ -8,6 +8,9 @@ install:
     - "ifconfig -a || true"
     - "ip address show || true"
     - "ip link show || true"
+    - "cat /etc/hosts || true"
+    - "ping -c localhost || true"
+    - "ping6 -c localhost || true"
 
 
 script:
