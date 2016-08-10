@@ -3,7 +3,6 @@ language: python
 sudo: required
 
 services:
-  - redis
   - docker
 
 dist: trusty
@@ -12,10 +11,11 @@ install:
     - "ps  aux | grep mongo || true"
     - "lsof -i :27017 || true"
     - "cat /proc/net/tcp || true"
+    - docker pull mongo:latest
 
 script:
     - echo script
-    - travis_debug
+    - docker run -d -p 127.0.0.1:27017:27017 mongo
 
 notifications:
   email: false
