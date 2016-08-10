@@ -1,17 +1,13 @@
-language: ruby
+language: python
 
-sudo: false
+sudo: required
 
 install:
-<<<<<<< HEAD
-    install:
-        install:
-            yes
+    - ps  aux | grep mongo
 
 script:
-    script:
-        script:
-            yes
+    - echo script
+    - travis_debug
 
 notifications:
   email: false
