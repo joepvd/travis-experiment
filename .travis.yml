@@ -2,10 +2,16 @@ language: python
 
 sudo: required
 
+services:
+  - redis
+  - docker
+
 dist: trusty
 
 install:
-    - ps  aux | grep mongo
+    - "ps  aux | grep mongo || true"
+    - "lsof -i :27017 || true"
+    - "cat /proc/net/tcp || true"
 
 script:
     - echo script
