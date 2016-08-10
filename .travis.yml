@@ -3,7 +3,7 @@ language: python
 sudo: required
 
 services:
-  - docker
+  - redis
 
 dist: trusty
 
