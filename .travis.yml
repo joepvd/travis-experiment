@@ -9,20 +9,17 @@ install:
     - "ip address show || true"
     - "ip link show || true"
     - "cat /etc/hosts || true"
-    - "ping -vc 4 localhost || true"
-    - "ping6 -vc 4 localhost || true"
+    - "ping -vc 1 localhost || true"
+    - "ping6 -vc 1 localhost || true"
     - "travis_debug || true"
-    - "sudo python server.py &"
     - "python ipv6server.py &"
 
 
 script:
     - "echo script"
     - "sleep 1"
-    - "curl -vX GET http://localhost/:80 || true"
-    - "curl -vX GET http://127.0.0.1/:80 || true"
-    - "curl -vX GET http://localhost/:8080 || true"
-    - "curl -vX GET http://127.0.0.1/:8080 || true"
+    - "curl -v http://localhost:8080/ip || true"
+    - "curl -v http://127.0.0.1:8080/ip || true"
 
 notifications:
   email: false
