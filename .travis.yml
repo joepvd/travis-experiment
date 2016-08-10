@@ -18,7 +18,8 @@ install:
 script:
     - "echo script"
     - "sleep 1"
-    - "curl -vX GET http://localhost/"
+    - "curl -vX GET http://localhost/ || true"
+    - "curl -vX GET http://127.0.0.1/ || true"
 
 notifications:
   email: false
