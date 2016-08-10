@@ -9,10 +9,9 @@ install:
     - "ip address show || true"
     - "ip link show || true"
     - "cat /etc/hosts || true"
-    - "ping -c localhost || true"
-    - "ping6 -c localhost || true"
+    - "ping -vc 4 localhost || true"
+    - "ping6 -vc 4 localhost || true"
     - "travis_debug || true"
-    - "debug_travis || true"
 
 
 script:
