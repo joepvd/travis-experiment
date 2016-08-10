@@ -4,15 +4,10 @@ sudo: required
 
 dist: trusty
 
-group: edge
-
-services:
-    - mongodb
-
 install:
-    - "ps  aux | grep '[m]ongo' || true"
-    - "pgrep mongo && sudo lsof -p $(pgrep mongo)"
-    - sudo service mongodb status
+    - dpkg -L xvfb
+    - "awk '{print FILENAME}' /etc/init.d/xvfb $(which xvfb-run)" || echo yes
+    - apt-cache show xvfb || echo yes
 
 
 script:
