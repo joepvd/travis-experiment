@@ -2,9 +2,6 @@ language: python
 
 sudo: required
 
-services:
-  - redis
-
 dist: trusty
 
 install:
