@@ -10,7 +10,7 @@ services:
 install:
     - "ps  aux | grep '[m]ongo' || true"
     - "sleep 10"
-    - "pgrep mongo && lsof -p $(pgrep mongo)"
+    - "pgrep mongo && sudo lsof -p $(pgrep mongo)"
     - sudo service mongodb status
 
 
