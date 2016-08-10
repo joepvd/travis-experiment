@@ -2,17 +2,20 @@ language: python
 
 sudo: required
 
-dist: trusty
+dist: precise
+
+services:
+    - mongodb
 
 install:
-    - "ps  aux | grep mongo || true"
-    - "lsof -i :27017 || true"
-    - "cat /proc/net/tcp || true"
-    - docker pull mongo:latest
+    - "ps  aux | grep '[m]ongo' || true"
+    - "sleep 10"
+    - "pgrep mongo && lsof -p $(pgrep mongo)"
+    - sudo service mongodb status
+
 
 script:
     - echo script
-    - docker run -d -p 127.0.0.1:27017:27017 mongo
 
 notifications:
   email: false
