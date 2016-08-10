@@ -2,14 +2,15 @@ language: python
 
 sudo: required
 
-dist: precise
+dist: trusty
+
+group: edge
 
 services:
     - mongodb
 
 install:
     - "ps  aux | grep '[m]ongo' || true"
-    - "sleep 10"
     - "pgrep mongo && sudo lsof -p $(pgrep mongo)"
     - sudo service mongodb status
 
