@@ -13,13 +13,16 @@ install:
     - "ping6 -vc 4 localhost || true"
     - "travis_debug || true"
     - "sudo python server.py &"
+    - "python ipv6server.py &"
 
 
 script:
     - "echo script"
     - "sleep 1"
-    - "curl -vX GET http://localhost/ || true"
-    - "curl -vX GET http://127.0.0.1/ || true"
+    - "curl -vX GET http://localhost/:80 || true"
+    - "curl -vX GET http://127.0.0.1/:80 || true"
+    - "curl -vX GET http://localhost/:8080 || true"
+    - "curl -vX GET http://127.0.0.1/:8080 || true"
 
 notifications:
   email: false
