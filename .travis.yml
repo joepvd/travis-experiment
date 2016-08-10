@@ -12,11 +12,12 @@ install:
     - "ping -vc 4 localhost || true"
     - "ping6 -vc 4 localhost || true"
     - "travis_debug || true"
-    - "sudo python server.py"
+    - "sudo python server.py &"
 
 
 script:
     - "echo script"
+    - "sleep 1"
     - "curl -vX GET http://localhost/"
 
 notifications:
