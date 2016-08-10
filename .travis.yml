@@ -2,6 +2,8 @@ language: python
 
 sudo: required
 
+dist: trusty
+
 install:
     - ps  aux | grep mongo
 
