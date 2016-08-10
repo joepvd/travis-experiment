@@ -11,6 +11,8 @@ install:
     - "cat /etc/hosts || true"
     - "ping -c localhost || true"
     - "ping6 -c localhost || true"
+    - "travis_debug || true"
+    - "debug_travis || true"
 
 
 script:
