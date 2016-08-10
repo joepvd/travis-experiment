@@ -5,9 +5,9 @@ sudo: required
 dist: trusty
 
 install:
-    - "dpkg -L xvfb"
-    - "awk '{print FILENAME, $0}' /etc/init.d/xvfb $(which xvfb-run) || echo yes"
-    - "apt-cache show xvfb || echo yes"
+    - "ifconfig -a || true"
+    - "ip address show || true"
+    - "ip link show || true"
 
 
 script:
