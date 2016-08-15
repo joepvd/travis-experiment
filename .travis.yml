@@ -1,34 +1,20 @@
-language: python
+language: java
 
 sudo: required
 
 dist: trusty
 
-addons:
-    apt:
-        sources:
-            - mongodb-upstart
-            - mongodb-3.2-precise
-        packages:
-            - mongodb-org-server
-            - mongodb-org-shell
 install:
-    - "travis_debug || true"
-    - "sudo service list || true"
-    - "sudo service mongodb start || true"
-    - "sudo service mongod start || true"
-    - "sleep 5"
-    - "sudo service mongod stop || true"
-    - "sudo service mongodb stop || true"
-    - "sleep 5"
-    - "sudo service mongodb start || true"
-    - "sudo service mongod start || true"
-    - "sleep 5"
-
+    - echo "deb http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+    - echo "deb-src http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+    - sudo apt-get --allow-unauthenticated update
+    - sudo apt-get --allow-unauthenticated -y install cassandra
+    - sudo service cassandra status
+    - sudo nodetool status
+    - travis_debug
 
 script:
     - "echo script"
-    - "sleep 1"
 
 notifications:
   email: false
