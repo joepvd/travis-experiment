@@ -1,21 +1,15 @@
-language: java
+language: python
 
 sudo: required
 
 dist: trusty
 
 install:
-    - echo "deb http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
-    - echo "deb-src http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
-    - sudo apt-get --allow-unauthenticated update
-    - sudo apt-get --allow-unauthenticated -y install cassandra
-    - while ! sudo service cassandra status; do sleep 1; done
-    - sleep 5
-    - sudo nodetool status || true
-    - travis_debug || true
+    - sudo pip install beautifulsoup4
 
 script:
-    - "echo script"
+    - python -c 'import bs4'
+    - travis_debug || true
 
 notifications:
   email: false
