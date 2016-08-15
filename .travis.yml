@@ -10,8 +10,9 @@ install:
     - sudo apt-get --allow-unauthenticated update
     - sudo apt-get --allow-unauthenticated -y install cassandra
     - while ! sudo service cassandra status; do sleep 1; done
+    - sleep 5
     - sudo nodetool status || true
-    - travis_debug
+    - travis_debug || true
 
 script:
     - "echo script"
