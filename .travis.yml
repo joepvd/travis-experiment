@@ -9,8 +9,9 @@ install:
     - echo "deb-src http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
     - sudo apt-get --allow-unauthenticated update
     - sudo apt-get --allow-unauthenticated -y install cassandra
-    - sudo service cassandra status
-    - sudo nodetool status
+    - sudo service cassandra status || true
+    - sudo service cassandra start || true
+    - sudo nodetool status || true
     - travis_debug
 
 script:
