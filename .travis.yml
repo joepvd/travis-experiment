@@ -13,7 +13,7 @@ addons:
         - ci_compute_1
 before_install:
     - wget http://selenium-release.storage.googleapis.com/2.50/selenium-server-standalone-2.50.1.jar
-    - java -classpath selenium-server-standalone-2.50.1.jar org.openqa.selenium.networkutils.NetworkUtils
+    - java -classpath selenium-server-standalone-2.50.1.jar org.openqa.selenium.net.NetworkUtils
     - export DISPLAY=:99.0
     - sudo xvfb-run -jar selenium-server-standalone-2.50.1.jar &
     - sleep 5
