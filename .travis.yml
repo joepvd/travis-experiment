@@ -12,8 +12,12 @@ addons:
         - ci_head_1
         - ci_compute_1
 before_install:
-    - df -h
-    - travis_debug || true
+    - wget http://selenium-release.storage.googleapis.com/2.50/selenium-server-standalone-2.50.1.jar
+    - java -classpath selenium-server-standalone-2.50.1.jar org.openqa.selenium.networkutils.NetworkUtils
+    - export DISPLAY=:99.0
+    - sudo xvfb-run -jar selenium-server-standalone-2.50.1.jar &
+    - sleep 5
+
 install:
     - true
 script:
