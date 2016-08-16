@@ -5,10 +5,11 @@ sudo: required
 dist: trusty
 
 install:
-    - sudo pip install beautifulsoup4
+    - sudo add-apt-repository ppa:nginx/stable 
+    - sudo apt-get update
+    - sudo apt-get install -y nginx-extras
 
 script:
-    - python -c 'import bs4'
     - travis_debug || true
 
 notifications:
