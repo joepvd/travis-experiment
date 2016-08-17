@@ -22,6 +22,6 @@ before_script:
 - true
 script:
 - true
-group: stable
+#group: stable
 os: linux
 
