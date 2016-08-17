@@ -1,17 +1,17 @@
-language: ruby
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-      sudo: required
-    - os: linux
-      dist: precise
-      sudo: required
-    - os: linux
-      sudo: false
-    - os: osx
-script:
-    - df -h
+language: python
+#python: '2.7'
+dist:
+- precise
+sudo:
+- required
+before_install:
+- true
 install:
-    - true
+- true
+before_script:
+- true
+script:
+- true
+#group: stable
+os: linux
 
