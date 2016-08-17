@@ -1,28 +1,27 @@
-language:	php
-dist:	precise
-sudo:	required
+language: python
+python: '2.7'
+env: DJANGO_VERSION=1.6.7
+services:
+- redis-server
+- mysql
+dist:
+- trusty
+sudo:
+- required
 addons:
-    hosts:
-        - vendor-backend-test.foo
-        - restaurant.foodpanda.foo
-notifications:
-    - email: false
-addons:
-    hosts:
-        - ci_head_1
-        - ci_compute_1
+  apt:
+    packages:
+    - mysql-server-5.6
+    - mysql-client-core-5.6
+    - mysql-client-5.6
 before_install:
-    - wget http://selenium-release.storage.googleapis.com/2.50/selenium-server-standalone-2.50.1.jar
-    - java -classpath selenium-server-standalone-2.50.1.jar org.openqa.selenium.net.NetworkUtils
-    - export DISPLAY=:99.0
-    - sudo xvfb-run -jar selenium-server-standalone-2.50.1.jar &
-    - sleep 5
-
+- true
 install:
-    - true
+- true
+before_script:
+- true
 script:
-    - ifconfig -a
-    - travis_debug || true
-group:	stable
-
+- true
+group: stable
+os: linux
 
