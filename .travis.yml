@@ -1,4 +1,4 @@
-language: python
+language: ruby
 #python: '2.7'
 #group: stable
 os: osx
