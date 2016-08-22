@@ -1,4 +1,4 @@
-language: __garnet__
+language: __connie__
 group: stable
 os: ubuntu
 sudo: required
