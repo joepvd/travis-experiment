@@ -1,10 +1,10 @@
-language: __garnet__
+language: __connie__
 group: stable
 os: ubuntu
 dist: trusty
 sudo: required
 install: true
 script:
-    - df -hi && df -h && echo garnet
+    - df -hi && df -h && echo connie
 
 
