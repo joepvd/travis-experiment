@@ -1,10 +1,10 @@
-language: __amethyst__
+language: __garnet__
 group: stable
 os: ubuntu
 dist: trusty
 sudo: required
 install: true
 script:
-    - df -hi && df -h && echo amethyst
+    - df -hi && df -h && echo garnet
 
 
