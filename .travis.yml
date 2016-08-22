@@ -1,20 +1,9 @@
-language: sh
+language: __sugilite__
 group: stable
 os: ubuntu
 sudo: required
-matrix:
-    include:
-        - stack: sugilite
-          env: stack=sugilite
-        - stack: amethyst
-          env: stack=amethyst
-        - stack: garnet
-          env: stack=garnet
-        - stack: connie
-          env: stack=connie
-
-install:
+install: true
+script:
     - df -hi && df -h && echo $stack
-script: true
 
 
