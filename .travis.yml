@@ -1,10 +1,10 @@
-language: __sugilite__
+language: __amethyst__
 group: stable
 os: ubuntu
 dist: trusty
 sudo: required
 install: true
 script:
-    - df -hi && df -h && echo sugilite
+    - df -hi && df -h && echo amethyst
 
 
