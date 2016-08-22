@@ -1,6 +1,7 @@
 language: sh
 group: stable
 os: ubuntu
+sudo: required
 matrix:
     include:
         - stack: sugilite
@@ -13,7 +14,7 @@ matrix:
           env: stack=connie
 
 install:
-    - df -hi && echo $stack
+    - df -hi && df -h && echo $stack
 script: true
 
 
