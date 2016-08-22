@@ -1,4 +1,4 @@
-language: __sugilite__
+language: __amethyst__
 group: stable
 os: ubuntu
 sudo: required
