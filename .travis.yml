@@ -5,6 +5,6 @@ dist: precise
 sudo: false
 install: true
 script:
-    - "mysql -uroot 'SHOW VARIABLES LIKE \"%version%\";' || true"
+    - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
 
 
