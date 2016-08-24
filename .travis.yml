@@ -1,10 +1,10 @@
-language: __connie__
+language: php
 group: stable
 os: ubuntu
-dist: trusty
-sudo: required
+dist: precise
+sudo: false
 install: true
 script:
-    - df -hi && df -h && echo connie
+    - "mysql -uroot 'SHOW VARIABLES LIKE \"%version%\";' || true"
 
 
