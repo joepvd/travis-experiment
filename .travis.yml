@@ -5,8 +5,12 @@ dist: precise
 sudo: true
 install: true
 script:
-    - "false"
-after_failure:
-    - "awk 'BEGIN{while(1)print \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}'"
+    - "true"
+notifications:
+    email:
+        recipients:
+          - secure: "KsEOL1FXCaxiKRIzp/BJO1LVr8086TRQWOsIs5X8WmwVTUZLW9OOw2IZFFAGsjC6gecEDW63iyHzdu7QmpEPp3LyWSm5bkTDCrsyCt1PHSwxO23x7l3AzRhvSCZjbmzhUDOV7yQcXsRooZ2bzNtpaa9DDOg/QRDLnqcd8lm5s7PEBOVy7eUAh2eVFZeo6vYJo8s6l0Io9By13wnHyMtdbr/vvjS8asOclFI51V6/wMJfMdUP3CHfH0oqPJWBDEPLmadbJmqbN4cRm0kMRH4/nhO1uZ5zo32Mi8MwQtNKtNVzpZUCQNIqS5DbK2KvaP6BFpX1k1suXb6K54G6buAp3ZiBzBnLunfcLVTTRkjGF3ZTUk2ECtsIVpaHknQQQcAU9A7vcL71S2x5oe5PNaacgluwEnRRSNSCRdFFiYDQePNHeXGYpoCfhZVmqOP9eY0pLzE2uBEnRZmXcr10Fts0UtwRKsWw/+Aa03rZgNn8SqErECZP83tcOkfifacnKCLI8NZiFHb71LxorDZj1wfkwn04GRlRyIQSqLd0SCeaFe48wjxPLbqucD/HDGrZjfJt3M1Pgv6zVbdqFTOaKljpPVy3yDGbPdimZ3RYAV+CJfx+I3ysr21SYD9/Tz8/KS8TuI/d8rnykWtUfd76muA51TWtVce0dhMAbFdRfRM7ZIs="
+    on_success: always
+    on_failure: always
 
 
