@@ -1,5 +1,6 @@
 language: ruby
 group: stable
+dist: "zonky zebra"
 os: ubuntu
 sudo: true
 script:
