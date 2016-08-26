@@ -1,16 +1,8 @@
 language: ruby
 group: stable
 os: ubuntu
-dist: precise
 sudo: true
-install: true
 script:
     - "true"
-notifications:
-    email:
-        recipients:
-          - secure:  "dW34YneaLian04+43LcXMgd57yf71s4tWg6H3L1x9VXCz9VSWoFTnA/hVxWnGBi+BOsbSxO0cYOUEuoZ0SpgCgITn9xH3uMGe82JKE2aU4nnNJtIJu8jvYBQLKrAYFzByEMOJDtVydAKFU8tepEshl8EyRvF67pn+b7iIcvrve5yfSvnDZv5Dd7ZutsGUALYbeAI75dVv5cs6jd0N6RoiqgxUjX1SCf93DGQo8By2d7Ytcp86SBfPV1X+sTVeLpjOtwqqsddFBMyp9UsnF74VGGKokWeOdLp7HGlHIRReHot7jbYlfDvEbCOwW5bCUsR+QteuZ4GOxzv4ffKY4zraXjcigFbf/8vPvitaplf0PzZp2LykTUUK4MmujNXFFMvQmriiLs1sEX070WiJqgpyfPr5W+7aFDdQHA0/W0N8kXbN+PVj9UVv7P1gT/W5kU9mClLzhHyPtRb+jCjxWYZUZVzmvIYIePXj3/KL615/Zk+WJMeA/iUrOrR8nt7ePpUgandQX144tvtxYJWjb0vFCCKHQGaOETghODoNg7uBRj0TEVFwqeMyjppQOOWAQ3aJBYTlqRLh99HmPPJ2h2fD9qmCOwTF+0LqWe5JEbiXznDeEvUA60/TF0Ic8KLB03nK1UFzYT2ZuoYsVTmCdNICBXc3O2dMOIdujrs17efm30="
-    on_success: always
-    on_failure: always
-
-
+install:
+    - uname -a
