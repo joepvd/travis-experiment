@@ -5,6 +5,7 @@ cache:
     directories:
         - cachedir
 script:
+    - ls -lRa
     - touch -d 20160704 cachedir/oldfile
     - touch cachedir/currentfile
     - ls -Rla
