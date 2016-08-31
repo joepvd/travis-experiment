@@ -2,9 +2,12 @@ language: ruby
 group: stable
 sudo: false
 cache:
-    directories:
+    - pip: true
+    - directories:
         - cachedir
 script:
+    - pwd
+    - echo $TRAVIS_BUILD_DIR
     - ls -lRa
     - touch -d 20160704 cachedir/oldfile
     - touch cachedir/currentfile
