@@ -1,9 +1,12 @@
 language: ruby
 group: stable
-dist: "zonky zebra"
-os: ubuntu
-sudo: true
+sudo: false
+cache:
+    directories:
+        - cachedir
 script:
-    - "true"
+    - touch -d 20160704 cachedir/oldfile
+    - touch cachedir/currentfile
+    - ls -Rla
 install:
     - uname -a
