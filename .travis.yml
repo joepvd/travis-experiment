@@ -1,6 +1,5 @@
 language: ruby
 install: echo "party time"
 script:
-    - env
-    - echo $TRAVIS_PULL_REQUEST
+    - date +%F:T:Z
 sudo: false
