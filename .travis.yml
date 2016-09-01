@@ -1,5 +1,8 @@
-language: ruby
-install: echo "party time"
+language: python
+group: stable
+os: ubuntu
+sudo: required
+install: true
 script:
-    - date +%F:%T:%Z
-sudo: false
+    - df -hi && df -h && echo $stack
+
