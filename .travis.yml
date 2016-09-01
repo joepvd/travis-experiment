@@ -3,6 +3,8 @@ group: stable
 os: ubuntu
 sudo: required
 install: true
+services:
+    - docker
 script:
     - df -hi && df -h && echo $stack
 
