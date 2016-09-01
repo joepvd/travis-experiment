@@ -1,5 +1,5 @@
 language: ruby
 install: echo "party time"
 script:
-    - date +%F:T:Z
+    - date +%F:%T:%Z
 sudo: false
