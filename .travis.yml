@@ -1,6 +1,5 @@
 language: python
-group: stable
-os: ubuntu
+dist: trusty
 sudo: required
 install: true
 services:
