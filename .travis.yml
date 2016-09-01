@@ -1,8 +1,6 @@
 language: ruby
 install: echo "party time"
 script:
-    - "travis_retry awk 'BEGIN{system(\"sleep 1\"); print \"first retry\"; exit 1}' || travis_retry awk 'BEGIN{system(\"sleep 1\"); print \"after\"}'"
-group: stable
-dist: precise
-os: linux
-
+    - env
+    - echo $TRAVIS_PULL_REQUEST
+sudo: false
