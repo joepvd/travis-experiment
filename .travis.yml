@@ -2,8 +2,6 @@ language: python
 dist: trusty
 sudo: required
 install: true
-services:
-    - docker
 script:
     - df -hi && df -h && echo $stack
 
