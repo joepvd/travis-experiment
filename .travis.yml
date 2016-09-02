@@ -1,7 +1,6 @@
-language: python
+language: ruby
 dist: trusty
-sudo: required
+sudo: false
 install: true
-script:
-    - df -hi && df -h && echo $stack
+services: mysql
 
