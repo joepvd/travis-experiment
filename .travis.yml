@@ -2,5 +2,7 @@ language: ruby
 dist: trusty
 sudo: false
 install: true
+script: true
+before_install: true
 services: mysql
 
