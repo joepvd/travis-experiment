@@ -1,8 +1,30 @@
-language: python
-python: 3.4
+language: cpp
+os: linux
+sudo: required
+dist: trusty
+compiler: gcc
+addons:
+  apt:
+    packages:
+    - libboost-dev
+    - libboost-thread-dev
+    - libboost-system-dev
+    - libboost-filesystem-dev
+    - libgmp-dev
+    - libmpfr-dev
+    - libcgal-dev
+    - libqt4-dev
+    - libqglviewer-dev
+    - libxerces-c-dev
+    - libassimp-dev
+    - libopenscenegraph-dev
+    - libeigen3-dev
+    - libinsighttoolkit3-dev
+    - libgdcm2-dev
+    - libopencv-dev
+    - doxygen
+    - graphviz
 install: true
 script: true
 group: stable
-dist: precise
-os: linux
-sudo: required
+
