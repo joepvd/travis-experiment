@@ -1,8 +1,8 @@
-language: ruby
-dist: trusty
-sudo: false
+language: python
+python: 3.4
 install: true
 script: true
-before_install: true
-services: mysql
-
+group: stable
+dist: precise
+os: linux
+sudo: required
