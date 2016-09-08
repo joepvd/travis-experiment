@@ -1,30 +1,23 @@
-language: cpp
-os: linux
-sudo: required
-dist: trusty
-compiler: gcc
-addons:
-  apt:
-    packages:
-    - libboost-dev
-    - libboost-thread-dev
-    - libboost-system-dev
-    - libboost-filesystem-dev
-    - libgmp-dev
-    - libmpfr-dev
-    - libcgal-dev
-    - libqt4-dev
-    - libqglviewer-dev
-    - libxerces-c-dev
-    - libassimp-dev
-    - libopenscenegraph-dev
-    - libeigen3-dev
-    - libinsighttoolkit3-dev
-    - libgdcm2-dev
-    - libopencv-dev
-    - doxygen
-    - graphviz
-install: true
+language: ruby
+#python: '2.7'
+#group: stable
+matrix:
+    include:
+        - osx_image: "xcode8"
+          env: image=xcode8
+        - osx_image: "beta-xcode6.3"
+          env: image=beta-xcode6.3
+        - sudo: required
+          dist: trusty
+        - sudo: required
+          dist: precise
+        - sudo: false
+
+services:
+    - cassandra
+install:
+    - echo $image
+    - cassandra -v || true
 script: true
-group: stable
+
 
