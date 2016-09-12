@@ -1,8 +1,14 @@
-language: python
-python: 3.4.2
-install: true
-script: true
-group: stable
-dist: precise
-os: linux
+language: ruby
+
 sudo: required
+
+install:
+  - true
+
+script:
+  - ping -c2 openrct2.org || true
+  - curl -svf 'https://openrct2.org/altapi/?command=push-build' || true
+
+notifications:
+  email: false
+
