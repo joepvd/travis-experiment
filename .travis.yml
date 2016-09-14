@@ -4,17 +4,17 @@ sudo: false
 
 env:
     matrix:
-        - fail=yes
-        - fail=no
+        - pass=yes
+        - pass=no
 
 install:
   - true
 
 before_script:
-  - "[[ $fail = yes ]] && false || true"
+  - "[[ $pass = yes ]] && true || false"
 
 script:
-    - true
+    - echo "script runs"
 
 after_script:
     - echo Afterscript runs with fail $fail
