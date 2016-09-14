@@ -8,10 +8,10 @@ env:
         - pass=no
 
 install:
-  - true
+  - "[[ $pass = yes ]] && true || false"
 
 before_script:
-  - "[[ $pass = yes ]] && true || false"
+  - true
 
 script:
     - echo "script runs"
