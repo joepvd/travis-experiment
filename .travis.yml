@@ -1,17 +1,23 @@
-language: php
+language: generic
 
-php:
-    - "5.6"
+sudo: false
 
-sudo: required
-
-dist: trusty
+env:
+    matrix:
+        - fail=yes
+        - fail=no
 
 install:
   - true
 
 script:
-  - "pecl install acpu || true"
+  - "[[ $fail = yes ]] && false || true"
+
+after_script:
+    - echo Afterscript runs with fail $fail
+
+after_failure:
+    - echo Afterscript runs with fail $fail
 
 notifications:
   email: false
