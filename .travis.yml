@@ -10,8 +10,11 @@ env:
 install:
   - true
 
-script:
+before_script:
   - "[[ $fail = yes ]] && false || true"
+
+script:
+    - true
 
 after_script:
     - echo Afterscript runs with fail $fail
