@@ -1,17 +1,16 @@
-language: __sugilite__
+language: __connie__
 
 sudo: true
 
 dist: trusty
 
-services: 
-    - postgresql
-
 addons:
-    postgresql: "9.4"
+  apt:
+    packages:
+    - postgresql-9.4
 
 before_script:
-  - true
+  - "psql -c 'select * from version()' || true"
 
 script:
     - true
