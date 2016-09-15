@@ -1,26 +1,19 @@
-language: generic
+language: __conny__
 
-sudo: false
+sudo: true
 
-env:
-    matrix:
-        - pass=yes
-        - pass=no
+dist: trusty
 
-install:
-  - "[[ $pass = yes ]] && true || false"
+services: 
+    - postgres
 
 before_script:
   - true
 
 script:
-    - echo "script runs"
+    - true
 
-after_script:
-    - echo Afterscript runs with fail $fail
-
-after_failure:
-    - echo Afterscript runs with fail $fail
+install: true
 
 notifications:
   email: false
