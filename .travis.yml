@@ -6,13 +6,11 @@ matrix:
      sudo: required
   - os: osx
     osx_image: xcode8
-services: postgresql
+services:
+    - postgresql
 addons:
-  postgresql: "9.5"
+    postgresql: "9.5"
 install:
     - psql -U postgres -c "select * from version()"
 script:
     - true
-notifications:
-    email:
-        false
