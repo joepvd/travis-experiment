@@ -1,14 +1,16 @@
 language: ruby
-os: linux
-dist: trusty
-sudo: required
+matrix:
+   include:
+   - os: linux
+     dist: trusty
+     sudo: required
+   - os: osx
+     osx_image: xcode8
 services:
-    - postgresql
+  - postgresql
 addons:
-    postgresql: "9.5"
-install:
-    - psql --version
-    - echo $PAGER
-    - "head ~/.psqlrc || true"
+   postgresql: "9.5"
+before_install:
+  - "[[ $TRAVIS_OS_NAME = osx ]] && pg_ctl -D /usr/local/var/postgres start"
 script:
-    - psql -U postgres -c "select * from version()"
+    - PAGER=cat psql -U postgres -c "select * from version()"
