@@ -11,6 +11,6 @@ services:
 addons:
    postgresql: "9.5"
 before_install:
-  - "[[ $TRAVIS_OS_NAME = osx ]] && pg_ctl -D /usr/local/var/postgres start"
+  - "[[ $TRAVIS_OS_NAME = osx ]] && pg_ctl -D /usr/local/var/postgres start || true"
 script:
-    - PAGER=cat psql -U postgres -c "select * from version()"
+    - "while ! PAGER=cat psql -U postgres -c 'select * from version()'; do sleep 1; echo waiting $(( i++ )) seconds; (( i > 30 )) && break; done"
