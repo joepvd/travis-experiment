@@ -13,4 +13,4 @@ addons:
 before_install:
   - "[[ $TRAVIS_OS_NAME = osx ]] && pg_ctl -D /usr/local/var/postgres start || true"
 script:
-    - "while ! PAGER=cat psql -c 'select * from version()'; do sleep 1; echo waiting $(( i++ )) seconds; (( i > 30 )) && break; done"
+    - "while ! PAGER=cat psql -d template1 -c 'select * from version()'; do sleep 1; echo waiting $(( i++ )) seconds; (( i > 30 )) && break; done"
