@@ -3,7 +3,11 @@ php: 7
 dist: precise
 sudo: false
 before_install:
-  - true
+  - "nvm || true"
+  - echo $-
+  - shopt
+  - set -o
+  - set
 install:
     - "cat ~/.bashrc || true"
 script:
