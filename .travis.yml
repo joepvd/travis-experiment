@@ -1,16 +1,10 @@
-language: ruby
-matrix:
-   include:
-   - os: linux
-     dist: trusty
-     sudo: required
-   - os: osx
-     osx_image: xcode8
-services:
-  - postgresql
-addons:
-   postgresql: "9.5"
+language: php
+php: 7
+dist: precise
+sudo: false
 before_install:
-  - "[[ $TRAVIS_OS_NAME = osx ]] && pg_ctl -D /usr/local/var/postgres start || true"
+  - true
+install:
+    - "cat ~/.bashrc || true"
 script:
-    - "while ! PAGER=cat psql -d template1 -c 'select * from version()'; do sleep 1; echo waiting $(( i++ )) seconds; (( i > 30 )) && break; done"
+    - true
