@@ -1,14 +1,10 @@
-language: php
-php: 7
-dist: precise
-sudo: false
-before_install:
-  - "nvm || true"
-  - echo $-
-  - shopt
-  - set -o
-  - set
-install:
-    - "cat ~/.bashrc || true"
-script:
-    - true
+language: ruby
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+    - os: osx
+      osx_image: xcode8
+install: true
+script: true
