@@ -14,4 +14,4 @@ install:
     - "[ $TRAVIS_OS_NAME = osx ] && pg_ctl -D /usr/local/var/postgres start && sleep 3 || true"
 script:
     - export PAGER=cat
-    - psql -U postgres -c "select * from version()"
+    - psql -c "select * from version()"
