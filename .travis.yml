@@ -4,7 +4,12 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
+      services:
+        - postgresql
     - os: osx
       osx_image: xcode8
-install: true
-script: true
+install:
+    - "[ $TRAVIS_OS_NAME = osx ] && pg_ctl -D /usr/local/var/postgres start && sleep 3 || true"
+script:
+    - export PAGER=cat
+    - psql -U postgres -c "select * from version()"
