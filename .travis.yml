@@ -1,7 +1,9 @@
-language: ruby
+language: java
+jdk: oraclejdk8
 install:
     - true
 script:
     - true
-sudo: false
+sudo: true
+dist: precise
 os: linux
