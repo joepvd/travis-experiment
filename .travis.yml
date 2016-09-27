@@ -2,7 +2,7 @@ language: python
 sudo: false
 dist: precise
 install:
-    - true
+  - true
 script:
-    - echo $TRAVIS_BRANCH
-	- echo $TRAVIS_TAG
+  - echo $TRAVIS_BRANCH
+  - echo $TRAVIS_TAG
