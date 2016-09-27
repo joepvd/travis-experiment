@@ -1,8 +1,6 @@
-language: c
+language: objective-c
+osx_image: xcode7.3
 install:
     - true
 script:
     - true
-sudo: false
-dist: precise
-os: linux
