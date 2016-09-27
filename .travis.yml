@@ -1,1 +1,8 @@
-
+language: python
+sudo: false
+dist: precise
+install:
+    - true
+script:
+    - echo $TRAVIS_BRANCH
+	- echo $TRAVIS_TAG
