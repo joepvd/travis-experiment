@@ -1,8 +1,1 @@
-language: php
-php: 7.1
-sudo: false
-dist: precise
-install:
-    - true
-script:
-    - true
+
