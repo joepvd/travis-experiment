@@ -10,10 +10,3 @@ install:
 script: true
 notifications:
     email: false
-deploy:
-    provider: deis
-    controller: deis.deiapps.com
-    username: username
-    password: password
-    app: app
-    edge: true
