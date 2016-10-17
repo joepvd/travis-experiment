@@ -7,6 +7,7 @@ language: python
 python: "2.7"
 install:
     - pip install i3ipc
-script: true
+script:
+    - echo $TRAVIS_TAG
 notifications:
     email: false
