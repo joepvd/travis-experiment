@@ -7,7 +7,7 @@ language: python
 python: "2.7"
 install:
     - pip install i3ipc
-    - echo commit 3
+    - echo commit 4
 script:
     - echo $TRAVIS_TAG
 notifications:
