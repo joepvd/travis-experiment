@@ -1,6 +1,6 @@
 sudo: true
 dist: precise
-language: nonsense
+language: __garnet__
 python: "2.7"
 install:
     - echo $TRAVIS_PYTHON_VERSION
