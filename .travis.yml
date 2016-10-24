@@ -3,9 +3,10 @@ dist: precise
 language: ruby
 install:
     - true
-git:
-    depth:
-        "$(echo 40)"
+addons:
+  apt:
+    packages:
+    - "$(echo cmake)"
 script:
     - true
 notifications:
