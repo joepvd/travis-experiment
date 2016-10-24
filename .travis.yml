@@ -1,8 +1,11 @@
-sudo: true
-dist: trusty
+sudo: false
+dist: precise
 language: ruby
 install:
     - true
+git:
+    depth:
+        "$(echo 40)"
 script:
     - true
 notifications:
