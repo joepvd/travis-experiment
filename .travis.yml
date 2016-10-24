@@ -1,11 +1,9 @@
 sudo: true
-dist: precise
-language: __garnet__
-python: "2.7"
+dist: trusty
+language: ruby
 install:
-    - echo $TRAVIS_PYTHON_VERSION
+    - true
 script:
-    - "echo 'echo $TRAVIS_PYTHON_VERSION' > script.sh"
-    - bash script.sh
+    - true
 notifications:
     email: false
