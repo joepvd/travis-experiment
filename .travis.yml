@@ -5,6 +5,9 @@ install:
     - true
 services:
     - mysql
+apt:
+    packages:
+        - mysql-server
 script:
     - "mysql --protocol=TCP --host=localhost --user root -e \"CREATE USER 'nice'@'localhost' IDENTIFIED BY 'nice'\" || true"
 notifications:
