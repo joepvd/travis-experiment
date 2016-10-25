@@ -1,13 +1,11 @@
-sudo: false
-dist: precise
+sudo: true
+dist: trusty
 language: ruby
 install:
     - true
-addons:
-  apt:
-    packages:
-    - "$(echo cmake)"
+services:
+    - mysql
 script:
-    - true
+    - "mysql --protocol=TCP --host=localhost --user root -e \"CREATE USER 'nice'@'localhost' IDENTIFIED BY 'nice'\" || true"
 notifications:
     email: false
