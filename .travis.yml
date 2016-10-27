@@ -1,4 +1,4 @@
-sudo: true
+sudo: false
 dist: precise
 language: python
 before_install:
@@ -9,3 +9,12 @@ script:
     - true
 notifications:
     email: false
+
+before_deploy:
+    - "true"
+deploy:
+    provider: script
+    script: "false"
+
+after_deploy:
+    - "true"
