@@ -1,4 +1,5 @@
 language: xcode7.3
+os: osx
 before_install:
    - true
 install:
