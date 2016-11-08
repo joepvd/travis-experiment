@@ -1,35 +1,15 @@
 language: cpp
-sudo: false
+sudo: true
 dist: trusty
-compiler:
-    - gcc
-os:
-    - linux
 # Add-ons: specify apt packages for Linux
 addons:
   apt: 
-   sources:
-      - boost-latest
-      - ubuntu-toolchain-r-test
    packages:
-      - gcc-4.8
-      - g++-4.8
-      - gcc-5
-      - g++-5
-      - gcc-6
-      - g++-6
-      - libboost1.55-all-dev
-      - libgif-dev
-      - libtiff4-dev
-      - libopenjpeg-dev
-      - libwebp-dev
-      - ffmpeg
-      - freetype6-dev
-      - libjpeg-turbo8-dev
+      - couchdb
 before_install:
    - true
 install:
-    - true
+    - "curl http://127.0.0.1:5984/ || true"
 script:
     - true
 notifications:
