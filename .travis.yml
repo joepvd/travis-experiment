@@ -1,24 +1,9 @@
-language: __sugilite__
-sudo: true
+language: ruby
+sudo: false
 dist: trusty
-group: edge
-# Add-ons: specify apt packages for Linux
-addons:
-    apt: 
-        packages:
-        - mysql-server-5.6
-        - mysql-client-core-5.6
-        - mysql-client-5.6
-    sauce_connect:
-        username: joepvd
-        key:
-            secure: "Fku5ABEf9BudLRrPYBEmzqYNHYNiuXdXDAPqD1CEYwXFAXbhlBJKF5f/H2RxdR+jiCDK+Xp6WwPdYz04ASIn5miVviKoRlRGOlEn4eziTeT6SuPH1fTuYGbVomNAp0M4OVeXWYZCse346wmlRybQEOMNnaFEHThxYdaZEiwLPtW8MWX7mvhG9rT4ZZvLcIgMZfdKpWZs1D7xomKCdig50UnOU5plGLLiSHvuoWq/DJaQBJ0WiqTFinHhV40mGvk/O6kC+7uoZy6FU4sK5z3aAro+0P+iHj5xzj7M784dn1UIfmv1tNrLdyi8wqoUUk3EZkVOXq9N8or9CRt9MNokvIeIVqwD95KS/6h0f5PrSkuArB8jK0wykfgaQySG23vBZ43NWhrJ2Tw6bcuMunLzuPrReVAmv+PuMGj0Xt9mZkT6nTQQGhItEbkvHdZdX0PzMaC7Vkuj7zHECZdY2ypYJtE+pUOi/Mh7LIHZf2fTBZYJm9IKOwnLRe6YRgTs6xl3TaWVxowzGnI543dp6ig/RNTBLXshFRkxk+BlKZ/h/ycbbwW8tytCsXNwmDTcEnVkTG9Ak/CtgbKum0rUDeFhu6ZwY4PAL9Y9xSwhUwst1M2VdEIp01JfEPaq4gmwNmKDJorUDIu25cEJBjnCGkB+hXvye1u2ELue4fIwjNsuIhc="
-        verbose: 2
-before_install:
-   - true
 install:
     - true
 script:
-    - true
+    - "nvm || true"
 notifications:
     email: false
