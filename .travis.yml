@@ -1,15 +1,18 @@
-language: cpp
+language: __sugilite__
 sudo: true
 dist: trusty
+group: edge
 # Add-ons: specify apt packages for Linux
 addons:
   apt: 
-   packages:
-      - couchdb
+    packages:
+        - mysql-server-5.6
+        - mysql-client-core-5.6
+        - mysql-client-5.6
 before_install:
    - true
 install:
-    - "curl http://127.0.0.1:5984/ || true"
+    - true
 script:
     - true
 notifications:
