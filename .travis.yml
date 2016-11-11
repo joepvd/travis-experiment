@@ -3,6 +3,9 @@ sudo: false
 dist: precise   
 install:
     - true
+services:
+    - mysql
+    - memcached
 script:
     - df -h
     - df -i
