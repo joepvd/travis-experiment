@@ -2,7 +2,7 @@ language: ruby
 sudo: false
 dist: precise
 install:
-    - for signal in HUP INT QUIT ILL TRAP ABRT BUS FPE KILL USR1 SEGV USR2 PIPE ALRM TERM STKFLT CHLD CONT STOP TSTP TTIN TTOU URG XCPU XFSZ VTALRM PROF WINCH POLL PWR SYS; do trap 'echo Caught signal $signal; exit' $signal; done
+    - for signal in HUP INT QUIT ILL TRAP ABRT BUS FPE KILL USR1 SEGV USR2 PIPE ALRM TERM STKFLT CHLD CONT STOP TSTP TTIN TTOU URG XCPU XFSZ VTALRM PROF WINCH POLL PWR SYS; do trap 'echo Caught signal $signal' $signal >/dev/null; done
 script:
     - true
 notifications:
