@@ -2,7 +2,7 @@ language: ruby
 sudo: false
 dist: precise
 install:
-    - "sleep 1000 &"
+    - for signal in $(kill -l); do trap 'echo Caught signal $signal; exit' $signal; done
 script:
     - true
 notifications:
