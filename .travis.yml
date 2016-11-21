@@ -1,5 +1,6 @@
 sudo: false
 dist: trusty
+group: edge
 install: true
 script: 
     - "ps aux | grep '[m]ysql' || true"
