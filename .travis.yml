@@ -1,5 +1,5 @@
 sudo: required
-dist: precise
+dist: trusty
 install: true
 script: 
     - "ps aux | grep '[m]ysql' || true"
