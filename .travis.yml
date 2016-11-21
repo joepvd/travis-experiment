@@ -1,6 +1,8 @@
 sudo: required
 dist: trusty
 install: true
+services:
+    - mysql
 script: 
     - "ps aux | grep '[m]ysql' || true"
     - "mysql -uroot -e 'select now()' || true"
