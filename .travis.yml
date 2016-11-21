@@ -1,6 +1,5 @@
-sudo: false
-dist: trusty
-group: beta 
+sudo: required
+dist: precise
 install: true
 script: 
     - "ps aux | grep '[m]ysql' || true"
