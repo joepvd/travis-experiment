@@ -2,11 +2,6 @@ sudo: required
 dist: trusty
 group: edge
 install: true
-addons:
-    apt:
-        packages:
-            - mysql-server
-            - mysql-client
 services:
     - mysql
 script: 
