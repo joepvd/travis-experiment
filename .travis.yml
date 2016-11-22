@@ -1,7 +1,7 @@
 language: php
 dist: precise
 sudo: false
-install: "pip install awscli -- user || true"
+install: "pip install awscli --user || true"
 script: true
 notifications:
     email: false
