@@ -1,29 +1,7 @@
-sudo: required
-install: true
-script: 
-    - "ps aux | grep '[m]ysql' || true"
-    - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
-    - "mysql -utravis -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
+language: php
+dist: precise
+sudo: false
+install: "pip install awscli -- user || true"
+script: true
 notifications:
     email: false
-matrix:
-    include:
-        - dist: trusty
-          group: stable
-          addons:
-              apt:
-                  packages:
-                      - mysql-client
-                      - mysql-server
-          env: image="sudo trusty stable"
-        - dist: trusty
-          group: edge
-          services:
-              - mysql
-          env: image="sudo trusty edge"
-        - dist: precise
-          group: stable
-          env: image="sudo precise stable"
-        - dist: precise
-          group: edge
-          env: image="sudo precise edge"
