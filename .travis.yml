@@ -1,11 +1,23 @@
-language: python
-dist: precise
-sudo: false
-install: true
-script:
-    - "pytest || true"
-    - "py.test || true"
-    - "{ pip install pytest; pytest; py.test; } || true"
-    - "{ pip install py.test; pytest; py.test; } || true"
+language: ruby
 notifications:
     email: false
+sudo: false
+install: true
+script: 
+    - "ps aux | grep '[m]ysql' || true"
+    - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
+    - "mysql -utravis -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
+matrix:
+    include:
+        - dist: trusty
+          group: stable
+          env: image="container trusty stable"
+        - dist: trusty
+          group: edge
+          env: image="container trusty edge"
+        - dist: precise
+          group: stable
+          env: image="container precise stable"
+        - dist: precise
+          group: edge
+          env: image="container precise edge"
