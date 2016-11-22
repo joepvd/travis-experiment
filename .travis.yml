@@ -1,6 +1,7 @@
 language: php
 dist: trusty
 sudo: true
+group: edge
 install: true
 script: true
 notifications:
