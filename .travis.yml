@@ -11,13 +11,28 @@ matrix:
     include:
         - dist: trusty
           group: stable
-          env: image="container trusty stable"
-        - dist: trusty
-          group: edge
-          env: image="container trusty edge"
+          env: image="container trusty stable 5.7?"
+          addons:
+              apt:
+                  packages:
+                      - mysql-server-5.7
+                      - mysql-client-5.7
+                      - mysql-core-5.7
         - dist: precise
           group: stable
-          env: image="container precise stable"
+          env: image="container precise stable 5.6?"
+          addons:
+              apt:
+                  packages:
+                      - mysql-server-5.6
+                      - mysql-client-5.6
+                      - mysql-core-5.6
         - dist: precise
-          group: edge
-          env: image="container precise edge"
+          group: stable
+          env: image="container precise stable 5.7?"
+          addons:
+              apt:
+                  packages:
+                      - mysql-server-5.7
+                      - mysql-client-5.7
+                      - mysql-core-5.7
