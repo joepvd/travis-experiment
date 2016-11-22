@@ -1,8 +1,11 @@
-language: php
-dist: trusty
-sudo: true
-group: edge
+language: python
+dist: precise
+sudo: false
 install: true
-script: true
+script:
+    - "pytest || true"
+    - "py.test || true"
+    - "{ pip install pytest; pytest; py.test; } || true"
+    - "{ pip install py.test; pytest; py.test; } || true"
 notifications:
     email: false
