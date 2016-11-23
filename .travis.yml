@@ -4,6 +4,10 @@ rvm:
 distr: trusty
 sudo: required
 install: true
+addons:
+    apt:
+        packages:
+            - haveged
 script: true
 notifications:
     email: false
