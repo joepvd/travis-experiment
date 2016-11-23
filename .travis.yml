@@ -1,39 +1,12 @@
-language: ruby
-notifications:
-    email: false
-sudo: true
+language: php
+php: "5.6"
+sudo: false
+dist: trusty
 install: true
 script: 
     - "ps aux | grep '[m]ysql' || true"
     - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
     - "mysql -utravis -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
     - "mysql -uroot -e 'SHOW databases;' || true"
-matrix:
-    include:
-        - dist: trusty
-          group: stable
-          env: image="sudo trusty stable 5.7?"
-          addons:
-              apt:
-                  packages:
-                      - mysql-server-5.7
-                      - mysql-client-core-5.7
-                      - mysql-core-5.7
-        - dist: trusty
-          group: stable
-          env: image="sudo trusty stable 5.6?"
-          addons:
-              apt:
-                  packages:
-                      - mysql-server-5.6
-                      - mysql-client-5.6
-                      - mysql-client-core-5.6
-        - dist: trusty
-          group: stable
-          env: image="sudo trusty stable 5.5?"
-          addons:
-              apt:
-                  packages:
-                      - mysql-server-5.5
-                      - mysql-client-5.5
-                      - mysql-client-core-5.5
+notifications:
+    email: false
