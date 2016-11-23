@@ -1,12 +1,9 @@
-language: php
-php: "5.6"
-sudo: false
-dist: trusty
+language: ruby
+rvm:
+  - jruby
+distr: trusty
+sudo: required
 install: true
-script: 
-    - "ps aux | grep '[m]ysql' || true"
-    - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
-    - "mysql -utravis -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
-    - "mysql -uroot -e 'SHOW databases;' || true"
+script: true
 notifications:
     email: false
