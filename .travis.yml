@@ -1,13 +1,21 @@
-language: ruby
-rvm:
-  - jruby
-distr: trusty
-sudo: required
+language: c
+dist: trusty
+matrix:
+    include:
+        - group: edge
+          sudo: required
+          env: i="trusty sudo edge"
+        - group: stable
+          sudo: required
+          env: i="trusty sudo stable"
+        - group: edge
+          sudo: false
+          env: i="trusty container edge"
+        - group: stable
+          sudo: false
+          env: i="trusty container stable"
+group: edge
 install: true
-addons:
-    apt:
-        packages:
-            - haveged
-script: true
+script: cmake --version
 notifications:
     email: false
