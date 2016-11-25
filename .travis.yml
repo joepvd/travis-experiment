@@ -1,6 +1,6 @@
 language: php
 dist: trusty
-sudo: required
+sudo: false
 group: edge
 install:
     - "composer global require drush/drush:7.*"
