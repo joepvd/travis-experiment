@@ -1,14 +1,17 @@
 language: ruby
 dist: trusty
-sudo: true
+sudo: false
 matrix:
     include:
         - group: edge
         - group: stable
+        - group: beta
+services:
+    - mysql
 install:
     - true
 script:
-    - rvm list
+    - "mysql -uroot -e 'show variables like \"%version%\";' || true"
 notifications:
     email: false
 
