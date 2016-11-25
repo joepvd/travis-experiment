@@ -1,42 +1,14 @@
-language: ruby
-matrix:
-    include:
-        - env: i="trusty sudo stable"
-          dist: trusty
-          sudo: required
-          group: stable
-          addons:
-              apt:
-                  packages:
-                      - elasticsearch
-        - env: i="trusty sudo edge"
-          dist: trusty
-          sudo: required
-          group: edge
-          addons:
-              apt:
-                  packages:
-                      - elasticsearch
-        - env: i="precise sudo stable"
-          dist: precise
-          sudo: required
-          group: stable
-          services: elasticsearch
-        - env: i="precise container stable"
-          dist: precise
-          sudo: false
-          group: stable
-          services: elasticsearch
-        - env: i="trusty container stable"
-          dist: trusty
-          sudo: false
-          group: stable
-          addons:
-              apt:
-                  packages:
-                      - elasticsearch
-install: sleep 10
-script: "curl -XGET 127.0.0.1:9200 || true"
+language: php
+dist: trusty
+sudo: required
+group: edge
+install:
+    - "composer global require drush/drush:7.*"
+    - drush dl drupal --drupal-project-rename=example
+    - cd example
+script:
+    - "drush site-install standard --db-url='mysql://root@localhost/exampledb'  --yes --site-name=Example || true"
+    - "drush site-install standard --db-url='mysql://root:@localhost/exampledb'  --yes --site-name=Example || true"
 notifications:
     email: false
 
