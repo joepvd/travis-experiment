@@ -4,6 +4,7 @@ sudo: required
 group: edge
 install:
     - "composer global require drush/drush:7.*"
+    - export PATH=~"/.composer/vendor/bin/drush:$PATH"
     - drush dl drupal --drupal-project-rename=example
     - cd example
 script:
