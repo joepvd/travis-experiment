@@ -1,15 +1,14 @@
-language: php
+language: ruby
 dist: trusty
-sudo: false
-group: edge
+sudo: true
+matrix:
+    include:
+        - group: edge
+        - group: stable
 install:
-    - "composer global require drush/drush:7.*"
-    - export PATH=~"/.composer/vendor/bin/drush:$PATH"
-    - drush dl drupal --drupal-project-rename=example
-    - cd example
+    - true
 script:
-    - "drush site-install standard --db-url='mysql://root@localhost/exampledb'  --yes --site-name=Example || true"
-    - "drush site-install standard --db-url='mysql://root:@localhost/exampledb'  --yes --site-name=Example || true"
+    - rvm list
 notifications:
     email: false
 
