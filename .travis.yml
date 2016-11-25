@@ -1,29 +1,42 @@
 language: ruby
-services:
-    - elasticsearch
 matrix:
     include:
-        - dist: trusty
+        - env: i="trusty sudo stable"
+          dist: trusty
           sudo: required
-          env: i="trusty sudo stable"
           group: stable
-        - dist: trusty
+          addons:
+              apt:
+                  packages:
+                      - elasticsearch
+        - env: i="trusty sudo edge"
+          dist: trusty
           sudo: required
           group: edge
-          env: i="trusty sudo edge"
-        - dist: precise
+          addons:
+              apt:
+                  packages:
+                      - elasticsearch
+        - env: i="precise sudo stable"
+          dist: precise
           sudo: required
           group: stable
-          env: i="precise sudo stable"
-        - dist: precise
-          sudo: false
-          env: i="precise containener stable"
-          group: stable
-        - dist: trusty
+          services: - elasticsearch
+        - env: i="precise container stable"
+          dist: precise
           sudo: false
           group: stable
-          env: i="trusty container stable"
+          services: - elasticsearch
+        - env: i="trusty container stable"
+          dist: trusty
+          sudo: false
+          group: stable
+          addons:
+              apt:
+                  packages:
+                      - elasticsearch
 install: sleep 10
 script: "curl -XGET 127.0.0.1:9200 || true"
 notifications:
     email: false
+
