@@ -21,12 +21,12 @@ matrix:
           dist: precise
           sudo: required
           group: stable
-          services: - elasticsearch
+          services: elasticsearch
         - env: i="precise container stable"
           dist: precise
           sudo: false
           group: stable
-          services: - elasticsearch
+          services: elasticsearch
         - env: i="trusty container stable"
           dist: trusty
           sudo: false
