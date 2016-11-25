@@ -1,21 +1,29 @@
-language: c
-dist: trusty
+language: ruby
+services:
+    - elasticsearch
 matrix:
     include:
-        - group: edge
-          sudo: required
-          env: i="trusty sudo edge"
-        - group: stable
+        - dist: trusty
           sudo: required
           env: i="trusty sudo stable"
-        - group: edge
+          group: stable
+        - dist: trusty
+          sudo: required
+          group: edge
+          env: i="trusty sudo edge"
+        - dist: precise
+          sudo: required
+          group: stable
+          env: i="precise sudo stable"
+        - dist: precise
           sudo: false
-          env: i="trusty container edge"
-        - group: stable
+          env: i="precise containener stable"
+          group: stable
+        - dist: trusty
           sudo: false
+          group: stable
           env: i="trusty container stable"
-group: edge
-install: true
-script: cmake --version
+install: sleep 10
+script: "curl -XGET 127.0.0.1:9200 || true"
 notifications:
     email: false
