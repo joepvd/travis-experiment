@@ -1,17 +1,15 @@
-language: ruby
-dist: trusty
-sudo: false
+language: android
 matrix:
     include:
-        - group: edge
-        - group: stable
-        - group: beta
-services:
-    - mysql
+        - env: dist=trusty
+          dist: trusty
+        - env: dist=precise
+          dist: precise
+sudo: true
 install:
     - true
 script:
-    - "mysql -uroot -e 'show variables like \"%version%\";' || true"
+    - "android list sdk --no-ui --all --extended"
 notifications:
     email: false
 
