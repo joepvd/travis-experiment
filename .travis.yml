@@ -1,15 +1,24 @@
-language: android
+language: php
+sudo: required
+dist: trusty
+group: edge
 matrix:
     include:
-        - env: dist=trusty
-          dist: trusty
-        - env: dist=precise
-          dist: precise
-sudo: true
+        - env: try="addons"
+          addons:
+            apt:
+              packages:
+                - mysql-client5.6
+                - mysql-server5.6
+                - mysql-core5.6
+        - env: try="no addon"
+
 install:
     - true
 script:
-    - "android list sdk --no-ui --all --extended"
+    - "mysql -uroot -e 'show variables like \"%version%\";' || true"
+    - "mysql -uroot -h localhost -e 'show variables like \"%version%\";' || true"
+    - "mysql -uroot -h 127.0.0.1 -e 'show variables like \"%version%\";' || true"
 notifications:
     email: false
 
