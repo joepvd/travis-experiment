@@ -1,11 +1,15 @@
 language: python
 python: 3.5
-sudo: false
-dist: precise
-group: stable
+sudo: true
+dist: trusty
+group: edge
+addons:
+    postgresql: "9.6"
+services:
+    - postgresql
 install:
-    - pip list
-    - "{ pip list | grep future; } || true"
+    - "psql -U postgres -c 'select * from version();' || true"
+    - "psql -U travis -c 'select * from version();' || true"
 script:
     - true
 notifications:
