@@ -1,7 +1,7 @@
 language: php
 sudo: required
 dist: trusty
-group: stable
+group: edge
 php: 5.6
 install: true
 script:
