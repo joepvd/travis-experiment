@@ -1,10 +1,11 @@
 language: php
-sudo: false
+sudo: true
 dist: trusty
+group: edge
 php: 5.6
 install: true
 script:
-    - php -i
+    - mysql -uroot 'show variables'
 notifications:
     email: false
 
