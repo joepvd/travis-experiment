@@ -1,6 +1,6 @@
 language: ruby
 addons:
-    postgresql: "9.6"
+    postgresql: "9.5"
 services:
     - postgresql
 install:
@@ -8,21 +8,21 @@ install:
     - "PAGER=cat psql -U travis -c 'select * from version();' || true"
 matrix:
     include:
-        - env: image="trusty sudo stable"
+        - env: image="precise sudo stable"
           sudo: required
-          dist: trusty
+          dist: precise
           group: stable
-        - env: image="trusty sudo edge"
+        - env: image="precise sudo edge"
           sudo: required
-          dist: trusty
+          dist: precise
           group: edge
-        - env: image="trusty container stable"
+        - env: image="precise container stable"
           sudo: false
-          dist: trusty
+          dist: precise
           group: stable
-        - env: image="trusty container edge"
+        - env: image="precise container edge"
           sudo: false
-          dist: trusty
+          dist: precise
           group: edge
 script:
     - true
