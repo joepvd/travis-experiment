@@ -1,6 +1,6 @@
 language: python
 python: 3.5
-sudo: true
+sudo: false
 dist: trusty
 group: edge
 addons:
@@ -8,8 +8,8 @@ addons:
 services:
     - postgresql
 install:
-    - "psql -U postgres -c 'select * from version();' || true"
-    - "psql -U travis -c 'select * from version();' || true"
+    - "PAGER=cat psql -U postgres -c 'select * from version();' || true"
+    - "PAGER=cat psql -U travis -c 'select * from version();' || true"
 script:
     - true
 notifications:
