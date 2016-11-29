@@ -5,7 +5,7 @@ php: 5.6
 install: true
 script:
     - php -i
-    - "sudo grep -r 'mysql.*sock' / 2>/dev/null"
+    - "sudo grep -rI 'mysql.*sock' / 2>/dev/null"
 notifications:
     email: false
 
