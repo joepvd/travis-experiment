@@ -1,8 +1,4 @@
-language: python
-python: 3.5
-sudo: false
-dist: trusty
-group: edge
+language: ruby
 addons:
     postgresql: "9.6"
 services:
@@ -10,6 +6,24 @@ services:
 install:
     - "PAGER=cat psql -U postgres -c 'select * from version();' || true"
     - "PAGER=cat psql -U travis -c 'select * from version();' || true"
+matrix:
+    include:
+        - env: image="trusty sudo stable"
+          sudo: required
+          dist: trusty
+          group: stable
+        - env: image="trusty sudo edge"
+          sudo: required
+          dist: trusty
+          group: edge
+        - env: image="trusty container stable"
+          sudo: false
+          dist: trusty
+          group: stable
+        - env: image="trusty container edge"
+          sudo: false
+          dist: trusty
+          group: edge
 script:
     - true
 notifications:
