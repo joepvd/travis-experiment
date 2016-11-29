@@ -1,8 +1,13 @@
 language: php
 sudo: true
 dist: trusty
-group: edge
+group: stable
 php: 5.6
+addons:
+    apt:
+        packages:
+            - mysql-client-5.6
+            - mysql-server-5.6
 install:
   - sudo sed -i 's/\[mysqld\]/[mysqld]\nmax_connections = 500/' /etc/mysql-5.6/my.cnf\
   - sudo sync
