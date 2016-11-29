@@ -1,13 +1,13 @@
-language: php
+language: python
+python: 3.5
 sudo: false
-dist: trusty
-group: edge
+dist: precise
+group: stable
 install:
-    - true
+    - pip list
+    - "{ pip list | grep future; } || true"
 script:
-    - "mysql -uroot -e 'show variables like \"%version%\";' || true"
-    - "mysql -uroot -h localhost -e 'show variables like \"%version%\";' || true"
-    - "mysql -uroot -h 127.0.0.1 -e 'show variables like \"%version%\";' || true"
+    - true
 notifications:
     email: false
 
