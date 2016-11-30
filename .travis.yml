@@ -1,15 +1,16 @@
-language: php
-php: hhvm
+language: java
+sudo: required
 dist: trusty
 group: edge
-sudo: required
-install:
-  - sudo sed -i 's/\[mysqld\]/[mysqld]\nmax_connections = 500/' /etc/mysql-5.6/my.cnf\
-  - sudo sync
-  - sudo service mysql restart
-
+os: linux
+jdk:
+    - oraclejdk8
+install: true
 script:
-    - mysql -uroot 'show variables like "%connection%";'
+    - "java -version || true"
+    - "javac -version || true"
+    - echo $JAVA_HOME
+    - cat ~/.jdk_switcher_rc
 notifications:
     email: false
 
