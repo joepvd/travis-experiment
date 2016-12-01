@@ -2,10 +2,10 @@ language: java
 jdk: oraclejdk8
 install: true
 script:
-    - "java -version || true"
+    - java -version
     - ls -l /usr/lib/jvm
     - "head -n 1000 /etc/default/jdk-switcher \"${HOME}/.jdk_switcherrc\" \"${JDK_SWITCHER_CONFIG}\" || true"
-    - "jdk-switcher use oraclejdk8 || true"
+    - "jdk_switcher use oraclejdk8 || true"
     - "java -version || true"
 matrix:
     include:
