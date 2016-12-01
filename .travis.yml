@@ -2,12 +2,18 @@ language: java
 jdk: oraclejdk8
 install:
     - declare -f jdk_switcher
+    - print_home_of_oraclejdk8
+    - echo ORACLEJDK8_JAVA_HOME $ORACLEJDK8_JAVA_HOME
+    - echo ORACLEJDK8_UJA_ALIAS $ORACLEJDK8_UJA_ALIAS
 script:
     - java -version
     - ls -l /usr/lib/jvm
     - source /opt/jdk_switcher/jdk_switcher.sh
     - "jdk_switcher use oraclejdk8 || true"
     - "java -version || true"
+    - print_home_of_oraclejdk8
+    - echo ORACLEJDK8_JAVA_HOME $ORACLEJDK8_JAVA_HOME
+    - echo ORACLEJDK8_UJA_ALIAS $ORACLEJDK8_UJA_ALIAS
     - declare -f jdk_switcher
 env: "image=sudo trusty edge"
 sudo: required
