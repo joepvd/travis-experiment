@@ -1,16 +1,14 @@
-language: java
-sudo: required
-dist: trusty
-group: edge
+language: r
+sudo: false
+dist: precise
 os: linux
-jdk:
-    - oraclejdk8
 install: true
 script:
-    - "java -version || true"
-    - "javac -version || true"
-    - echo $JAVA_HOME
-    - cat ~/.jdk_switcher_rc
+    - cat ~/.bashrc
+    - "echo \"echo reading this!\">>~/.bashrc"
+    - "echo \"PATH=/abc:$PATH\">>~/.bashrc"
+    - source ~/.bashrc
+    - echo $PATH
 notifications:
     email: false
 
