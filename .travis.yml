@@ -8,6 +8,10 @@ script:
     - "jdk_switcher use oraclejdk8 || true"
     - "java -version || true"
     - sudo rm -rf /usr/lib/jvm/default-java
+    - ls -l /usr/lib/jvm
+    - "jdk_switcher use oraclejdk8 || true"
+    - "java -version || true"
+    - source /opt/jdk_switcher/jdk_switcher.sh
     - "jdk_switcher use oraclejdk8 || true"
     - "java -version || true"
 env: "image=sudo trusty edge"
