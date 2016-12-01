@@ -1,14 +1,32 @@
-language: r
-sudo: false
-dist: precise
-os: linux
+language: java
+jdk:
+    - oraclejdk8
 install: true
 script:
-    - cat ~/.bashrc
-    - "echo \"echo reading this!\">>~/.bashrc"
-    - "echo \"PATH=/abc:$PATH\">>~/.bashrc"
-    - source ~/.bashrc
-    - echo $PATH
+    - "java -version || true"
+    - ls -l /usr/lib/jvm
+    - "head -n 1000 /etc/default/jdk-switcher \"${HOME}/.jdk_switcherrc\" \"${JDK_SWITCHER_CONFIG}\" || true"
+    - "jdk-switcher use oraclejdk8 || true"
+    - "java -version || true"
+matrix:
+    include:
+        - env: "image=sudo trusty stable"
+          sudo: required
+          dist: trusty
+          group: stable
+        - env: "image=sudo trusty edge"
+          sudo: required
+          dist: trusty
+          group: edge
+        - env: "image=sudo precise stable"
+          sudo: required
+          dist: precise
+          group: stable
+        - env: "image=sudo precise edge"
+          sudo: required
+          dist: precise
+          group: edge
+
 notifications:
     email: false
 
