@@ -1,6 +1,5 @@
 language: java
-jdk:
-    - oraclejdk8
+jdk: oraclejdk8
 install: true
 script:
     - "java -version || true"
@@ -26,7 +25,22 @@ matrix:
           sudo: required
           dist: precise
           group: edge
-
+        - env: "image=container trusty stable"
+          sudo: false
+          dist: trusty
+          group: stable
+        - env: "image=container trusty edge"
+          sudo: false
+          dist: trusty
+          group: edge
+        - env: "image=container precise stable"
+          sudo: false
+          dist: precise
+          group: stable
+        - env: "image=container precise edge"
+          sudo: false
+          dist: precise
+          group: edge
 notifications:
     email: false
 
