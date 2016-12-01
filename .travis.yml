@@ -1,19 +1,14 @@
 language: java
 jdk: oraclejdk8
-install: true
+install:
+    - declare -f jdk_switcher
 script:
     - java -version
     - ls -l /usr/lib/jvm
-    - "head -n 1000 /etc/default/jdk-switcher \"${HOME}/.jdk_switcherrc\" \"${JDK_SWITCHER_CONFIG}\" || true"
-    - "jdk_switcher use oraclejdk8 || true"
-    - "java -version || true"
-    - sudo rm -rf /usr/lib/jvm/default-java
-    - ls -l /usr/lib/jvm
-    - "jdk_switcher use oraclejdk8 || true"
-    - "java -version || true"
     - source /opt/jdk_switcher/jdk_switcher.sh
     - "jdk_switcher use oraclejdk8 || true"
     - "java -version || true"
+    - declare -f jdk_switcher
 env: "image=sudo trusty edge"
 sudo: required
 dist: trusty
