@@ -6,9 +6,10 @@ install:
     - echo ORACLEJDK8_JAVA_HOME $ORACLEJDK8_JAVA_HOME
     - echo ORACLEJDK8_UJA_ALIAS $ORACLEJDK8_UJA_ALIAS
     - head -n 1000 /etc/profile /etc/profile.d/*sh
-    - grep ORACLE /etc/profile /etc/profile.d/*
+    - grep -C5 --color=always JAVA /etc/profile /etc/profile.d/*.sh /etc/bash.bashrc ~/.*
+
 script:
-    - java -version
+    - "java -version || true"
     - ls -l /usr/lib/jvm
     - source /opt/jdk_switcher/jdk_switcher.sh
     - "jdk_switcher use oraclejdk8 || true"
