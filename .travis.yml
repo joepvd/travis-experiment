@@ -5,6 +5,8 @@ install:
     - print_home_of_oraclejdk8
     - echo ORACLEJDK8_JAVA_HOME $ORACLEJDK8_JAVA_HOME
     - echo ORACLEJDK8_UJA_ALIAS $ORACLEJDK8_UJA_ALIAS
+    - head -n 1000 /etc/profile /etc/profile.d/*sh
+    - grep ORACLE /etc/profile /etc/profile.d/*
 script:
     - java -version
     - ls -l /usr/lib/jvm
