@@ -3,8 +3,8 @@ install: true
 dist: trusty
 sudo: required
 script: 
-    - "sudo mysql restart || true"
-    - "sudo mysql-5.6 restart || true"
+    - "sudo service mysql restart || true"
+    - "sudo service mysql-5.6 restart || true"
 notifications:
     email: false
 env: image="sudo trusty edge"
