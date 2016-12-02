@@ -1,6 +1,7 @@
 language: ruby
 install: true
 dist: trusty
+sudo: required
 script: 
     - "ps aux | grep '[m]ysql' || true"
     - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
