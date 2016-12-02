@@ -1,27 +1,24 @@
-language: java
-jdk: oraclejdk8
-install:
-    - declare -f jdk_switcher
-    - print_home_of_oraclejdk8
-    - echo ORACLEJDK8_JAVA_HOME $ORACLEJDK8_JAVA_HOME
-    - echo ORACLEJDK8_UJA_ALIAS $ORACLEJDK8_UJA_ALIAS
-    - head -n 1000 /etc/profile /etc/profile.d/*sh
-    - grep -C5 --color=always JAVA /etc/profile /etc/profile.d/*.sh /etc/bash.bashrc ~/.*
-
-script:
-    - "java -version || true"
-    - ls -l /usr/lib/jvm
-    - source /opt/jdk_switcher/jdk_switcher.sh
-    - "jdk_switcher use oraclejdk8 || true"
-    - "java -version || true"
-    - print_home_of_oraclejdk8
-    - echo ORACLEJDK8_JAVA_HOME $ORACLEJDK8_JAVA_HOME
-    - echo ORACLEJDK8_UJA_ALIAS $ORACLEJDK8_UJA_ALIAS
-    - declare -f jdk_switcher
-env: "image=sudo trusty edge"
-sudo: required
+language: ruby
+install: true
 dist: trusty
-group: edge
+script: 
+    - "ps aux | grep '[m]ysql' || true"
+    - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
+    - "mysql -utravis -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
+    - "mysql -uroot -e 'select host, user, password from mysql.user;' || true"
 notifications:
     email: false
-
+matrix:
+    include:
+        - env: image="sudo trusty stable"
+          group: stable
+        - env: image="sudo trusty deprecated"
+          group: deprecated
+          addons:
+              apt:
+                  packages:
+                      - mysql-client-5.6
+                      - mysql-server-5.6
+                      - mysql-core-5.6
+        - env: image="sudo trusty edge"
+          group: edge
