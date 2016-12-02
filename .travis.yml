@@ -1,4 +1,4 @@
-language: closure
+language: c
 jdk: oraclejdk8
 install: true
 dist: trusty
