@@ -3,7 +3,7 @@ php:
     - '7.1'
     - 'nightly'
 install: true
-dist: trusty
+dist: precise
 sudo: false
 script: 
     - php --version
