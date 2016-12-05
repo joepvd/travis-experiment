@@ -2,11 +2,11 @@ language: c
 install: true
 dist: trusty
 sudo: false
-postgres: 9.6
+addons:
+    postgresql: "9.4"
 services:
     - postgresql
 script: 
-    - sudo apt-get install -y $(apt-cache search postgis | awk '/^postgresql-9\.[2-6]-postgis-2.3/{printf " "$1}' )
     - "psql -c 'select * from version();' -Upostgres || true"
 notifications:
     email: false
