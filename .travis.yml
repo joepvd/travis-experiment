@@ -1,13 +1,12 @@
-language: c
+language: php
+php:
+    - '7.1'
+    - 'nightly'
 install: true
 dist: trusty
-sudo: false
-addons:
-    postgresql: "9.6"
-services:
-    - postgresql
+sudo: true
 script: 
-    - "psql -c 'select * from version();' -Upostgres || true"
+    - php --version
 notifications:
     email: false
 env:
