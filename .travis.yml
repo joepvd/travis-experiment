@@ -4,7 +4,7 @@ php:
     - 'nightly'
 install: true
 dist: precise
-sudo: false
+sudo: required
 script: 
     - php --version
 notifications:
