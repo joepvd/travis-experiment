@@ -1,16 +1,18 @@
-language: php
-php:
-    - '7.1'
-    - 'nightly'
+language: c
 install: true
-dist: precise
+dist: trusty
 sudo: required
 script: 
-    - php --version
+    - "mysql -u root -e \"CREATE USER 'rsyslog'@'localhost' IDENTIFIED BY 'testbench';\" || true"
+matrix:
+    include:
+        - env: image=deprecated
+          group: deprecated
+        - env: image=stable
+          group: stable
+        - env: image=edge
+          group: edge
+        - env: image=stable-20161201
+          group: stable-20161201
 notifications:
     email: false
-env:
-    global:
-        - image="sudo trusty stable" 
-        - PAGER=cat
-group: stable
