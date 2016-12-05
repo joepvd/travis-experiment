@@ -5,7 +5,7 @@ sudo: required
 services:
     - postgresql
 script: 
-    - "sudo apt-get install -y $(apt-cache search postgis | awk '/^postgresql-9\.[2-6]-postgis-2.3/{printf " "$1}' ) || true"
+    - "sudo apt-get install -y $(apt-cache search postgis | awk '/^postgresql-9\.[2-6]-postgis-2.3/{printf \" \"$1}' ) || true"
     - "psql -c 'select * from version();' || true"
     - "psql -c 'create database testdb;' -U postgres || true"
     - "psql -c 'CREATE EXTENSION postgis;' -U postgres -d testdb || true"
