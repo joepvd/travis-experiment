@@ -1,14 +1,10 @@
 language: c
 install: true
 dist: trusty
-sudo: false
+sudo: true
 script: 
     - "mysql -u root -e \"CREATE USER 'rsyslog'@'localhost' IDENTIFIED BY 'testbench';\" || true"
 addons:
-    apt:
-        packages:
-            - mysql-server-5.7
-            - mysql-client-5.7
-            - mysql-client-core-5.7
+    mariadb: '10.1'
 notifications:
     email: false
