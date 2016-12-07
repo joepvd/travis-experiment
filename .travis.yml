@@ -7,7 +7,9 @@ script:
     - "sudo apt-get install mongodb-server mongodb-clients -y"
     - sleep 10
     - netstat -natpu
-    - mkdir /tmp/mongdb/rs0-0
+    - mkdir -p /tmp/mongdb/rs0-0
+    - "sudo service mongodb stop || true"
+    - "sudo service mongod stop || true"
     - mongod --port 27017 --dbpath '/tmp/mongdb/rs0-0' --replSet rs0 --smallfiles --nohttpinterface --oplogSize 16 &
     - sleep 5
     - netstat -natpu
