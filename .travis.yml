@@ -1,10 +1,16 @@
-language: c
+language: go
 install: true
 dist: trusty
 sudo: true
 script: 
-    - "mysql -u root -e \"CREATE USER 'rsyslog'@'localhost' IDENTIFIED BY 'testbench';\" || true"
-addons:
-    mariadb: '10.1'
+    - netstat -natpu
+    - "sudo apt-get install mongodb-server mongodb-clients -y"
+    - sleep 10
+    - netstat -natpu
+    - mkdir /tmp/mongdb/rs0-0
+    - mongod --port 27017 --dbpath '/tmp/mongdb/rs0-0' --replSet rs0 --smallfiles --nohttpinterface --oplogSize 16 &
+    - sleep 5
+    - netstat -natpu
+
 notifications:
     email: false
