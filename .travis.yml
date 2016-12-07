@@ -1,18 +1,14 @@
 language: c
 install: true
 dist: trusty
-sudo: required
+sudo: false
 script: 
     - "mysql -u root -e \"CREATE USER 'rsyslog'@'localhost' IDENTIFIED BY 'testbench';\" || true"
-matrix:
-    include:
-        - env: image=deprecated
-          group: deprecated
-        - env: image=stable
-          group: stable
-        - env: image=edge
-          group: edge
-        - env: image=stable-20161201
-          group: stable-20161201
+addons:
+    apt:
+        packages:
+            - mysql-server-5.7
+            - mysql-client-5.7
+            - mysql-client-core-5.7
 notifications:
     email: false
