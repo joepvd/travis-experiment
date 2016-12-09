@@ -4,6 +4,9 @@ services:
   - docker
 script:
   - docker --version
+matrix:
+    include:
+        - env: a=b
 notifications:
     email: false
 
