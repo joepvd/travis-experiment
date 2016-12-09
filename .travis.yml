@@ -1,12 +1,9 @@
 sudo: required
-language: c
-services:
-  - docker
-script:
-  - docker --version
-matrix:
-    include:
-        - env: a=b
+language: python
+dist: precise
+python: 3.2
+script: true
+install: true
 notifications:
     email: false
 
