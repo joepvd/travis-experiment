@@ -1,18 +1,33 @@
-language: go
-install: true
-dist: trusty
-sudo: true
-script: 
-    - netstat -natpu
-    - "sudo apt-get install mongodb-server mongodb-clients -y"
-    - sleep 10
-    - netstat -natpu
-    - mkdir -p /tmp/mongdb/rs0-0
-    - "sudo service mongodb stop || true"
-    - "sudo service mongod stop || true"
-    - mongod --port 27017 --dbpath '/tmp/mongdb/rs0-0' --replSet rs0 --smallfiles --nohttpinterface --oplogSize 16 &
-    - sleep 5
-    - netstat -natpu
-
+language: ruby
+addons:
+    postgresql: "9.5"
+services:
+    - postgresql
+install:
+    - "PAGER=cat psql -U postgres -c 'select * from version();' || true"
+    - "PAGER=cat psql -U travis -c 'select * from version();' || true"
+matrix:
+    include:
+        - env: image="precise sudo stable"
+          sudo: required
+          dist: precise
+          group: stable
+        - env: image="precise sudo edge"
+          sudo: required
+          dist: precise
+          group: edge
+        - env: image="precise container stable"
+          sudo: false
+          dist: precise
+          group: stable
+        - env: image="precise container edge"
+          sudo: false
+          dist: precise
+          group: edge
+script:
+    - true
 notifications:
     email: false
+
+
+
