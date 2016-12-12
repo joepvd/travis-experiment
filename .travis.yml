@@ -3,7 +3,7 @@ language: ruby
 dist: trusty
 script:
     - "function travis_wait() { local minutes=$1; local i=0; while [[ $i -lt $minutes ]]; do echo -ne '\a'; sleep 60; let i=$i+1; done }; travis_wait 20 &"
-    - ":sleep 15 && echo survivor of defaults!"
+    - "sleep 15 && echo survivor of defaults!"
 install: true
 env:
     global:
