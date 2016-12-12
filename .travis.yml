@@ -8,6 +8,6 @@ script:
 install: true
 env:
     global:
-        a="one two three"
+        a="one\ two\ three"
 notifications:
     email: false
