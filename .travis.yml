@@ -1,15 +1,15 @@
 sudo: false
-env:
-    global:
-        secret=revealed
-language: python
-dist: precise
-python: 3.2
-script:
-    - travis_wait 1 false $secret
+language: ruby
+dist: trusty
+script: hostname
 install: true
+matrix:
+    include:
+        - env: group=stable
+          group: stable
+        - env: group=edge
+          group: edge
+        - env: group=beta
+          group: beta
 notifications:
     email: false
-
-
-
