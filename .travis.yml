@@ -1,15 +1,13 @@
 sudo: false
 language: ruby
 dist: trusty
-script: hostname
+script:
+    - awk "BEGIN{print ARGC-1; for (i=1; i<ARGC;i++)print ARGV[i]}" $a
+    - awk "BEGIN{print ARGC-1; for (i=1; i<ARGC;i++)print ARGV[i]}" "$a"
+    - travis_wait awk "BEGIN{print ARGC-1; for (i=1; i<ARGC;i++)print ARGV[i]}" "$a"
 install: true
-matrix:
-    include:
-        - env: group=stable
-          group: stable
-        - env: group=edge
-          group: edge
-        - env: group=beta
-          group: beta
+env:
+    global:
+        a="one two three"
 notifications:
     email: false
