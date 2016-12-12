@@ -1,8 +1,12 @@
-sudo: required
+sudo: false
+env:
+    global:
+        secret=revealed
 language: python
 dist: precise
 python: 3.2
-script: true
+script:
+    - travis_wait 1 false $secret
 install: true
 notifications:
     email: false
