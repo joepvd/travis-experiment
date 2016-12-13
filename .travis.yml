@@ -1,9 +1,9 @@
-sudo: true
-language: node_js
+sudo: false
+language: ruby
 dist: trusty
 group: stable
 install: true
 script:
-    - rvm use 2.3.3 --binary --install --debug
+    - setsid sleep 900 &
 notifications:
     email: false
