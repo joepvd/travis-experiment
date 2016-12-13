@@ -1,4 +1,9 @@
-sudo: required
+matrix:
+    include:
+        - env: where=sudo
+          sudo: required
+        - env: where=container
+          sudo: false
 language: ruby
 dist: precise
 group: stable
@@ -38,6 +43,6 @@ install:
 script:
     - "bash trap.sh &"
     - sleep 3
-    - exit 0
+    - echo nothing to do, exiting
 notifications:
     email: false
