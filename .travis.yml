@@ -1,15 +1,14 @@
 sudo: false
 language: ruby
-dist: precise
+matrix:
+    include:
+        - env: dist=precise
+          dist: precise
+        - env: dist=trusty
+          dist: trusty
 group: stable
-before_script:
-    - export DISPLAY=:99.0
-    - sh -e /etc/init.d/xvfb start
-    - firefox &
-    - sleep 3
+install: true
 script:
-    - pstree -ap
-    - sleep 3
-    - echo nothing to do, exiting
+    - df -h
 notifications:
     email: false
