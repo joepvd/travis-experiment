@@ -4,9 +4,9 @@ language: php
 php: "7.0"
 install:
   - echo "<?php" >>sqlite.php
-  - echo "$dir = 'sqlite://tmp/combadd.sqlite';" >>sqlite.php
-  - echo "$dbh  = new PDO($dir) or die('cannot open the database');" >>sqlite.php
-  - echo "$query =  'select sqlite_version();';" >>sqlite.php
+  - echo "\$dir = 'sqlite://tmp/combadd.sqlite';" >>sqlite.php
+  - echo "\$dbh  = new PDO($dir) or die('cannot open the database');" >>sqlite.php
+  - echo "\$query =  'select sqlite_version();';" >>sqlite.php
   - echo "foreach ($dbh->query($query) as $row)" >>sqlite.php
   - echo "{" >>sqlite.php
   - echo "    echo $row[0];" >>sqlite.php
