@@ -1,21 +1,14 @@
 language: php
 php: "7.0"
-notifications:
-    email: false
 matrix:
     include:
         - env: image="sudo trusty stable"
           dist: trusty
           group: stable
           sudo: required
-        - env: image="sudo container trusty defasult mysql"
+        - env: image="sudo trusty apt mysql"
           dist: trusty
-          group: stable
-          sudo: false
-        - env: image="sudo container trusty apt mysql"
-          dist: trusty
-          group: stable
-          sudo: false
+          sudo: required
           addons:
               apt:
                   packages:
