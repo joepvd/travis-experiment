@@ -16,5 +16,5 @@ before_install:
 - sudo apt-get update
 - sudo apt-get install -y --force-yes mongodb-org=3.2.8 mongodb-org-server=3.2.8 mongodb-org-shell=3.2.8 mongodb-org-mongos=3.2.8 mongodb-org-tools=3.2.8
 - sleep 15
-- mongo --version
-
+install: mongo --version
+script: true
