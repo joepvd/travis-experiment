@@ -1,19 +1,32 @@
-sudo: required
-dist: trusty
 language: php
 php: "7.0"
-install:
-  - echo "<?php" >>sqlite.php
-  - echo "\$dir = 'sqlite://tmp/combadd.sqlite';" >>sqlite.php
-  - echo "\$dbh  = new PDO($dir) or die('cannot open the database');" >>sqlite.php
-  - echo "\$query =  'select sqlite_version();';" >>sqlite.php
-  - echo "foreach ($dbh->query($query) as $row)" >>sqlite.php
-  - echo "{" >>sqlite.php
-  - echo "    echo $row[0];" >>sqlite.php
-  - echo "}" >>sqlite.php
-  - echo "?>" >>sqlite.php
-
-script:
-    - php -f sqlite.php
+notifications:
+    email: false
+matrix:
+    include:
+        - env: image="sudo trusty stable"
+          dist: trusty
+          group: stable
+          sudo: required
+        - env: image="sudo container trusty defasult mysql"
+          dist: trusty
+          group: stable
+          sudo: false
+        - env: image="sudo container trusty apt mysql"
+          dist: trusty
+          group: stable
+          sudo: false
+          addons:
+              apt:
+                  packages:
+                      - mysql-server-5.6
+                      - mysql-client-core-5.6
+                      - mysql-client-5.6
+install: true
+script: 
+    - "ps aux | grep '[m]ysql' || true"
+    - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
+    - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%sock%\";' || true"
+    - "mysql -uroot -e 'SHOW VARIABLES' || true"
 notifications:
     email: false
