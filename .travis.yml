@@ -2,19 +2,18 @@ language: php
 php: "7.0"
 matrix:
     include:
-        - env: image="sudo trusty stable"
+        - env: image="container trusty stable"
           dist: trusty
           group: stable
           sudo: required
-        - env: image="sudo trusty apt mysql"
+        - env: image="container trusty beta"
           dist: trusty
-          sudo: required
-          addons:
-              apt:
-                  packages:
-                      - mysql-server-5.6
-                      - mysql-client-core-5.6
-                      - mysql-client-5.6
+          sudo: false
+          group: beta
+        - env: image="container trusty edge"
+          dist: trusty
+          sudo: false
+          group: edge
 install: true
 script: 
     - "ps aux | grep '[m]ysql' || true"
