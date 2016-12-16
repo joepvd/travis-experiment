@@ -7,7 +7,6 @@ addons:
         packages:
             - mysql-client
             - mysql-server
-            - mysql-client-core
 install: true
 script:
     - mysql -uroot -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%dir"'
