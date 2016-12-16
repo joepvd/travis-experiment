@@ -7,9 +7,15 @@ matrix:
           group: stable
         - env: group=deprecated
           group: deprecated
-          services:
-              - mysql
+          addons:
+              apt:
+                  packages:
+                      - mysql-client-5.6
+                      - mysql-server-5.6
+                      - mysql-client-core-5.6
 install: true
 script:
     - mysql -uroot -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%dir"'
     - mysql -uroot -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%vers%"'
+    - df -h
+    - mount
