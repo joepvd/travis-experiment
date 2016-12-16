@@ -7,6 +7,9 @@ matrix:
           group: stable
         - env: group=deprecated
           group: deprecated
+          services:
+              - mysql
 install: true
 script:
     - mysql -uroot -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%dir"'
+    - mysql -uroot -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%vers%"'
