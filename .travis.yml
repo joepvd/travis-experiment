@@ -1,18 +1,12 @@
-os: osx
-language: swift
+language: c
+dist: trusty
+sudo: required
 matrix:
     include:
-        - env: image=xcode8.2
-          osx_image: xcode8.2
-        - env: image=xcode8.1
-          osx_image: xcode8.1
-        - env: image=xcode8
-          osx_image: xcode8  
-        - env: image=xcode7.3
-          osx_image: xcode7.3
-        - env: image=xcode6.4
-          osx_image: xcode6.4
+        - env: group=stable
+          group: stable
+        - env: group=deprecated
+          group: deprecated
 install: true
 script:
-    - instruments -s devices
-    - xcrun simctl list devices
+    - mysql -uroot -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%dir"'
