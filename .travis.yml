@@ -1,4 +1,4 @@
-sudo: fale
+sudo: false
 dist: trusty
 group: stable
 language: php
