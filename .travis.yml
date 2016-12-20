@@ -1,11 +1,13 @@
-sudo: false
-dist: trusty
-group: edge
-language: php
-php: 5.6
+dist: precise
+language: python
+python: 2.7
+matrix:
+    include:
+        - env: image=sudo
+          sudo: required
+        - env: image=container
+          sudo: false
 install: true
-script:
-    - grep -rI 'mysqld.sock' ~
-    - mysql -h 127.0.0.1 -e "show variables like '%socket%'"
+script: openssl version
 notifications:
     email: false
