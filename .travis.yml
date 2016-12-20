@@ -1,14 +1,10 @@
-sudo: required
-language: c
-matrix:
-    include:
-        env: a=b
-services:
-  - docker
+sudo: fale
+dist: trusty
+group: stable
+language: php
+install: true
 script:
-  - docker --version
-env:
-    global:
-        - a=b
+    - grep -rI 'mysqld.sock' ~
+    - mysql -h 127.0.0.1 -e "show variables like '%socket%'"
 notifications:
     email: false
