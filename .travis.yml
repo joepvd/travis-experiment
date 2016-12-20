@@ -1,6 +1,8 @@
 sudo: required
 language: c
-env: a=b
+matrix:
+    include:
+        env: a=b
 services:
   - docker
 script:
