@@ -7,8 +7,8 @@ services:
   - docker
 script:
   - docker --version
-matrix:
-    include:
-        - env: a=b
+env:
+    global:
+        - a=b
 notifications:
     email: false
