@@ -1,15 +1,12 @@
-language: c
-dist: trusty
-group: deprecated
 sudo: required
-addons:
-    apt:
-        packages:
-            - mysql-client
-            - mysql-server
-install: true
+language: c
+env: a=b
+services:
+  - docker
 script:
-    - mysql -uroot -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%dir"'
-    - mysql -uroot -e 'SHOW VARIABLES WHERE Variable_Name LIKE "%vers%"'
-    - df -h
-    - mount
+  - docker --version
+matrix:
+    include:
+        - env: a=b
+notifications:
+    email: false
