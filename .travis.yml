@@ -1,12 +1,9 @@
-dist: trusty
+dist: precise
 language: minimal
-python: 2.7
-sudo: required
-install: true
-services:
-    - docker
+sudo: false
+install: ruby --version
 script:
-    - python --version
-    - df -h
+    - gem install dpl
+    - dpl --provider=elasticbeanstalk
 notifications:
     email: false
