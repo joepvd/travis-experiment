@@ -1,13 +1,10 @@
-dist: precise
-language: python
+dist: trusty
+language: minimal
 python: 2.7
-matrix:
-    include:
-        - env: image=sudo
-          sudo: required
-        - env: image=container
-          sudo: false
+sudo: required
 install: true
-script: openssl version
+script:
+    - python --version
+    - df -h
 notifications:
     email: false
