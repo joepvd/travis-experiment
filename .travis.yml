@@ -3,6 +3,8 @@ language: minimal
 python: 2.7
 sudo: required
 install: true
+services:
+    - docker
 script:
     - python --version
     - df -h
