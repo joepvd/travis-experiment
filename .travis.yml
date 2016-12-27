@@ -3,8 +3,8 @@ language: node_js
 sudo: false
 install: ruby --version
 script:
-    - rvm install ruby-2.0.0
-    - rvm use 2.0.0
+    - rvm install ruby-2.2.0
+    - rvm use 2.2.0
     - gem install dpl
     - "dpl --provider=elasticbeanstalk || true"
 notifications:
