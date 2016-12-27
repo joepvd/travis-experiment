@@ -4,6 +4,7 @@ sudo: false
 install: ruby --version
 script:
     - gem install dpl
-    - dpl --provider=elasticbeanstalk
+    - "dpl --provider=elasticbeanstalk || true"
+    - "for f in $(find ~ -name Gemfile.lock); do head -n 1000 $f; done"
 notifications:
     email: false
