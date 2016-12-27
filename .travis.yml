@@ -1,10 +1,10 @@
 dist: precise
-language: minimal
+language: node_js
 sudo: false
 install: ruby --version
 script:
+    - rvm use 2.0.0
     - gem install dpl
     - "dpl --provider=elasticbeanstalk || true"
-    - "head -n 1000 $(find ~ -name Gemfile.lock)"
 notifications:
     email: false
