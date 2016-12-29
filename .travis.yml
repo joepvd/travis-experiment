@@ -30,7 +30,6 @@ install:
     - "trap \"echo VTALRM received, ignoring; exit\" SIGVTALRM "
     - "trap \"echo PROF received, ignoring; exit\" SIGPROF "
     - "trap \"echo WINCH received, ignoring; exit\" SIGWINCH "
-    - "trap \"echo POLL received, ignoring; exit\" SIGPOLL "
     - "trap \"echo PWR received, ignoring; exit\" SIGPWR "
     - "trap \"echo SYS received, ignoring; exit\" SIGSYS "
 script: sleep 100
