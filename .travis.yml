@@ -1,43 +1,11 @@
 dist: precise
-language: node_js
-sudo: required
-install:
-    - "trap \"echo HUP received, ignoring; exit\" SIGHUP "
-    - "trap \"echo INT received, ignoring; exit\" SIGINT "
-    - "trap \"echo QUIT received, ignoring; exit\" SIGQUIT "
-    - "trap \"echo ILL received, ignoring; exit\" SIGILL "
-    - "trap \"echo TRAP received, ignoring; exit\" SIGTRAP "
-    - "trap \"echo ABRT received, ignoring; exit\" SIGABRT "
-    - "trap \"echo BUS received, ignoring; exit\" SIGBUS "
-    - "trap \"echo FPE received, ignoring; exit\" SIGFPE "
-    - "trap \"echo KILL received, ignoring; exit\" SIGKILL "
-    - "trap \"echo USR1 received, ignoring; exit\" SIGUSR1 "
-    - "trap \"echo SEGV received, ignoring; exit\" SIGSEGV "
-    - "trap \"echo USR2 received, ignoring; exit\" SIGUSR2 "
-    - "trap \"echo PIPE received, ignoring; exit\" SIGPIPE "
-    - "trap \"echo ALRM received, ignoring; exit\" SIGALRM "
-    - "trap \"echo TERM received, ignoring; exit\" SIGTERM "
-    - "trap \"echo STKFLT received, ignoring; exit\" SIGSTKFLT "
-    - "trap \"echo CHLD received, ignoring; exit\" SIGCHLD "
-    - "trap \"echo CONT received, ignoring; exit\" SIGCONT "
-    - "trap \"echo STOP received, ignoring; exit\" SIGSTOP "
-    - "trap \"echo TSTP received, ignoring; exit\" SIGTSTP "
-    - "trap \"echo TTIN received, ignoring; exit\" SIGTTIN "
-    - "trap \"echo TTOU received, ignoring; exit\" SIGTTOU "
-    - "trap \"echo URG received, ignoring; exit\" SIGURG "
-    - "trap \"echo XCPU received, ignoring; exit\" SIGXCPU "
-    - "trap \"echo XFSZ received, ignoring; exit\" SIGXFSZ "
-    - "trap \"echo VTALRM received, ignoring; exit\" SIGVTALRM "
-    - "trap \"echo PROF received, ignoring; exit\" SIGPROF "
-    - "trap \"echo WINCH received, ignoring; exit\" SIGWINCH "
-    - "trap \"echo PWR received, ignoring; exit\" SIGPWR "
-    - "trap \"echo SYS received, ignoring; exit\" SIGSYS "
-script: sleep 100
-after_success:
-  - echo after_success
-after_failure:
-  - echo after_failure
-after_script:
-  - echo after_script
+language: ruby
+rvm: 2.2.2
+sudo: false
+install: true
+script: ruby --version
+deploy:
+    provider: script
+    script: ruby --version
 notifications:
     email: false
