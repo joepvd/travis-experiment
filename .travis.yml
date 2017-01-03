@@ -1,5 +1,5 @@
 dist: precise
-language: elixir
+language: php
 sudo: false
 before_install:
     - "phpenv global 5.6"
