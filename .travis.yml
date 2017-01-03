@@ -3,7 +3,7 @@ language: php
 sudo: false
 before_install:
     - "phpenv global 5.6"
-    - "composer self-update --stable && composer --version"
+    - "composer self-update 1.2.4 && composer --version"
 install: true
 script: true
 notifications:
