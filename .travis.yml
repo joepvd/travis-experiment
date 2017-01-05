@@ -1,7 +1,9 @@
-dist: precise
-language: minimal
+dist: trusty
+language: node_js
 sudo: true
 install: true
-script: npm --version
+script:
+    - npm --version
+    - df -h
 notifications:
     email: false
