@@ -1,9 +1,13 @@
 dist: trusty
-language: generic
+language: java
+jdk: oraclejdk8
+services:
+    - mongodb
+    - docker
 sudo: true
 install: true
 script:
-    - npm --version
+    - "head -n 1000 ~/.docker/config.json || true"
     - df -h
 notifications:
     email: false
