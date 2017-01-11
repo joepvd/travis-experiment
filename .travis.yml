@@ -4,7 +4,9 @@ python: 2.7
 sudo: false
 install: true
 script:
+    - PYTHONPATH=$(pwd) python -c 'import math; print math.log(3)'
     - touch math.py
-    - PYTHONPATH=$TRAVIS_BUILD_DIR python -c 'import math; print math.log(3)'
+    - PYTHONPATH=$(pwd) python -c 'import math; print math.log(3)'
+    - python -c 'import sys; print sys.path'
 notifications:
     email: false
