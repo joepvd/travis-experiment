@@ -1,13 +1,10 @@
-dist: trusty
-language: java
-jdk: oraclejdk8
-services:
-    - mongodb
-    - docker
-sudo: true
+dist: precise
+language: python
+python: 2.7
+sudo: false
 install: true
 script:
-    - "head -n 1000 ~/.docker/config.json || true"
-    - df -h
+    - touch math.py
+    - PYTHONPATH=$TRAVIS_BUILD_DIR python -c 'import math; print math.log(3)'
 notifications:
     email: false
