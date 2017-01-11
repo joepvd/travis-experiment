@@ -1,12 +1,27 @@
-dist: precise
+matrix:
+    include:
+        - env: image=precise-container
+          dist: precise
+          sudo: false
+        - env: image=trusty-container
+          dist: trusty
+          sudo: false
+        - env: image=precise-sudo
+          dist: precise
+          sudo: required
+        - env: image=trusty-sudo
+          dist: trusty
+          sudo: required
 language: python
 python: 2.7
 sudo: false
 install: true
 script:
+    - python -c 'import sys; print sys.path'
+    - PYTHONPATH=$(pwd) python -c 'import sys; print sys.path'
     - PYTHONPATH=$(pwd) python -c 'import math; print math.log(3)'
     - touch math.py
     - PYTHONPATH=$(pwd) python -c 'import math; print math.log(3)'
-    - python -c 'import sys; print sys.path'
+    - python -c 'import math; print math.log(3)'
 notifications:
     email: false
