@@ -1,19 +1,11 @@
-language: generic
+language: ruby
+rvm: 2.2
+python: 3.5
 sudo: false
 dist: trusty
 install: true
-env:
-    global:
-        - OXI_TEST_DB_MYSQL_NAME=openxpki
-        - OXI_TEST_DB_MYSQL_USER=openxpki
-        - OXI_TEST_DB_MYSQL_PASSWORD=openxpki
-        - OXI_TEST_DB_MYSQL_DBHOST=127.0.0.1
-        - OXI_TEST_DB_MYSQL_DBPORT=3306
-        - OXI_TEST_DB_MYSQL_DBUSER=root
-services: mysql
 script:
-    - test ! -z "$OXI_TEST_DB_MYSQL_DBPASSWORD" && DBPASS="-p $OXI_TEST_DB_MYSQL_DBPASSWORD"
-    - "echo mysql -h $OXI_TEST_DB_MYSQL_DBHOST -P $OXI_TEST_DB_MYSQL_DBPORT -u $OXI_TEST_DB_MYSQL_DBUSER $DBPASS"
-    - mysql -h $OXI_TEST_DB_MYSQL_DBHOST -P $OXI_TEST_DB_MYSQL_DBPORT -u $OXI_TEST_DB_MYSQL_DBUSER $DBPASS <<<'DROP database IF EXISTS $OXI_TEST_DB_MYSQL_NAME;'
+    - ruby --version
+    - python --version
 notifications:
     email: false
