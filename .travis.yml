@@ -1,9 +1,8 @@
-language: python
+language: ruby
 rvm: 2.2
-python: 3.5
 sudo: false
 dist: trusty
-install: true
+install: source ~/virtualenv/python3.5/bin/activate
 script:
     - ruby --version
     - python --version
