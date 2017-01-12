@@ -1,6 +1,6 @@
 language: erlang
 otp_release:
-  - 19.1
+  - 19.2
 sudo: true
 dist: trusty
 install: 
