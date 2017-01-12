@@ -1,7 +1,8 @@
-language: ruby
-rvm: 2.2
-sudo: false
-dist: precise
+language: erlang
+otp_release:
+  - 19.1
+sudo: true
+dist: trusty
 install: 
     - ls -l ~/virtualenv/
 script:
