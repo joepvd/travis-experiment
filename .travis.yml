@@ -2,7 +2,8 @@ language: ruby
 rvm: 2.2
 sudo: false
 dist: precise
-install: source ~/virtualenv/python3.5/bin/activate
+install: 
+    - ls -l ~/virtualenv/
 script:
     - ruby --version
     - python --version
