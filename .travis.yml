@@ -1,4 +1,4 @@
-language: ruby
+language: python
 rvm: 2.2
 python: 3.5
 sudo: false
