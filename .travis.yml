@@ -38,6 +38,6 @@ install:
 script:
     - setsid bash trap.sh &
     - sleep 3
-    - pstree -Uap 0
+    - "pstree --unicode --arguments --show-pids 0 || pstree 0"
 notifications:
     email: false
