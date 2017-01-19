@@ -1,6 +1,6 @@
 sudo: false
 language: ruby
-dist: precise
+dist: trusty
 group: stable
 install:
     - echo trap \"echo HUP received, ignoring\" SIGHUP >>trap.sh
