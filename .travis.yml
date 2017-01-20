@@ -8,4 +8,5 @@ install: true
 script:
     - "{ ps aux | grep mysql; } || true"
     - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
-notifications: email: false
+notifications:
+    email: false
