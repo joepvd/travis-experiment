@@ -6,6 +6,7 @@ services:
     - mysql
 install: true
 script:
+    - sleep 3
     - "{ ps aux | grep mysql; } || true"
     - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
 notifications:
