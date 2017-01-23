@@ -1,28 +1,19 @@
-language: android
+language: go
 
 matrix:
     include:
         - os: linux
           sudo: required
           dist: trusty
-          env: DIST=gce-trusty
-        - os: linux
-          sudo: false
-          dist: trusty
-          env: DIST=ec2-trusty
+          group: stable
+          env: DIST=gce-trusty-stable
         - os: linux
           sudo: required
-          dist: precise
-          env: DIST=gce-precise
-        - os: linux
-          sudo: false
-          dist: precise
-          env: DIST=docker-precise
-
-android:
-  components:
-    - build-tools-19.1.0
-    - android-22
-install: echo Ja
-script:
-  - echo JA
+          dist: trusty
+          group: deprecated
+          env: DIST=gce-trusty-deprecated
+install: go build prime.go
+script: ./prime
+notifications:
+    email:
+        false
