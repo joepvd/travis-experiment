@@ -1,28 +1,17 @@
-language: android
-
+language: ruby
 matrix:
     include:
-        - os: linux
-          sudo: required
-          dist: trusty
-          env: DIST=gce-trusty
         - os: linux
           sudo: false
           dist: trusty
           env: DIST=ec2-trusty
         - os: linux
-          sudo: required
-          dist: precise
-          env: DIST=gce-precise
-        - os: linux
           sudo: false
           dist: precise
           env: DIST=docker-precise
-
-android:
-  components:
-    - build-tools-19.1.0
-    - android-22
+addons:
+    mariadb:
+        - "10.1"
 install: echo Ja
 script:
-  - echo JA
+  - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
