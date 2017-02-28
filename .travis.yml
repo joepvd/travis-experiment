@@ -15,3 +15,5 @@ addons:
 install: echo Ja
 script:
   - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
+  - "mysql -uroot -e 'select version()'"
+  - ps aux | egrep 'mysql|maria'
