@@ -9,11 +9,16 @@ matrix:
           sudo: false
           dist: precise
           env: DIST=docker-precise
-addons:
-    mariadb:
-        10.1
-install: echo Ja
+install:
+    - echo "-----BEGIN OPENSSH PRIVATE KEY-----" >>/tmp/key
+    - echo "b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW" >>/tmp/key
+    - echo "QyNTUxOQAAACDDL9aYPcNmhNIKUkdPu8lwYyissnFRFZCBK3h2dXkehQAAAJCzU3k0s1N5" >>/tmp/key
+    - echo "NAAAAAtzc2gtZWQyNTUxOQAAACDDL9aYPcNmhNIKUkdPu8lwYyissnFRFZCBK3h2dXkehQ" >>/tmp/key
+    - echo "AAAEDOil4T2YfvCY/mmYlXq1Y20PG416oo5DeFTjWfMPxDUcMv1pg9w2aE0gpSR0+7yXBj" >>/tmp/key
+    - echo "KKyycVEVkIEreHZ1eR6FAAAAC2pvZXBAam9lcHZkAQI=" >>/tmp/key
+    - echo "-----END OPENSSH PRIVATE KEY-----" >>/tmp/key
+
 script:
-  - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
-  - "mysql -uroot -e 'select version()'"
-  - ps aux | egrep 'mysql|maria'
+    - eval "$(ssh-agent -s)"
+    - chmod 600 /tmp/key
+    - ssh-add /tmp/key
