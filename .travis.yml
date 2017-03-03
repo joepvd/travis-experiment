@@ -2,23 +2,19 @@ language: ruby
 matrix:
     include:
         - os: linux
-          sudo: false
+          sudo: required
           dist: trusty
-          env: DIST=ec2-trusty
+          env: DIST=trusty-stable
+          group: stable
         - os: linux
-          sudo: false
-          dist: precise
-          env: DIST=docker-precise
+          sudo: required
+          dist: trusty
+          env: DIST=trusty-deprecated
+          group: deprecated
 install:
-    - echo "-----BEGIN OPENSSH PRIVATE KEY-----" >>/tmp/key
-    - echo "b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW" >>/tmp/key
-    - echo "QyNTUxOQAAACDDL9aYPcNmhNIKUkdPu8lwYyissnFRFZCBK3h2dXkehQAAAJCzU3k0s1N5" >>/tmp/key
-    - echo "NAAAAAtzc2gtZWQyNTUxOQAAACDDL9aYPcNmhNIKUkdPu8lwYyissnFRFZCBK3h2dXkehQ" >>/tmp/key
-    - echo "AAAEDOil4T2YfvCY/mmYlXq1Y20PG416oo5DeFTjWfMPxDUcMv1pg9w2aE0gpSR0+7yXBj" >>/tmp/key
-    - echo "KKyycVEVkIEreHZ1eR6FAAAAC2pvZXBAam9lcHZkAQI=" >>/tmp/key
-    - echo "-----END OPENSSH PRIVATE KEY-----" >>/tmp/key
+    - sudo apt-get install iotop sysstat procps
+    - sudo apt-get install mysql-server-5.6 mysql-client-5.6 mysql-client-core-5.6
 
 script:
-    - eval "$(ssh-agent -s)"
-    - chmod 600 /tmp/key
-    - ssh-add /tmp/key
+    - "while sleep 30; do top -b -n 1 | grep -v root | head -n 20; done &"
+    - sudo iotop --batch --time --delay=30 &
