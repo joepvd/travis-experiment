@@ -7,6 +7,7 @@ matrix:
     env: DIST=trusty-stable
 install: true
 script:
-- travis_wait 15 sh -c "'sleep 660>log'"
+- travis_wait 15 sh -c 'sleep 660' &
+- sleep 630
 notifications:
     email: never
