@@ -1,20 +1,12 @@
 language: ruby
 matrix:
-    include:
-        - os: linux
-          sudo: required
-          dist: trusty
-          env: DIST=trusty-stable
-          group: stable
-        - os: linux
-          sudo: required
-          dist: trusty
-          env: DIST=trusty-deprecated
-          group: deprecated
-install:
-    - sudo apt-get install iotop sysstat procps
-    - sudo apt-get install mysql-server-5.6 mysql-client-5.6 mysql-client-core-5.6
-
+  include:
+  - os: linux
+    sudo: false
+    dist: trusty
+    env: DIST=trusty-stable
+install: true
 script:
-    - "while sleep 30; do top -b -n 1 | grep -v root | head -n 20; done &"
-    - sudo iotop --batch --time --delay=30 &
+- travis_wait 15 ( echo first; sleep 660; echo last ) >log
+notifications:
+    email: never
