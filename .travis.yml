@@ -2,10 +2,11 @@ language: ruby
 os: linux
 sudo: false
 dist: trusty
-env: error_in=after_success
+env: error_in=after_script
 install: true
 script: true
-after_success: /bin/false
+after_script: /bin/false
+after_success: /bin/true
 before_deploy: /bin/true
 deploy:
     provider: script
