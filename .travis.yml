@@ -2,13 +2,13 @@ language: ruby
 os: linux
 sudo: false
 dist: trusty
-env: error_in=before_deploy
+env: error_in=after_success
 install: true
 script: true
-after_success: /bin/true
-before_deploy: /bin/false
+after_success: /bin/false
+before_deploy: /bin/true
 deploy:
-    provide: script
+    provider: script
     script: /bin/true
 after_deploy: /bin/true
 notifications:
