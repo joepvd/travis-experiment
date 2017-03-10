@@ -1,16 +1,8 @@
 language: ruby
 os: linux
-sudo: false
+sudo: true
 dist: trusty
-env: error_in=after_script
 install: true
-script: true
-after_script: /bin/false
-after_success: /bin/true
-before_deploy: /bin/true
-deploy:
-    provider: script
-    script: /bin/true
-after_deploy: /bin/true
+script: ps aux | grep avahi
 notifications:
     email: never
