@@ -1,8 +1,8 @@
-language: ruby
-os: linux
-sudo: true
-dist: trusty
+language: objective-c
+os: osx
+osx-image: xcode8
+rvm: "2.2.3"
 install: true
-script: ps aux | grep avahi
+script: true
 notifications:
     email: never
