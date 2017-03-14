@@ -1,19 +1,10 @@
-language: objective-c
-os: osx
-matrix:
-    include:
-        - env: image=xcode8.2
-          osx_image: xcode8.2
-        - env: image=xcode8.1
-          osx_image: xcode8.1
-        - env: image=xcode8
-          osx_image: xcode8
-        - env: image=xcode7.3
-          osx_image: xcode7.3
-        - env: image=xcode6.4
-          osx_image: xcode6.4
-rvm: "2.2.3"
-install: true
+language: ruby
+sudo: false
+dist: trusty
+install:
+    - "git clone ssh://git@github.com/node-webot/wechat-api.git repo1 || true"
+    - "git clone git@github.com/node-webot/wechat-api.git repo2 || true"
+    - "git clone https://github.com/node-webot/wechat-api.git repo3 || true"
 script: true
 notifications:
     email: never
