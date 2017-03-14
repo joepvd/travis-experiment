@@ -2,16 +2,16 @@ language: ruby
 sudo: false
 dist: trusty
 install: true
-script: true
+script: echo niceness > appname
 deploy:
     provider: elasticbeanstalk
     edge:
         source: travis-ci/dpl
         branch: jvd-bug-eb-unicode
-        access_key_id: abc
-        secret_access_key: secret_indeed
-        region: us-east-1
-        app: appname
-        env: the_cloud
+    access_key_id: abc
+    secret_access_key: secret_indeed
+    region: us-east-1
+    app: appname
+    env: the_cloud
 notifications:
     email: never
