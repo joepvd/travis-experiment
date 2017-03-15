@@ -1,17 +1,11 @@
 language: ruby
-sudo: false
-dist: trusty
-install: true
-script: echo niceness > appname
-deploy:
-    provider: elasticbeanstalk
-    #edge:
-    #    source: travis-ci/dpl
-    #    branch: jvd-bug-eb-unicode
-    access_key_id: abc
-    secret_access_key: secret_indeed
-    region: us-east-1
-    app: appname
-    env: the_cloud
+sudo: true
+dist: precise
+install:
+    - sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5 
+    - sudo sh -c 'echo "deb http://repo.mysql.com/apt/ubuntu/ precise mysql-5.6" > /etc/apt/sources.list.d/mysql.list'
+    - sudo apt-get update
+    - sudo apt-get install mysql-server mysql-client
+script: "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
 notifications:
     email: never
