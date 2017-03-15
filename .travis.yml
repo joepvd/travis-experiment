@@ -5,7 +5,7 @@ install:
     - sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5 
     - sudo sh -c 'echo "deb http://repo.mysql.com/apt/ubuntu/ precise mysql-5.6" > /etc/apt/sources.list.d/mysql.list'
     - sudo apt-get update
-    - sudo apt-get install mysql-server mysql-client
+    - sudo apt-get install -y mysql-server mysql-client
 script: "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
 notifications:
     email: never
