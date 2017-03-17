@@ -1,11 +1,14 @@
-language: ruby
-sudo: true
-dist: precise
-install:
-    - sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5 
-    - sudo sh -c 'echo "deb http://repo.mysql.com/apt/ubuntu/ precise mysql-5.6" > /etc/apt/sources.list.d/mysql.list'
-    - sudo apt-get update
-    - sudo apt-get install -y  -o DPkg::options::="--force-confdef" -o DPkg::options::="--force-confnew" mysql-server mysql-client mysql-community-server mysql-community-client
-script: "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
+language: node_js
+matrix:
+    include:
+        - sudo: true
+          dist: precise
+        - os: osx
+          osx_image: xcode8.2
+install: true
+script:
+    - "bash -c nvm || true"
+    - "source <(declare -F | awk '$3~/^[[:alpha:]]/ {$1="export";print}')"
+    - "bash -c nvm || true"
 notifications:
     email: never
