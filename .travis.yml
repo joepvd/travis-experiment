@@ -1,14 +1,14 @@
 language: node_js
 matrix:
     include:
-        - sudo: true
+        - sudo: false
           dist: precise
         - os: osx
           osx_image: xcode8.2
 install: true
 script:
     - "bash -c nvm || true"
-    - "source <(declare -F | awk '$3~/^[[:alpha:]]/ {$1="export";print}')"
+    - "source <(declare -F | awk '$3~/^[[:alpha:]]/ {$1=\"export\";print}')"
     - "bash -c nvm || true"
 notifications:
     email: never
