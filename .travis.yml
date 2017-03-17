@@ -1,12 +1,13 @@
 language: ruby
 sudo: required
-dist: trusty
-services:
-    - rabbitmq
+matrix:
+    include:
+        - env: image=trusty
+          dist: trusty
+        - env: image=precise
+          dist: precise
+
 install: true
-script:
-    - sleep 10
-    - ps aux | grep rabbit
-    - sudo rabbitmqctl status
+script: sudo find /sys/fs/cgroup/memory
 notifications:
     email: never
