@@ -8,6 +8,9 @@ matrix:
           dist: precise
 
 install: true
-script: sudo find /sys/fs/cgroup/memory
+script:
+    - ls -l /sys/fs/cgroup
+    - sudo find /sys/fs/cgroup/memory
+    - find /sys/fs/cgroup/memory
 notifications:
     email: never
