@@ -1,14 +1,12 @@
-language: node_js
-matrix:
-    include:
-        - sudo: false
-          dist: precise
-        - os: osx
-          osx_image: xcode8.2
+language: ruby
+sudo: required
+dist: trusty
+services:
+    - rabbitmq
 install: true
 script:
-    - "bash -c nvm || true"
-    - "source <(declare -F | awk '$3~/^[[:alpha:]]/ {$1=\"export\";print}')"
-    - "bash -c nvm || true"
+    - sleep 10
+    - ps aux | grep rabbit
+    - sudo rabbitmqctl status
 notifications:
     email: never
