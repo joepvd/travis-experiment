@@ -2,11 +2,9 @@ language: ruby
 sudo: required
 dist: trusty
 install: true
-addons:
-    firefox: "5.0.1"
 script:
     - which firefox
-    - ls -lR /tmp
+    - firefox --version
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - sleep 3
