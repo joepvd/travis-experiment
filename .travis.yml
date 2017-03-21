@@ -1,16 +1,10 @@
 language: ruby
 sudo: required
-matrix:
-    include:
-        - env: image=trusty
-          dist: trusty
-        - env: image=precise
-          dist: precise
-
 install: true
+addons:
+    firefox: "5.0.1"
 script:
-    - ls -l /sys/fs/cgroup
-    - sudo find /sys/fs/cgroup/memory
-    - find /sys/fs/cgroup/memory
+    - which firefox
+    - ls -lR /tmp
 notifications:
     email: never
