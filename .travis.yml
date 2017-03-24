@@ -1,4 +1,4 @@
-language: ruby
+language: android
 sudo: required
 dist: precise
 install: true
