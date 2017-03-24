@@ -3,7 +3,7 @@ sudo: required
 dist: precise
 install: true
 script:
-- echo yeah>release.txt
+- dd if=/dev/zero of=release.txt  bs=1M  count=1
 notifications:
   email: never
 deploy:
