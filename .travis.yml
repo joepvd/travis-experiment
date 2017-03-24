@@ -3,7 +3,7 @@ sudo: required
 dist: precise
 install: true
 script:
-    - wget http://unicode.org:80/Public/UNIDATA/UnicodeData.txt
+    - wget https://unicode.org:80/Public/UNIDATA/UnicodeData.txt
     - tail Uni*txt
 notifications:
     email: never
