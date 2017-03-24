@@ -3,7 +3,15 @@ sudo: required
 dist: precise
 install: true
 script:
-    - wget https://unicode.org:80/Public/UNIDATA/UnicodeData.txt
-    - tail Uni*txt
+- echo yeah>release.txt
 notifications:
-    email: never
+  email: never
+deploy:
+  provider: releases
+  api_key:
+    secure: th/gx0vUqu59oGDlzgTAdAdh+eqHSF9Wmh/FGygpNtEFdz4u3U/W0HsxjYbjsS8Kh0yTEN1lceP6k9kLUkr6340kacAll8mJPi6ZmfgXqDMVvJIQkEiekIi8zpN0Sw1p4t1CA11f4zXSUoFTV1mtyxiJ8YIM348j0WBaSFkvj4zTSBSATBTeoNRDOrAC0Ir2NrmGKbOEU9lirZxvJicxCpS1FLGMUKmYgPMHg16R5LjhhN2iC2CEBOdRMhki+svjuRWQ8VCSmRza2u7+WX8XpWbZQJad4SnUVCtaraJBHTQsfqhuxa96ybDId4XTroWQ9692Wm184MttxZHFy52qz0KLSUOh2mFZaNaQHFskTawXQ4+W7NIsiiwt9JpkVPELSXRp3YsxHGc/nA2n+e/h4sirgLckJJBvg1xlD5AWa1xuFATVfoaZ0mlFPczIg8Uq0BE7g9DJxD+63h+gomIZrbLOcvO+9AixeSgHTu4uEL7G7g0w9/SeGB4tvvAgK3IMfah29qRPX5qLVmBsLPW5Y/5YzRaHN87p53zmMkRb2oLShhVtmNRKE68kXGKfrYccix61tVUHHXaxUGNn6iKZRa25DNhlg+UfkGZ3oagFP2o1t+ixv3m9thnxs7qZUn8/3ak3kx21XG9KQ9knUEsLQrFmDIOwS0zKEjC6iT83dZk=
+  file: release.txt
+  on:
+    repo: joepvd/travis-experiment
+    tags: true
+  skip_cleanup: true
