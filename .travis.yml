@@ -5,8 +5,13 @@ matrix:
           sudo: required
           group: stable
         - env: image=deprecated
-          sudo: requird
+          sudo: required
           group: deprecated
+          addons:
+              apt:
+                  packages:
+                      - mysql-client
+                      - mysql-server
 dist: trusty
 install: true
 script:
