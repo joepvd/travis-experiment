@@ -1,8 +1,17 @@
-language: android
-sudo: required
-dist: precise
+language: ruby
+matrix:
+    include:
+        - env: image=stable
+          sudo: required
+          group: stable
+        - env: image=deprecated
+          sudo: requird
+          group: deprecated
+dist: trusty
 install: true
 script:
-- "false || travis_debug --quiet"
+- mount
+- sleep 10
+- "mysql -uroot -e 'SHOW VARIABLES'"
 notifications:
   email: never
