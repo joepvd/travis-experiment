@@ -2,11 +2,14 @@ language: ruby
 matrix:
     include:
         - env: image=stable
-          sudo: required
+          sudo: false
           group: stable
         - env: image=deprecated
-          sudo: required
+          sudo: false
           group: deprecated
+          branches:
+              only:
+                  - not-master
           addons:
               apt:
                   packages:
