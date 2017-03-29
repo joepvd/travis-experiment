@@ -1,25 +1,7 @@
 language: ruby
-matrix:
-    include:
-        - env: image=stable
-          sudo: false
-          group: stable
-        - env: image=deprecated
-          sudo: false
-          group: deprecated
-          branches:
-              only:
-                  - not-master
-          addons:
-              apt:
-                  packages:
-                      - mysql-client
-                      - mysql-server
 dist: trusty
+sudo: false
 install: true
-script:
-- mount
-- sleep 10
-- "mysql -uroot -e 'SHOW VARIABLES'"
+script: echo $SECRET
 notifications:
   email: never
