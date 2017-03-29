@@ -1,7 +1,7 @@
 language: ruby
 dist: trusty
-sudo: false
-install: true
+sudo: required
+install: sudo apt-get install docker-engine
 script: echo $SECRET
 notifications:
   email: never
