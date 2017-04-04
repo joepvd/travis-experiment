@@ -1,7 +1,12 @@
-language: ruby
+language: perl
 dist: trusty
 sudo: false
+perl:
+    - 5.18-shrplib
+    - 5.20-shrplib
+    - 5.22-shrplib
+    - 5.24-shrlibs
 install: true
-script: echo $SECRET
+script: perl -V | grep --color Duseshrplib
 notifications:
   email: never
