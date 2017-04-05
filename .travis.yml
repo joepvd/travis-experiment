@@ -3,8 +3,8 @@ dist: trusty
 sudo: false
 addons:
   browserstack:
-    username: "Your BrowserStack username"
-    access_key: "Your BrowserStack access key"
+    username: "username"
+    access_key: "key"
     verbose: true
 
 perl:
