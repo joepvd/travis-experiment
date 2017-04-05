@@ -1,6 +1,12 @@
 language: perl
-dist: precise
+dist: trusty
 sudo: false
+addons:
+  browserstack:
+    username: "Your BrowserStack username"
+    access_key: "Your BrowserStack access key"
+    verbose: true
+
 perl:
     - 5.24-shrplib
 install: perl -V
