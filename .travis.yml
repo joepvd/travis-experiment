@@ -9,7 +9,7 @@ addons:
 
 perl:
     - 5.24-shrplib
-install: perl -V
-script: perl -V | grep --color Duseshrplib
+install: ls -l ~
+script: cat ~/build.sh
 notifications:
   email: never
