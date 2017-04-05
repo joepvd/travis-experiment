@@ -2,10 +2,7 @@ language: perl
 dist: precise
 sudo: false
 perl:
-    - 5.18-shrplib
-    - 5.20-shrplib
-    - 5.22-shrplib
-    - 5.24-shrlibs
+    - 5.24-shrplib
 install: perl -V
 script: perl -V | grep --color Duseshrplib
 notifications:
