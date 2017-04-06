@@ -1,7 +1,7 @@
 language: generic
 sudo: true
 dist: trusty
-install: "sudo apt-get install -y mysql || true"
+install: "sudo apt-get install -y mysql-server mysql-client || true"
 script: "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
 notifications:
   email: never
