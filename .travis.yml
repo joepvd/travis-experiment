@@ -1,7 +1,7 @@
-language: generic
+language: ruby
 sudo: true
 dist: trusty
-install: true
-script: true
+install: "sudo apt-get install -y mysql || true"
+script: "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
 notifications:
   email: never
