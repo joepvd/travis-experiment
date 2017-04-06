@@ -1,15 +1,11 @@
-language: perl
-dist: trusty
+language: generic
+dist: precise
 sudo: false
 addons:
-  browserstack:
-    username: "username"
-    access_key: "key"
-    verbose: true
-
-perl:
-    - 5.24-shrplib
-install: ls -l ~
-script: cat ~/build.sh
+    apt:
+        packages:
+            - curl
+install: curl --version
+script: curl -vX POST https://vixlet.deploybot.com/webhook/deploy
 notifications:
   email: never
