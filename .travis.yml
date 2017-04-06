@@ -1,7 +1,18 @@
 language: generic
 sudo: true
 dist: trusty
-install: "sudo apt-get install -y mysql-server mysql-client || true"
-script: "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
+addons:
+    apt:
+        packages:
+            - postgresql
+            - mysql-server
+            - mysql-client
+            - redis-server
+            - redis-cli
+install: true
+script:
+    - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
+    - "psql -u postgres <<<'select * from version();'"
+    - redis-cli INFO
 notifications:
   email: never
