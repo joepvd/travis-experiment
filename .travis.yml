@@ -5,6 +5,7 @@ addons:
     apt:
         packages:
             - curl
+            - openssl
 install: curl --version
 script: curl -vX POST https://vixlet.deploybot.com/webhook/deploy
 notifications:
