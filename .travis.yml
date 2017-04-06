@@ -1,16 +1,7 @@
 language: generic
-matrix:
-    include:
-        - env: dist=precise
-          dist: precise
-        - env: dist=trusty
-          dist: trusty
-sudo: false
-install:
-    - curl --version
-    - openssl version
-    - "openssl ciphers | tr : '\n'"
-    - "openssl ciphers | grep ECDHE_RSA_AES_128_GCM_SHA256"
-script: curl -vX POST https://vixlet.deploybot.com/webhook/deploy
+sudo: true
+dist: trusty
+install: true
+script: true
 notifications:
   email: never
