@@ -1,17 +1,21 @@
 language: generic
-sudo: true
-dist: trusty
+sudo: false
+matrix:
+    include:
+        - env: dist=trusty
+          dist: trusty
+        - env: dist=precise
+          dist: precise
 addons:
     apt:
+        sources:
+            - llvm-toolchain-precise
+            - ubuntu-toolchain-r-test
         packages:
-            - postgresql
-            - mysql-server
-            - mysql-client
-            - redis-server
+            - clang-3.7
+            - g++-5
+            - gcc-5
 install: true
-script:
-    - "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";' || true"
-    - "psql -u postgres <<<'select * from version();'"
-    - redis-cli INFO
+script: true
 notifications:
   email: never
