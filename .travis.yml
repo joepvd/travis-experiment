@@ -1,21 +1,6 @@
 language: generic
 sudo: false
-matrix:
-    include:
-        - env: dist=trusty
-          dist: trusty
-        - env: dist=precise
-          dist: precise
-addons:
-    apt:
-        sources:
-            - llvm-toolchain-precise
-            - ubuntu-toolchain-r-test
-        packages:
-            - clang-3.7
-            - g++-5
-            - gcc-5
 install: true
 script: true
 notifications:
-  email: never
+  email: always
