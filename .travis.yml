@@ -1,10 +1,8 @@
-language: bash
-sudo: true
-dist: trusty
+language: ruby
+sudo: false
+dist: precise
+group: edge
 install: true
-script:
-    - which python
-    - ls -l /usr/bin/python*
-    - "grep -rA5 python /etc 2>/dev/null || true"
+script: true
 notifications:
   email: always
