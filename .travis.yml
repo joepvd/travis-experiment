@@ -1,8 +1,11 @@
-language: ruby
+language: generic
 sudo: required
-dist: precise
-group: edge
+dist: trusty
 install: true
-script: true
+script:
+    - nvm --version
+    - node --version
+    - nvm install 6
+    - node --version
 notifications:
-  email: always
+  email: never
