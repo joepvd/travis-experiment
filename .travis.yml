@@ -2,9 +2,10 @@ language: cpp
 sudo: false
 dist: trusty
 os: linux
-osx_image:
-    - xcode8.3
 install: true
-script: true
+script: echo very true
+branches:
+    except:
+        - master
 notifications:
   email: never
