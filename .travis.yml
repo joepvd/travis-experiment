@@ -1,21 +1,43 @@
 services:
-  - riak
+  - riak           # basic version
   - rabbitmq
   - memcached
-  - mysql
-  - postgresql
-  - mongodb
+  - mysql          # default version, users. No sockets.
+  - postgresql     # TODO: postgis, locales
+  - mongodb        # version check
   - couchdb
   - redis-server
-  - cassandra
-  - neo4j
-  - elasticsearch
+  - cassandra      # version check
+  - neo4j          # version check
+  - elasticsearch  # version check
 
 addons:
     rethinkdb: "2.3.5"
     # Note, no MariaDB, and no funny postgresql versions
 install: true
-script: true
+script:
+    - echo ====== riak ======
+    - riak version
+    - echo ====== mysql ======
+    - "ps aux | grep '[m]ysql' || true"
+    - mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";'
+    - mysql -utravis -e 'SHOW VARIABLES LIKE \"%version%\";'
+    - mysql -uroot -e 'select * from mysql.users;'
+    - echo ====== postgresql ======
+    - psql -Upostgres <<<'select * from version();'
+    - psql -Upostgres <<<'select * from pg_catalog.pg_database;'
+    - psql -Upostgres <<<'select * from pg_catalog.pg_user;'
+    - mount # To check the ramfs
+    - echo ====== neo4j ==========
+    - curl http://localhost:7474/db/manage/server/version
+    - echo ========= elasticsearch =======
+    - curl -XGET 'http://localhost:9200/_nodes'
+    - echo ========= cassandra ========
+    - "cqlsh -f <(echo show version)"
+    - "cqlsh -f <(select * from system.local;)"
+    - ===== mongodb =======
+    - "mongo mydb_test --eval 'db.addUser("travis", "test");' || true"
+    - mongo --eval 'db.version()'
 sudo: required
 
 notifications:
@@ -31,14 +53,6 @@ matrix:
     group: stable
     dist: precise
     language: go
-  - env: image=edge_precise_generic
-    group: edge
-    dist: precise
-    language: generic
-  - env: image=stable_precise_generic
-    group: stable
-    dist: precise
-    language: generic
   - env: image=edge_precise_java
     group: edge
     dist: precise
