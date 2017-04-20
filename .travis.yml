@@ -5,6 +5,7 @@ group: edge
 install: true
 script:
     - git lfs || true
+    - git --version
 notifications:
   email: never
 
