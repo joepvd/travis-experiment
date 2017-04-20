@@ -16,26 +16,26 @@ addons:
     # Note, no MariaDB, and no funny postgresql versions
 install: true
 script:
-    - echo ====== riak ======
+    - "echo ====== riak ======"
     - riak version
-    - echo ====== mysql ======
+    - "echo ====== mysql ======"
     - "ps aux | grep '[m]ysql' || true"
     - mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";'
     - mysql -utravis -e 'SHOW VARIABLES LIKE \"%version%\";'
     - mysql -uroot -e 'select * from mysql.users;'
-    - echo ====== postgresql ======
+    - "echo ====== postgresql ======"
     - psql -Upostgres <<<'select * from version();'
     - psql -Upostgres <<<'select * from pg_catalog.pg_database;'
     - psql -Upostgres <<<'select * from pg_catalog.pg_user;'
     - mount # To check the ramfs
-    - echo ====== neo4j ==========
+    - "echo ====== neo4j =========="
     - curl http://localhost:7474/db/manage/server/version
-    - echo ========= elasticsearch =======
+    - "echo ========= elasticsearch ======="
     - curl -XGET 'http://localhost:9200/_nodes'
-    - echo ========= cassandra ========
+    - "echo ========= cassandra ========"
     - "cqlsh -f <(echo show version)"
     - "cqlsh -f <(select * from system.local;)"
-    - ===== mongodb =======
+    - "echo ===== mongodb ======="
     - "mongo mydb_test --eval 'db.addUser("travis", "test");' || true"
     - mongo --eval 'db.version()'
 sudo: required
