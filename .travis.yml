@@ -1,5 +1,7 @@
-language: swift
-osx_image: xcode8.3
+language: ruby
+dist: precise
+sudo: required
+group: edge
 install: true
 script:
     - git lfs || true
