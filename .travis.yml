@@ -1,6 +1,5 @@
-language: ruby
-dist: trusty
-sudo: required
+language: swift
+osx_image: xcode8.3
 install: true
 script:
     - git lfs || true
