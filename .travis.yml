@@ -1,7 +1,6 @@
 language: ruby
-dist: precise
+dist: trusty
 sudo: required
-group: edge
 install: true
 script:
     - git lfs || true
