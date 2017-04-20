@@ -1,11 +1,7 @@
-language: cpp
-sudo: false
-dist: trusty
-os: linux
+language: swift
+osx_image: xcode8.3
 install: true
-script: echo very true
-branches:
-    except:
-        - master
+script:
+    - git lfs || true
 notifications:
   email: never
