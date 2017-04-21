@@ -1,8 +1,16 @@
-language: generic
-dist: trusty
-sudo: required
+language: swift
+osx_image: xcode7.3
 install: true
-script: true
+script:
+    - which Xvfb
+    - "find $(echo $PATH | tr : ' ') -name '*chrome*' || true"
+    - "for chrome in $(find $(echo $PATH | tr : ' ') -name '*chrome*'); do $chrome --version; done || true"
+      #- wget https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+      #- open ~/Downloads/googlechrome.dmg
+      #- sudo cp -r /Volumes/Google\ Chrome/Google\ Chrome.app /Applications/
+    - brew install brew-cask
+    - brew cask install google-chrome
+    - google-chrome --version
 notifications:
   email: never
 
