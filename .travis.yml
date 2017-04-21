@@ -1,9 +1,8 @@
-language: swift
-osx_image: xcode8.3
+language: generic
+dist: trusty
+sudo: required
 install: true
-script:
-    - git lfs || true
-    - git --version
+script: true
 notifications:
   email: never
 
