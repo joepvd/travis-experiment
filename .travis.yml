@@ -1,16 +1,17 @@
-language: swift
-osx_image: xcode7.3
+distL trusty
+sudo: required
 install: true
 script:
-    - which Xvfb
-    - "find $(echo $PATH | tr : ' ') -name '*chrome*' || true"
-    - "for chrome in $(find $(echo $PATH | tr : ' ') -name '*chrome*'); do $chrome --version; done || true"
-      #- wget https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
-      #- open ~/Downloads/googlechrome.dmg
-      #- sudo cp -r /Volumes/Google\ Chrome/Google\ Chrome.app /Applications/
-    - brew cask install google-chrome
-    - google-chrome --version
-      which google-chrome
+    - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    - sudo apt-key fingerprint 0EBFCD88
+    - sudo add-apt-repository 'deb https://download.docker.com/linux/ubuntu trusty stable'
+    - sudo apt-get update
+    - "sudo apt-get install -o Dpkg::Options::=\"--force-confold\" --force-yes -y docker-ce"
+    - docker --version
+    - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    - sudo apt-get update
+    - sudo apt-get install docker-ce
+    - docker --version
 notifications:
   email: never
 
