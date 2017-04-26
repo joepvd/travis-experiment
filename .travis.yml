@@ -3,6 +3,7 @@ osx_image: xcode8.3
 install: true
 script:
     - xcodebuild -version -sdk
+    - xcrun simctl list
 notifications:
   email: never
 
