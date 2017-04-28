@@ -1,6 +1,6 @@
 os: osx
 osx_image: xcode8.2
-language: ruby
+language: swift
 rvm: 2.1.5
 install: true
 script:
