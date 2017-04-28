@@ -1,10 +1,15 @@
 language: ruby
-dist: trusty
-sudo: false
-rvm: 2.1.5
+dist: precise
+matrix:
+    include:
+        - env: image=gce
+          sudo: required
+        - env: image=ec2
+          sudo: false
+rvm: 2.3
 install: true
 script:
-    - ruby --version
+    - cat ~/build.sh
 notifications:
   email: never
 
