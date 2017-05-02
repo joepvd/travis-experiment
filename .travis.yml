@@ -7,24 +7,24 @@ matrix:
           sudo: false
           dist: precise
           group: stable
-addons:
-   apt:
-      sources:
-         - lucid
-         - kubuntu-backports
-         - trusty-media
-      packages:
-         - libcv-dev
-         - libcvaux-dev
-         - libhighgui-dev
-         - libopencv-dev
-         - libsdl2-dev
-         - libsdl2-image-dev
-         - libsdl2
-         - libusb-dev
-         - xvfb
-         - unzip
-         - libgtk2.0-0
+#addons:
+#   apt:
+#      sources:
+#         - lucid
+#         - kubuntu-backports
+#         - trusty-media
+#      packages:
+#         - libcv-dev
+#         - libcvaux-dev
+#         - libhighgui-dev
+#         - libopencv-dev
+#         - libsdl2-dev
+#         - libsdl2-image-dev
+#         - libsdl2
+#         - libusb-dev
+#         - xvfb
+#         - unzip
+#         - libgtk2.0-0
 install: true
 script:
     - apt-cache search libsdl2
