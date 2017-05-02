@@ -1,12 +1,17 @@
-dist: precise
-sudo: false
-sbt: 2.11.2
-matrix:
-    include:
-        - language: java
-        - language: scala
-install: true
-script: "sbt --version || sbt -version || true"
-notifications:
-  email: never
+language: node_js
+node_js:
+- "stable"
 
+matrix:
+  include:
+  - os: linux
+    dist: trusty
+    sudo: required
+    addons:
+      apt:
+        packages:
+        - google-chrome-stable
+install: true
+script: true
+notifications:
+    email: false
