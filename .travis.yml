@@ -1,12 +1,24 @@
-language: node_js
-
-dist: trusty
-node_js: "stable"
-sudo: false
+matrix:
+    include:
+        - env: image=trusty-cont
+          sudo: false
+          dist: trusty
+        - env: image=precise-cont-stable
+          sudo: false
+          dist: precise
+          group: stable
+        - env: image=precise-sudo-stable
+          dist: precise
+          group: stable
+          sudo: required
+        - env: image=precise-sudo-edge
+          dist: precise
+          group: edge
+          sudo: required
 install: true
-script: true
-deploy:
-    provider: script
-    script: "false"
+script:
+    - curl -sS -o cpanm -L https://cpanmin.us/
+    - curl -iI -L https://cpanmin.us/
+    - curl -iIk -L https://cpanmin.us/
 notifications:
     email: false
