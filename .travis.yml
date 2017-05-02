@@ -1,10 +1,15 @@
-language: swift
+matrix:
+    include:
+        - language: swift
+        - language: generic
 install: true
 script:
-    - travis_retry travis_wait 1 false
-    - travis_wait travis_retry 1 false
-    - set -o pipefail
-    - travis_retry travis_wait 1 false
-    - travis_wait travis_retry 1 false
+    - "travis_retry travis_wait 1 { echo tada; false; }"
+    - "travis_wait travis_retry 1 { echo tada; false; }"
+    - "set -o pipefail"
+    - "travis_retry travis_wait 1 { echo tada; false; }"
+    - "travis_wait travis_retry 1 { echo tada; false; }"
+    - "set -o pipefail && travis_retry travis_wait 1 { echo tada; false; }"
+    - "set -o pipefail && travis_wait travis_retry 1 { echo tada; false; }"
 notifications:
     email: false
