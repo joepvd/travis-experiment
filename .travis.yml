@@ -7,18 +7,26 @@ matrix:
           sudo: false
           dist: precise
           group: stable
-        - env: image=precise-sudo-stable
-          dist: precise
-          group: stable
-          sudo: required
-        - env: image=precise-sudo-edge
-          dist: precise
-          group: edge
-          sudo: required
+addons:
+   apt:
+      sources:
+         - lucid
+         - kubuntu-backports
+         - trusty-media
+      packages:
+         - libcv-dev
+         - libcvaux-dev
+         - libhighgui-dev
+         - libopencv-dev
+         - libsdl2-dev
+         - libsdl2-image-dev
+         - libsdl2
+         - libusb-dev
+         - xvfb
+         - unzip
+         - libgtk2.0-0
 install: true
 script:
-    - curl -sS -o cpanm -L https://cpanmin.us/
-    - curl -iI -L https://cpanmin.us/
-    - curl -iIk -L https://cpanmin.us/
+    - apt-cache search libsdl2
 notifications:
     email: false
