@@ -1,8 +1,4 @@
-matrix:
-    include:
-        - env: image=trusty-cont
-          sudo: false
-          dist: trusty
+language: swift
 install: true
 script:
     - travis_retry travis_wait 1 false
