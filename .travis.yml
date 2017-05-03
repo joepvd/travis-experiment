@@ -6,6 +6,8 @@ matrix:
               apt:
                   packages:
                       - openssl
+                      - curl
+                      - wget
         - env: run=default_ssl
 dist: precise
 sudo: false
