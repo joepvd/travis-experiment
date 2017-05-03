@@ -9,7 +9,7 @@ matrix:
         - env: run=default_ssl
 dist: precise
 sudo: false
-install: openssl ciphers | tr : '\n' | sort
+install: "openssl ciphers | tr : '\n' | sort"
 script:
     - wget https://repo.hex.pm/builds/elixir/v1.4.2.zip
     - curl -o /tmp/elixir https://repo.hex.pm/builds/elixir/v1.4.2.zip
