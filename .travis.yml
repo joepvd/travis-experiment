@@ -1,4 +1,4 @@
-language: generic
+language: elixir
 matrix:
     include:
         - env: run='update packages'
@@ -24,13 +24,7 @@ matrix:
         - env: run='no update binaries'
           sudo: false
 dist: precise
-install:
-    - "openssl ciphers | tr : '\n' | sort"
-    - ./checkcurldeps.sh
-script:
-    - curl --version
-    - wget --version
-    - wget https://repo.hex.pm/builds/elixir/v1.4.2.zip
-    - curl -o /tmp/elixir https://repo.hex.pm/builds/elixir/v1.4.2.zip
+install: true
+script: true
 notifications:
     email: false
