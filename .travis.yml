@@ -1,15 +1,17 @@
+language: generic
 matrix:
     include:
-        - language: swift
-        - language: generic
-install: true
+        - env: run=openssl_updated
+          addons:
+              apt:
+                  packages:
+                      - openssl
+        - env: run=default_ssl
+dist: precise
+sudo: false
+install: openssl ciphers | tr : '\n' | sort
 script:
-    - "travis_retry travis_wait 2 ls nosuchfile"
-    - "travis_wait 2 travis_retry ls nosuchfile"
-    - "set -o pipefail"
-    - "travis_retry travis_wait 2 ls nosuchfile"
-    - "travis_wait 2 travis_retry ls nosuchfile"
-    - "set -o pipefail && travis_retry travis_wait 2 ls nosuchfile"
-    - "set -o pipefail && travis_wait 2 travis_retry ls nosuchfile"
+    - wget https://repo.hex.pm/builds/elixir/v1.4.2.zip
+    - curl -o /tmp/elixir https://repo.hex.pm/builds/elixir/v1.4.2.zip
 notifications:
     email: false
