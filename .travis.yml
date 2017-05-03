@@ -8,6 +8,7 @@ matrix:
                       - openssl
                       - curl
                       - wget
+                      - libcurl3
         - env: run=default_ssl
 dist: precise
 sudo: false
