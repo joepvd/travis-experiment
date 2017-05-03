@@ -15,7 +15,7 @@ matrix:
 dist: precise
 install:
     - "openssl ciphers | tr : '\n' | sort"
-    - "ldd /usr/bin/curl | awk '$3~/^\//{print \"dpkg -S\", $3}'  | sh | awk -F: '{print \"dpkg -s\", $1}' | sh |  awk '$1==\"Package:\"{p=$2};$1==\"Version:\"{print p, $0}'"
+    - ./checkcurldeps.sh
 script:
     - curl --version
     - wget --version
