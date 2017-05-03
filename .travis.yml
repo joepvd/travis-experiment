@@ -1,19 +1,24 @@
 language: generic
 matrix:
     include:
-        - env: run=openssl_updated
-          addons:
-              apt:
-                  packages:
-                      - openssl
-                      - curl
-                      - wget
-                      - libcurl3
-        - env: run=default_ssl
+        - env: run=container_precise
+          sudo: false
+          #addons:
+          #    apt:
+          #        packages:
+          #            - openssl
+          #            - curl
+          #            - wget
+          #            - libcurl3
+        - env: run=sudo_precise
+          sudo: required
 dist: precise
-sudo: false
-install: "openssl ciphers | tr : '\n' | sort"
+install:
+    - "openssl ciphers | tr : '\n' | sort"
+    - "ldd /usr/bin/curl | awk '$3~/^\//{print \"dpkg -S\", $3}'  | sh | awk -F: '{print \"dpkg -s\", $1}' | sh |  awk '$1==\"Package:\"{p=$2};$1==\"Version:\"{print p, $0}'"
 script:
+    - curl --version
+    - wget --version
     - wget https://repo.hex.pm/builds/elixir/v1.4.2.zip
     - curl -o /tmp/elixir https://repo.hex.pm/builds/elixir/v1.4.2.zip
 notifications:
