@@ -2,6 +2,12 @@ sudo: required
 language: ruby
 dist: trusty
 group: stable
+before_install:
+    - ps -elf
+    - pstree -ap
+    - sudo lsof | grep /dev/pts
+    - shopt
+    - echo $-
 install:
     - echo trap \"echo HUP received, ignoring\" SIGHUP >>trap.sh
     - echo trap \"echo INT received, ignoring\" SIGINT >>trap.sh
@@ -39,5 +45,11 @@ script:
     - setsid bash trap.sh &
     - sleep 3
     - echo $hiddenvar1
+after_script:
+    - ps -elf
+    - pstree -ap
+    - sudo lsof | grep /dev/pts
+    - shopt
+    - echo $-
 notifications:
     email: false
