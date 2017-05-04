@@ -51,6 +51,6 @@ after_script:
     - sudo lsof | grep /dev/pts
     - shopt
     - echo $-
-    - kill -9 $(pgrep -P $$)
+    - ps xao pid,ppid,pgid,sid,comm
 notifications:
     email: false
