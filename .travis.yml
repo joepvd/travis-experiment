@@ -42,7 +42,7 @@ install:
     - echo trap \"echo SYS received, ignoring\" SIGSYS >>trap.sh
     - echo sleep 900 >>trap.sh
 script:
-    - setsid bash trap.sh &
+    - bash trap.sh &
     - sleep 3
     - echo $hiddenvar1
 after_script:
