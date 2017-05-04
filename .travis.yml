@@ -42,7 +42,7 @@ install:
     - echo trap \"echo SYS received, ignoring\" SIGSYS >>trap.sh
     - echo sleep 900 >>trap.sh
 script:
-    - bash trap.sh &
+    - setsid bash trap.sh &
     - sleep 3
     - echo $hiddenvar1
 after_script:
@@ -51,5 +51,6 @@ after_script:
     - sudo lsof | grep /dev/pts
     - shopt
     - echo $-
+    - kill -9 $(pgrep -P $$)
 notifications:
     email: false
