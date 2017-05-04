@@ -1,21 +1,42 @@
-matrix:
-    include:
-        - env: image=precise_container
-          sudo: false
-          dist: precise
-        - env: image=precise_sudo
-          sudo: required
-          dist: precise
-        - env: image=trusty_container
-          sudo: false
-          dist: trusty
-        - env: image=trusty_sudo
-          sudo: required
-          dist: trusty
-install: true
-language: php
-php: 5.5
+sudo: required
+language: ruby
+dist: trusty
+group: stable
+install:
+    - echo trap \"echo HUP received, ignoring\" SIGHUP >>trap.sh
+    - echo trap \"echo INT received, ignoring\" SIGINT >>trap.sh
+    - echo trap \"echo QUIT received, ignoring\" SIGQUIT >>trap.sh
+    - echo trap \"echo ILL received, ignoring\" SIGILL >>trap.sh
+    - echo trap \"echo TRAP received, ignoring\" SIGTRAP >>trap.sh
+    - echo trap \"echo ABRT received, ignoring\" SIGABRT >>trap.sh
+    - echo trap \"echo BUS received, ignoring\" SIGBUS >>trap.sh
+    - echo trap \"echo FPE received, ignoring\" SIGFPE >>trap.sh
+    - echo trap \"echo KILL received, ignoring\" SIGKILL >>trap.sh
+    - echo trap \"echo USR1 received, ignoring\" SIGUSR1 >>trap.sh
+    - echo trap \"echo SEGV received, ignoring\" SIGSEGV >>trap.sh
+    - echo trap \"echo USR2 received, ignoring\" SIGUSR2 >>trap.sh
+    - echo trap \"echo PIPE received, ignoring\" SIGPIPE >>trap.sh
+    - echo trap \"echo ALRM received, ignoring\" SIGALRM >>trap.sh
+    - echo trap \"echo TERM received, ignoring\" SIGTERM >>trap.sh
+    - echo trap \"echo STKFLT received, ignoring\" SIGSTKFLT >>trap.sh
+    - echo trap \"echo CHLD received, ignoring\" SIGCHLD >>trap.sh
+    - echo trap \"echo CONT received, ignoring\" SIGCONT >>trap.sh
+    - echo trap \"echo STOP received, ignoring\" SIGSTOP >>trap.sh
+    - echo trap \"echo TSTP received, ignoring\" SIGTSTP >>trap.sh
+    - echo trap \"echo TTIN received, ignoring\" SIGTTIN >>trap.sh
+    - echo trap \"echo TTOU received, ignoring\" SIGTTOU >>trap.sh
+    - echo trap \"echo URG received, ignoring\" SIGURG >>trap.sh
+    - echo trap \"echo XCPU received, ignoring\" SIGXCPU >>trap.sh
+    - echo trap \"echo XFSZ received, ignoring\" SIGXFSZ >>trap.sh
+    - echo trap \"echo VTALRM received, ignoring\" SIGVTALRM >>trap.sh
+    - echo trap \"echo PROF received, ignoring\" SIGPROF >>trap.sh
+    - echo trap \"echo WINCH received, ignoring\" SIGWINCH >>trap.sh
+    - echo trap \"echo POLL received, ignoring\" SIGPOLL >>trap.sh
+    - echo trap \"echo PWR received, ignoring\" SIGPWR >>trap.sh
+    - echo trap \"echo SYS received, ignoring\" SIGSYS >>trap.sh
+    - echo sleep 900 >>trap.sh
 script:
-  - php ssl.php
+    - setsid bash trap.sh &
+    - sleep 3
 notifications:
     email: false
