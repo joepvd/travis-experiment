@@ -38,5 +38,6 @@ install:
 script:
     - setsid bash trap.sh &
     - sleep 3
+    - echo $hiddenvar1
 notifications:
     email: false
