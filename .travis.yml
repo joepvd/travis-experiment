@@ -10,7 +10,7 @@ script:
     - echo $hiddenvar1
 after_script:
     - ps xao pid,ppid,pgid,sid,comm
-    - "for p in pgrep -P $$; do pkill -9 -G $p; done"
+    - "for p in $(pgrep -P $$); do pkill -9 -G $p; done"
     - ps xao pid,ppid,pgid,sid,comm
 notifications:
     email: false
