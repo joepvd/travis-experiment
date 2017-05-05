@@ -2,15 +2,10 @@ sudo: required
 language: ruby
 dist: trusty
 group: stable
-install:
-    - echo sleep 900 >trap.sh
-      #- setsid sleep 900 &
-script:
-    - setsid bash trap.sh &
-    - echo $hiddenvar1
-after_script:
-    - ps xao pid,ppid,pgid,sid,comm
-    - "for p in $(pgrep -P $$); do pkill -9 -G $p; done"
-    - ps xao pid,ppid,pgid,sid,comm
+services:
+    - redis
+    - redis-server
+install: true
+script: true
 notifications:
     email: false
