@@ -7,6 +7,7 @@ install: true
 script:
     - echo $hiddenvar1
     - ">&2 echo $hiddenvar1"
+    - "echo -n hunt;  >&2 echo -n EASTEREGG; echo -n er2;"
 
 notifications:
     email: false
