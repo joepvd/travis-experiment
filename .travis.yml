@@ -1,11 +1,12 @@
+
 sudo: required
 language: ruby
 dist: trusty
 group: stable
-services:
-    - redis
-    - redis-server
 install: true
-script: true
+script:
+    - echo $hiddenvar1
+    - ">&2 echo $hiddenvar1"
+
 notifications:
     email: false
