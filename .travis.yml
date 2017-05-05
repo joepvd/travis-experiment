@@ -2,26 +2,15 @@ sudo: required
 language: ruby
 dist: trusty
 group: stable
-before_install:
-    - ps -elf
-    - pstree -ap
-    - sudo lsof | grep /dev/pts
-    - shopt
-    - echo $-
 install:
-    - echo sleep 900 >>trap.sh
+    - echo sleep 900 >trap.sh
       #- setsid sleep 900 &
 script:
-    - sleep 3
     - setsid bash trap.sh &
-    - sleep 3
     - echo $hiddenvar1
 after_script:
-    - ps -elf
-    - pstree -ap
-    - sudo lsof | grep /dev/pts
-    - shopt
-    - echo $-
+    - ps xao pid,ppid,pgid,sid,comm
+    - "for p in pgrep -P $$; do pkill -9 -G $p; done"
     - ps xao pid,ppid,pgid,sid,comm
 notifications:
     email: false
