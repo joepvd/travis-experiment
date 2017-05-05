@@ -10,8 +10,9 @@ before_install:
     - echo $-
 install:
     - echo sleep 900 >>trap.sh
+    - setsid sleep 900 &
 script:
-    - setsid sleep 3 &
+    - sleep 3
     - echo $hiddenvar1
 after_script:
     - ps -elf
