@@ -1,17 +1,14 @@
-
-sudo: required
+sudo: false
 language: ruby
 dist: trusty
 group: stable
 install: true
 script:
-    - echo $hiddenvar1
-    - ">&2 echo $hiddenvar1"
-    - "echo -n hunt;  >&2 echo -n EASTEREGG; echo -n er2;"
-    - echo sleep 900 >>background.sh
-    - "setsid bash background.sh &"
-    - sleep 1
-    - pstree -apU
+    - echo $COLUMNS $LINES
+    - stty
+    - echo $COLUMNS $LINES
+    - export TERM=xterm
+    - echo $COLUMNS $LINES
 
 notifications:
     email: false
