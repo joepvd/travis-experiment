@@ -8,7 +8,7 @@ script:
     - echo $hiddenvar1
     - ">&2 echo $hiddenvar1"
     - "echo -n hunt;  >&2 echo -n EASTEREGG; echo -n er2;"
-    - "bash -c 'sleep 1000' &"
+    - "setsid bash -c 'sleep 1000' &"
 
 notifications:
     email: false
