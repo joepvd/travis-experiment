@@ -1,5 +1,6 @@
 sudo: required
 language: ruby
+filter_secrets: false
 dist: trusty
 group: stable
 install: true
