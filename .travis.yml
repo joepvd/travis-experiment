@@ -8,7 +8,7 @@ script:
     - echo $hiddenvar1
     - ">&2 echo $hiddenvar1"
     - "echo -n hunt;  >&2 echo -n EASTEREGG; echo -n er2;"
-      echo sleep 900 >>background.sh
+    - echo sleep 900 >>background.sh
     - "setsid bash background.sh &"
     - sleep 1
     - pstree -apU
