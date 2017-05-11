@@ -9,6 +9,8 @@ script:
     - ">&2 echo $hiddenvar1"
     - "echo -n hunt;  >&2 echo -n EASTEREGG; echo -n er2;"
     - "setsid bash -c 'sleep 1000' &"
+    - sleep 1
+    - pstree -apU
 
 notifications:
     email: false
