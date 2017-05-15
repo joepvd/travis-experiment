@@ -4,19 +4,19 @@ matrix:
         - env: image=trusty-sudo
           sudo: required
           dist: trusty
-          jdk: openjdk8
+          jdk: openjdk6
         - env: image=trusty-cont
           sudo: false
           dist: trusty
-          jdk: openjdk8
+          jdk: openjdk6
         - env: image=precise-sudo
           sudo: required
           dist: precise
-          jdk: openjdk8
+          jdk: openjdk6
         - env: image=precise-cont
           sudo: false
           dist: precise
-          jdk: openjdk8
+          jdk: openjdk6
 install: true
 script: java -version
 notifications:
