@@ -1,15 +1,23 @@
-sudo: false
-language: ruby
-filter_secrets: false
-dist: trusty
-group: stable
+language: java
+matrix:
+    include:
+        - env: image=trusty-sudo
+          sudo: required
+          dist: trusty
+          jdk: openjdk8
+        - env: image=trusty-cont
+          sudo: false
+          dist: trusty
+          jdk: openjdk8
+        - env: image=precise-sudo
+          sudo: required
+          dist: precise
+          jdk: openjdk8
+        - env: image=precise-cont
+          sudo: false
+          dist: precise
+          jdk: openjdk8
 install: true
-script:
-    - echo $COLUMNS $LINES
-    - stty
-    - echo $COLUMNS $LINES
-    - export TERM=xterm
-    - echo $COLUMNS $LINES
-
+script: java -version
 notifications:
     email: false
