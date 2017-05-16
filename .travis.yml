@@ -1,6 +1,6 @@
 language: generic
 dist: trusty
-sudo: false
+sudo: required
 matrix:
     include:
         - env: filter=yes
