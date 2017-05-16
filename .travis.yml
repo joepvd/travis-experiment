@@ -1,18 +1,12 @@
 language: generic
 dist: trusty
-sudo: required
-addons:
-    apt:
-        packages:
-            - postgresql
+sudo: false
+matrix:
+    include:
+        - env: filter=yes
+        - env: filter=no
+          filter_secrets: false
+script: true
 install: true
-script:
-    - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
-    - sudo service postgresql restart
-    - sleep 1
-    - psql -U postgres template1 <<<$'create user travis;\nALTER USER travis WITH SUPERUSER;'
-    - psql -U travis template1 <<<'select * from version()'
-    - psql -U travis template1 <<<'create database test;'
-    - psql -U postgres <<<'SELECT rolname, rolsuper, * FROM pg_roles;'
 notifications:
     email: false
