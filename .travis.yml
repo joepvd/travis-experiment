@@ -1,12 +1,12 @@
 language: generic
 dist: trusty
-sudo: required
+sudo: false
 matrix:
     include:
         - env: filter=yes
         - env: filter=no
           filter_secrets: false
-script: true
+script: curl -L https://api.travis-ci.org/jobs/$TRAVIS_JOB_ID/log.txt | grep -c '\r\r$'
 install: true
 notifications:
     email: false
