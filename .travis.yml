@@ -1,23 +1,14 @@
-language: java
-matrix:
-    include:
-        - env: image=trusty-sudo
-          sudo: required
-          dist: trusty
-          jdk: oraclejdk8
-        - env: image=trusty-cont
-          sudo: false
-          dist: trusty
-          jdk: oraclejdk8
-        - env: image=precise-sudo
-          sudo: required
-          dist: precise
-          jdk: oraclejdk8
-        - env: image=precise-cont
-          sudo: false
-          dist: precise
-          jdk: oraclejdk8
+language: generic
+dist: trusty
+sudo: required
+addons:
+    apt:
+        packages:
+            - postgresql
 install: true
-script: java -version
+script:
+    - psql -U postgres <<<$'create user travis;\nALTER USER travis WITH SUPERUSER;'
+    - psql -U travis <<<'select * from version()'
+    - psql -U postgres <<<'SELECT rolname, rolsuper, * FROM pg_roles;'
 notifications:
     email: false
