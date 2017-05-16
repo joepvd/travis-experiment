@@ -7,12 +7,12 @@ addons:
             - postgresql
 install: true
 script:
-    - sudo service postgresql status
-    - sudo service postgresql start
-    - sleep 10
-    - sudo -u postgres psql template1 <<<$'create user travis;\nALTER USER travis WITH SUPERUSER;'
-    - psql -U travis <<<'select * from version()'
-    - psql -U travis <<<'create database test;'
+    - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
+    - sudo service postgresql restart
+    - sleep 1
+    - psql -U postgres template1 <<<$'create user travis;\nALTER USER travis WITH SUPERUSER;'
+    - psql -U travis template1 <<<'select * from version()'
+    - psql -U travis template1 <<<'create database test;'
     - psql -U postgres <<<'SELECT rolname, rolsuper, * FROM pg_roles;'
 notifications:
     email: false
