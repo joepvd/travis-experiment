@@ -6,7 +6,9 @@ matrix:
         - env: filter=yes
         - env: filter=no
           filter_secrets: false
-script: curl -L https://api.travis-ci.org/jobs/$TRAVIS_JOB_ID/log.txt | grep -c '\r\r$'
+script:
+    - curl -L https://api.travis-ci.org/jobs/$TRAVIS_JOB_ID/log.txt
+    - curl -L https://api.travis-ci.org/jobs/$TRAVIS_JOB_ID/log.txt | grep -c '\r\r'
 install: true
 notifications:
     email: false
