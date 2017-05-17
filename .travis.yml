@@ -9,8 +9,8 @@ matrix:
 script:
     - echo $should_not_show_up
     - echo $a_space_b_backslashed   
-    - echo $a_space_b_quoted   
-    - echo $a_space_b_without_quote
+    - echo $c_space_d_quoted   
+    - echo $e_space_f_without_quote
 install: true
 notifications:
     email: false
