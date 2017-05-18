@@ -1,16 +1,13 @@
 language: generic
 dist: trusty
 sudo: false
-matrix:
-    include:
-        - env: filter=yes
-        - env: filter=no
-          filter_secrets: false
+addons:
+    apt:
+        packages:
+            - procps
 script:
-    - echo $should_not_show_up
-    - echo $a_space_b_backslashed   
-    - echo $c_space_d_quoted   
-    - echo $e_space_f_without_quote
+    - while sleep 1; do top -b -n 1 | head -n 20; done &
+    - sleep 10
 install: true
 notifications:
     email: false
