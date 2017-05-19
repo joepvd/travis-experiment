@@ -1,13 +1,16 @@
 language: generic
-dist: trusty
+dist: precise
 sudo: false
 addons:
     apt:
         packages:
-            - procps
+            - google-chrome-stable
+        sources:
+            - google-chrome
 script:
     - while sleep 1; do top -b -n 1 | head -n 20; done &
     - sleep 10
+    - chrome --version
 install: true
 notifications:
     email: false
