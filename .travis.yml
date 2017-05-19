@@ -1,16 +1,15 @@
 language: generic
 dist: precise
-sudo: required
+sudo: false
 addons:
     apt:
         packages:
-            - google-chrome-stable
-        sources:
-            - google-chrome
+            - chromium-chromedriver
+            - chrome-browser
 script:
     - while sleep 1; do top -b -n 1 | head -n 20; done &
     - sleep 10
-    - chrome --version
+    - chrome --version || chromium --version
 install: true
 notifications:
     email: false
