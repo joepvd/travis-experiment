@@ -8,7 +8,7 @@ addons:
 script:
     - while sleep 1; do top -b -n 1 | head -n 20; done &
     - sleep 10
-    - chrome --version || chromium --version
+    - chrome --version || chromium-browser --version
 install: apt-cache search chromium
 notifications:
     email: false
