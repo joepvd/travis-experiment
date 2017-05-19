@@ -1,6 +1,6 @@
 language: generic
 dist: precise
-sudo: false
+sudo: required
 addons:
     apt:
         packages:
