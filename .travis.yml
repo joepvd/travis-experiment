@@ -1,15 +1,15 @@
 language: generic
 dist: precise
-sudo: false
-addons:
-    apt:
-        packages:
-            - chromium-chromedriver
-            - chrome-browser
+sudo: required
+#addons:
+#    apt:
+#        packages:
+#            - chromium-chromedriver
+#            - chrome-browser
 script:
     - while sleep 1; do top -b -n 1 | head -n 20; done &
     - sleep 10
     - chrome --version || chromium --version
-install: true
+install: apt-cache search chromium
 notifications:
     email: false
