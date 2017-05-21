@@ -1,12 +1,36 @@
-language: node_js
+language: generic
+dist: trusty
+sudo: false
 node_js: 6
-os: osx
+before_install:
+    - |
+        perf_log() {
+            awk -v cmd="$cmd" '{print "perf:", cmd, systime(), $0}'
+        }
 
-script:
-    - iotop -b -n 20 &
-    - top -b -n 20 &
-    - brew update
-    - brew update
-install: true
+        perf_observe() {
+            local timeout=${1-5}
+            local cmd
+            for cmd in                    \
+                "uptime"                  \
+                "dmesg | tail"            \
+                "vmstat $timeout"         \
+                "mpstat -P ALL $timeout"  \
+                "pidstat $timeout"        \
+                "iostat -xz $timeout"     \
+                "free -m"                 \
+                "sar -n DEV $timeout"     \
+                "sar -n TCP,ETCP $timeout"
+            do
+                if [[ $cmd =~ [0-9]$ ]]; then
+                    $cmd | perf_log &
+                else
+                    while sh -c "$cmd" | perf_log; do sleep $timeout; done &
+                fi
+            done
+        }
+
+install: perf_observe 1
+script: sleep 10
 notifications:
     email: false
