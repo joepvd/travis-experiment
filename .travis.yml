@@ -1,7 +1,10 @@
 language: generic
 dist: precise
 sudo: false
-node_js: 6
+addons:
+    apt:
+        packages:
+            - sysstat
 before_install:
     - |
         perf_log() {
@@ -30,7 +33,7 @@ before_install:
             done
         }
 
-install: perf_observe 1
-script: sleep 10
+install: perf_observe
+script: sleep 11
 notifications:
     email: false
