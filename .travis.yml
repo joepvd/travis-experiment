@@ -32,11 +32,11 @@ jobs:
                   done
               - |
                   f() {
-                      grep -E '^(stty:|stty --save|shopt:\$-:)' $1
+                      grep -E '^(stty:|stty --save|shopt:\$-:)' $1 | sed $'s/\r//g'
                   }
               - |
                   report() {
-                      diff --side-by-side --width 100 <(f ${jobs[$1]}) <(f ${jobs[$2]})
+                      diff --side-by-side <(f ${jobs[$1]}) <(f ${jobs[$2]})
                   }
               - jobs=( [0-9]*.log )
               - echo ${jobs[@]}
@@ -59,7 +59,7 @@ script:
     - echo stty --save $(stty --save)
     - printf "shopt:%s %s\n" $(shopt | sort)
     - shopt
-    - echo $- | awk -F '' '{for(i=1;i<=NF;i++)print "$-":$i}' | sort
+    - echo $- | awk -F '' '{for(i=1;i<=NF;i++)print "$-:"$i}' | sort
     - echo $-
 notifications:
     email: false
