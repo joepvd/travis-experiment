@@ -43,9 +43,9 @@ jobs:
                   }
               - jobs=( [0-9]*.log )
               - |
-                  for i in `seq 0 ${#jobs[@]}`; do
-                    for j in `seq 0 ${#jobs[@]}`; do
-                      (( i < j )) && compare $i $j
+                  for i in `seq 1 ${#jobs[@]}`; do
+                    for j in `seq 1 ${#jobs[@]}`; do
+                      (( i < j )) && compare $((i-1)) $((j-1))
                     done
                   done
 install: true
