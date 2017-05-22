@@ -32,21 +32,22 @@ jobs:
                   done
               - |
                   f() {
-                      grep -E '^(stty:|stty --save|shopt:\$-:)' $1 | sed $'s/\r//g'
+                      grep -E '^(stty:|stty --save|shopt:|$-:)' $1 | sed $'s/\r//g'
                   }
               - |
                   report() {
-                      diff --side-by-side <(f ${jobs[$1]}) <(f ${jobs[$2]})
+                      j1=${jobs[$1]}
+                      j2=${jobs[$2]}
+                      echo $j1 $j2
+                      diff --side-by-side --suppress-common-lines <(f $j1) <(f $j2)
                   }
               - jobs=( [0-9]*.log )
-              - echo ${jobs[@]}
-              - ls -l
-              - report 0 1
-              - report 0 2
-              - report 0 3
-              - report 1 2
-              - report 1 3
-              - report 2 3
+              - |
+                  for i in `seq 0 ${#jobs}`; d
+                    for j in `seq 0 ${#jobs}`; do
+                      (( i < j )) && report $i $j
+                    done
+                  done
 install: true
 script:
     - |
