@@ -1,39 +1,57 @@
 language: generic
-dist: precise
-sudo: false
-addons:
-    apt:
-        packages:
-            - sysstat
-before_install:
+dist: trusty
+jobs:
+    include:
+        - stage: collect_the_evidence
+          env: filter=true image=sudo-trusty
+          sudo: required
+          dist: trusty
+        - env: filter=false image=sudo-trusty
+          sudo: required
+          dist: trusty
+          filter_secrets: false
+        - env: filter=true image=container-trusty
+          sudo: false
+          dist: trusty
+        - env: filter=false image=container-trusty
+          sudo: false
+          dist: trusty
+          filter_secrets: false
+        - stage: report
+          script:
+              - |
+                  for job in $(
+                    curl --silent \
+                        -H "Travis-API-Version: 3" \
+                        -H "User-Agent: API Explorer" \
+                        https://api.travis-ci.org/build/$TRAVIS_BUILD_ID \
+                    | jq '.jobs[].id')
+                  do
+                    [[ $job = $TRAVIS_JOB_ID ]] && continue
+                    curl -L https://api.travis-ci.org/jobs/$job/log.txt >$job.log
+                  done
+                  jobs=( [0-9]*.log )
+                  f() { grep -E '^(stty:|stty --save|shopt:\$-:)" $1)'; }
+                  report() { diff --side-by-side --width 100 <(f ${jobs[$1]}) <(f ${jobs[$2]}); }
+                  report 0 1
+                  report 0 2
+                  report 0 3
+                  report 1 2
+                  report 1 3
+                  report 2 3
+install: true
+script:
     - |
-        perf_log() {
-            awk -v cmd="$cmd" '{print "perf:", cmd, systime(), $0}'
-        }
-
-        perf_observe() {
-            local timeout=${1-5}
-            local cmd
-            for cmd in                    \
-                "uptime"                  \
-                "dmesg | tail"            \
-                "vmstat $timeout"         \
-                "mpstat -P ALL $timeout"  \
-                "pidstat $timeout"        \
-                "iostat -xz $timeout"     \
-                "free -m"                 \
-                "sar -n DEV $timeout"     \
-                "sar -n TCP,ETCP $timeout"
-            do
-                if [[ $cmd =~ [0-9]$ ]]; then
-                    $cmd | perf_log &
-                else
-                    while sh -c "$cmd" | perf_log; do sleep $timeout; done &
-                fi
-            done
-        }
-
-install: perf_observe
-script: sleep 11
+        stty --all \
+        |   awk '
+            BEGIN{ RS=";[ \n]?" FS=" (= )?" }
+            NF<4{print "stty:"$0; next}
+            {for(i=1;i<=NF;i++)print "stty:"$i}' \
+        |   sort
+    - echo stty --save $(stty --save)
+    - printf "shopt:%s %s\n" $(shopt | sort)
+    - shopt
+    - echo $- | awk -F '' '{for(i=1;i<=NF;i++)print "$-":$i}' | sort
+    - echo $-
 notifications:
     email: false
