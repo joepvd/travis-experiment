@@ -35,7 +35,7 @@ jobs:
                       grep -E '^(stty:|stty --save|shopt:|$-:)' $1 | sed $'s/\r//g'
                   }
               - |
-                  report() {
+                  compare() {
                       j1=${jobs[$1]}
                       j2=${jobs[$2]}
                       echo $j1 $j2
@@ -43,9 +43,9 @@ jobs:
                   }
               - jobs=( [0-9]*.log )
               - |
-                  for i in `seq 0 ${#jobs}`; d
-                    for j in `seq 0 ${#jobs}`; do
-                      (( i < j )) && report $i $j
+                  for i in `seq 0 ${#jobs[@]}`; do
+                    for j in `seq 0 ${#jobs[@]}`; do
+                      (( i < j )) && compare $i $j
                     done
                   done
 install: true
