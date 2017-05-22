@@ -34,7 +34,8 @@ jobs:
                   f() {
                       grep -E '^(stty:|stty --save|shopt:\$-:)' $1
                   }
-              -   report() {
+              - |
+                  report() {
                       diff --side-by-side --width 100 <(f ${jobs[$1]}) <(f ${jobs[$2]})
                   }
               - jobs=( [0-9]*.log )
