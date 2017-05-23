@@ -1,6 +1,6 @@
 osx_image: 6.4
 os: osx
-language: generic
+language: swift
 install: true
 script:
     - HOMEBREW_NO_AUTO_UPDATE=1 brew install md5deep
