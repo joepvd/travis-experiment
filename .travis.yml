@@ -1,4 +1,5 @@
 osx_image: 6.4
+os: osx
 language: generic
 install: true
 script:
