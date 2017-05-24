@@ -7,9 +7,9 @@ notifications:
     email: false
     irc:
         channels:
-            - irc.starchat.net#test
+            - chat.freenode.net#botwar
         template:
             - "Beep. Test."
-        nick: thisnickwillsurelynotyethavebeentaken
+        nick: thisnickwillsurelybethefreshest
         on_success: always
         on_failure: always
