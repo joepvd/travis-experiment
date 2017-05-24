@@ -9,7 +9,6 @@ notifications:
         channels:
             - chat.freenode.net#botwar
         template:
-            - "Beep. Test."
-        nick: thisnickwillsurelybethefreshest
+            - "Beep. Test. Who am I?"
         on_success: always
         on_failure: always
