@@ -1,11 +1,7 @@
-osx_image: xcode6.4
-os: osx
+dist: trusty
+sudo: required
 language: generic
-install: true
-script:
-    - HOMEBREW_NO_AUTO_UPDATE=1 brew install md5deep
-    - md5deep -v
-    - brew install md5deep
-    - md5deep -v
+install: sudo apt-get install beanstalkd
+script: true
 notifications:
     email: never
