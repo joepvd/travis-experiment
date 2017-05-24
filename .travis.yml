@@ -1,7 +1,15 @@
 dist: trusty
-sudo: required
+sudo: false
 language: generic
-install: sudo apt-get install beanstalkd
+install: true
 script: true
 notifications:
-    email: never
+    email: false
+    irc:
+        channels:
+            - irc.starchat.net#test
+        template:
+            - "Beep. Test."
+        nick: thisnickwillsurelynotyethavebeentaken
+        on_success: always
+        on_failure: always
