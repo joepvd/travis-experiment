@@ -4,6 +4,9 @@ matrix:
       dist: precise
       env: DIST=precise STACK=GCE
     - sudo: false
+      dist: precise
+      env: DIST=precise STACK=EC2
+    - sudo: false
       dist: trusty
       env: DIST=trusty STACK=EC2
     - sudo: required
