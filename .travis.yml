@@ -10,7 +10,7 @@ install:
                 -H 'Origin: https://travis-ci.org' \
                 -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
                 -H 'Travis-API-Version: 3' \
-                -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' \ 
+                -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' \
                 -H 'Content-Type: application/json; charset=UTF-8' \
                 -H 'Accept: application/json; version=2' \
                 -H 'Cache-Control: no-cache' \
@@ -61,7 +61,7 @@ install:
                 -H 'Origin: https://travis-ci.org' \
                 -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
                 -H 'Travis-API-Version: 3' \
-                -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' \ 
+                -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' \
                 -H 'Content-Type: application/json; charset=UTF-8' \
                 -H 'Accept: application/json; version=2' \
                 -H 'Cache-Control: no-cache' \
@@ -75,7 +75,7 @@ install:
                 -H 'Origin: https://travis-ci.org' \
                 -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
                 -H 'Travis-API-Version: 3' \
-                -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' \ 
+                -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' \
                 -H 'Content-Type: application/json; charset=UTF-8' \
                 -H 'Accept: application/json; version=2' \
                 -H 'Cache-Control: no-cache' \
