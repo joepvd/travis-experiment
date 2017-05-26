@@ -53,7 +53,7 @@ install:
                 | jq '.env_vars[] | select(.name=="test") | "https://api.travis-ci.org/settings/env_vars/" + .id + "?repository_id=9293083"'
             )
             if [ -n "$env_url" ]; then
-            curl "$env_url" \
+            curl $env_url \
                 -X DELETE \
                 -H 'Pragma: no-cache' \
                 -H 'Origin: https://travis-ci.org' \
