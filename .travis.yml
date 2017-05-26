@@ -10,20 +10,14 @@ install:
                 -H 'Origin: https://travis-ci.org' \
                 -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
                 -H 'Travis-API-Version: 3' \
-                -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' \
+                -H 'User-Agent: Travis-Stuffs' \
                 -H 'Content-Type: application/json; charset=UTF-8' \
                 -H 'Accept: application/json; version=2' \
                 -H 'Cache-Control: no-cache' \
                 -H "Authorization: token $TRAVIS_TOKEN" \
-                -H 'Connection: keep-alive' \
-                -H 'Referer: https://travis-ci.org/joepvd/travis-experiment/settings' \
                 | jq '[.name, .value|tostring ] | join(": ")'
             )"
             echo $setting
-            if [[ $setting =~ true ]]
-            then return 0
-            else return 1
-            fi
         }
         set_autocancel_push() {
             curl 'https://api.travis-ci.org/repo/9293083/setting/auto_cancel_pushes' \
@@ -31,13 +25,12 @@ install:
                 -H 'Origin: https://travis-ci.org' \
                 -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
                 -H 'Travis-API-Version: 3' \
-                -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' \
+                -H 'User-Agent: Travis-Stuffs' \
                 -H 'Content-Type: application/json; charset=UTF-8' \
                 -H 'Accept: application/json; version=2' \
                 -H 'Cache-Control: no-cache' \
                 -H "Authorization: token $TRAVIS_TOKEN" \
                 -H 'Connection: keep-alive' \
-                -H 'Referer: https://travis-ci.org/joepvd/travis-experiment/settings' \
                 --data-binary '{"setting.value":true}'
         }
         set_variable() {
@@ -46,13 +39,11 @@ install:
                 -H 'Origin: https://travis-ci.org' \
                 -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
                 -H 'Travis-API-Version: 3' \
-                -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' \
+                -H 'User-Agent: Travis-Stuffs' \
                 -H 'Content-Type: application/json; charset=UTF-8' \
                 -H 'Accept: application/json; version=2' \
                 -H 'Cache-Control: no-cache' \
                 -H "Authorization: token $TRAVIS_TOKEN" \
-                -H 'Connection: keep-alive' \
-                -H 'Referer: https://travis-ci.org/joepvd/travis-experiment/settings' \
                 --data-binary '{"env_var":{"name":"test","value":"test","public":false,"repository_id":"9293083"}}'
         }
         delete_if_present() {
@@ -79,10 +70,10 @@ install:
         }
 script:
     - autocancel_state
-    - sleep 1; set_autocancel_push
-    - sleep 1; autocancel_state
-    - delete_if_present
-    - sleep 1; set_variable
-    - sleep 1; autocancel_state
+    - sleep 3; set_autocancel_push
+    - sleep 3; autocancel_state
+    - sleep 3; delete_if_present
+    - sleep 3; set_variable
+    - sleep 3; autocancel_state
 notifications:
     email: false
