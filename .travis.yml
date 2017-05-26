@@ -45,11 +45,7 @@ install:
                 --data-binary '{"env_var":{"name":"test","value":"test","public":false,"repository_id":"9293083"}}'
         }
         delete_if_present() {
-            env_url=$(
-              curl https://api.travis-ci.org/settings/env_vars?repository_id=9293083 \
-                -H "Authorization: token $TRAVIS_TOKEN" \
-                | jq '.env_vars[] | select(.name=="test") | "https://api.travis-ci.org/settings/env_vars/" + .id + "?repository_id=9293083"'
-            )
+            env_url=$( curl https://api.travis-ci.org/settings/env_vars?repository_id=9293083 -H "Authorization: token $TRAVIS_TOKEN" | jq '.env_vars[] | select(.name=="test") | "https://api.travis-ci.org/settings/env_vars/" + .id + "?repository_id=9293083"')
             if [ -n "$env_url" ]; then
             curl $(echo $env_url) \
                 -X DELETE \
