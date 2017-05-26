@@ -1,14 +1,11 @@
 dist: trusty
-sudo: false
-language: generic
+sudo: required
+language: ruby
 install: true
-script: true
+script:
+    - sudo service mysql start; echo $?
+    - sudo service mysql start; echo $?
+    - sudo service mysql start; echo $?
+    - sudo service doesnotexist start; echo $?
 notifications:
     email: false
-    irc:
-        channels:
-            - chat.freenode.net#botwar
-        template:
-            - "Beep. Test. Who am I?"
-        on_success: always
-        on_failure: always
