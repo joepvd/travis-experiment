@@ -20,8 +20,12 @@ matrix:
       #    - os: osx
       #      osx_image: xcode6.4
       #      env: RELEASE=yosemite
+env:
+  global:
+      - composer="$(composer --version)"
 language: php
 script:
 - composer --version
+- echo $composer
 notifications:
     email: false
