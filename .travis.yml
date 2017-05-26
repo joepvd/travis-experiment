@@ -1,11 +1,10 @@
 dist: trusty
 sudo: false
 language: ruby
-addons:
-    apt:
-        packages:
-            - elasticsearch
 install:
+- curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.0.zip
+- unzip elasticsearch-5.4.0.zip
+- elasticsearch-5.4.0/bin/elasticsearch &
 - sleep 3
 script:
 - curl localhost:9200 
