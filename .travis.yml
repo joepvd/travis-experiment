@@ -34,8 +34,9 @@ install:
                 --data-binary '{"setting.value":true}'
         }
         set_variable() {
-                curl 'https://api.travis-ci.org/settings/env_vars?repository_id=9293083' \
-                -X PATCH -H 'Pragma: no-cache' \
+                curl 'https://api.travis-ci.org/repo/9293083/env_vars \
+                -X POST \
+                -H 'Pragma: no-cache' \
                 -H 'Origin: https://travis-ci.org' \
                 -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
                 -H 'Travis-API-Version: 3' \
