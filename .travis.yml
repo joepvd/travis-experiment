@@ -4,7 +4,6 @@ language: generic
 install:
     - |
         autocancel_state() {
-            setting="$(
                 curl 'https://api.travis-ci.org/repo/9293083/setting/auto_cancel_pushes' \
                 -H 'Pragma: no-cache' \
                 -H 'Origin: https://travis-ci.org' \
@@ -16,8 +15,6 @@ install:
                 -H 'Cache-Control: no-cache' \
                 -H "Authorization: token $TRAVIS_TOKEN" \
                 | jq '[.name, .value|tostring ] | join(": ")'
-            )"
-            echo $setting
         }
         set_autocancel_push() {
             curl 'https://api.travis-ci.org/repo/9293083/setting/auto_cancel_pushes' \
