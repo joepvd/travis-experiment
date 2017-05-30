@@ -3,9 +3,9 @@ dist: trusty
 language: generic
 install: true
 script: true
-after_success:
+before_deploy:
     - pushd $TRAVIS_BUILD_DIR
-    - git pull $TRAVIS_BRANCH
+    - git pull
     - grep $TRAVIS_COMMIT .git/refs/heads/$TRAVIS_BRANCH
     - false
     - popd
