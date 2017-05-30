@@ -1,73 +1,16 @@
 sudo: false
 dist: trusty
 language: generic
-install:
-    - |
-        autocancel_state() {
-                curl 'https://api.travis-ci.org/repo/9293083/setting/auto_cancel_pushes' \
-                -H 'Pragma: no-cache' \
-                -H 'Origin: https://travis-ci.org' \
-                -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
-                -H 'Travis-API-Version: 3' \
-                -H 'User-Agent: Travis-Stuffs' \
-                -H 'Content-Type: application/json; charset=UTF-8' \
-                -H 'Accept: application/json; version=2' \
-                -H 'Cache-Control: no-cache' \
-                -H "Authorization: token $TRAVIS_TOKEN" \
-                | jq '[.name, .value|tostring ] | join(": ")'
-        }
-        set_autocancel_push() {
-            curl 'https://api.travis-ci.org/repo/9293083/setting/auto_cancel_pushes' \
-                -X PATCH -H 'Pragma: no-cache' \
-                -H 'Origin: https://travis-ci.org' \
-                -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
-                -H 'Travis-API-Version: 3' \
-                -H 'User-Agent: Travis-Stuffs' \
-                -H 'Content-Type: application/json; charset=UTF-8' \
-                -H 'Accept: application/json; version=2' \
-                -H 'Cache-Control: no-cache' \
-                -H "Authorization: token $TRAVIS_TOKEN" \
-                -H 'Connection: keep-alive' \
-                --data-binary '{"setting.value":true}'
-        }
-        set_variable() {
-                curl 'https://api.travis-ci.org/repo/9293083/env_vars \
-                -X POST \
-                -H 'Pragma: no-cache' \
-                -H 'Origin: https://travis-ci.org' \
-                -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
-                -H 'Travis-API-Version: 3' \
-                -H 'User-Agent: Travis-Stuffs' \
-                -H 'Content-Type: application/json; charset=UTF-8' \
-                -H 'Accept: application/json; version=2' \
-                -H 'Cache-Control: no-cache' \
-                -H "Authorization: token $TRAVIS_TOKEN" \
-                --data-binary '{"env_var":{"name":"test","value":"test","public":false,"repository_id":"9293083"}}'
-        }
-        delete_if_present() {
-            env_url=$( curl https://api.travis-ci.org/settings/env_vars?repository_id=9293083 -H "Authorization: token $TRAVIS_TOKEN" | jq '.env_vars[] | select(.name=="test") | "https://api.travis-ci.org/settings/env_vars/" + .id + "?repository_id=9293083"')
-            if [ -n "$env_url" ]; then
-            curl $(echo $env_url) \
-                -X DELETE \
-                -H 'Pragma: no-cache' \
-                -H 'Origin: https://travis-ci.org' \
-                -H 'Accept-Language: en-US,en;q=0.8,de;q=0.6,nl;q=0.4' \
-                -H 'Travis-API-Version: 3' \
-                -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' \
-                -H 'Content-Type: application/json; charset=UTF-8' \
-                -H 'Accept: application/json; version=2' \
-                -H 'Cache-Control: no-cache' \
-                -H "Authorization: token $TRAVIS_TOKEN" \
-                -H 'Connection: keep-alive' \
-                -H 'Referer: https://travis-ci.org/joepvd/travis-experiment/settings'
-            fi
-        }
-script:
-    - autocancel_state
-    - sleep 3; set_autocancel_push
-    - sleep 3; autocancel_state
-    - sleep 3; delete_if_present
-    - sleep 3; set_variable
-    - sleep 3; autocancel_state
+install: true
+script: true
+after_success:
+    - pushd $TRAVIS_BUILD_DIR
+    - git pull $TRAVIS_BRANCH
+    - grep $TRAVIS_COMMIT .git/refs/heads/$TRAVIS_BRANCH
+    - false
+    - popd
+deploy:
+    provider: script
+    script: echo deployed!
 notifications:
     email: false
