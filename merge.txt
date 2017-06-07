@@ -1,1 +1,10 @@
 Text from merge.txt
+
+There is progress in mergebranch!
+Disabled "Allow merge commits"
+
+Enabled "Allow merge commits", disabled Allow squash merging.
+
+Squashed allowed again. No rebases.
+
+Protected mergebranch
