@@ -1,3 +1,4 @@
 Text from merge.txt
 
 There is progress in mergebranch!
+Disabled "Allow merge commits"
