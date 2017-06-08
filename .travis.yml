@@ -4,7 +4,11 @@ group: edge
 dist: trusty
 services:
     - mysql
-install: true
-script: while ! mysql -BNe "show global variables"; do echo $(( i = i+1)); sleep 1; done
+install:
+    - sleep 10
+    - sudo lsof -p $(pgrep mysqld) | grep unix
+script:
+    - mysql -BNe "show global variables"
+    - mysql -BN -h 127.0.0.1 -u root -e "show global variables"
 notifications:
     email: false
