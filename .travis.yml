@@ -5,6 +5,6 @@ dist: trusty
 services:
     - mysql
 install: true
-script: mysql -BNe "show global variables"
+script: while ! mysql -BNe "show global variables"; do echo $(( i = i+1)); sleep 1; done
 notifications:
     email: false
