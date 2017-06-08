@@ -1,5 +1,8 @@
 language: node_js
 os: osx
+cache:
+    directories:
+        - ~/tmp
 matrix:
     include:
     - env: OSX_IMAGE=xcode6.4
