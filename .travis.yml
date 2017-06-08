@@ -1,79 +1,10 @@
 language: generic
-jobs:
-    include:
-        - stage: collect_the_evidence
-          env: filter=true image=sudo-trusty
-          sudo: required
-          dist: trusty
-        - env: filter=false image=sudo-trusty
-          sudo: required
-          dist: trusty
-          filter_secrets: false
-        - env: filter=true image=container-trusty
-          sudo: false
-          dist: trusty
-        - env: filter=false image=container-trusty
-          sudo: false
-          dist: trusty
-          filter_secrets: false
-        - env: filter=true image=xcode6.4
-          os: osx
-          osx_image: xcode6.4
-        - env: filter=true image=xcode8.4
-          os: osx
-          osx_image: xcode8.4
-        - env: filter=false image=xcode6.4
-          os: osx
-          osx_image: xcode6.4
-          filter_secrets: false
-        - env: filter=false image=xcode8.4
-          os: osx
-          osx_image: xcode8.4
-          filter_secrets: false
-        - stage: report
-          script:
-              - |
-                  for job in $(
-                    curl --silent \
-                        -H "Travis-API-Version: 3" \
-                        -H "User-Agent: API Explorer" \
-                        https://api.travis-ci.org/build/$TRAVIS_BUILD_ID \
-                    | jq '.jobs[].id')
-                  do
-                    [[ $job = $TRAVIS_JOB_ID ]] && continue
-                    curl -L https://api.travis-ci.org/jobs/$job/log.txt >$job.log
-                  done
-              - |
-                  f() {
-                      grep -E '^(stty:|stty --save|shopt:|$-:)' $1 | sed $'s/\r//g'
-                  }
-              - |
-                  compare() {
-                      j1=${jobs[$1]}
-                      j2=${jobs[$2]}
-                      echo $j1 $j2
-                      diff --side-by-side --suppress-common-lines <(f $j1) <(f $j2)
-                  }
-              - jobs=( [0-9]*.log )
-              - |
-                  for i in `seq 1 ${#jobs[@]}`; do
-                    for j in `seq 1 ${#jobs[@]}`; do
-                      (( i < j )) && compare $((i-1)) $((j-1))
-                    done
-                  done
+sudo: false
+group: edge
+dist: trusty
+services:
+    - mysql
 install: true
-script:
-    - |
-        stty --all \
-        |   awk '
-            BEGIN{ RS=";[ \n]?";FS=" (= )?" }
-            NF<4{print "stty:"$0; next}
-            {for(i=1;i<=NF;i++)print "stty:"$i}' \
-        |   sort
-    - echo stty --save $(stty --save)
-    - printf "shopt:%s %s\n" $(shopt | sort)
-    - shopt
-    - echo $- | awk -F '' '{for(i=1;i<=NF;i++)print "$-:"$i}' | sort
-    - echo $-
+script: mysql -BNe "show global variables"
 notifications:
     email: false
