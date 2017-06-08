@@ -1,12 +1,19 @@
 language: node_js
 os: osx
-osx_image:
-    - xcode6.4
-    - xcode7.3
-    - xcode8
-    - xcode8.1
-    - xcode8.2
-    - xcode8.3
+matrix:
+    include:
+    - env: OSX_IMAGE=xcode6.4
+      osx_image: xcode6.4
+    - env: OSX_IMAGE=xcode7.3
+      osx_image: xcode7.3
+    - env: OSX_IMAGE=xcode8
+      osx_image: xcode8
+    - env: OSX_IMAGE=xcode8.1
+      osx_image: xcode8.1
+    - env: OSX_IMAGE=xcode8.2
+      osx_image: xcode8.2
+    - env: OSX_IMAGE=xcode8.3
+      osx_image: xcode8.3
 install: type travis_internal_ruby
 script: bash --version
 after_script: travis_internal_ruby
