@@ -4,7 +4,9 @@ dist: trusty
 install:
     - sleep 10
 script:
-    - ls -lR /var/ramfs
-    - ls -lR /var/lib/postgr*
+    - ls -lR /var/ramfs || true
+    - ls -lR /var/lib/postgr* || true
+    - cat /etc/passwd
+    - cat /etc/group
 notifications:
     email: false
