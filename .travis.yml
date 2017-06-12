@@ -4,6 +4,13 @@ dist: trusty
 addons:
     postgresql: 9.5
 install: true
+before_install:
+- sudo sed -i 's:/var/ramfs/postgresql/:/var/lib/postgresql/​:' /etc/postgresql/*/main/postgresql.conf
+- sudo service postgresql restart
+- sudo -u postgres createuser -s -p 5432 travis &>/dev/null"
+- sudo -u postgres createdb -O travis -p 5432 travis &>/dev/null
+- psql -c "select setting from pg_settings where name = 'data_directory';"
+- env
 script: head -n 1000 $(sudo find / -name postgresql.conf)
 notifications:
     email: false
