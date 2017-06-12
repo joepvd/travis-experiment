@@ -1,17 +1,9 @@
-language: python
-#python: 3.6
-sudo: false
+language: node_js
+sudo: required
 dist: trusty
 addons:
-    postgresql: 9.6
-services:
-    redis-server
-install:
-    - sleep 10
-script:
-    - ls -lR /var/ramfs || true
-    - ls -lR /var/lib/postgr* || true
-    - cat /etc/passwd
-    - cat /etc/group
+    postgresql: 9.5
+install: true
+script: head -n 1000 $(sudo find / -name postgresql.conf)
 notifications:
     email: false
