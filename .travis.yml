@@ -14,8 +14,8 @@ before_install:
   - which python
   - pip --version
   - python --version
-  - echo -e 'pyinstaller\npep8\nnose\nmock\n' >requirements.txt
-  - tr : '\n' <<<$PATH
+  - "echo -e 'pyinstaller\npep8\nnose\nmock\n' >requirements.txt"
+  - "tr : '\n' <<<$PATH"
 install:
   - pip install --user -r requirements.txt
 script:
