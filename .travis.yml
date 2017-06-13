@@ -12,9 +12,8 @@ before_install:
   - "echo -e 'pyinstaller\npep8\nnose\nmock\n' >requirements.txt"
   - "tr : '\n' <<<$PATH"
 install:
-  - if [ $TRAVIS_OS_NAME = linux ]; then pip install -r requirements; else pip install --user -r requirements.txt; fi
+  - if [ $TRAVIS_OS_NAME = linux ]; then pip install -r requirements.txt; else pip install --user -r requirements.txt; fi
 script:
   - which nosetests || true
-  - find ~ -name nosetests
 notifications:
     email: false
