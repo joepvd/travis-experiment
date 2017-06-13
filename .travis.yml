@@ -8,7 +8,7 @@ before_install:
 - sudo service postgresql stop
 - sudo sed -i 's:ramfs:lib:' /etc/postgresql/*/main/postgresql.conf
 - sudo service postgresql start 9.5
-- sudo -u postgres createuser -s -p 5432 travis &>/dev/null"
+- sudo -u postgres createuser -s -p 5432 travis &>/dev/null
 - sudo -u postgres createdb -O travis -p 5432 travis &>/dev/null
 - psql -c "select setting from pg_settings where name = 'data_directory';"
 - env
