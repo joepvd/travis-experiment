@@ -8,18 +8,13 @@ matrix:
       language: objective-c
       osx_image: xcode8.3
 before_install:
-  - which pip
-  - pip install -U pip
-  - which pip
-  - which python
-  - pip --version
-  - python --version
+  - if [ $TRAVIS_OS_NAME = osx ]; then export PATH="/Users/travis/Library/Python/2.7/bin:$PATH"; fi
   - "echo -e 'pyinstaller\npep8\nnose\nmock\n' >requirements.txt"
   - "tr : '\n' <<<$PATH"
 install:
-  - pip install --user -r requirements.txt
+  - if [ $TRAVIS_OS = linux ]; then pip install -r requirements; else pip install --user -r requirements.txt; fi
 script:
-  - which nosetests
+  - which nosetests || true
   - find ~ -name nosetests
 notifications:
     email: false
