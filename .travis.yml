@@ -1,17 +1,25 @@
-language: node_js
-sudo: required
-dist: trusty
-addons:
-    postgresql: 9.5
-install: true
+language: python
+matrix:
+  include:
+    - os: linux
+      python: 2.7
+      sudo: true
+    - os: osx
+      language: objective-c
+      osx_image: xcode8.3
 before_install:
-- sudo service postgresql stop
-- sudo sed -i 's:ramfs:lib:' /etc/postgresql/*/main/postgresql.conf
-- sudo service postgresql start 9.5 && sleep 1
-- sudo -u postgres createuser -s -p 5432 travis &>/dev/null || true
-- sudo -u postgres createdb -O travis -p 5432 travis &>/dev/null || true
-- psql -c "select setting from pg_settings where name = 'data_directory';"
-- env
-script: head -n 1000 $(sudo find / -name postgresql.conf)
+  - which pip
+  - pip install -U pip
+  - which pip
+  - which python
+  - pip --version
+  - python --version
+  - echo -e 'pyinstaller\npep8\nnose\nmock\n' >requirements.txt
+  - tr : '\n' <<<$PATH
+install:
+  - pip install --user -r requirements.txt
+script:
+  - which nosetests
+  - find ~ -name nosetests
 notifications:
     email: false
