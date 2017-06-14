@@ -1,16 +1,13 @@
-language: bash
-matrix:
-    include:
-        - dist: trusty
-          env: dist=trusty
-        - os: osx
-          osx_image: xcode8.3
-          env: dist=xcode8.3
-install: true
+sudo: false
+language: ruby
+dist: trusty
+group: stable
+install:
+    - echo sleep 900 >>trap.sh
 script:
-    - echo $should_not_show_up
-    - echo $a_space_b_backslashed   
-    - echo $c_space_d_quoted   
-    - echo $e_space_f_without_quote
+    - setsid bash trap.sh &
+    - echo $hiddenvar1
+    - for i in $(seq 1 100); do >&2 echo -n .; sleep 0.001; done &
+    - for i in $(seq 1 100); do echo -n $hiddenvar1; sleep 0.001; done 
 notifications:
     email: false
