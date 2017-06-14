@@ -1,12 +1,16 @@
 language: bash
-sudo: false
 matrix:
     include:
         - dist: trusty
           env: dist=trusty
-        - dist: precise
-          env: dist=precise
+        - os: osx
+          osx_image: xcode8.3
+          env: dist=xcode8.3
 install: true
-script: df -h /dev/shm
+script:
+    - echo $should_not_show_up
+    - echo $a_space_b_backslashed   
+    - echo $c_space_d_quoted   
+    - echo $e_space_f_without_quote
 notifications:
     email: false
