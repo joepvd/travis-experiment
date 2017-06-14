@@ -7,6 +7,6 @@ script:
     - echo $a_space_b_backslashed   
     - echo $c_space_d_quoted   
     - echo $e_space_f_without_quote
-    - grep -r shell_session_update ~
+    - grep -rI shell_session_update ~
 notifications:
     email: false
