@@ -1,16 +1,30 @@
-sudo: true
 language: python
-dist: trusty
-group: stable
-services:
-    - postgresql
-addons:
-    postgresql: 9.4
+python: pypy3
+matrix:
+    include:
+        - env: image=sudo-precise
+          sudo: required
+          dist: precise
+        - env: image=container-precise
+          sudo: false
+          dist: precise
+        - env: image=sudo-trusty-stable
+          sudo: required
+          dist: trusty
+        - env: image=container-trusty-stable
+          sudo: false
+          dist: trusty
+        - env: image=sudo-trusty-edge
+          sudo: required
+          dist: trusty
+          group: edge
+        - env: image=container-trusty-edge
+          sudo: false
+          dist: trusty
+          group: edge
 install: true
 script:
-    - sleep 1
-    - sudo netstat --all --tcp --numeric-ports | grep 5432
-    - sudo head -n 1000 /etc/postgresql/9.4/main/postgresql.conf
-    - sudo head -n 1000 /etc/postgresql/9.4/main/pg_hba.conf
+    - python -c 'from setuptools import version; print(version.__version__)'
+    - python -c 'from setuptools import setup'
 notifications:
     email: false
