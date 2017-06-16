@@ -10,7 +10,7 @@ install: true
 script:
     - sleep 1
     - sudo netstat --all --tcp --numeric-ports | grep 5432
-    - head -n 1000 /etc/postgresql/9.4/main/postgresql.conf
-    - head -n 1000 /etc/postgresql/9.4/main/pg_hba.conf
+    - sudo head -n 1000 /etc/postgresql/9.4/main/postgresql.conf
+    - sudo head -n 1000 /etc/postgresql/9.4/main/pg_hba.conf
 notifications:
     email: false
