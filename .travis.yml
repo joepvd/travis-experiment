@@ -19,7 +19,7 @@ script:
 after_script:
     - cat /tmp/memtotal
     - cat /tmp/mem.data
-    - echo -e 'set term dumb\nplot mem.data\n' >/tmp/plot
+    - echo -e 'set term dumb\nplot "mem.data"\n' >/tmp/plot
     - gnuplot /tmp/plot
 notifications:
     email: false
