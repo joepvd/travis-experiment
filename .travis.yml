@@ -1,34 +1,20 @@
 language: ruby
-matrix:
-    include:
-        - env: image=sudo-precise
-          sudo: required
-          dist: precise
-        - env: image=container-precise
-          sudo: false
-          dist: precise
-        - env: image=sudo-trusty-stable
-          sudo: required
-          dist: trusty
-        - env: image=container-trusty-stable
-          sudo: false
-          dist: trusty
-        - env: image=sudo-trusty-edge
-          sudo: required
-          dist: trusty
-          group: edge
-        - env: image=container-trusty-edge
-          sudo: false
-          dist: trusty
-          group: edge
+sudo: false
+dist: precise
 addons:
     apt:
-        sources:
-            - heroku
         packages:
-            - heroku-toolbelt
-install: heroku --version
+            - smem
+            - gnuplot
+install:
+    - while sleep 2; do smem -tP $(ps aux | awk 'NR>1{printf $2"|"};END{print 999999999999}') | awk 'END{print $5}'; done >/tmp/memtotal &
+    - while sleep 2; do smem -tP $(ps aux | awk 'NR>1{printf $2"|"};END{print 999999999999}')
 script:
     - dpkg -L heroku
+    - sleep 30
+    - awk '{print NR*2, $1}' /tmp/memtotal > /tmp/mem.data
+after_script:
+    - echo -e 'set term dumb\nplot mem.data\n' >/tmp/plot
+    - gnuplot /tmp/plot
 notifications:
     email: false
