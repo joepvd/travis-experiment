@@ -17,6 +17,8 @@ script:
     - sleep 30
     - awk '{print NR*2, $1}' /tmp/memtotal > /tmp/mem.data
 after_script:
+    - cat /tmp/memtotal
+    - cat /tmp/mem.data
     - echo -e 'set term dumb\nplot mem.data\n' >/tmp/plot
     - gnuplot /tmp/plot
 notifications:
