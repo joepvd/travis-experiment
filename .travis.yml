@@ -7,8 +7,11 @@ addons:
             - smem
             - gnuplot
 install:
-    - "while sleep 2; do smem -tP $(ps aux | awk 'NR>1{printf $2\"|\"};END{print 999999999999}') | awk 'END{print $5}'; done >/tmp/memtotal &"
-    - "while sleep 2; do smem -tP $(ps aux | awk 'NR>1{printf $2\"|\"};END{print 999999999999}')"
+    - |
+        while sleep 2; do
+            pids="$(ps aux | awk 'NR>1{printf $2\"|\"};END{print 999999999999}')"
+            smem -tP "$pids" | awk 'END{print $5}' >>/tmp/memtotal
+        done &
 script:
     - dpkg -L heroku
     - sleep 30
