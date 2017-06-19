@@ -1,5 +1,4 @@
-language: python
-python: "pypy3.5-5.8.0"
+language: ruby
 matrix:
     include:
         - env: image=sudo-precise
@@ -22,8 +21,14 @@ matrix:
           sudo: false
           dist: trusty
           group: edge
-install: true
+addons:
+    apt:
+        sources:
+            - heroku
+        packages:
+            - heroku-toolbelt
+install: heroku --version
 script:
-    - ls -l ~/virtualenv
+    - dpkg -L heroku
 notifications:
     email: false
