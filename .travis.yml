@@ -4,7 +4,7 @@ dist: trusty
 services:
     - redis-server
 install:
-    - initctl list
+    - initctl list || true
     - service --status-all
     - cat /etc/init.d/redis-server
 script: redis INFO
