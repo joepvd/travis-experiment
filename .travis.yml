@@ -1,11 +1,12 @@
 language: ruby
-sudo: required
+sudo: false
 dist: trusty
 services:
     - redis-server
 install:
-    - initctl --list
+    - initctl list
     - service --status-all
+    - cat /etc/init.d/redis-server
 script: redis INFO
 notifications:
     email: false
