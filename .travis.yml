@@ -9,6 +9,7 @@ services:
     - dbus
     - redis-server
 install:
+    - echo $ULIMIT
     - initctl list || true
     - service --status-all
     - cat /etc/init.d/redis-server
