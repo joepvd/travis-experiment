@@ -1,6 +1,9 @@
 language: ruby
 sudo: false
 dist: trusty
+env:
+    global:
+        - ULIMIT=
 services:
     - dbus
     - redis-server
