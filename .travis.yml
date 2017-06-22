@@ -2,11 +2,12 @@ language: ruby
 sudo: required
 dist: trusty
 services:
+    - dbus
     - redis-server
 install:
     - initctl list || true
     - service --status-all
     - cat /etc/init.d/redis-server
-script: redis INFO
+script: redis-cli INFO
 notifications:
     email: false
