@@ -1,4 +1,5 @@
-language: minimal
+language: ruby
+rvm: 2.3.1
 dist: trusty
 matrix:
     include:
@@ -7,11 +8,8 @@ matrix:
         - env: stack=trusty-sudo-deprecated
           sudo: required
           group: deprecated-2017Q2
-services:
-    - docker
 install: true
 script:
-    - df -h
-    - mount
+    - ruby --version
 notifications:
     email: false
