@@ -1,7 +1,7 @@
 language: ruby
 sudo: required
 dist: trusty
-group: edge
+group: stable
 env:
     global:
         - ULIMIT=
