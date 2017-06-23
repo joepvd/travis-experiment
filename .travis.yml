@@ -1,7 +1,7 @@
 language: ruby
 sudo: required
 dist: trusty
-group: stable
+group: edge
 env:
     global:
         - ULIMIT=
@@ -13,6 +13,12 @@ install:
     - initctl list || true
     - service --status-all
     - cat /etc/init.d/redis-server
-script: redis-cli INFO
+script:
+    - redis-cli INFO
+    - cat ~/build.sh
+    - cat ~/build.sh
+    - cat ~/build.sh
+    - cat ~/build.sh
+    - cat ~/build.sh
 notifications:
     email: false
