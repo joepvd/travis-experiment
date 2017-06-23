@@ -5,10 +5,11 @@ install:
     - "ps aux | grep elastic || true"
     - version=2.4.3
     - wget http://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/$version/elasticsearch-${version}.tar.gz
-    - tar -xvf elastic-${version}.tar.gz
-    - export PATH="$(pwd)/elastic-$version/bin:$PATH"
+    - tar -xvf elasticsearch-${version}.tar.gz
+    - export PATH="$(pwd)/elasticsearch-$version/bin:$PATH"
     - elasticsearch
 script:
+    - sleep 3
     - curl http://localhost:9200/
     - "ps aux | grep elastic || true"
 notifications:
