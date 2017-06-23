@@ -9,8 +9,7 @@ install:
     - export PATH="$(pwd)/elasticsearch-$version/bin:$PATH"
     - elasticsearch &
 script:
-    - sleep 3
-    - curl http://localhost:9200/
+    - while ! curl http://localhost:9200/; do sleep 1; done
     - "ps aux | grep elastic || true"
 notifications:
     email: false
