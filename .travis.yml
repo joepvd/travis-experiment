@@ -8,6 +8,7 @@ env:
 services:
     - dbus
     - redis-server
+before_install: false
 install:
     - echo $ULIMIT
     - initctl list || true
