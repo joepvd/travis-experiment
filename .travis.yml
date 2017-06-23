@@ -1,15 +1,19 @@
 language: ruby
-sudo: false
 dist: trusty
-install:
-    - "ps aux | grep elastic || true"
-    - version=2.4.3
-    - wget http://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/$version/elasticsearch-${version}.tar.gz
-    - tar -xvf elasticsearch-${version}.tar.gz
-    - export PATH="$(pwd)/elasticsearch-$version/bin:$PATH"
-    - elasticsearch &
+matrix:
+    include:
+        - env: stack=trusty-stable-container
+          sudo: false
+        - env: stack=trusty-sudo-stable
+          sudo: required
+        - env: stack=trusty-sudo-deprecated
+          sudo: required
+          group: deprecated-2017Q2
+          
+
+install: true
 script:
-    - while ! curl http://localhost:9200/; do sleep 1; done
-    - "ps aux | grep elastic || true"
+    - df -h
+    - mount
 notifications:
     email: false
