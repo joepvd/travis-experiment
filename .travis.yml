@@ -9,7 +9,12 @@ services:
     - dbus
     - redis-server
 before_install:
-    - "false"
+    - |
+        echo before false
+        false
+        echo after false
+    - echo after after false
+
 install:
     - echo $ULIMIT
     - initctl list || true
