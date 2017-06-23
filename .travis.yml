@@ -1,16 +1,14 @@
-language: ruby
+language: minimal
 dist: trusty
 matrix:
     include:
-        - env: stack=trusty-stable-container
-          sudo: false
         - env: stack=trusty-sudo-stable
           sudo: required
         - env: stack=trusty-sudo-deprecated
           sudo: required
           group: deprecated-2017Q2
-          
-
+services:
+    - docker
 install: true
 script:
     - df -h
