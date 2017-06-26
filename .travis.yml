@@ -1,6 +1,7 @@
 language: python
 python: 2.7
-rvm: 2.2
+rvm:
+  - 2.2
 matrix:
   include:
   - env: stack=precise-container-filter
@@ -8,12 +9,6 @@ matrix:
     dist: precise
   - env: stack=precise-sudo-filter
     dist: precise
-    sudo: required
-  - env: stack=trusty-container-filter
-    sudo: false
-    dist: trusty
-  - env: stack=trusty-sudo-filter
-    dist: trusty
     sudo: required
 env:
     global:
@@ -34,6 +29,6 @@ install:
     - curl --version
     - nvm install 4
 script:
-    - awk 'BEGIN{while (c++ < 5000)print "aaaaaaaaaaaaaaaaaaaaaaaaaaa abbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbb"}'
+    - true
 notifications:
     email: false
