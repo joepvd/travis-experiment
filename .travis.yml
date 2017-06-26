@@ -1,8 +1,22 @@
-language: ruby
-rvm: 2.3.1
-dist: precise
+language: python
+matrix:
+  include:
+  - env: stack=precise-container-filter
+    sudo: false
+    dist: precise
+  - env: stack=precise-sudo-filter
+    dist: precise
+    sudo: required
+  - env: stack=trusty-container-filter
+    sudo: false
+    dist: trusty
+  - env: stack=trusty-sudo-filter
+    dist: trusty
+    sudo: required
 install:
     - ps -ejf --forest
+    - curl --version
+    - nvm install 4
 script:
     - awk 'BEGIN{while (c++ < 5000)print "aaaaaaaaaaaaaaaaaaaaaaaaaaa abbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbb"}'
 notifications:
