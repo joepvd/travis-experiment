@@ -1,15 +1,9 @@
 language: ruby
 rvm: 2.3.1
-dist: trusty
-matrix:
-    include:
-        - env: stack=trusty-sudo-stable
-          sudo: required
-        - env: stack=trusty-sudo-deprecated
-          sudo: required
-          group: deprecated-2017Q2
-install: true
+dist: precise
+install:
+    - ps -ejf --forest
 script:
-    - ruby --version
+    - awk 'BEGIN{while (c++ < 5000)print "aaaaaaaaaaaaaaaaaaaaaaaaaaa abbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbb"}'
 notifications:
     email: false
