@@ -5,7 +5,7 @@ virtualenv:
 sudo: required
 dist: trusty
 install:
-    - 'for p in $(tr ':' ' ' <<<$PATH); do [ -x $p/python ] && {echo $p; $p/python --version; }; done'
+    - "for p in $(tr ':' ' ' <<<$PATH); do [ -x $p/python ] && {echo $p; $p/python --version; }; done"
 script:
     - which python
     - python --version
