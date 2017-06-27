@@ -14,6 +14,8 @@ install:
             fi
         done
 script:
+    - echo $PYTHONPATH
+    - echo $PYTHONHOME
     - cat ~/virtualenv/python2.7_with_system_site_packages/bin/activate
     - which python
     - python --version
