@@ -1,8 +1,10 @@
 language: python
-sudo: required
+sudo: false
 dist: trusty
+install: true
+script:
+    ps -ejf --forest
 services:
     docker
-group: deprecated-2017Q2
 notifications:
     email: false
