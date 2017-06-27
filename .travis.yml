@@ -21,6 +21,5 @@ script:
     - sudo apt-get install opencv
     - dpkg -L opencv
     - dpkg -l python
-script: docker --version
 notifications:
     email: false
