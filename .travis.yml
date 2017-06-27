@@ -21,5 +21,7 @@ script:
     - sudo apt-get install -y python-dev libopencv-core-dev python-opencv
     - dpkg -L python-opencv
     - dpkg -l python
+    - python -c 'import cv' || true
+    - PYTHONPATH=/usr/lib/python2.7/dist-packages python -c 'import cv'
 notifications:
     email: false
