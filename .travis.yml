@@ -1,13 +1,19 @@
 language: python
+python: 2.7
+virtualenv:
+    system_site_packages: true
 sudo: required
-services:
-    - docker
 dist: trusty
-before_install:
-- sudo apt-get purge docker-ce
-- curl -sSL http://apt.dockerproject.org/repo/pool/main/d/docker-engine/docker-engine_1.12.6-0~ubuntu-trusty_amd64.deb >/tmp/docker-engine_1.12.6-0~ubuntu-trusty_amd64.deb
-- sudo dpkg -i /tmp/docker-engine_1.12.6-0~ubuntu-trusty_amd64.deb
-install: true
+install:
+    - 'for p in $(tr ':' ' ' <<<$PATH); do [ -x $p/python ] && {echo $p; $p/python --version; }; done'
+script:
+    - which python
+    - python --version
+    - echo $PYTHONPATH
+    - python -c 'import sys; print(sys.path)'
+    - sudo apt-get install opencv
+    - dpkg -L opencv
+    - dpkg -l python
 script: docker --version
 notifications:
     email: false
