@@ -1,7 +1,13 @@
 language: python
-sudo: false
+sudo: required
+services:
+    - docker
 dist: trusty
+before_install:
+- sudo apt-get purge docker-ce
+- curl -sSL http://apt.dockerproject.org/repo/pool/main/d/docker-engine/docker-engine_1.12.6-0~ubuntu-trusty_amd64.deb >/tmp/docker-engine_1.12.6-0~ubuntu-trusty_amd64.deb
+- sudo dpkg -i /tmp/docker-engine_1.12.6-0~ubuntu-trusty_amd64.deb
 install: true
-script: COLUMNS=1000 ps -ejf --forest
+script: docker --version
 notifications:
     email: false
