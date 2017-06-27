@@ -1,31 +1,18 @@
-language: php
-sudo: required
+sudo: false
 dist: trusty
-install:
+language: ruby
+rvm: 2.3.3
+cache:
+    bundler
+install: which bundler || true
+script:
     - |
-        for p in $(tr : ' ' <<<$PATH); do 
-            if [ -x $p/python ]; then
-                echo =================================================
-                echo $p
-                $p/python --version
+        for p in $(tr : ' ' <<<$PATH); do
+            if [ -x $p/bundle ]; then
+                echo =================
+                echo $p/bundle
+                $p/bundle --version
             fi
         done
-script:
-    - which python
-    - echo $PYTHONPATH
-    - echo $PYTHONHOME
-    - cat ~/virtualenv/python2.7_with_system_site_packages/bin/activate
-    - which python
-    - python --version
-    - echo $PYTHONPATH
-    - python -c 'import sys; print(sys.path)'
-    - sudo apt-get install -y python-dev libopencv-core-dev python-opencv
-    - dpkg -L python-opencv
-    - dpkg -l python
-    - python -c 'import cv' || true
-    - PYTHONPATH=/usr/lib/python2.7/dist-packages python -c 'import cv'
-    - deactivate nondestructive || true
-    - which python
-    - python -c 'import cv' || true
 notifications:
     email: false
