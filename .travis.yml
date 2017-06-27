@@ -27,6 +27,7 @@ script:
     - python -c 'import cv' || true
     - PYTHONPATH=/usr/lib/python2.7/dist-packages python -c 'import cv'
     - deactivate nondestructive
+    - which python
     - python -c 'import cv' || true
 notifications:
     email: false
