@@ -1,7 +1,4 @@
-language: python
-python: 2.7
-virtualenv:
-    system_site_packages: true
+language: php
 sudo: required
 dist: trusty
 install:
@@ -14,6 +11,7 @@ install:
             fi
         done
 script:
+    - which python
     - echo $PYTHONPATH
     - echo $PYTHONHOME
     - cat ~/virtualenv/python2.7_with_system_site_packages/bin/activate
@@ -26,7 +24,7 @@ script:
     - dpkg -l python
     - python -c 'import cv' || true
     - PYTHONPATH=/usr/lib/python2.7/dist-packages python -c 'import cv'
-    - deactivate nondestructive
+    - deactivate nondestructive || true
     - which python
     - python -c 'import cv' || true
 notifications:
