@@ -1,39 +1,8 @@
 language: python
-python: 2.7
-rvm: 2.2
-matrix:
-  include:
-  - env: stack=precise-container-filter
-    sudo: false
-    dist: precise
-  - env: stack=precise-sudo-filter
-    dist: precise
-    sudo: required
-  - env: stack=trusty-container-filter
-    sudo: false
-    dist: trusty
-  - env: stack=trusty-sudo-filter
-    dist: trusty
-    sudo: required
-env:
-    global:
-        - NODE_ENV=production
-        - PIP_DISABLE_PIP_VERSION_CHECK=on
-        - SENTRY_LIGHT_BUILD=1
-        - SENTRY_SKIP_BACKEND_VALIDATION=1
-        - TRAVIS_NODE_VERSION=4
-        - CXX=g++-4.8
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
-install:
-    - ps -ejf --forest
-    - curl --version
-    - nvm install 4
-script:
-    - awk 'BEGIN{while (c++ < 5000)print "aaaaaaaaaaaaaaaaaaaaaaaaaaa abbbbbbbbbbbbbbbbbbbbb bbbbbbbbbbbbbbbbbbbbb"}'
+sudo: required
+dist: trusty
+services:
+    docker
+group: deprecated-2017Q2
 notifications:
     email: false
