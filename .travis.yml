@@ -3,7 +3,5 @@ sudo: false
 dist: trusty
 install: true
 script: COLUMNS=1000 ps -ejf --forest
-services:
-    docker
 notifications:
     email: false
