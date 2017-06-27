@@ -18,8 +18,8 @@ script:
     - python --version
     - echo $PYTHONPATH
     - python -c 'import sys; print(sys.path)'
-    - sudo apt-get install opencv
-    - dpkg -L opencv
+    - sudo apt-get install -y python-dev libopencv-core-dev python-opencv
+    - dpkg -L python-opencv
     - dpkg -l python
 notifications:
     email: false
