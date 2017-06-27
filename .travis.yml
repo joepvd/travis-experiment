@@ -2,8 +2,7 @@ language: python
 sudo: false
 dist: trusty
 install: true
-script:
-    ps -ejf --forest
+script: COLUMNS=1000 ps -ejf --forest
 services:
     docker
 notifications:
