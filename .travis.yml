@@ -1,8 +1,12 @@
-sudo: required
+sudo: false
 dist: trusty
 language: php
-php: 5.6
-install: true
-script: php -f ssl.php
+install:
+    - python(){ /usr/bin/python "$@"; }
+    - export -f python
+    - python --version
+    - python -c 'import sys; print(sys.path)'
+script:
+    - python -c 'import sys; print(sys.path)' | grep /usr/lib/python2.7/dist-packages
 notifications:
     email: false
