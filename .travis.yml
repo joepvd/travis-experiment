@@ -1,12 +1,24 @@
-sudo: false
-dist: trusty
-language: php
-install:
-    - python(){ /usr/bin/python "$@"; }
-    - export -f python
-    - python --version
-    - python -c 'import sys; print(sys.path)'
-script:
-    - python -c 'import sys; print(sys.path)' | grep /usr/lib/python2.7/dist-packages
-notifications:
-    email: false
+language: node_js
+node_js: 6
+
+matrix:
+    include:
+        - env: stack=trusty-container
+          sudo: false
+          dist: trusty
+        - env: stack=trusty-sudo
+          sudo: required
+          dist: trusty
+        - env: stack=trusty-container
+          sudo: false
+          dist: trusty
+        - env: stack=trusty-sudo
+          sudo: required
+          dist: trusty
+
+addons:
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
