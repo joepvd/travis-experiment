@@ -5,7 +5,7 @@ $sslVersions = [
 ];
 var_dump(curl_version());
 foreach ($sslVersions as $sslVersion) {
-    $uri = "https://api.reporting.cloud";
+    $uri = "https://google.com";
     printf("Trying %d", $sslVersion);
     echo PHP_EOL;
     $curl = curl_init($uri);
@@ -21,4 +21,4 @@ foreach ($sslVersions as $sslVersion) {
     echo PHP_EOL;
     echo PHP_EOL;
 }
-exit(1);
+exit(0);
