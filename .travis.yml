@@ -9,12 +9,12 @@ matrix:
         - env: stack=trusty-sudo
           sudo: required
           dist: trusty
-        - env: stack=trusty-container
+        - env: stack=precise-container
           sudo: false
-          dist: trusty
-        - env: stack=trusty-sudo
+          dist: precise
+        - env: stack=precise-sudo
           sudo: required
-          dist: trusty
+          dist: precise
 
 addons:
   apt:
