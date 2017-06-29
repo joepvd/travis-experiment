@@ -13,7 +13,7 @@ script:
     - cat /etc/passwd
     - id
     - mkdir tmp
-    - docker run --tty -v $(pwd)/tmp:/tmp/tmp alpine /bin/sh -c 'sleep 3'
+    - docker run --tty -v $(pwd)/tmp:/tmp/tmp alpine /bin/sh -c 'touch /tmp/tmp/newfile'
 
 notifications:
     email: never
