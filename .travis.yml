@@ -15,8 +15,9 @@ matrix:
 install:
     - true
 script:
-    - ps -jef --forest
     - tty
+    - tty | grep -v 'not a tty'
     - tty -s
+    - ps -jef --forest
 notifications:
     email: never
