@@ -16,7 +16,8 @@ install:
     - true
 script:
     - tty
-    - tty | grep -v 'not a tty'
+    - test -t 1 # Fails if STDOUT is not a tty
+    - test -t 2 # Fails if STDERR is not a tty
     - tty -s
     - ps -jef --forest
 notifications:
