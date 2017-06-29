@@ -1,8 +1,15 @@
 language: bash
 sudo: false
 dist: trusty
-filter_secrets: false
+#filter_secrets: false
 before_install:
+    - |
+        travis_terminate() {
+          set +e
+          pkill -P $$ || true
+          exit $1
+        }
+    - export -f travis_terminate
     - set -e
     - "false"
 install:
