@@ -1,24 +1,19 @@
-language: node_js
-node_js: 6
+language: bash
+sudo: required
+dist: trusty
+services:
+    - docker
+install:
+    - 
+script:
+    - id=$(docker run --daemon --tty alpine /bin/sh -c 'sleep 100')
+    - ps -jef --forest
+    - docker exec $id /bin/sh -c 'ps aux'
+    - cat /etc/group
+    - cat /etc/passwd
+    - id
+    - mkdir tmp
+    - docker run --tty alpine -v $(pwd)/tmp:/tmp/tmp /bin/sh -c 'sleep 3'
 
-matrix:
-    include:
-        - env: stack=trusty-container
-          sudo: false
-          dist: trusty
-        - env: stack=trusty-sudo
-          sudo: required
-          dist: trusty
-        - env: stack=precise-container
-          sudo: false
-          dist: precise
-        - env: stack=precise-sudo
-          sudo: required
-          dist: precise
-
-addons:
-  apt:
-    sources:
-    - google-chrome
-    packages:
-    - google-chrome-stable
+notifications:
+    email: never
