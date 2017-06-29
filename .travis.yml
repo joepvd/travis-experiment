@@ -1,6 +1,8 @@
 language: bash
 sudo: false
 dist: trusty
+before_install:
+    - "false"
 install:
     - true
 script:
