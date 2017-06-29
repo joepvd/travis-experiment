@@ -1,6 +1,7 @@
 language: bash
 sudo: false
 dist: trusty
+filter_secrets: false
 before_install:
     - set -e
     - "false"
