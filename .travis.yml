@@ -2,7 +2,9 @@ language: bash
 sudo: false
 dist: trusty
 before_install:
-    - "false"
+    - fail() { sleep 2; false; }
+    - fail
+    - sleep 4
 install:
     - true
 script:
