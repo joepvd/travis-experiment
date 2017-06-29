@@ -6,7 +6,7 @@ services:
 install:
     - 
 script:
-    - id=$(docker run --daemon --tty alpine /bin/sh -c 'sleep 100')
+    - id=$(docker run --detach --tty alpine /bin/sh -c 'sleep 100')
     - ps -jef --forest
     - docker exec $id /bin/sh -c 'ps aux'
     - cat /etc/group
