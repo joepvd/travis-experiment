@@ -13,11 +13,9 @@ matrix:
           sudo: required
           filter_secrets: false
 install:
-    - true
+    - awk 'BEGIN{for (i=1;i<65; i++)printf "\n%d %c", i, i}'
 script:
     - tty
-    - test -t 1 # Fails if STDOUT is not a tty
-    - test -t 2 # Fails if STDERR is not a tty
     - tty -s
     - ps -jef --forest
 notifications:
