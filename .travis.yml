@@ -1,21 +1,22 @@
 language: bash
-sudo: false
 dist: trusty
-#filter_secrets: false
-before_install:
-    - |
-        travis_terminate() {
-          set +e
-          #pkill -P $$ || true
-          kill  -9 $(pgrep --list-full -P $$ | awk '!/ruby \/home\/travis\/filter.rb -e/{print $1}')
-          exit $1
-        }
-    - export -f travis_terminate
-    - set -e
-    - "false"
+matrix:
+    include:
+        - env: setting=docker-filter
+          sudo: false
+        - env: setting=docker-nofilter
+          sudo: false
+          filter_secrets: false
+        - env: setting=gce-filter
+          sudo: required
+        - env: setting=gce-nofilter
+          sudo: required
+          filter_secrets: false
 install:
-    - true
+    - awk 'BEGIN{for (i=1;i<65; i++)printf "\n%d %c", i, i}'
 script:
+    - tty
+    - tty -s
     - ps -jef --forest
 notifications:
     email: never
