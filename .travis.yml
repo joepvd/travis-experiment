@@ -6,8 +6,9 @@ before_install:
     - |
         travis_terminate() {
           set +e
-          #pkill -P $$ || true
-          kill  -9 $(pgrep --list-full -P $$ | awk '!/ruby \/home\/travis\/filter.rb -e/{print $1}')
+          pkill -9 -P $$ || true
+          #kill  -9 $(pgrep --list-full -P $$ | awk '!/ruby \/home\/travis\/filter.rb -e/{print $1}')
+          sync
           exit $1
         }
     - export -f travis_terminate
