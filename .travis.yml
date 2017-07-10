@@ -5,7 +5,7 @@ dist: trusty
 install:
     - true
 script:
-    - jdk_switcher use java-8-oracle
+    - jdk_switcher use oraclejdk8
     - ls -l /usr/lib/jvm
 notifications:
     email: never
