@@ -1,11 +1,14 @@
 language: minimal
 sudo: false
 dist: trusty
-#filter_secrets: false
+matrix:
+    include:
+        - env: filter=yes
+        - env: filter=no
+          filter_secrets: false
 install:
     - true
 script:
-    - jdk_switcher use oraclejdk8
-    - ls -l /usr/lib/jvm
+    - ls -l /proc/$$/fd
 notifications:
     email: never
