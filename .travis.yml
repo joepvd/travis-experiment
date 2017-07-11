@@ -9,7 +9,7 @@ matrix:
           os: osx
           osx_image: xcode7.3
           install:
-              - exec 9>&1
+              - exec 999>&1
               - exec 1> >( awk '{print "filter!", $0}')
               - exec 2>&1
         - env: test=container-nofilter
@@ -20,7 +20,7 @@ matrix:
           dist: trusty
           sudo: false
           install:
-              - exec 9>&1
+              - exec 999>&1
               - exec 1> >( awk '{print "filter!", $0}')
               - exec 2>&1
         - env: test=sudo-nofilter
@@ -31,19 +31,19 @@ matrix:
           dist: trusty
           sudo: required
           install:
-              - exec 9>&1
+              - exec 999>&1
               - exec 1> >( awk '{print "filter!", $0}')
               - exec 2>&1
 filter_secrets: false
 install:
-    - exec 9>&1
+    - exec 999>&1
     - exec 1> >( awk '{print "filter!", $0}')
     - exec 2>&1
 script:
     - echo a line to stdout 
     - echo a line to stderr >&2
 after_script:
-    - command exec 1>&9 2>&9 9>&- && sync
+    - [[ -e /dev/fd/999 ]] && command exec 1>&999 2>&999 999>&- && sync
     - echo a line to stdout 
     - echo a line to stderr >&2
 
