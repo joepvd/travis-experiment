@@ -1,13 +1,16 @@
 language: minimal
-sudo: false
+sudo: required
 dist: trusty
 filter_secrets: false
 install:
     - exec 1> >(awk '{print "filter!", $0}') 2>&1
 script:
-    - true
+    - echo a line to stdout 
+    - echo a line to stderr >&2
 after_script:
     - exec >/dev/tty 2>&1
     - sync
+    - echo a line to stdout 
+    - echo a line to stderr >&2
 notifications:
     email: never
