@@ -4,10 +4,10 @@ language: minimal
 sudo: false
 dist: trusty
 filter_secrets: false
-#install:
-#    - exec 9>&1
-#    - exec 1> >( awk '{print "filter!", $0}')
-#    - exec 2>&1
+install:
+    - exec 9>&1
+    - exec 1> >( awk '{print "filter!", $0}')
+    - exec 2>&1
 script:
     - echo a line to stdout 
     - echo a line to stderr >&2
