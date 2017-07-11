@@ -1,15 +1,13 @@
 language: minimal
-sudo: required
+sudo: false
 dist: trusty
+filter_secrets: false
 install:
-    - true
+    - exec 1> >(awk '{print "filter!", $0}') 2>&1
 script:
-    - |
-        while true; do
-            ((i++))
-            while echo $'GET / HTTP/1.1\nhost: niceness\n\n'; do sleep 1; done | {echo connection $i opened; telnet 91.189.91.26 80>/dev/null; echo connection $i closed; }
-            sleep .1
-        done &
-    - dmesg --follow
+    - true
+after_script:
+    - exec >/dev/tty 2>&1
+    - sync
 notifications:
     email: never
