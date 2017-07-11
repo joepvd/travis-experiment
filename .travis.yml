@@ -1,8 +1,8 @@
 language: minimal
-os: osx
-osx_image: xcode7.3
-#sudo: false
-#dist: trusty
+#os: osx
+#osx_image: xcode7.3
+sudo: required
+dist: trusty
 filter_secrets: false
 install: true
 #    - exec 9>&1
