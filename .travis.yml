@@ -1,8 +1,39 @@
 language: minimal
-#os: osx
-#osx_image: xcode7.3
-sudo: required
-dist: trusty
+matrix:
+    include:
+        - env: test=osx-nofilter
+          os: osx
+          osx_image: xcode7.3
+          install: true
+        - env: test=osx-filter
+          os: osx
+          osx_image: xcode7.3
+          install:
+              - exec 9>&1
+              - exec 1> >( awk '{print "filter!", $0}')
+              - exec 2>&1
+        - env: test=container-nofilter
+          dist: trusty
+          sudo: false
+          install: true
+        - env: test=container-filter
+          dist: trusty
+          sudo: false
+          install:
+              - exec 9>&1
+              - exec 1> >( awk '{print "filter!", $0}')
+              - exec 2>&1
+        - env: test=sudo-nofilter
+          dist: trusty
+          sudo: required
+          install: true
+        - env: test=sudo-filter
+          dist: trusty
+          sudo: required
+          install:
+              - exec 9>&1
+              - exec 1> >( awk '{print "filter!", $0}')
+              - exec 2>&1
 filter_secrets: false
 install:
     - exec 9>&1
@@ -12,7 +43,7 @@ script:
     - echo a line to stdout 
     - echo a line to stderr >&2
 after_script:
-    - "{ command exec 1>&9 2>&9 9>&-; } 2>/dev/null && sync"
+    - command exec 1>&9 2>&9 9>&- && sync
     - echo a line to stdout 
     - echo a line to stderr >&2
 
