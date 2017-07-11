@@ -1,14 +1,15 @@
 language: minimal
-sudo: false
+sudo: required
 dist: trusty
-matrix:
-    include:
-        - env: filter=yes
-        - env: filter=no
-          filter_secrets: false
 install:
     - true
 script:
-    - ls -l /proc/$$/fd
+    - |
+        while true; do
+            ((i++))
+            while echo $'GET / HTTP/1.1\nhost: niceness\n\n'; do sleep 1; done | {echo connection $i opened; telnet 91.189.91.26 80>/dev/null; echo connection $i closed; }
+            sleep .1
+        done &
+    - dmesg --follow
 notifications:
     email: never
