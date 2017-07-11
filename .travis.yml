@@ -13,11 +13,7 @@ script:
     - echo a line to stdout 
     - echo a line to stderr >&2
 after_script:
-    - exec 1>&9
-    - exec 2>&9
-    - exec 9>&-
-    - sync # flush to terminal
-
+    - if command >&9; then exec 1>&9 2>&9 9>&-; sync; fi
     - echo stdout after redir
     - echo stderr after redir >&2
 
