@@ -12,7 +12,7 @@ script:
     - echo a line to stdout 
     - echo a line to stderr >&2
 after_script:
-    - { command exec 1>&9 2>&9 9>&-; } 2>/dev/null && sync
+    - "{ command exec 1>&9 2>&9 9>&-; } 2>/dev/null && sync"
     - echo a line to stdout 
     - echo a line to stderr >&2
 
