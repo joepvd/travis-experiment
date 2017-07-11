@@ -1,17 +1,25 @@
 language: minimal
-#os: osx
-#osx_image: xcode7.3
-sudo: false
-dist: trusty
+os: osx
+osx_image: xcode7.3
+#sudo: false
+#dist: trusty
 filter_secrets: false
 #install: exec 1> >(awk '{print "filter!", $0}') 2>&1
+install:
+    - exec 9>&1
+    - exec 1> >( awk '{print "filter!", $0}')
+    - exec 2>&1
 script:
     - echo a line to stdout 
     - echo a line to stderr >&2
 after_script:
-    - exec >/dev/tty 2>&1
-    - sync
-    - echo a line to stdout 
-    - echo a line to stderr >&2
+    - exec 1>&9
+    - exec 2>&9
+    - exec 9>&-
+    - sync # flush to terminal
+
+    - echo stdout after redir
+    - echo stderr after redir >&2
+
 notifications:
     email: never
