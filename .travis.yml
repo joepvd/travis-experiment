@@ -43,7 +43,7 @@ script:
     - echo a line to stdout 
     - echo a line to stderr >&2
 after_script:
-    - [[ -e /dev/fd/999 ]] && command exec 1>&999 2>&999 999>&- && sync
+    - "[[ -e /dev/fd/999 ]] && command exec 1>&999 2>&999 999>&- && sync"
     - echo a line to stdout 
     - echo a line to stderr >&2
 
