@@ -1,15 +1,13 @@
-language: ruby
-matrix:
-    include:
-        - env: test=sudo-deprecated
-          dist: trusty
-          sudo: required
-          group: deprecated-2017Q2
-        - env: test=sudo-stable
-          dist: trusty
-          sudo: required
-filter_secrets: false
-install: true
-script: sh curldep.sh
+
+language: bash
+sudo: false
+dist: trusty
+before_install:
+    - set -e
+    - "false"
+install:
+    - true
+script:
+    - ps -jef --forest
 notifications:
     email: never
