@@ -1,51 +1,18 @@
-language: minimal
+language: ruby
 matrix:
     include:
-        - env: test=osx-nofilter
-          os: osx
-          osx_image: xcode7.3
-          install: true
-        - env: test=osx-filter
-          os: osx
-          osx_image: xcode7.3
-          install:
-              - exec 999>&1
-              - exec 1> >( awk '{print "filter!", $0}')
-              - exec 2>&1
-        - env: test=container-nofilter
-          dist: trusty
-          sudo: false
-          install: true
-        - env: test=container-filter
-          dist: trusty
-          sudo: false
-          install:
-              - exec 999>&1
-              - exec 1> >( awk '{print "filter!", $0}')
-              - exec 2>&1
-        - env: test=sudo-nofilter
+        - env: test=sudo-deprecated
           dist: trusty
           sudo: required
-          install: true
-        - env: test=sudo-filter
+          group: deprecated-2017Q2
+        - env: test=sudo-deprecated
           dist: trusty
           sudo: required
-          install:
-              - exec 999>&1
-              - exec 1> >( awk '{print "filter!", $0}')
-              - exec 2>&1
+          group: deprecated-2017Q2
 filter_secrets: false
-install:
-    - exec 999>&1
-    - exec 1> >( awk '{print "filter!", $0}')
-    - exec 2>&1
+install: true
 script:
-    - echo a line to stdout 
-    - echo a line to stderr >&2
-after_script:
-    - "[[ -e /dev/fd/999 ]] && command exec 1>&999 2>&999 999>&- && sync"
-    - echo a line to stdout 
-    - echo a line to stderr >&2
-
+    - sudo apt-get -y install clang lldb-3.8 libicu-dev libtool libcurl4-openssl-dev libbsd-dev build-essential libssl-dev uuid-dev
+    - apt list --installed | awk '{print "apt-list:"$0}'
 notifications:
     email: never
