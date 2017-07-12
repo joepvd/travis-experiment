@@ -5,10 +5,9 @@ matrix:
           dist: trusty
           sudo: required
           group: deprecated-2017Q2
-        - env: test=sudo-deprecated
+        - env: test=sudo-stable
           dist: trusty
           sudo: required
-          group: deprecated-2017Q2
 filter_secrets: false
 install: true
 script:
