@@ -10,8 +10,6 @@ matrix:
           sudo: required
 filter_secrets: false
 install: true
-script:
-    - sudo apt-get -y install clang lldb-3.8 libicu-dev libtool libcurl4-openssl-dev libbsd-dev build-essential libssl-dev uuid-dev
-    - apt list --installed | awk '{print "apt-list:"$0}'
+script: sh curldep.sh
 notifications:
     email: never
