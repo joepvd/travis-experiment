@@ -3,7 +3,8 @@ language: bash
 sudo: false
 dist: trusty
 install:
-    - eval `ssh-agent -s`
+    #- eval `ssh-agent -s`
+    - "setsid sh -c sleep 1000 &"
     - sleep 1
 script:
     - ls -l /proc/$(pgrep ssh-agent)/fd
