@@ -2,15 +2,28 @@
 language: bash
 matrix:
     include:
-#        - env: test=osx
-#          os: osx
-#          osx_image: xcode7.3
-        - env: test=container
-          dist: trusty
-          sudo: false
-        - env: test=sudo
-          dist: trusty
+        - env: filter=true image=sudo-trusty
           sudo: required
+          dist: trusty
+        - env: filter=false image=sudo-trusty
+          sudo: required
+          dist: trusty
+          filter_secrets: false
+        - env: filter=true image=container-trusty
+          sudo: false
+          dist: trusty
+        - env: filter=false image=container-trusty
+          sudo: false
+          dist: trusty
+          filter_secrets: false
+        - env: filter=true image=xcode6.4
+          os: osx
+          osx_image: xcode6.4
+        - env: filter=false image=xcode6.4
+          os: osx
+          osx_image: xcode6.4
+          filter_secrets: false
+
 install:
     - eval `ssh-agent -s`
     - "setsid sh -c 'sleep 1000' &"
@@ -27,5 +40,15 @@ script:
     #- if [ -f /.dockerenv ]; then kill -9 $(awk -v pid=$$ '$1!=pid' <(ps --no-headers --user $USER -opid:1)); else pkill -9 -P $$; fi
     #- "pgrep ssh-agent && false || true"
     #- ps -jef --forest 2>/dev/null || ps -jef
+    - |
+        stty --all \
+        | awk '
+              BEGIN{ RS=";[ \n]?"; FS=" (= )?|\n"; OFS=":" }
+              NF<4{print "stty:"$0; next}
+              {for(i=1;$i!="";i++){bool = sub(/^-/, "", $i); print "stty",$i,bool}}' \
+        | sort
+    - printf "shopt:%s %s\n" $(shopt | sort)
+    - echo $- | awk -F '' '{for(i=1;i<=NF;i++)print "$-:"$i}' | sort
+
 notifications:
     email: never
