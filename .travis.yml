@@ -1,33 +1,19 @@
-
 language: bash
 matrix:
     include:
-        - env: test=ssh-agent filter=true image=container-trusty
-          sudo: false
-          dist: trusty
-          install: eval `ssh-agent -s`
-        - env: filter=false image=container-trusty
-          sudo: false
-          dist: trusty
-          filter_secrets: false
-          install: eval `ssh-agent -s`
-        - env: test=sleep filter=true image=container-trusty
-          sudo: false
-          dist: trusty
-          install: "setsid sh -c 'sleep 1000' &"
-        - env: test=sleep filter=false image=container-trusty
-          sudo: false
-          dist: trusty
-          filter_secrets: false
-          install: "setsid sh -c 'sleep 1000' &"
-
+        - env: filter=true image=xcode6.4
+          os: osx
+          osx_image: xcode6.4
 install:
+    - eval `ssh-agent -s`
+    - "setsid sh -c 'sleep 1000' &"
+    - export COLUMNS=1000
 script:
     - sleep 1
+    - echo $TRAVIS_FILTERED
+    - ls -l /.dockerenv || true
+    - declare -f travis_terminate
     - echo $$
     - ps -jef --forest 2>/dev/null || ps -jef
-      #- '[[ "$TRAVIS_FILTERED" = redirect_io && -e /dev/fd/9 ]] && sync && command exec 1>&9 2>&9 9>&- && sync'
-      #- if [ -f /.dockerenv ]; then kill -9 $(awk -v pid=$$ '$1!=pid' <(ps --no-headers --user $USER -opid:1)); else pkill -9 -P $$; fi
-    - kill -9 $(awk -v pid=$$ '$1!=pid' <(ps --no-headers --user $USER -opid:1))
 notifications:
     email: never
