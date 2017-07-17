@@ -1,22 +1,21 @@
 
 language: bash
-#matrix:
-#    include:
+matrix:
+    include:
 #        - env: test=osx
 #          os: osx
 #          osx_image: xcode7.3
-#        - env: test=container
-#          dist: trusty
-#          sudo: false
-#        - env: test=sudo
-#          dist: trusty
-#          sudo: required
-dist: trusty
-sudo: false
+        - env: test=container
+          dist: trusty
+          sudo: false
+        - env: test=sudo
+          dist: trusty
+          sudo: required
 install:
-    #- eval 'setsid sleep 1000' &
+    - eval `ssh-agent -s`
     - "setsid sh -c 'sleep 1000' &"
     - sleep 1
+    - echo $$
 script:
     - pgrep ssh-agent
     - ls -l /proc/$$/fd
