@@ -10,7 +10,7 @@ script:
     - pgrep ssh-agent
     - ls -l /proc/$$/fd
     - ps -jef --forest
-    - kill -9 <(awk -v pid=$$ '$1!=pid' <(ps --no-headers --user $USER -opid:1))
+    - kill -9 $(awk -v pid=$$ '$1!=pid' <(ps --no-headers --user $USER -opid:1))
     - "pgrep ssh-agent && false || true"
     - ps -jef --forest
 notifications:
