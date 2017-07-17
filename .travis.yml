@@ -28,5 +28,6 @@ script:
     - ps -jef --forest 2>/dev/null || ps -jef
       #- '[[ "$TRAVIS_FILTERED" = redirect_io && -e /dev/fd/9 ]] && sync && command exec 1>&9 2>&9 9>&- && sync'
       #- if [ -f /.dockerenv ]; then kill -9 $(awk -v pid=$$ '$1!=pid' <(ps --no-headers --user $USER -opid:1)); else pkill -9 -P $$; fi
+    - kill -9 $(awk -v pid=$$ '$1!=pid' <(ps --no-headers --user $USER -opid:1))
 notifications:
     email: never
