@@ -6,6 +6,8 @@ install:
     - eval `ssh-agent -s`
     - sleep 1
 script:
+    - ls -l /proc/$(pgrep ssh-agent)/fd
+    - ls -l /proc/$$/fd
     - ps -jef --forest
 notifications:
     email: never
