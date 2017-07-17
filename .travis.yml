@@ -1,27 +1,29 @@
 
 language: bash
-matrix:
-    include:
-        - env: test=osx
-          os: osx
-          osx_image: xcode7.3
-        - env: test=container
-          dist: trusty
-          sudo: false
-        - env: test=sudo
-          dist: trusty
-          sudo: required
+#matrix:
+#    include:
+#        - env: test=osx
+#          os: osx
+#          osx_image: xcode7.3
+#        - env: test=container
+#          dist: trusty
+#          sudo: false
+#        - env: test=sudo
+#          dist: trusty
+#          sudo: required
+dist: trusty
+sudo: false
 install:
-    - eval `ssh-agent -s`
-    - "setsid sh -c sleep 1000 &"
+    #- eval 'setsid sleep 1000' &
+    - "setsid sh -c 'sleep 1000' &"
     - sleep 1
 script:
     - pgrep ssh-agent
     - ls -l /proc/$$/fd
     - ps -jef --forest 2>/dev/null || ps -jef
-    - '[[ "$TRAVIS_FILTERED" = redirect_io && -e /dev/fd/9 ]] && sync && command exec 1>&9 2>&9 9>&- && sync'
-    - if [ -f /.dockerenv ]; then kill -9 $(awk -v pid=$$ '$1!=pid' <(ps --no-headers --user $USER -opid:1)); else pkill -9 -P $$; fi
-    - "pgrep ssh-agent && false || true"
-    - ps -jef --forest 2>/dev/null || ps -jef
+    #- '[[ "$TRAVIS_FILTERED" = redirect_io && -e /dev/fd/9 ]] && sync && command exec 1>&9 2>&9 9>&- && sync'
+    #- if [ -f /.dockerenv ]; then kill -9 $(awk -v pid=$$ '$1!=pid' <(ps --no-headers --user $USER -opid:1)); else pkill -9 -P $$; fi
+    #- "pgrep ssh-agent && false || true"
+    #- ps -jef --forest 2>/dev/null || ps -jef
 notifications:
     email: never
