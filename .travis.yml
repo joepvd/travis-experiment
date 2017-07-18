@@ -1,9 +1,9 @@
 language: bash
-matrix:
-    include:
-        - env: filter=true image=xcode6.4
-          os: osx
-          osx_image: xcode6.4
+sudo: false
+dist: trusty
+env:
+    global:
+        secure: invalidkey
 install:
     - eval `ssh-agent -s`
     - "setsid sh -c 'sleep 1000' &"
