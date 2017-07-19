@@ -1,18 +1,9 @@
 language: python
-sudo: false
+sudo: required
 dist: trusty
-env:
-  matrix:
-   - a=b b=c
-   - a=d c=f
-python:
-  - 2.7
-  - 3.6
-matrix:
-  exclude:
-  - env: a=d c=f
-    python: 3.6
-install: true
-script: true
+install:
+    - sudo service mysql stop
+    - until (( i++ > 10 )) || { mysql <<<'select 1;' && echo connected; }; do echo $i; sleep 1; done &
+script: sudo service mysql start
 notifications:
     email: never
