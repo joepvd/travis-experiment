@@ -23,7 +23,7 @@ env:
     - run=18
     - run=19
     - run=20
-install: true
+install: sleep 60
 script:
     - "mysql <<<\"show variables like '%log%'\""
     - ps -jef --forest
