@@ -27,6 +27,7 @@ env:
     - run=20
 install: true
 script:
+    - head /proc/sys/fs/aio*
     - "mysql -h 127.0.0.1<<<\"show variables like '%log%'\""
     - ps -jef --forest
 notifications:
