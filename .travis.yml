@@ -23,9 +23,9 @@ env:
     - run=18
     - run=19
     - run=20
-install: sleep 60
+install: true
 script:
-    - "mysql <<<\"show variables like '%log%'\""
+    - "mysql -h 127.0.0.1<<<\"show variables like '%log%'\""
     - ps -jef --forest
 notifications:
     email: never
