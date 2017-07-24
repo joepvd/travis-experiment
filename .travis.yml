@@ -24,7 +24,7 @@ env:
     - run=19
     - run=20
 install: true
-script: true
+script:
     - "mysql <<<\"show variables like '%log%'\""
     - ps -jef --forest
 notifications:
