@@ -4,13 +4,13 @@ sudo: false
 dist: trusty
 services:
     - mysql
-install:
-    - find /etc/mysql* -type f
-    - head -n 1000 $(find /etc/mysql -type f)
-    - grep -r aio /etc/mysql*
+install: true
 script:
     - head /proc/sys/fs/aio*
     - "mysql -h 127.0.0.1<<<\"show variables like '%log%'\""
     - ps -jef --forest
+    - find /etc/mysql* -type f
+    - head -n 1000 $(find /etc/mysql -type f)
+    - grep -r aio /etc/mysql*
 notifications:
     email: never
