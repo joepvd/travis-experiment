@@ -1,9 +1,11 @@
-language: python
-sudo: required
+language: php
+php: 5.6
+sudo: false
 dist: trusty
 install:
-    - sudo service mysql stop
-    - until (( i++ > 10 )) || { mysql <<<'select 1;' && echo connected; }; do echo $i; sleep 1; done &
+    - ls -l /var/log/
+    - "tail -n 1000 /var/log/mysql* || true"
+    - "mysql <<<\"show variables like '%log%'\""
 script: sudo service mysql start
 notifications:
     email: never
