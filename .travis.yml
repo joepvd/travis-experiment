@@ -41,66 +41,22 @@ script:
   - mongo --eval 'db.version()'
 
 
-sudo: required
+language: minimal
 
 notifications:
   email: never
 
 matrix:
   include:
-  - env: image=edge_precise_go
-    group: edge
-    dist: precise
-    language: go
-  - env: image=stable_precise_go
-    group: stable
-    dist: precise
-    language: go
-  - env: image=edge_precise_java
-    group: edge
-    dist: precise
-    language: java
-  - env: image=stable_precise_java
-    group: stable
-    dist: precise
-    language: java
-  - env: image=edge_precise_node_js
-    group: edge
-    dist: precise
-    language: node_js
-  - env: image=stable_precise_node_js
-    group: stable
-    dist: precise
-    language: node_js
-  - env: image=edge_precise_perl
-    group: edge
-    dist: precise
-    language: perl
-  - env: image=stable_precise_perl
-    group: stable
-    dist: precise
-    language: perl
-  - env: image=edge_precise_php
-    group: edge
-    dist: precise
-    language: php
-  - env: image=stable_precise_php
-    group: stable
-    dist: precise
-    language: php
-  - env: image=edge_precise_python
-    group: edge
-    dist: precise
-    language: python
-  - env: image=stable_precise_python
-    group: stable
-    dist: precise
-    language: python
-  - env: image=edge_precise_ruby
-    group: edge
-    dist: precise
-    language: ruby
-  - env: image=stable_precise_ruby
-    group: stable
-    dist: precise
-    language: ruby
+      - env: stack=gce-trusty
+        sudo: required
+        dist: trusty
+      - env: stack=gce-precise
+        sudo: required
+        dist: precise
+      - env: stack=ec2-trusty
+        sudo: false
+        dist: trusty
+      - env: stack=ec2-precise
+        sudo: false
+        dist: precise
