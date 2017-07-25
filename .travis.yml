@@ -23,7 +23,7 @@ script:
   - "ps aux | grep '[m]ysql' || true"
   - mysql -uroot -e 'SHOW VARIABLES LIKE "%version%";'
   - mysql -utravis -e 'SHOW VARIABLES LIKE "%version%";'
-  - mysql -uroot -e 'select * from mysql.users;'
+  - mysql -uroot -e 'select * from mysql.user;'
   - "echo ...... postgresql ......"
   - psql -Upostgres <<<'select * from version();'
   - psql -Upostgres <<<'select * from pg_catalog.pg_database;'
