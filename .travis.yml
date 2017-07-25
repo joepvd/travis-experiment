@@ -5,12 +5,12 @@ matrix:
     include:
         - env: dist=trusty
           dist: trusty
-        - env: dist=precise
-          dist: precise
 services:
     - mysql
 install: true
 script:
+    - mysql <<<'select * from mysql.user;'
+    - mysql -uroot <<<"GRANT ALL PRIVILEGES ON *.* TO 'travis';"
     - mysql <<<'select * from mysql.user;'
     - mysql <<<'desc mysql.user;'
 notifications:
