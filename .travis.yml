@@ -13,6 +13,7 @@ dist: trusty
 services:
     - mysql
 install:
+    - 
     - |
         if ! [ -e /usr/lib/jvm/java-1.6.0-openjdk-amd64 ] && [ -e /usr/lib/jvm/java-6-openjdk-amd64 ]; then
           echo workarounding!
@@ -20,7 +21,7 @@ install:
           jdk_switcher use openjdk6
         fi
 script:
-    - ls -l /usr/lib/jvm/
-    - ls -l /usr/lib/jvm/*1.6*open*
+    - ls -la /usr/lib/jvm/
+    - ls -la /usr/lib/jvm/*1.6*open*
 notifications:
     email: never
