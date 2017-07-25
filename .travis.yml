@@ -34,14 +34,14 @@ script:
   - "echo ......... elasticsearch ......."
   - curl http://localhost:9200/_nodes
   - "echo ......... cassandra ........"
-  - "cqlsh -f <(echo show version)"
-  - "cqlsh -f <(echo 'select * from system.local;')"
+  - "cqlsh <<<'show version;'"
+  - "cqlsh <<<'select * from system.local;'"
   - "echo ..... mongodb ......."
-  - "mongo mydb_test --eval 'db.addUser(\"travis\", \"test\");' || true"
+  - "mongo mydb_test --eval 'db.addUser(\"travis\", \"test\");'"
   - mongo --eval 'db.version()'
 
 
-language: minimal
+language: __sugilite__
 
 notifications:
   email: never
