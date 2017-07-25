@@ -1,27 +1,9 @@
-language: java
-jdk: openjdk6
-matrix:
-    include:
-        - env: group=deprecated-sudo
-          group: deprecated-2017Q1
-          sudo: required
-        - env: group=current-sudo
-          sudo: required
-        - env: group=current-container
-          sudo: false
+language: bash
 dist: trusty
+sudo: false
 services:
     - mysql
-install:
-    - 
-    - |
-        if ! [ -e /usr/lib/jvm/java-1.6.0-openjdk-amd64 ] && [ -e /usr/lib/jvm/java-6-openjdk-amd64 ]; then
-          echo workarounding!
-          sudo ln -s /usr/lib/jvm/java-6-openjdk-amd64 /usr/lib/jvm/java-1.6.0-openjdk-amd64
-          jdk_switcher use openjdk6
-        fi
-script:
-    - ls -la /usr/lib/jvm/
-    - ls -la /usr/lib/jvm/*1.6*open*
+install: true
+script: mysql -uroot -e 'SHOW VARIABLES LIKE "%version%";'
 notifications:
     email: never
