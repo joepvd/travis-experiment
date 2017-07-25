@@ -1,16 +1,17 @@
 language: php
 php: 5.6
 sudo: required
-dist: trusty
+matrix:
+    include:
+        - env: dist=trusty
+          dist: trusty
+        - env: dist=precise
+          dist: precise
 services:
     - mysql
 install: true
 script:
-    - head /proc/sys/fs/aio*
-    - "mysql -h 127.0.0.1<<<\"show variables like '%log%'\""
-    - ps -jef --forest
-    - find /etc/mysql* -type f
-    - head -n 1000 $(find /etc/mysql -type f)
-    - grep -r aio /etc/mysql*
+    - mysql <<<'select * from mysql.user;'
+    - mysql <<<'desc mysql.user;'
 notifications:
     email: never
