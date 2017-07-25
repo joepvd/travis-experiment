@@ -1,17 +1,20 @@
-language: php
-php: 5.6
-sudo: required
+language: java
+jdk: openjdk6
 matrix:
     include:
-        - env: dist=trusty
-          dist: trusty
+        - env: group=deprecated-sudo
+          group: deprecated-2017Q1
+          sudo: required
+        - env: group=current-sudo
+          sudo: required
+        - env: group=current-container
+          sudo: false
+dist: trusty
 services:
     - mysql
 install: true
 script:
-    - mysql <<<'select * from mysql.user;'
-    - mysql -uroot <<<"GRANT ALL PRIVILEGES ON *.* TO 'travis';"
-    - mysql <<<'select * from mysql.user;'
-    - mysql <<<'desc mysql.user;'
+    - ls -l /usr/lib/jvm/
+    - ls -l /usr/lib/jvm/*1.6*open*
 notifications:
     email: never
