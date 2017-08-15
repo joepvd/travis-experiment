@@ -1,9 +1,13 @@
-language: ruby
-sudo: false
+language: minimal # This ensures no MySQL is installed
+sudo: required
 dist: trusty
+apt:
+  packages:
+  - mysql-server-5.5
+  - mysql-client-5.5
 install:
-    - phantomjs --version
+    - apt-cache search mysql-server
 script:
-    - df -h
+    - mysql -uroot -e "show variables like '%version%';"
 notifications:
     email: never
