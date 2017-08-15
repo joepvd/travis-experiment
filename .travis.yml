@@ -1,11 +1,9 @@
-
-language: php
-php: 5.6
-sudo: required
+language: ruby
+sudo: false
 dist: trusty
 install:
-    - sudo apt-get install -y mysql-server-5.7 mysql-client-5.7
+    - phantomjs --version
 script:
-    - mysql -h localhost "show variables like '%version%'"
+    - dpkg -l 'phantom*'
 notifications:
     email: never
