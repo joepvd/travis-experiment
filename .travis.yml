@@ -4,6 +4,6 @@ dist: trusty
 install:
     - phantomjs --version
 script:
-    - dpkg -l 'phantom*'
+    - df -h
 notifications:
     email: never
