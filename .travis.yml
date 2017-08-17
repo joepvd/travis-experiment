@@ -3,7 +3,7 @@ sudo: false
 dist: trusty
 install:
     - "echo set -e >>file.sh"
-    - echo 'if false; then echo will not print; elif false; echo not printed; else echo other condition; fi >>file.sh'
+    - echo 'if false; then echo will not print; elif false; echo not printed; else echo other condition; fi' >>file.sh
 script:
     - source file.sh
 notifications:
