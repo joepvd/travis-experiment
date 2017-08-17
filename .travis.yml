@@ -1,10 +1,14 @@
 language: ruby
 sudo: false
 dist: trusty
+matrix:
+    include:
+        - env: trap=yes
+          before_install: trap 'travis_terminate 1' ERR
+        - env: trap=no
 install:
-    - "echo set -e >>file.sh"
-    - echo 'if false; then echo will not print; elif false; then echo not printed; else should be printed; fi' >>file.sh
-    - trap 'travis_terminate 1' INT QUIT TERM ERR
+    - echo set -e >>file.sh
+    - echo 'if false; then echo will not print; elif false; then echo not printed; else echo should be printed; fi' >>file.sh
 script:
     - source file.sh
 notifications:
