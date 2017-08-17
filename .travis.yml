@@ -4,7 +4,7 @@ dist: trusty
 matrix:
     include:
         - env: trap=yes
-          before_install: trap 'echo trap caught;travis_terminate 1' ERR
+          before_install: "set -e; f(){ sleep 1; echo slept; exit 8; }; trap 'echo caught; f' ERR; false"
         - env: trap=no
 install:
     - echo set -e >>file.sh
