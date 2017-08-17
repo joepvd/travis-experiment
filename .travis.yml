@@ -4,13 +4,13 @@ dist: trusty
 matrix:
     include:
         - env: trap=yes
-          before_install: trap 'travis_terminate 1' ERR
+          before_install: trap 'echo trap caught;travis_terminate 1' ERR
         - env: trap=no
 install:
     - echo set -e >>file.sh
     - echo about to execute false
     - echo false >>file.sh
-    - echo executed false
+    - echo executed false >>file.sh
 script:
     - source file.sh
 notifications:
