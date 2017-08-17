@@ -1,11 +1,13 @@
 language: ruby
 sudo: required
+matrix:
+    include:
+        - env: image=trusty
+          dist: trusty
+        - env: image=precise
+          dist: precise
 dist: trusty
-install:
-    - sudo mysql_upgrade
-    - sudo service mysql restart
-    - sleep 3
-script:
-    - mysql -uroot -e "show variables like '%version%';"
+install: true
+script: docker --version
 notifications:
     email: never
