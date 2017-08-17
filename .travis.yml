@@ -1,15 +1,10 @@
 language: ruby
-sudo: required
+sudo: false
 dist: trusty
-matrix:
-    include:
-        - env: image=trusty-stable
-        - env: image=trusty-old
-          group: deprecated-2017Q2
-install: true
+install:
+    - "echo set -e >>file.sh"
+    - echo 'if false; then echo will not print; elif false; echo not printed; else echo other condition; fi >>file.sh'
 script:
-    - find /usr/share/ant/lib ~/.ant
-    - ant -version
-    - "tail -n 1000 /etc/ant.conf $HOME/.ant/ant.conf $HOME/.antrc || true"
+    - source file.sh
 notifications:
     email: never
