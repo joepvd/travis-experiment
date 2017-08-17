@@ -8,7 +8,7 @@ matrix:
         - env: trap=no
 install:
     - echo set -e >>file.sh
-    - echo 'if false; then echo will not print; elif false; then echo not printed; else echo should be printed; fi' >>file.sh
+    - echo false >>file.sh
 script:
     - source file.sh
 notifications:
