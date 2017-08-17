@@ -1,13 +1,15 @@
 language: ruby
 sudo: required
+dist: trusty
 matrix:
     include:
-        - env: image=trusty
-          dist: trusty
-        - env: image=precise
-          dist: precise
-dist: trusty
+        - env: image=trusty-stable
+        - env: image=trusty-old
+          group: deprecated-2017Q2
 install: true
-script: docker --version
+script:
+    - find /usr/share/ant/lib ~/.ant
+    - ant -version
+    - "tail -n 1000 /etc/ant.conf $HOME/.ant/ant.conf $HOME/.antrc || true"
 notifications:
     email: never
