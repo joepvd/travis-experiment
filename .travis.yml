@@ -8,7 +8,9 @@ matrix:
         - env: trap=no
 install:
     - echo set -e >>file.sh
+    - echo about to execute false
     - echo false >>file.sh
+    - echo executed false
 script:
     - source file.sh
 notifications:
