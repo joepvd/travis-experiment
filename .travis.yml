@@ -1,18 +1,7 @@
 language: ruby
-sudo: false
+sudo: required
 dist: trusty
-matrix:
-    include:
-        - env: trap=yes
-          before_install: "set -e; f(){ sleep 1; echo slept; exit 8; }; trap 'echo caught; f' ERR; false"
-        - env: trap=no
-install:
-    - set -E
-    - echo set -e >>file.sh
-    - echo about to execute false
-    - echo false >>file.sh
-    - echo executed false >>file.sh
-script:
-    - source file.sh
+install: true
+script: true
 notifications:
     email: never
