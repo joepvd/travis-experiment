@@ -1,7 +1,10 @@
 language: ruby
 sudo: required
 dist: trusty
-install: true
-script: true
+install:
+    - echo -e '[mysqld]\nperformance_schema=OFF\n' | sudo tee -a /etc/mysql/my.cnf
+    - sudo service restart mysql
+    - sleep 3
+script: mysql -uroot <<<'show variables like "%schema%";'
 notifications:
-    email: never
+  email: never
