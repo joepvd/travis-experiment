@@ -1,7 +1,7 @@
 sudo: false
 dist: trusty
 language: minimal
-install: false
-script: false
+install: "false"
+script: "false"
 notifications:
   email: never
