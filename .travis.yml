@@ -1,17 +1,11 @@
-matrix:
+jobs:
     include:
-        - language: __amethyst__
-          env: language=amethyst
-        - language: __garnet__
-          env: language=garnet
-        - language: __sugilite__
-          env: language=sugilite
-        - language: android
-          group: edge
-          env: language=cookiecat
+        - stage: 1
+        - stage: 2
+        - stage: 3
 sudo: required
 dist: trusty
 install: sleep 30
-script: sudo service --status-all | awk '$2=="+"{print $4}'
+script: "false"
 notifications:
   email: never
