@@ -1,10 +1,10 @@
 jobs:
     include:
-        - stage: stage
+        - stage: "1"
           install: true
-        - stage: stage
+        - stage: "2"
           install: true
-        - stage: stage
+        - stage: "3"
           install: true
 sudo: false
 dist: trusty
