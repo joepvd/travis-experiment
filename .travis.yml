@@ -11,7 +11,7 @@ matrix:
           env: language=cookiecat
 sudo: required
 dist: trusty
-install: true
+install: sleep 30
 script: sudo service --status-all | awk '$2=="+"{print $4}'
 notifications:
   email: never
