@@ -1,21 +1,17 @@
-language: ruby
+matrix:
+    include:
+        - language: __amethyst__
+          env: language=amethyst
+        - language: __garnet__
+          env: language=garnet
+        - language: __sugilite__
+          env: language=sugilite
+        - language: android
+          group: edge
+          env: language=cookiecat
 sudo: required
 dist: trusty
 install: true
-script: true
-deploy:
-    - provider: script
-      skip_cleanup: true
-      script: echo a
-    - provider: script
-      skip_cleanup: true
-      script: >-
-          echo a
-          echo b
-    - provider: script
-      skip_cleanup: true
-      script: |
-          echo b
-          echo c
+script: sudo service --status-all | awk '$2=="+"{print $4}'
 notifications:
   email: never
