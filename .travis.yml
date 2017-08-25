@@ -1,11 +1,13 @@
 jobs:
     include:
         - stage: 1
+          install: true
         - stage: 2
+          install: true
         - stage: 3
+          install: true
 sudo: required
 dist: trusty
-install: sleep 30
 script: "false"
 notifications:
   email: never
