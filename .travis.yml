@@ -1,12 +1,12 @@
 jobs:
     include:
-        - stage: stage1
+        - stage: stage
           install: true
-        - stage: stage2
+        - stage: stage
           install: true
-        - stage: stage3
+        - stage: stage
           install: true
-sudo: required
+sudo: false
 dist: trusty
 script: "false"
 notifications:
