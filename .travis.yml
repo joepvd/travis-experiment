@@ -1,6 +1,8 @@
 _helpers:
     - &include1
       script: echo included
+      install: *include2
+    - &include2 echo install from include2
 jobs:
     include:
         - <<: *include1
