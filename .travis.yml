@@ -1,13 +1,8 @@
-jobs:
-    include:
-        - stage: "1"
-          install: true
-        - stage: "2"
-          install: true
-        - stage: "3"
-          install: true
 sudo: false
 dist: trusty
-script: "false"
+install: true
+script: npm install contextify
+language: generic
+
 notifications:
   email: never
