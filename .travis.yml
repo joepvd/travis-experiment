@@ -1,8 +1,15 @@
 sudo: false
-dist: trusty
+matrix:
+    include:
+        - env: dist=precise
+          dist: precise
+        - env: dist=trusty
+          dist: trusty
 install: true
 script:
-    - pecl install couchbase
-language: php
+    - gem --version
+    - gem update --system --no-document
+    - gem --version
+language: ruby
 notifications:
   email: never
