@@ -8,7 +8,7 @@ matrix:
 install: true
 script:
     - gem --version
-    - gem update --system --no-document
+    - gem update --system --no-document --no-post-install-message
     - gem --version
 language: ruby
 notifications:
