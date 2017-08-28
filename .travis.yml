@@ -1,15 +1,13 @@
-sudo: false
-matrix:
+jobs:
     include:
-        - env: dist=precise
-          dist: precise
-        - env: dist=trusty
-          dist: trusty
-install: true
-script:
-    - gem --version
-    - gem update --system --no-document --no-post-install-message
-    - gem --version
-language: ruby
+        - stage: 1
+          install: true
+        - stage: 2
+          install: true
+        - stage: 3
+          install: true
+sudo: required
+dist: trusty
+script: "false"
 notifications:
   email: never
