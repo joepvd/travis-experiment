@@ -1,13 +1,14 @@
+_helpers:
+    - &include1
+      script: echo included
 jobs:
     include:
-        - stage: 1
-          install: true
-        - stage: 2
-          install: true
-        - stage: 3
-          install: true
-sudo: required
+        - <<: *include1
+        - stage: Niceness
+          script: echo second stage
+sudo: false
 dist: trusty
-script: "false"
+script: true
+install": true
 notifications:
   email: never
