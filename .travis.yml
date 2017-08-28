@@ -2,10 +2,7 @@ sudo: false
 dist: trusty
 install: true
 script:
-    - npm install contextify@v0.1.15
-    - npm install contextify@v0.1.14
-    - npm install contextify@v0.1.13
-    - npm install contextify@v0.1.12
-language: generic
+    - pecl install couchbase
+language: php
 notifications:
   email: never
