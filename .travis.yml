@@ -27,11 +27,20 @@ addons:
             - sysbench
 script:
     #- sysbench --test=fileio run
-    - sysbench --test=cpu run
-    - sysbench --test=memory run
-    - sysbench --test=threads run
-    - sysbench --test=mutex run
+    - sysbench --num-threads=1 --test=cpu run
+    - sysbench --num-threads=1 --test=memory run
+    - sysbench --num-threads=1 --test=threads run
+    - sysbench --num-threads=1 --test=mutex run
     #- sysbench --test=oltp run
+    - sysbench --num-threads=2 --test=cpu run
+    - sysbench --num-threads=2 --test=memory run
+    - sysbench --num-threads=2 --test=threads run
+    - sysbench --num-threads=2 --test=mutex run
+
+    - sysbench --num-threads=8 --test=cpu run
+    - sysbench --num-threads=8 --test=memory run
+    - sysbench --num-threads=8 --test=threads run
+    - sysbench --num-threads=8 --test=mutex run
 language: generic
 notifications:
   email: never
