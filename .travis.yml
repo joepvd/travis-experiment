@@ -22,8 +22,8 @@ matrix:
         - env: dist=precise job=5
           dist: precise
 script:
-    - time gawk -f prime.awk 8000 proc1 &
-    - time gawk -f prime.awk 8000 proc2
+    - time awk 'BEGIN{for (i=1; i<=10000; i++) {if (i%1000==0)print "proc1", i; for (j=1; j<=10000; j++) atan2(i, j)}}' &
+    - time awk 'BEGIN{for (i=1; i<=10000; i++) {if (i%1000==0)print "proc2", i; for (j=1; j<=10000; j++) atan2(i, j)}}'
 language: generic
 notifications:
   email: never
