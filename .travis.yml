@@ -5,25 +5,12 @@ matrix:
           dist: trusty
         - env: dist=precise job=1
           dist: precise
-        - env: dist=trusty job=2
-          dist: trusty
-        - env: dist=precise job=2
-          dist: precise
-        - env: dist=trusty job=3
-          dist: trusty
-        - env: dist=precise job=3
-          dist: precise
-        - env: dist=trusty job=4
-          dist: trusty
-        - env: dist=precise job=4
-          dist: precise
-        - env: dist=trusty job=5
-          dist: trusty
-        - env: dist=precise job=5
-          dist: precise
+addons:
+    apt:
+        packages:
+            - sysbench
 script:
-    - time awk 'BEGIN{for (i=1; i<=10000; i++) {if (i%1000==0)print "proc1", i; for (j=1; j<=10000; j++) atan2(i, j)}}' &
-    - time awk 'BEGIN{for (i=1; i<=10000; i++) {if (i%1000==0)print "proc2", i; for (j=1; j<=10000; j++) atan2(i, j)}}'
+    - sysbench --test=cpu run
 language: generic
 notifications:
   email: never
