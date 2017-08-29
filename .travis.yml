@@ -1,16 +1,17 @@
-_helpers:
-    - &include1
-      script: echo included
-      install: *include2
-    - &include2 echo install from include2
-jobs:
-    include:
-        - <<: *include1
-        - stage: Niceness
-          script: echo second stage
 sudo: false
-dist: trusty
-script: true
-install": true
+matrix:
+    include:
+        - env: dist=trusty
+          dist: trusty
+        - env: dist=precise
+          dist: precise
+env:
+    - job=1
+    - job=2
+    - job=3
+    - job=4
+    - job=5
+script: time gawk -f prime.awk 8000 proc
+language: generic
 notifications:
   email: never
