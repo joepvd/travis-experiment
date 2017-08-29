@@ -10,7 +10,12 @@ addons:
         packages:
             - sysbench
 script:
+    - sysbench --test=fileio run
     - sysbench --test=cpu run
+    - sysbench --test=memory run
+    - sysbench --test=threads run
+    - sysbench --test=mutex run
+    - sysbench --test=oltp run
 language: generic
 notifications:
   email: never
