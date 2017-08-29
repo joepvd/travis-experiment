@@ -1,17 +1,29 @@
 sudo: false
 matrix:
     include:
-        - env: dist=trusty
+        - env: dist=trusty job=1
           dist: trusty
-        - env: dist=precise
+        - env: dist=precise job=1
           dist: precise
-env:
-    - job=1
-    - job=2
-    - job=3
-    - job=4
-    - job=5
-script: time gawk -f prime.awk 8000 proc
+        - env: dist=trusty job=2
+          dist: trusty
+        - env: dist=precise job=2
+          dist: precise
+        - env: dist=trusty job=3
+          dist: trusty
+        - env: dist=precise job=3
+          dist: precise
+        - env: dist=trusty job=4
+          dist: trusty
+        - env: dist=precise job=4
+          dist: precise
+        - env: dist=trusty job=5
+          dist: trusty
+        - env: dist=precise job=5
+          dist: precise
+script:
+    - time gawk -f prime.awk 8000 proc1 &
+    - time gawk -f prime.awk 8000 proc2
 language: generic
 notifications:
   email: never
