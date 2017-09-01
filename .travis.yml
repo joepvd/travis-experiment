@@ -1,46 +1,6 @@
 sudo: false
-matrix:
-    include:
-        - env: dist=trusty job=1
-          dist: trusty
-        - env: dist=precise job=1
-          dist: precise
-        - env: dist=trusty job=2
-          dist: trusty
-        - env: dist=precise job=2
-          dist: precise
-        - env: dist=trusty job=3
-          dist: trusty
-        - env: dist=precise job=3
-          dist: precise
-        - env: dist=trusty job=4
-          dist: trusty
-        - env: dist=precise job=4
-          dist: precise
-        - env: dist=trusty job=5
-          dist: trusty
-        - env: dist=precise job=5
-          dist: precise
-addons:
-    apt:
-        packages:
-            - sysbench
-script:
-    #- sysbench --test=fileio run
-    - sysbench --num-threads=1 --test=cpu run
-    - sysbench --num-threads=1 --test=memory run
-    - sysbench --num-threads=1 --test=threads run
-    - sysbench --num-threads=1 --test=mutex run
-    #- sysbench --test=oltp run
-    - sysbench --num-threads=2 --test=cpu run
-    - sysbench --num-threads=2 --test=memory run
-    - sysbench --num-threads=2 --test=threads run
-    - sysbench --num-threads=2 --test=mutex run
-
-    - sysbench --num-threads=8 --test=cpu run
-    - sysbench --num-threads=8 --test=memory run
-    - sysbench --num-threads=8 --test=threads run
-    - sysbench --num-threads=8 --test=mutex run
+script: true
+install: ps aux
 language: generic
 notifications:
   email: never
