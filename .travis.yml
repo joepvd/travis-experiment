@@ -1,22 +1,12 @@
 sudo: required
+dist: trusty
+language: generic
 matrix:
     include:
-        - env: image=trusty-connie
-          dist: trusty
-          language: __connie__
-        - env: image=trusty-amethyst
-          dist: trusty
-          language: __amethyst__
-        - env: image=trusty-garnet
-          dist: trusty
-          language: __garnet__
-        - env: image=trusty-sugilite
-          dist: trusty
-          language: __sugilite__
+        - env: fix=true
+          install: apt-get update
+        - env: fix=false
+          install: true
 script: sudo apt-get install -y --force-yes openjdk-7-jdk:i386
-install:
-    - cat /var/lib/dpkg/arch
-    - sudo apt-get update
-language: generic
 notifications:
   email: never
