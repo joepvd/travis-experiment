@@ -1,11 +1,11 @@
-sudo: false
+sudo: required
 matrix:
     include:
-        - env: image=precise
-          dist: precise
+        #- env: image=precise
+        #  dist: precise
         - env: image=trusty
           dist: trusty
-script: head /sys/fs/cgroup/cpuset/cpuset.cpus
+script: sudo apt-get install -y --force-yes openjdk-7-jdk:i386
 install: true
 language: generic
 notifications:
