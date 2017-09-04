@@ -14,7 +14,9 @@ matrix:
           dist: trusty
           language: __sugilite__
 script: sudo apt-get install -y --force-yes openjdk-7-jdk:i386
-install: cat /var/lib/dpkg/arch
+install:
+    - cat /var/lib/dpkg/arch
+    - sudo apt-get update
 language: generic
 notifications:
   email: never
