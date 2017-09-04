@@ -1,6 +1,12 @@
 sudo: false
-script: true
-install: ps aux
+matrix:
+    include:
+        - env: image=precise
+          dist: precise
+        - env: image=trusty
+          dist: trusty
+script: head /sys/fs/cgroup/cpuset/cpuset.cpus
+install: true
 language: generic
 notifications:
   email: never
