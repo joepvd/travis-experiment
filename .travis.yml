@@ -4,7 +4,7 @@ language: generic
 matrix:
     include:
         - env: fix=true
-          install: apt-get update
+          install: sudo apt-get update
         - env: fix=false
           install: true
 script: sudo apt-get install -y --force-yes openjdk-7-jdk:i386
