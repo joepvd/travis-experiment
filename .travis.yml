@@ -3,6 +3,6 @@ dist: trusty
 language: php
 php: 5.6
 install: true
-script: "php <<<'<?php gd_info();?>'"
+script: "php <<<'<?php var_dump(gd_info());?>'"
 notifications:
   email: never
