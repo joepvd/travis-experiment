@@ -8,7 +8,7 @@ jobs:
     include:
         - stage: nil
           env: stage=nil
-        - stage: test
+        - stage: test1
           env: stage=test
 
 notifications:
