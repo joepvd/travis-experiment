@@ -1,17 +1,14 @@
-sudo: false
+sudo: required
 dist: trusty
-language: php
-install: echo $stage
-script: "php <<<'<?php var_dump(gd_info());?>'"
-php:
-    - 5.6
-    - 7.0
-jobs:
+language: java
+install: true
+script: df -h
+matrix:
     include:
-        - stage: nil
-          env: stage=nil
-        - stage: test
-          env: stage=test
+        - env: group=stable
+          group: stable
+        - env: group=deprecated-2017Q3
+          group: deprecated-2017Q3
 
 notifications:
   email: never
