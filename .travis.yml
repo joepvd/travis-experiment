@@ -1,6 +1,7 @@
 sudo: required
 dist: trusty
 language: java
+jdk: openjdk7
 install: true
 script: df -h
 matrix:
