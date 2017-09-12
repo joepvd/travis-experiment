@@ -1,15 +1,16 @@
 sudo: required
 dist: trusty
-language: java
-jdk: openjdk7
-install: true
-script: df -h
+language: python
+python: "2.7"
+install:
+    - ls -l ~/virtualenv
+    - ls -l ~/virtualenv/*/lib/python2.7/site*/
+script: python -c 'import pyspark'
 matrix:
     include:
         - env: group=stable
           group: stable
         - env: group=deprecated-2017Q3
           group: deprecated-2017Q3
-
 notifications:
   email: never
