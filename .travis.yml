@@ -1,15 +1,10 @@
-sudo: required
+sudo: false
 dist: trusty
 language: java
-jdk: openjdk7
+jdk:
+- openjdk7
+- oraclejdk8
 install: true
 script: df -h
-matrix:
-    include:
-        - env: group=stable
-          group: stable
-        - env: group=deprecated-2017Q3
-          group: deprecated-2017Q3
-
 notifications:
   email: never
