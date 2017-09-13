@@ -1,16 +1,18 @@
-sudo: required
+sudo: false
 dist: trusty
 language: python
 python: "2.7"
-install:
-    - ls -l ~/virtualenv
-    - ls -l ~/virtualenv/*/lib/python2.7/site*/
-script: python -c 'import pyspark'
-matrix:
-    include:
-        - env: group=stable
-          group: stable
-        - env: group=deprecated-2017Q3
-          group: deprecated-2017Q3
+env:
+    global:
+        - dir_backtick=`pwd`
+        - dir_subst=$(pwd)
+        - dir_backtick_quoted="`pwd`"
+        - dir_subst_quoted="$(pwd)"
+install: true
+script:
+    - echo $dir_backtick
+    - echo $dir_subst
+    - echo $dir_backtick_quoted
+    - echo $dir_subst_quoted
 notifications:
   email: never
