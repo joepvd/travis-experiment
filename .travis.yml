@@ -1,18 +1,11 @@
 sudo: false
 dist: trusty
-language: python
-python: "2.7"
-env:
-    global:
-        - dir_backtick=`pwd`
-        - dir_subst=$(pwd)
-        - dir_backtick_quoted="`pwd`"
-        - dir_subst_quoted="$(pwd)"
+language: node_js
+node: 7
 install: true
 script:
-    - echo $dir_backtick
-    - echo $dir_subst
-    - echo $dir_backtick_quoted
-    - echo $dir_subst_quoted
+    - yarn --version
+    - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.17.8
+    - yarn --version
 notifications:
   email: never
