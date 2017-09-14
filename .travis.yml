@@ -4,8 +4,9 @@ language: node_js
 node: 7
 install: true
 script:
-    - yarn --version
+    - yarn versions
     - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.17.8
-    - yarn --version
+    - yarn versions
+    - 'tr : "\n" <<<"$PATH"'
 notifications:
   email: never
