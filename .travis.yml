@@ -12,7 +12,7 @@ script:
     - which python
     - tr ":" "\n" <<<"(echo $PATH)"
     - pip freeze
-    - "locate site-packages || true"
-    - "locate dist-packages || true"
+    - python -c 'import sys; print(sys.path)'
+    - echo $PYTHON_PATH
 notifications:
   email: never
