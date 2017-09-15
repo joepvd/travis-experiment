@@ -10,6 +10,8 @@ matrix:
 install: true
 script:
     - which python
+    - /usr/bin/python --version
+    - python --version
     - tr ":" "\n" <<<"(echo $PATH)"
     - pip freeze
     - python -c 'import sys; print(sys.path)'
