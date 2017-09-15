@@ -2,14 +2,17 @@ sudo: false
 dist: trusty
 language: node_js
 node: 7
+matrix:
+    include:
+        - env: group=stable
+        - env: group=deprecated
+          group: deprecated-2017Q3
 install: true
 script:
-    - which yarn
-    - export PATH="$HOME/.yarn/bin:$PATH"
-    - which yarn
-    - yarn versions
-    - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.17.8
-    - yarn versions
-    - 'tr : "\n" <<<"$PATH"'
+    - which python
+    - tr ":" "\n" <<<"(echo $PATH)"
+    - pip freeze
+    - "locate site-packages || true"
+    - "locate dist-packages || true"
 notifications:
   email: never
