@@ -1,8 +1,7 @@
 sudo: false
 dist: trusty
 language: ruby
-rvm: jruby-1.7.26
 script:
-    - ruby --version
+    - head -n 1000 ~/rvm/config/*
 notifications:
   email: never
