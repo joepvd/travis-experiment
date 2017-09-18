@@ -2,6 +2,6 @@ sudo: false
 dist: trusty
 language: ruby
 script:
-    - head -n 1000 ~/rvm/config/*
+    - head -n 1000 ~/.rvm/config/*
 notifications:
   email: never
