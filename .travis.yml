@@ -1,20 +1,9 @@
 sudo: required
 dist: trusty
-language: node_js
-node: 7
-matrix:
-    include:
-        - env: group=stable
-        - env: group=deprecated
-          group: deprecated-2017Q3
-install: true
+language: ruby
+before_install:
+    - echo jruby-1.7.26 >.ruby-version
 script:
-    - which python
-    - /usr/bin/python --version
-    - python --version
-    - tr ":" "\n" <<<"(echo $PATH)"
-    - pip freeze
-    - python -c 'import sys; print(sys.path)'
-    - echo $PYTHON_PATH
+    - ruby --version
 notifications:
   email: never
