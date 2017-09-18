@@ -1,6 +1,7 @@
 sudo: false
 dist: trusty
 language: ruby
+rvm: jruby-1.7.26
 script:
     - ruby --version
 notifications:
