@@ -1,7 +1,20 @@
-sudo: false
+language: generic
 dist: trusty
-language: ruby
+matrix:
+    include:
+        - env: stack=trusty-stable-container
+          sudo: false
+        - env: stack=trusty-sudo-stable
+          sudo: required
+        - env: stack=trusty-sudo-deprecated
+          sudo: required
+          group: deprecated-2017Q2
+          
+
+install: true
 script:
-    - head -n 1000 ~/.rvm/config/*
+    - df -h
+    - mount
 notifications:
-  email: never
+    email: false
+
