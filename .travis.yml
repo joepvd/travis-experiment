@@ -9,7 +9,7 @@ matrix:
           language: swift
           osx_image: xcode8.3
 install: true
-script: sleep 10000
+script: awk 'BEGIN{for (i=1;;i++)print "4 mb log limit"}'
 notifications:
     email: false
 
