@@ -6,7 +6,8 @@ matrix:
         - env: stack=trusty-sudo-stable
           sudo: required
         - env: stack=osx
-          language: xcode8.3
+          language: swift
+          osx_image: xcode8.3
 install: true
 script: sleep 10000
 notifications:
