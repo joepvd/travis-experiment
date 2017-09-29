@@ -1,14 +1,14 @@
-language: generic
-matrix:
-    include:
-        - env: stack=trusty-stable-container
-          sudo: false
-        - env: stack=trusty-sudo-stable
-          sudo: required
-        - env: stack=osx
-          language: swift
-          osx_image: xcode8.3
+language: php
+php: 7.1
+sudo: false
+dist: trusty
 install: true
-script: sleep 10000
+script:
+- ls -lRa /home/travis/.phpenv/versions/7.1
+- php <<<"<?php echo ini_get('memory_limit');?>"
+- "head -n 1000 /home/travis/.phpenv/versions/7.1/etc/conf.d/* || true"
+- 'echo -e "[PHP]\n\nmemory_limit = 2048M\n" >mem.ini'
+- phpenv config-add mem.ini
+- php <<<"<?php echo ini_get('memory_limit');?>"
 notifications:
     email: false
