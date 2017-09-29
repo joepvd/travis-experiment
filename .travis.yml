@@ -10,5 +10,6 @@ script:
 - 'echo -e "[PHP]\n\nmemory_limit = 2048M\n" >mem.ini'
 - phpenv config-add mem.ini
 - php <<<"<?php echo ini_get('memory_limit');?>"
+- php <<<"<?php ini_set('memory_limit', '64M'); echo ini_get('memory_limit');?>"
 notifications:
     email: false
