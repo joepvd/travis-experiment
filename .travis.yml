@@ -10,6 +10,11 @@ jobs:
             global:
             - "var=${TRAVIS_BUILD_ID}"
             - var2=val2
+        - stage: matrix
+          env:
+            matrix:
+            - "var=${TRAVIS_BUILD_ID}"
+            - var2=val2
         - stage: local
           env:
           - "var=${TRAVIS_BUILD_ID}"
