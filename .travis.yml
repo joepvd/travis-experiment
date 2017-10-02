@@ -5,7 +5,7 @@ dist: trusty
 install: true
 env:
     global:
-        - var=val
+        - "var=${TRAVIS_BUILD_ID}"
         - var2=val2
 script: echo $var
 notifications:
