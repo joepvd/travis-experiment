@@ -3,15 +3,9 @@ php: 7.1
 sudo: false
 dist: trusty
 install: true
-script:
-- ls -lRa /home/travis/.phpenv/versions/7.1
-- php <<<"<?php echo ini_get('memory_limit');?>"
-- "head -n 1000 /home/travis/.phpenv/versions/7.1/etc/conf.d/* || true"
-- 'echo -e "memory_limit = 2048M\n" >mem.ini'
-- phpenv config-add mem.ini
-- php <<<"<?php echo ini_get('memory_limit');?>"
-- 'echo -e "memory_limit = 2048M\n" >zzz_mem.ini'
-- phpenv config-add zzz_mem.ini
-- php <<<"<?php echo ini_get('memory_limit');?>"
+env:
+    global:
+        - var=val
+script: echo $var
 notifications:
     email: false
