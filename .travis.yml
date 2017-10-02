@@ -6,6 +6,7 @@ install: true
 env:
     global:
         - var=val
+        - var2=val2
 script: echo $var
 notifications:
     email: false
