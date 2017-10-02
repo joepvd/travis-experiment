@@ -3,10 +3,19 @@ php: 7.1
 sudo: false
 dist: trusty
 install: true
-env:
-    global:
-        - "var=${TRAVIS_BUILD_ID}"
-        - var2=val2
-script: echo $var
+jobs:
+    include:
+        - stage: global
+          env:
+            global:
+            - "var=${TRAVIS_BUILD_ID}"
+            - var2=val2
+        - stage: local
+          env:
+          - "var=${TRAVIS_BUILD_ID}"
+          - var2=val2
+script:
+    - echo $var
+    - echo $var2
 notifications:
     email: false
