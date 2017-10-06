@@ -2,8 +2,9 @@ language: ruby
 install: true
 script:
     - ps aux | grep memc
-    - "telnet localhost:11211 <<<stats &"
-    - sleep 1
+    - "telnet localhost 11211 <<<stats &"
+    - sleep 100
+    - "telnet localhost 11211 <<<stats &"
 services:
     - memcached
 matrix:
