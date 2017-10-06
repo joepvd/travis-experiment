@@ -1,26 +1,16 @@
-language: php
-php: 7.1
-sudo: false
-dist: trusty
+language: ruby
 install: true
-jobs:
-    include:
-        - stage: global
-          env:
-            global:
-            - "var=${TRAVIS_BUILD_ID}"
-            - var2=val2
-        - stage: matrix
-          env:
-            matrix:
-            - "var=${TRAVIS_BUILD_ID}"
-            - var2=val2
-        - stage: local
-          env:
-          - "var=${TRAVIS_BUILD_ID}"
-          - var2=val2
 script:
-    - echo $var
-    - echo $var2
+    - ps aux | grep memc
+    - "telnet localhost:11211 <<<stats &"
+    - sleep 1
+services:
+    - memcached
+matrix:
+    include:
+        - env: image=ec2
+          sudo: false
+        - env: image=gce
+          sudo: required
 notifications:
     email: false
