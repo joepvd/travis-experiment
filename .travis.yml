@@ -1,11 +1,9 @@
-language: ruby
+language: python
+python: 3.6
 install: true
 script:
+    - echo -e 'stats\r' | nc localhost 11211
     - ps aux | grep memc
-    - echo -e 'stats\r' | nc localhost 11211
-    - sleep 100
-    - echo -e 'stats\r' | nc localhost 11211
-    - "telnet localhost 11211 <<<stats &"
 services:
     - memcached
 matrix:
