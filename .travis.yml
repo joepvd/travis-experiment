@@ -1,6 +1,6 @@
 install: true
 script: brew install moreutils
-language: r
+language: csharp
 os: osx
 osx_image: xcode9.1
 notifications:
