@@ -1,16 +1,10 @@
-language: python
-python: 3.6
+language: generic
 install: true
 script:
-    - echo -e 'stats\r' | nc localhost 11211
-    - ps aux | grep memc
-services:
-    - memcached
-matrix:
-    include:
-        - env: image=ec2
-          sudo: false
-        - env: image=gce
-          sudo: required
+    - sudo apt-key list
+    - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+    - sudo apt-key list
+sudo: required
+dist: trusty
 notifications:
     email: false
