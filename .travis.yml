@@ -1,6 +1,7 @@
 install: true
 script: brew install moreutils
 language: r
+os: osx
 osx_image: xcode9.1
 notifications:
     email: false
