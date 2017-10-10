@@ -1,17 +1,7 @@
 script: brew install moreutils
-language: swift
+language: generic
 os: osx
 osx_image: xcode9.1
 notifications:
     email: false
-install:
-- |
-    brew() {
-      local current_ruby
-      current_ruby=$(rvm current)
-      rvm use 2.3 --install --binary --fuzzy
-      rvm use $current_ruby
-      ~/.rvm/bin/rvm-exec 2.3 $(command brew)
-    }
-    export -f brew
-- unset HOMEBREW_NO_AUTO_UPDATE
+install: brew install moreutils
