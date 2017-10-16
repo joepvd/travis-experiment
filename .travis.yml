@@ -1,4 +1,10 @@
 sudo: required
+env:
+    - run=1
+    - run=2
+    - run=3
+    - run=4
+    - run=5
 addons:
     apt:
       sources:
@@ -13,3 +19,4 @@ script:
     - clang --version
     - dpkg -L clang-3.8
     - which clang
+    - sleep 100
