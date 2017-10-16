@@ -1,22 +1,13 @@
 sudo: required
-env:
-    - run=1
-    - run=2
-    - run=3
-    - run=4
-    - run=5
-addons:
-    apt:
-      sources:
-        - ubuntu-toolchain-r-test
-        - llvm-toolchain-precise-3.8
-      packages:
-        - clang-3.8
+matrix:
+    include:
+        - language: c
+        - language: __garnet__
+        - language: __amethesyst__
+        - language: __connie__
 install: true
 script:
-    - 'tr : "\n" <<<"$PATH"'
+    - 'for p in $(tr : "\n" <<<"$PATH"); do ls -l $p/clang*; done'
       #- sudo apt-get update && sudo apt-get install -y clang-3.8 lldb-3.8
-    - clang --version
-    - dpkg -L clang-3.8
-    - which clang
-    - sleep 100
+    - "clang --version || true"
+    - "which clang || true"
