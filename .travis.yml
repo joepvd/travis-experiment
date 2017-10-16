@@ -1,8 +1,15 @@
 sudo: required
+addons:
+apt:
+  sources:
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.8
+  packages:
+    - clang-3.8
 install: true
 script:
     - 'tr : "\n" <<<"$PATH"'
-    - sudo apt-get update && sudo apt-get install -y clang-3.8 lldb-3.8
+      #- sudo apt-get update && sudo apt-get install -y clang-3.8 lldb-3.8
     - clang --version
     - dpkg -L clang-3.8
     - which clang
