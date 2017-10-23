@@ -1,6 +1,6 @@
 sudo: false
 language: clojure
 jdk: oraclejdk9
-lein: 2.8.1
+lein: 2.8.0
 install: lein version
 script: java -version
