@@ -1,6 +1,6 @@
 sudo: false
-language: minimal
-install: echo from merge pr
-script:
-    - echo 1
-    - echo in master
+language: clojure
+jdk: oraclejdk9
+lein: 2.8.1
+install: lein version
+script: java -version
