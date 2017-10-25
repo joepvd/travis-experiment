@@ -1,5 +1,14 @@
-sudo: required
+matrix:
+    include:
+        - sudo: false
+          env: stack=container
+        - sudo: required
+          env: stack=gce
 language: generic
-install: "head -n 100 $(find /etc/resol* -type f)"
-script: dig A hub.docker.com +short
+install: true
+script:
+    - echo -e '4tab\t\t\t\t4tab\n'
+    - echo '4space    4space'
+    - echo -e '1tab\t1tab\n'
+    - echo '1space 1space'
 
