@@ -1,10 +1,5 @@
-sudo: false
-language: clojure
-jdk: oraclejdk9
-lein: 2.8.0
-install: lein version
-script: java -version
-env:
-    global:
-        secure: "Pcdjf8r6it2Qk5uJlptApIAwhGyM9CMKoKxY708mdFJPDi0oWU/RrfHLUWG0x7q2itvy6fLJJtW3d3cyZLiZcvImFRID721dXx1LstBueTGuxpkMxusytNnbvygieRKSawYgiv82N+MRcorlhRwFb2sFgBFNzfqjwu+uvWp/CRo0gReXeCOIfbtoo5Dyn+kCcHScPV9LEdSQdl4iP/v0xdOPu9ZmFn24UWkX++3l2I7Lr7eLRtbLdWR1AZ+a7hpO9LSjKe8zzer8osjnbA37oQfi2wS/NE5bqahuMm4AvLLV9IOn587lK2C4S2iW7/UkQQvAHebLSsYjdwGuprQ6oNVGGgJ/X2SC/o3LpM9e1rAIawDojobj/9KSPtquAk7uxYkT+3FCyauNCGnEnr1JCHh8JC1CqOR03CA7b7FyanTwpVJeoRmOZIkjtP1o24jJUEY0pA8ExneUgRVEzHKEzojHkHpACR+wvUPazXoAVaUjY4o2knYVDr5iA5I2Gc83mjXYRufc7Yl1iGUfrm8H6OIUM9He7NgmE4AujklfCXzEP+rlPKOSxi2b8WWkDwzuNqFaUxqrbfqnx9L6yak2eY30xQVBNu/K/1wPHW6pDaepG7i+oCGkxijMDeanPGo4Q3SaNhTn5FCciQ/BwFdWBmg/mrkNbt/1GxQ8Cea+xAU="
+sudo: required
+language: generic
+install: "head -n 100 $(find /etc/resol* -type f)"
+script: dig A hub.docker.com +short
 
