@@ -1,14 +1,5 @@
-matrix:
-    include:
-        - sudo: false
-          env: stack=container
-        - sudo: required
-          env: stack=gce
-language: generic
+language: perl
 install: true
-script:
-    - echo -e '4tab\t\t\t\t4tab\n'
-    - echo '4space    4space'
-    - echo -e '1tab\t1tab\n'
-    - echo '1space 1space'
-
+script: sudo apt-get update
+notifications:
+    email: never
