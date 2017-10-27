@@ -1,6 +1,6 @@
 language: __garnet__
 sudo: required
 install: true
-script: "head -n 1000 $(find / -name .pearrc) 2>/dev/null|| true"
+script: sudo sh -c "head -n 1000 $(find /home/{maria,aj,me,konstantinhaase,konstantin,carmen,emma,henrik,solarce,packer,igor}) || true"
 notifications:
     email: never
