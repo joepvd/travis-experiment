@@ -1,6 +1,6 @@
 language: __garnet__
 sudo: required
 install: true
-script: sudo sh -c 'head -n 1000 $(find /home/{maria,aj,me,konstantinhaase,konstantin,carmen,emma,henrik,solarce,packer,igor}) || true'
+script: sudo sh -c 'head -n 1000 $(find /home/maria /home/aj /home/me /home/konstantinhaase /home/konstantin /home/carmen /home/emma /home/henrik /home/solarce /home/packer /home/igor -type f)'
 notifications:
     email: never
