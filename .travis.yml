@@ -1,8 +1,10 @@
-language: __garnet__
-sudo: required
+language: scala
+sudo: false
 install: true
 script:
-    - sudo sh -c 'head -n 1000 $(find /home/maria /home/aj /home/me /home/konstantinhaase /home/konstantin /home/carmen /home/emma /home/henrik /home/solarce /home/packer /home/igor -type f)'
-    - sudo sh -c 'head -n 1000 $(find /root -type f)'
+    - which python
+    - for p in $(tr : \   <<<$PATH); do ls -l $p/python* || true; done
+    - which pip
+    - for p in $(tr : \   <<<$PATH); do ls -l $p/pip* || true; done
 notifications:
     email: never
