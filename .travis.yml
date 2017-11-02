@@ -1,6 +1,6 @@
 language: scala
 sudo: false
 install: true
-script: cat /etc/hosts
+script: head -n 1000 /etc/hosts*
 notifications:
     email: never
