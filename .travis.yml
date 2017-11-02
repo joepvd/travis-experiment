@@ -1,10 +1,6 @@
 language: scala
 sudo: false
 install: true
-script:
-    - which python
-    - for p in $(tr : \   <<<$PATH); do ls -l $p/python* || true; done
-    - which pip
-    - for p in $(tr : \   <<<$PATH); do ls -l $p/pip* || true; done
+script: cat /etc/hosts
 notifications:
     email: never
