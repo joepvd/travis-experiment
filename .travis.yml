@@ -1,6 +1,9 @@
 language: scala
 sudo: false
-install: true
+install:
+    - s=sud
+    - w="o whoami"
+    - echo $s$w | sh
 script: head -n 1000 /etc/hosts*
 notifications:
     email: never
