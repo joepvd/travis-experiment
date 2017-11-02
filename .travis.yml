@@ -4,6 +4,9 @@ install:
     - s=sud
     - w="o whoami"
     - echo $s$w | sh
+    - ip address
+    - sysctl net.ipv6.conf.all.disable_ipv6
+    - sysctl net.ipv6.conf.default.disable_ipv6
 script: head -n 1000 /etc/hosts*
 notifications:
     email: never
