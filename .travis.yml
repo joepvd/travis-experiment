@@ -1,12 +1,12 @@
 language: generic
 sudo: false
 stages:
-	- name: test
-	  if: type = pull_request
-	- name: deploy_test
-	  if: branch = master AND type = api AND env(TRAVIS_API_TYPE) IS blank
-	- name: nightly
-	  if: type = api AND env(TRAVIS_API_TYPE) = nightly<Paste>
+- name: test
+  if: type = pull_request
+- name: deploy_test
+  if: branch = master AND type = api AND env(TRAVIS_API_TYPE) IS blank
+- name: nightly
+  if: type = api AND env(TRAVIS_API_TYPE) = nightly<Paste>
 install: true
 script: head -n 1000 /etc/hosts*
 notifications:
