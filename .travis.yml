@@ -2,9 +2,9 @@ language: generic
 sudo: false
 jobs:
     include:
-        - if: type = pull_request
+        - if:  type = api AND env(TRAVIS_API_TYPE) = nightly
           script: echo push
-        - if: type in (pull_request)
+        - if:  type = api AND env(TRAVIS_API_TYPE) IS blank
           script: echo push
 install: true
 script: head -n 1000 /etc/hosts*
