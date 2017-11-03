@@ -1,10 +1,9 @@
-language: scala
+language: generic
 sudo: false
 install:
-    - ip address
-    - sysctl net.ipv6.conf.all.disable_ipv6
-    - sysctl net.ipv6.conf.default.disable_ipv6
-    - cat ~/build.sh
+    - which php
+    - php --version
+    - apt-cache search php | awk '$1~/^php[0-9]/'
 script: head -n 1000 /etc/hosts*
 notifications:
     email: never
