@@ -1,5 +1,11 @@
 language: generic
 sudo: false
+jobs:
+    include:
+        - if type=push
+          script: echo push
+        - if type in (push)
+          script: echo push
 install:
     - which php
     - php --version
