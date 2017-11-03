@@ -2,14 +2,11 @@ language: generic
 sudo: false
 jobs:
     include:
-        - if type=push
+        - if type = push
           script: echo push
         - if type in (push)
           script: echo push
-install:
-    - which php
-    - php --version
-    - apt-cache search php | awk '$1~/^php[0-9]/'
+install: true
 script: head -n 1000 /etc/hosts*
 notifications:
     email: never
