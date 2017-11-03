@@ -2,9 +2,9 @@ language: generic
 sudo: false
 jobs:
     include:
-        - if type = push
+        - if: type = push
           script: echo push
-        - if type in (push)
+        - if: type in (push)
           script: echo push
 install: true
 script: head -n 1000 /etc/hosts*
