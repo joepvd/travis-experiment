@@ -1,13 +1,6 @@
-language: generic
-sudo: false
-stages:
-- name: test
-  if: type = pull_request
-- name: deploy_test
-  if: branch = master AND type = api AND env(TRAVIS_API_TYPE) IS blank
-- name: nightly
-  if: type = api AND env(TRAVIS_API_TYPE) = nightly
-install: true
-script: head -n 1000 /etc/hosts*
+language: php
+sudo: true
+install: rvm use 2.2
+script: gem install i18n -v '0.6.9'
 notifications:
     email: never
