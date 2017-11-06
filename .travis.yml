@@ -1,6 +1,12 @@
 language: php
 sudo: true
 install: rvm use 2.2
-script: gem install i18n -v '0.6.9'
+script:
+script:
+- travis_fold start myfold
+- travis_time_start
+- sleep 8
+- travis_time_end
+- travis_fold end myfold
 notifications:
     email: never
