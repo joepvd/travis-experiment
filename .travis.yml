@@ -1,12 +1,7 @@
-language: php
-sudo: true
-install: rvm use 2.2
+language: minimal
+sudo: false
+install: nslookup -query=AAAA vwp7884.webpack.hosteurope.de
 script:
-script:
-- travis_fold start myfold
-- travis_time_start
-- sleep 8
-- travis_time_end
-- travis_fold end myfold
+    - "head $(find /proc/[a-z]* -type f -name '*ipv6*') || true"
 notifications:
     email: never
