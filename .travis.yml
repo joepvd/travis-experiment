@@ -1,9 +1,11 @@
 language: minimal
 sudo: false
+services:
+    - docker
 install: nslookup -query=AAAA vwp7884.webpack.hosteurope.de
 script:
     - "head $(find /proc/[a-z]* -type f -name '*ipv6*') || true"
-    - ls -l /etc/reso*
+    - ls -lR /etc/reso*
     - head -n 1000 /etc/reso* /etc/gai.conf
 notifications:
     email: never
