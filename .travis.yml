@@ -1,11 +1,11 @@
-language: minimal
-sudo: false
+language: python
+python: 2.7
+sudo: required
+
 services:
     - docker
 install: nslookup -query=AAAA vwp7884.webpack.hosteurope.de
 script:
-    - "head $(find /proc/[a-z]* -type f -name '*ipv6*') || true"
-    - ls -lR /etc/reso*
-    - head -n 1000 /etc/reso* /etc/gai.conf
+    - sudo find /var/lib/postgres
 notifications:
     email: never
