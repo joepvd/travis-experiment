@@ -1,13 +1,7 @@
 language: python
 python: 2.7
-addons:
-    apt:
-        sources:
-            - mysql-5.7-trusty
-        packages:
-            - mysql-server
-            - mysql-client
-install: sleep 3
-script: "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";'"
+sudo: false
+install: ulimit -a
+script: true
 notifications:
     email: never
