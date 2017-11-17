@@ -1,8 +1,7 @@
-language: ruby
+language: generic
 sudo: required
-addons:
-    postgresql: 9.4
+dist: precise
 install: true
-script: sudo apt-get install -y --force-yes openjdk-7-jdk:i386
+script: sudo apt-get install hhvm
 notifications:
     email: never
