@@ -1,7 +1,8 @@
 language: generic
 sudo: required
-dist: precise
+group: deprecated-2017Q2
+dist: trusty
 install: true
-script: sudo apt-get install hhvm
+script: env
 notifications:
     email: never
