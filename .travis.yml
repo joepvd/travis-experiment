@@ -1,8 +1,16 @@
 language: generic
 sudo: required
-#group: deprecated-2017Q2
+matrix:
+    include:
+        - env: group=
+          group: deprecated-2017Q2
+        - env: group=stable
 dist: trusty
 install: true
-script: env
+script:
+    - sudo grep -Ri hhvm /etc/apt
+    - sudo sh -c 'head -n 1000 $(find /etc/apt -type f)'
+
+
 notifications:
     email: never
