@@ -1,9 +1,8 @@
 language: ruby
 sudo: required
-dist: xenial
 addons:
     postgresql: 9.4
 install: true
-script: psql <<<'select version();'
+script: sudo apt-get install -y --force-yes openjdk-7-jdk:i386
 notifications:
     email: never
