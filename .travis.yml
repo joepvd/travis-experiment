@@ -1,6 +1,6 @@
 language: generic
 sudo: required
-group: deprecated-2017Q2
+#group: deprecated-2017Q2
 dist: trusty
 install: true
 script: env
