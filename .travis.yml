@@ -1,6 +1,6 @@
 language: ruby
 sudo: required
-dist: xenial
+dist: trusty
 addons:
     postgresql: 9.4
 install: true
