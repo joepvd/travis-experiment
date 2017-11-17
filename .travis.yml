@@ -1,48 +1,9 @@
-language: __garnet__
+language: ruby
 sudo: required
-matrix:
-  include:
-    - env: run=0 group=dev
-      group: dev
-    - env: run=1 group=stable
-      group: stable
-    - env: run=1 group=dev
-      group: dev
-    - env: run=2 group=stable
-      group: stable
-    - env: run=2 group=dev
-      group: dev
-    - env: run=3 group=stable
-      group: stable
-    - env: run=3 group=dev
-      group: dev
-    - env: run=4 group=stable
-      group: stable
-    - env: run=4 group=dev
-      group: dev
-    - env: run=5 group=stable
-      group: stable
-    - env: run=5 group=dev
-      group: dev
-    - env: run=6 group=stable
-      group: stable
-    - env: run=6 group=dev
-      group: dev
-    - env: run=7 group=stable
-      group: stable
-    - env: run=7 group=dev
-      group: dev
-    - env: run=8 group=stable
-      group: stable
-    - env: run=8 group=dev
-      group: dev
-    - env: run=9 group=stable
-      group: stable
-    - env: run=9 group=dev
-      group: dev
-    - env: run=10 group=stable
-      group: stable
+dist: xenial
+addons:
+    postgresql: 9.4
 install: true
-script: sudo apt-get update
+script: psql <<<'select version();'
 notifications:
     email: never
