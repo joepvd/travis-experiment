@@ -1,11 +1,14 @@
 language: generic
 sudo: required
-matrix:
-    include:
-        - env: group=
-          group: deprecated-2017Q2
-        - env: group=stable
 dist: trusty
+apt:
+    sources:
+        - google-chrome
+    packages:
+        -python
+        -golang
+        -google-chrome-stable
+        -google-chrome-beta
 install: true
 script:
     - sudo grep -Ri hhvm /etc/apt
