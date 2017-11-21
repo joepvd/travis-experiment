@@ -1,19 +1,20 @@
-language: generic
-sudo: required
-dist: trusty
-apt:
-    sources:
-        - google-chrome
-    packages:
-        -python
-        -golang
-        -google-chrome-stable
-        -google-chrome-beta
-install: true
-script:
-    - sudo grep -Ri hhvm /etc/apt
-    - sudo sh -c 'head -n 1000 $(find /etc/apt -type f)'
+language: bash
 
+matrix:
+  include:
+    - env: infra=ec2
+      sudo: false
+    - env: infra=gce
+      sudo: required
+      dist: trusty
+    - env: infra=mac
+      os: osx
+      language: swift
+      osx_image: xcode8.3
+
+install: true
+
+script: awk 'BEGIN{while(1)print "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}'
 
 notifications:
     email: never
