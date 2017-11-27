@@ -1,11 +1,10 @@
-language: ruby
-sudo: required
-dist: xenial
-install:
-    - ps aux --forest
-    - ls -lR /var/lib/dpkg/lock
-    - "sudo fuser $(find /var/lib/dpkg/lock -type f) || true"
-script: sudo apt-get install rxvt-unicode
+language: php
+php: 5.4
+sudo: false
+install: true
+script:
+    - find /home/travis/.phpenv -type f
+    - grep -R memory_limit /home/travis/.phpenv
 after_script: ps aux --forest
 
 
