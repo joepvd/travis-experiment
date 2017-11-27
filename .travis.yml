@@ -3,8 +3,12 @@ php: 5.4
 sudo: false
 install: true
 script:
-    - find /home/travis/.phpenv -type f
-    - grep -R memory_limit /home/travis/.phpenv
+    - find /home/travis/.phpenv -type f -name '*.ini'
+    - "grep -IR memory_limit /home/travis/.phpenv || true"
+    - php --version
+    - which php
+    - which composer
+    - php -d memory_limit=-1 $(which composer) --version
 after_script: ps aux --forest
 
 
