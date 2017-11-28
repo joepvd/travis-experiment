@@ -2,7 +2,7 @@ language: sh
 sudo: false
 stages:
     - Build
-    - Test
+    - NoTest
     - Deploy
 install: true
 
@@ -10,7 +10,7 @@ jobs:
     include:
         - stage: build
           script: echo stage build
-        - stage: test
+        - stage: notest
           script: echo $test
           env:
               - test=1
