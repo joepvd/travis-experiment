@@ -4,22 +4,21 @@ stages:
     - Build
     - Test
     - Deploy
+env:
+    - test=1
+    - test=2
+script: echo $test
 install: true
-
 jobs:
     include:
         - stage: build
           script: echo stage build
-        - stage: test
-          script: echo $test
+          env:
+            - test=
         - stage: deploy
           script: echo deploy
-
-env:
-  matrix:
-  - test=1
-  - test=2
-
+          env:
+            - test=
 
 notifications:
     email: never
