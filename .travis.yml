@@ -4,9 +4,6 @@ stages:
     - Build
     - Test
     - Deploy
-env:
-    - test=1
-    - test=2
 install: true
 
 jobs:
@@ -15,6 +12,9 @@ jobs:
           script: echo stage build
         - stage: test
           script: echo $test
+          env:
+              - test=1
+              - test=2
         - stage: deploy
           script: echo deploy
 
