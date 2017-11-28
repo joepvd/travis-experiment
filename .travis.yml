@@ -13,6 +13,7 @@ jobs:
         - stage: notest
           script: echo $test
           env:
+              matrix:
               - test=1
               - test=2
         - stage: deploy
