@@ -1,25 +1,11 @@
 language: sh
-sudo: false
-stages:
-    - Build
-    - Test
-    - Deploy
-env:
-    - test=1
-    - test=2
-script: echo $test
+sudo: required
+script:
+  - wget -O - https://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
+  - echo 'deb http://debian.neo4j.org/repo stable/' | sudo tee -a /etc/apt/sources.list.d/neo4j.list
+  - sudo apt-get update
+  - sudo apt-get install neo4j-enterprise=3.2.3
 install: true
-jobs:
-    include:
-        - stage: build
-          script: echo stage build
-          env:
-            - test=
-        - stage: deploy
-          script: echo deploy
-          env:
-            - test=
-
 notifications:
     email: never
 
