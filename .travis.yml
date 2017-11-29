@@ -1,4 +1,4 @@
-language: sh
+language: node_js
 sudo: required
 script:
   - "jdk_switcher use openjdk8 || true"
