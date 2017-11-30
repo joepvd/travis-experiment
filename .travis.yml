@@ -1,8 +1,8 @@
 language: python
 sudo: required
 script:
-    - sudo apt-get install rabbitmq-server
     - apt-cache madison rabbitmq-server
+    - sudo apt-get install rabbitmq-server=3.7.0-1|| sudo apt-get install rabbitmq-server=3.6.14-1|| sudo apt-get install rabbitmq-server=3.6.13-1|| sudo apt-get install rabbitmq-server=3.6.12-1|| sudo apt-get install rabbitmq-server=3.6.11-1|| sudo apt-get install rabbitmq-server=3.6.10-1|| sudo apt-get install rabbitmq-server=3.6.9-1|| sudo apt-get install rabbitmq-server=3.6.8-1|| sudo apt-get install rabbitmq-server=3.6.7-1|| sudo apt-get install rabbitmq-server=3.6.6-1|| sudo apt-get install rabbitmq-server=3.6.5-1|| sudo apt-get install rabbitmq-server=3.6.4-1|| sudo apt-get install rabbitmq-server=3.6.3-1|| sudo apt-get install rabbitmq-server=3.6.2-1|| sudo apt-get install rabbitmq-server=3.6.1-1|| sudo apt-get install rabbitmq-server=3.6.0-1|| sudo apt-get install rabbitmq-server=3.5.8-1|| sudo apt-get install rabbitmq-server=3.5.7-1|| sudo apt-get install rabbitmq-server=3.2.4-1ubuntu0.1|| sudo apt-get install rabbitmq-server=3.2.4-1
 install: true
 notifications:
     email: never
