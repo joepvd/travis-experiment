@@ -2,7 +2,7 @@ language: python
 sudo: required
 script:
     - sudo apt-get install rabbitmq-server
-    - apt-cache madision rabbitmq-server
+    - apt-cache madison rabbitmq-server
 install: true
 notifications:
     email: never
