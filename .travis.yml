@@ -1,11 +1,8 @@
-language: php
+language: python
 sudo: required
 script:
-    - ls -l /opt/google/chrome/chrome-sandbox
-    - stat /opt/google/chrome/chrome-sandbox
-    - dpkg -S /opt/google/chrome/chrome-sandbox
-    - sudo apt-get update && sudo apt-get install google-chrome-stable
-    - stat /opt/google/chrome/chrome-sandbox
+    - sudo apt-get install rabbitmq-server
+    - apt-cache madision rabbitmq-server
 install: true
 notifications:
     email: never
