@@ -1,7 +1,10 @@
 language: php
-sudo: false
+sudo: required
 script:
     - ls -l /opt/google/chrome/chrome-sandbox
+    - stat /opt/google/chrome/chrome-sandbox
+    - dpkg -S /opt/google/chrome/chrome-sandbox
+    - sudo apt-0get update && sudo apt-get install google-chrome-stable
     - stat /opt/google/chrome/chrome-sandbox
 install: true
 notifications:
