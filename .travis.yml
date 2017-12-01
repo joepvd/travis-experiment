@@ -1,12 +1,10 @@
 language: node_js
 sudo: required
+services:
+    - docker
 script:
-  - "jdk_switcher use openjdk8 || true"
-  - sudo jdk_switcher use openjdk8
-  - wget -O - https://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
-  - echo 'deb http://debian.neo4j.org/repo stable/' | sudo tee -a /etc/apt/sources.list.d/neo4j.list
-  - sudo apt-get update
-  - sudo apt-get install neo4j-enterprise=3.2.3
+    - docker: version
+group: edge
 install: true
 notifications:
     email: never
