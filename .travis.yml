@@ -1,7 +1,7 @@
 language: xcode8.3
 os: osx
 script:
-    - "for p in $(tr : \   ); do ls -l $p/gcc* 2>/dev/null; done || true"
+    - "for p in $(tr : ' '); do ls -l $p/gcc* 2>/dev/null; done || true"
 install: true
 notifications:
     email: never
