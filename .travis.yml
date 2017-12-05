@@ -1,9 +1,21 @@
-language: python
-python: 2.7.10
-install: echo $'ipython==2.2.0\ndjango-debug-toolbar==1.8\ndjango-debug-panel==0.8.3\n' >requirements.txt
-script: pip install -r requirements.txt
-dist: trusty
-sudo: false
+language: generic
+os: osx
+install: true
+matrix:
+    include:
+        - env: plan=unaltered
+          script: pushd
+        - env: plan=unset
+          script:
+              - "declare -f || true"
+              - "declare -F || true"
+              - unset pushd
+              - pushd
+        - env: plan=rvm_project_rvmrc
+          script:
+              - export rvm_project_rvmrc=0
+              - pushd
+after_script: echo after script
 notifications:
     email: never
 
