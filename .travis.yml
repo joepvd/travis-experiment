@@ -1,9 +1,14 @@
 language: generic
-git:
-    depth: false
-script: echo true
-install: true
-sudo: false
+os: osx
+install:
+  - "declare -f || true"
+  - "declare -F || true"
+script:
+  - unset -f pushd
+  - unset -f cd
+  - unset -f popd
+  - pushd ~
+  - popd
+  - cd ..
 notifications:
     email: never
-
