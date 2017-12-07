@@ -1,14 +1,34 @@
-language: generic
-os: osx
-install:
-  - "declare -f || true"
-  - "declare -F || true"
+matrix:
+  include:
+  - env: garnet_edge
+    language: __garnet__
+    group: edge
+  - env: garnet_stable
+    language: __garnet__
+    group: stable
+  - env: amethyst_edge
+    language: __amethyst__
+    group: edge
+  - env: amethyst_stable
+    language: __amethyst__
+    group: stable
+  - env: connie_edge
+    language: __connie__
+    group: edge
+  - env: connie_stable
+    language: __connie__
+    group: stable
+  - env: cookiecat_edge
+    language: __cookiecat__
+    group: edge
+  - env: cookiecat_stable
+    language: __cookiecat__
+    group: stable
+dist: trusty
+sudo: required
+install: true
 script:
-  - unset -f pushd
-  - unset -f cd
-  - unset -f popd
-  - pushd ~
-  - popd
-  - cd ..
+    - ps aux
+    - pstree -ap
 notifications:
     email: never
