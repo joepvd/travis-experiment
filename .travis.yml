@@ -1,8 +1,21 @@
-sudo: required
-language: generic
-dist: trusty
-group: stable
-install: true
-script: true
+language: node_js
+node_js: 6
+before_install:
+  npm run uninstall && npm cache clean --force
+install:
+  npm install
+branches:
+  only:
+  - master
+  - develop
+  - travis-ci
+stages:
+- test
+- macos
+jobs:
+  include:
+    - stage: macos
+      if: branch = master
+      os: osx
 notifications:
     email: never
