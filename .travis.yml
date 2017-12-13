@@ -6,6 +6,7 @@ addons:
             - mysql-5.7-trusty
         packages:
             - mysql-server
+            - mysql-client
 install: sleep 3
 script: "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";'"
 notifications:
