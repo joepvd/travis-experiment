@@ -4,8 +4,8 @@ addons:
     apt:
         sources:
             - mongodb-3.2-precise
-              #packages:
-              #packagmongodb-org-server
+        packages:
+            - packagmongodb-org-server
 install: sleep 3
 script:
     - "for p in $(apt-cache search mongo | awk '/^mongo/{print $1}'); do apt-cache madison $p; done"
