@@ -1,14 +1,14 @@
 language: ruby
+install: true
 sudo: required
-addons:
-    apt:
-        sources:
-            - mongodb-3.2-precise
-            - mongodb-3.2-trusty
-        packages:
-            - mongodb-org-server
-install: sleep 3
-script: "for p in $(apt-cache search mongo | awk '/^mongo/{print $1}'); do apt-cache madison $p; done"
+matrix:
+    include:
+        - env: image=deprecated-2017Q4
+          group: deprecated-2017Q4
+        - env: image=stable
+script:
+    - rvm list
+    - rvm alias list
 notifications:
     email: never
 
