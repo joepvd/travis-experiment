@@ -1,14 +1,14 @@
 language: ruby
-install: true
 sudo: required
-matrix:
-    include:
-        - env: image=deprecated-2017Q4
-          group: deprecated-2017Q4
-        - env: image=stable
+addons:
+    apt:
+        sources:
+            - mongodb-3.2-trusty
+              #packages:
+              #packagmongodb-org-server
+install: sleep 3
 script:
-    - rvm list
-    - rvm alias list
+    - "for p in $(apt-cache search mongo | awk '/^mongo/{print $1}'); do apt-cache madison $p; done"
+    - sudo apt-get install -y --allow-downgrades mongodb-org=3.2.18
 notifications:
     email: never
-
