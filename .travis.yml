@@ -1,14 +1,14 @@
-language: python
-python: 2.7
+language: ruby
+sudo: required
 addons:
     apt:
         sources:
-            - mysql-5.7-trusty
+            - mongodb-3.2-precise
+            - mongodb-3.2-trusty
         packages:
-            - mysql-server
-            - mysql-client
+            - mongodb-org-server
 install: sleep 3
-script: "mysql -uroot -e 'SHOW VARIABLES LIKE \"%version%\";'"
+script: "for p in $(apt-cache search mongo | awk '/^mongo/{print $1}'); do apt-cache madison $p; done"
 notifications:
     email: never
 
