@@ -1,15 +1,12 @@
-language: ruby
+language: generic
 sudo: required
-install: sleep 3
 matrix:
     include:
-        - env: run=stable-python PYTHON=python
-        - env: run=stable-python3 PYTHON=python3
-        - env: run=deprecated-python PYTHON=python
-          group: deprecated-2017q4
-        - env: run=deprecated-python3 PYTHON=python3
+        - env: run=stable
+        - env: run=deprecated
           group: deprecated-2017q4
 script:
-    - $PYTHON -m pytest
+    - docker run -it alpine /bin/sh -c 'ip -6 address show'
+    - docker run -it alpine /bin/sh -c 'ip -4 address show'
 notifications:
     email: never
