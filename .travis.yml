@@ -3,10 +3,10 @@ sudo: required
 matrix:
     include:
         - env: run=stable
-        - env: run=deprecated
+        - env: run=deprecated-2017q4
           group: deprecated-2017q4
-script:
-    - docker run -it alpine /bin/sh -c 'ip -6 address show'
-    - docker run -it alpine /bin/sh -c 'ip -4 address show'
+        - env: run=deprecated-2017Q4
+          group: deprecated-2017Q4
+script: true
 notifications:
     email: never
