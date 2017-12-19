@@ -1,4 +1,4 @@
-language: generic
+language: ruby
 sudo: required
 matrix:
     include:
@@ -9,8 +9,8 @@ matrix:
           group: deprecated-2017q4
         - env: run=deprecated-2017Q4
           group: deprecated-2017Q4
-        - env: run=deprecated-2017Q4
-          group: deprecated-2017Q4
+        - env: run=nosuchstring
+          group: nosuchstring
         - env: run=edge
           group: edge
         - env: run=dev
