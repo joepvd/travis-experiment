@@ -2,19 +2,10 @@ language: ruby
 sudo: required
 matrix:
     include:
-        - env: run=unspecified
         - env: run=stable
           group: stable
-        - env: run=deprecated-2017q4
-          group: deprecated-2017q4
         - env: run=deprecated-2017Q4
           group: deprecated-2017Q4
-        - env: run=nosuchstring
-          group: nosuchstring
-        - env: run=edge
-          group: edge
-        - env: run=dev
-          group: dev
-script: true
+script: docker run -it alpine /bin/sh -c ifconfig
 notifications:
     email: never
