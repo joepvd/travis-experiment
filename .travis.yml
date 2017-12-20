@@ -2,10 +2,11 @@ language: ruby
 sudo: required
 matrix:
     include:
-        - env: run=stable
-          group: stable
-        - env: run=deprecated-2017Q4
-          group: deprecated-2017Q4
-script: docker run -it alpine /bin/sh -c ifconfig
+        - env: run=precise
+          dist: precise
+        - env: run=trusty
+          dist: trusty
+install: true
+script: ps aux | grep sshguard
 notifications:
     email: never
