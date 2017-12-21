@@ -2,6 +2,8 @@ language: node_js
 install: sleep 1
 script:
     - eval "$(ssh-agent -s)"
+    - ssh-keygen -t rsa -N "" -f ~/.ssh/key
+    - ssh-add ~/.ssh/key
     - sleep 1
     - ps -ef
     - ps -jef --forest
