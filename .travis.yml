@@ -1,6 +1,8 @@
 language: node_js
-install: sleep 10
+install: sleep 1
 script:
+    - eval "$(ssh-agent -s)"
+    - sleep 1
     - ps -ef
     - ps -jef --forest
 notifications:
