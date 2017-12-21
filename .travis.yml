@@ -1,11 +1,6 @@
-language: node_js
-install: sleep 1
+language: generic
+install: head /proc/sys/fs/pipe*
 script:
-    - eval "$(ssh-agent -s)"
-    - ssh-keygen -t rsa -N "" -f ~/.ssh/key
-    - ssh-add ~/.ssh/key
-    - sleep 1
-    - ps -ef
-    - ps -jef --forest
+    - awk 'BEGIN{for(i=1;i<=3000;i++)a=a"\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";print a}'
 notifications:
     email: never
