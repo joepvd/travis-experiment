@@ -1,15 +1,7 @@
-language: ruby
-sudo: required
-matrix:
-    include:
-        - env: run=precise
-          dist: precise
-        - env: run=trusty
-          dist: trusty
-install: "yes | ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l userdoesnotexist localhost echo i am in & sleep 1"
+language: node_js
+install: sleep 10
 script:
-    - tail -n 100 /var/log/auth.log
-    - ps aux | grep sshguard
-    - cat /etc/sshguard/whitelist
+    - ps -ef
+    - ps -jef --forest
 notifications:
     email: never
