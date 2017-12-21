@@ -6,6 +6,7 @@ matrix:
         - env: image=old
           group: deprecated-2017Q4
 install: head /proc/sys/fs/pipe*
+filter_secrets: false
 script:
     - awk 'BEGIN{for(i=1;i<=3000;i++)a=a"\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";print a}'
 notifications:
