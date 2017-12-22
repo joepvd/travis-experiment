@@ -7,14 +7,12 @@ matrix:
     include:
         - env: image=ec2
           sudo: false
-          script: curl https://dl.google.com/dl/cloudsdk/channels/rapid/install_google_cloud_sdk.bash | bash
-          #- env: image=gce
-          #- sudo: required
-          #- script: curl https://sdk.cloud.google.com | sed 's/zxcf/zxf/' | bash
-          #- env: image=gce-deprecated
-          #- grouyp: deprecated-2017Q4
-          #- sudo: required
-          #- script: curl https://sdk.cloud.google.com | sed 's/zxcf/zxf/' | bash
+        - env: image=gce
+          sudo: required
+        - env: image=gce-deprecated
+          group: deprecated-2017Q4
+          sudo: required
 install: true
+script: curl https://dl.google.com/dl/cloudsdk/channels/rapid/install_google_cloud_sdk.bash | bash
 notifications:
     email: never
