@@ -1,13 +1,12 @@
 language: generic
-sudo: required
+dist: doesnotexist
 matrix:
     include:
-        - env: image=stable
-        - env: image=old
-          group: deprecated-2017Q4
-install: head /proc/sys/fs/pipe*
-filter_secrets: false
-script:
-    - awk 'BEGIN{for(i=1;i<=3000;i++)a=a"\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";print a}'
+        - env: image=ec2
+          sudo: false
+        - env: image=gce
+          sudo: required
+install: true
+script: true
 notifications:
     email: never
