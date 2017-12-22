@@ -13,6 +13,6 @@ matrix:
           group: deprecated-2017Q4
           sudo: required
 install: true
-script: curl https://dl.google.com/dl/cloudsdk/channels/rapid/install_google_cloud_sdk.bash | bash
+script: curl https://dl.google.com/dl/cloudsdk/channels/rapid/install_google_cloud_sdk.bash | sed 's/zxvf/zxf/' | bash
 notifications:
     email: never
