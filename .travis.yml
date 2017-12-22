@@ -1,5 +1,9 @@
 language: generic
 dist: doesnotexist
+env:
+    global:
+		- CLOUDSDK_CORE_DISABLE_PROMPTS=1
+	    - GCLOUD_SDK_PATH=$HOME/google-cloud-sdk
 matrix:
     include:
         - env: image=ec2
