@@ -4,9 +4,27 @@ matrix:
     include:
         - env: image=ec2
           sudo: false
+          script: curl https://sdk.cloud.google.com | bash
         - env: image=gce
           sudo: required
+          script: curl https://sdk.cloud.google.com | bash
+        - env: image=precise-gce
+          sudo: required
+          dist: precise
+          script: curl https://sdk.cloud.google.com | bash
+        - env: image=ec2_nofilter
+          filter_secrets: false
+          sudo: false
+          script: curl https://sdk.cloud.google.com | bash
+        - env: image=gce_nofilter
+          filter_secrets: false
+          sudo: required
+          script: curl https://sdk.cloud.google.com | bash
+        - env: image=precise-gce_nofilter
+          filter_secrets: false
+          sudo: required
+          dist: precise
+          script: curl https://sdk.cloud.google.com | bash
 install: true
-script: true
 notifications:
     email: never
