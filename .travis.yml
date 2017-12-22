@@ -11,22 +11,9 @@ matrix:
         - env: image=gce
           sudo: required
           script: curl https://sdk.cloud.google.com | bash
-        - env: image=precise-gce
+        - env: image=gce-deprecated
+          grouyp: deprecated-2017Q4
           sudo: required
-          dist: precise
-          script: curl https://sdk.cloud.google.com | bash
-        - env: image=ec2_nofilter
-          filter_secrets: false
-          sudo: false
-          script: curl https://sdk.cloud.google.com | bash
-        - env: image=gce_nofilter
-          filter_secrets: false
-          sudo: required
-          script: curl https://sdk.cloud.google.com | bash
-        - env: image=precise-gce_nofilter
-          filter_secrets: false
-          sudo: required
-          dist: precise
           script: curl https://sdk.cloud.google.com | bash
 install: true
 notifications:
