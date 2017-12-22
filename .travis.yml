@@ -15,6 +15,7 @@ matrix:
           grouyp: deprecated-2017Q4
           sudo: required
           script: curl https://sdk.cloud.google.com | bash
+filter_secrets: false
 install: true
 notifications:
     email: never
