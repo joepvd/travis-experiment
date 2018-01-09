@@ -22,7 +22,7 @@ matrix:
         - env: run=18
         - env: run=19
         - env: run=20
-script: strace -e network curl -S http://ppa.launchpad.net/git-core/ppa/ubuntu/dists/trusty/InRelease >/dev/null
-install: echo hi
+script: curl -S http://ppa.launchpad.net/git-core/ppa/ubuntu/dists/trusty/InRelease >/dev/null
+install: [ -f /.dockerenv ]
 notifications:
     email: never
