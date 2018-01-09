@@ -24,5 +24,6 @@ matrix:
         - env: run=20
 script: curl -S http://ppa.launchpad.net/git-core/ppa/ubuntu/dists/trusty/InRelease >/dev/null
 install: "[ -f /.dockerenv ]"
+before_script: ip address show
 notifications:
     email: never
