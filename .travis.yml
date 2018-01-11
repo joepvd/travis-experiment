@@ -1,18 +1,8 @@
-sudo: false
 language: ruby
 sudo: required
 script:
-    - sudo apt-get update
-    - echo from 3.4 docs
+    - "[ -f /etc/apt/sources.list.d/mongodb-3.4.list ] && grep -vq arch=amd64 /etc/apt/sources.list.d/mongodb-3.4.list && sudo sed 's/^deb /deb [arch=amd64] /' /etc/apt/sources.list.d/mongodb-3.4.list"
     - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-    - sudo apt-get update
-    - echo from 3.6 docs
-    - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-    - sudo apt-get update
-    - ls -l /var/lib/apt/lists/
-    - sudo rm /var/lib/apt/lists/*mongo*
-    - sudo apt-get clean
-    - sudo apt-get update
 install: echo install
 notifications:
     email: never
