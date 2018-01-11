@@ -11,6 +11,7 @@ script:
     - sudo apt-get update
     - ls -l /var/lib/apt/lists/
     - sudo rm /var/lib/apt/lists/*mongo*
+    - sudo apt-get clean
     - sudo apt-get update
 install: echo install
 notifications:
