@@ -1,5 +1,5 @@
 language: ruby
-sudo: required
+sudo: false
 dist: trusty
 script: awk 'BEGIN{for(i=1;i<=3000;i++)a=a"\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";print a}'
 matrix:
