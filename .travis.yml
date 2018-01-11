@@ -1,21 +1,21 @@
 language: ruby
-sudo: false
-dist: trusty
-script: awk 'BEGIN{for(i=1;i<=3000;i++)a=a"\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";print a}'
+script: 
+    - awk 'BEGIN{for(i=1;i<=3000;i++)a=a"\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";print a}'
+    - ">&2 awk 'BEGIN{for(i=1;i<=3000;i++)a=a\"\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\";print a}'"
 matrix:
     include:
         - env: fix=yes-ec2
-          before_install: python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
+          before_install: python nonblock.py
           sudo: false
         - env: fix=no-ec2
           sudo: false
         - env: fix=yes-gce
-          before_install: python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
+          before_install: python nonblock.py
           sudo: required
         - env: fix=no-gce
           sudo: required
         - env: fix=yes-osx
-          before_install: python -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL); fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
+          before_install: python nonblock.py
           osx_image: xcode8.3
         - env: fix=no-osx
           osx_image: xcode8.3
