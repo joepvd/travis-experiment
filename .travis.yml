@@ -1,22 +1,11 @@
-language: ruby
-script: awk 'BEGIN{for(i=1;i<=3000;i++)a=a"\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";print a; print a >"/dev/stderr"}'
-matrix:
-    include:
-        - env: fix=yes-ec2
-          before_install: python nonblock.py
-          sudo: false
-        - env: fix=no-ec2
-          sudo: false
-        - env: fix=yes-gce
-          before_install: python nonblock.py
-          sudo: required
-        - env: fix=no-gce
-          sudo: required
-        - env: fix=yes-osx
-          before_install: python nonblock.py
-          osx_image: xcode8.3
-        - env: fix=no-osx
-          osx_image: xcode8.3
+language: bash
+script:
+    - df -h
+    - sudo mount -o remount,size=50% /var/ramfs
+    - df -h
+    - cat /proc/mounts
+
+sudo: required
 install: true
 notifications:
     email: never
