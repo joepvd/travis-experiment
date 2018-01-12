@@ -1,17 +1,11 @@
-language: bash
+language: python
 script:
-    - df -h
-    - cat /proc/mounts
-
-matrix:
-    include:
-        - env: image=gce
-          sudo: required
-        - env: image=old-gce
-          sudo: required
-          group: deprecated-2017Q4
-        - env: image=ec2
-          sudo: false
+    - sudo apt-get update -qq
+    - LANG=C apt-key list | awk -F'[ /]+' '/expired:/{printf "sudo apt-key adv --recv-keys --keyserver keys.gnupg.net %s\n", $3}' | sh
+    - LANG=C apt-key list
+    - sudo apt-get update -qq
+sudo: required
+group: deprecated-2017Q4
 install: true
 notifications:
     email: never
