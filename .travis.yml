@@ -1,8 +1,6 @@
 language: bash
 script:
     - df -h
-    - sudo mount -o remount,size=50% /var/ramfs
-    - df -h
     - cat /proc/mounts
 
 matrix:
