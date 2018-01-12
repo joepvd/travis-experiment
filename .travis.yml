@@ -5,7 +5,15 @@ script:
     - df -h
     - cat /proc/mounts
 
-sudo: required
+matrix:
+    include:
+        - env: image=gce
+          sudo: required
+        - env: image=old-gce
+          sudo: required
+          group: deprecated-2017Q4
+        - env: image=ec2
+          sudo: false
 install: true
 notifications:
     email: never
