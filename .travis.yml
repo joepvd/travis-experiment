@@ -3,11 +3,12 @@ script:
     - sudo apt-get update -qq
     - LANG=C apt-key list | awk -F'[ /]+' '/expired:/{printf "sudo apt-key adv --recv-keys --keyserver keys.gnupg.net %s\n", $3}' | sh
     - "sudo apt-get update -qq || true"
-    - head -n 1000 $(find /etc/apt -name '*mongo*')
-    - sudo sed -i 's/^deb /deb [arch=amd64] /' $(find /etc/apt -name '*mongo*')
-    - sudo apt-get update -qq
-sudo: required
-group: deprecated-2017Q4
+addons:
+    apt:
+        sources:
+            - mongo-precise-3.2
+        packages:
+            - mongodb-org=3.2.18
 install: true
 notifications:
     email: never
