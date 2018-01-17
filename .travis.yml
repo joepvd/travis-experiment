@@ -1,14 +1,13 @@
-language: python
-script:
-    - sudo apt-get update -qq
-    - LANG=C apt-key list | awk -F'[ /]+' '/expired:/{printf "sudo apt-key adv --recv-keys --keyserver keys.gnupg.net %s\n", $3}' | sh
-    - "sudo apt-get update -qq || true"
-addons:
-    apt:
-        sources:
-            - mongodb-3.2-precise
-        packages:
-            - mongodb-org=3.2.18
+language: bash
+matrix:
+    include:
+        - env: infra=ec2
+          sudo: false
+        - env: infra=gce
+          sudo: required
+        - env: infra=osx
+          osx_image: xcode9
+script: true
 install: true
 notifications:
     email: never
