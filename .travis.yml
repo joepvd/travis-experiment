@@ -6,7 +6,7 @@ matrix:
         - env: infra=gce
           sudo: required
         - env: infra=osx
-          osx_image: xcode9
+          osx_image: xcode8.3
 script: true
 install: true
 notifications:
