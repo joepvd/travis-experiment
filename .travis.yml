@@ -1,11 +1,22 @@
-language: bash
+language: ruby
+script: awk 'BEGIN{for(i=1;i<=3000;i++)a=a"\naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";print a; print a >"/dev/stderr"}'
 matrix:
     include:
-        - env: infra=ec2
+        - env: image=ec2 run=1
           sudo: false
-        - env: infra=gce
+        - env: image=gce run=1
           sudo: required
-script: true
+
+        - env: image=ec2 run=2
+          sudo: false
+        - env: image=gce run=2
+          sudo: required
+
+        - env: image=ec2 run=3
+          sudo: false
+        - env: image=gce run=3
+          sudo: required
+
 install: true
 notifications:
     email: never
