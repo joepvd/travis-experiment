@@ -1,5 +1,8 @@
-language: android
-jdk: oraclejdk8
+language: bash
+addons:
+    apt:
+        packages:
+            - oracle-java8-installer
 script: true
 install: true
 sudo: required
