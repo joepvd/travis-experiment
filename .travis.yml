@@ -1,8 +1,9 @@
 language: android
-addons:
-    apt:
-        packages:
-            - oracle-java8-installer
+#addons:
+#    apt:
+#        packages:
+#            - oracle-java8-installer
+jdk: oraclejdk8
 script: true
 install: true
 sudo: required
