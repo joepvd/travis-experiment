@@ -24,7 +24,7 @@ matrix:
           dist: precise
         - env: image=trusty run=4
           dist: trusty
-script: true
+script: curl -sL http://ppa.launchpad.net/chris-lea/redis-server/ubuntu/dists/precise/InRelease
 install: true
 notifications:
     email: never
