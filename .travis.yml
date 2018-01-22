@@ -1,12 +1,30 @@
-language: android
-#addons:
-#    apt:
-#        packages:
-#            - oracle-java8-installer
-jdk: oraclejdk8
+language: node_js
+addons:
+    apt:
+        sources:
+            - ubuntu-toolchain-r-test
+        packages:
+            - g++-4.8
+sudo: required
+matrix:
+    include:
+        - env: image=precise run=1
+          dist: precise
+        - env: image=trusty run=1
+          dist: trusty
+        - env: image=precise run=2
+          dist: precise
+        - env: image=trusty run=2
+          dist: trusty
+        - env: image=precise run=3
+          dist: precise
+        - env: image=trusty run=3
+          dist: trusty
+        - env: image=precise run=4
+          dist: precise
+        - env: image=trusty run=4
+          dist: trusty
 script: true
 install: true
-sudo: required
-dist: trusty
 notifications:
     email: never
