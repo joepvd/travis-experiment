@@ -1,17 +1,7 @@
-language: bash
+language: java
+jdk: oraclejdk9
 script:
-    - df -h
-    - cat /proc/mounts
-
-matrix:
-    include:
-        - env: image=gce
-          sudo: required
-        - env: image=old-gce
-          sudo: required
-          group: deprecated-2017Q4
-        - env: image=ec2
-          sudo: false
+    - gradle -PTestLoggingFull=true check
 install: true
 notifications:
     email: never
