@@ -5,6 +5,7 @@ matrix:
         - env: image=precise run=1
           dist: precise
 script: curl -sL http://ppa.launchpad.net/chris-lea/redis-server/ubuntu/dists/precise/InRelease
+before_install: sudo apt-get install traceroute
 install: while (( i++ < 10 )); do traceroute ppa.launchpad.net; sleep 1; done
 notifications:
     email: never
