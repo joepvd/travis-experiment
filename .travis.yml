@@ -1,30 +1,10 @@
 language: node_js
-addons:
-    apt:
-        sources:
-            - ubuntu-toolchain-r-test
-        packages:
-            - g++-4.8
 sudo: required
 matrix:
     include:
         - env: image=precise run=1
           dist: precise
-        - env: image=trusty run=1
-          dist: trusty
-        - env: image=precise run=2
-          dist: precise
-        - env: image=trusty run=2
-          dist: trusty
-        - env: image=precise run=3
-          dist: precise
-        - env: image=trusty run=3
-          dist: trusty
-        - env: image=precise run=4
-          dist: precise
-        - env: image=trusty run=4
-          dist: trusty
 script: curl -sL http://ppa.launchpad.net/chris-lea/redis-server/ubuntu/dists/precise/InRelease
-install: true
+install: while (( i++ < 10 )); do traceroute ppa.launchpad.net; sleep 1; done
 notifications:
     email: never
