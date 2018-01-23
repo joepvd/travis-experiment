@@ -4,6 +4,20 @@ matrix:
     include:
         - env: image=precise run=1
           dist: precise
+        - env: image=precise run=2
+          dist: precise
+        - env: image=precise run=3
+          dist: precise
+        - env: image=precise run=4
+          dist: precise
+        - env: image=precise run=5
+          dist: precise
+        - env: image=precise run=6
+          dist: precise
+        - env: image=precise run=7
+          dist: precise
+        - env: image=precise run=8
+          dist: precise
 script: curl -sL http://ppa.launchpad.net/chris-lea/redis-server/ubuntu/dists/precise/InRelease
 install: "while ! sudo apt-get install traceroute; do sleep 1; done"
 notifications:
