@@ -1,7 +1,12 @@
 language: java
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
 jdk: oraclejdk9
-script:
-    - gradle -PTestLoggingFull=true check
+script: echo yes
 install: true
 notifications:
     email: never
