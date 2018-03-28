@@ -1,13 +1,7 @@
-language: java
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - gcc-4.8
-jdk: oraclejdk9
-script: echo yes
+language: generic
+dist: doesnotexist
+sudo: required
 install: true
+script: true
 notifications:
     email: never
-
