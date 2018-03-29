@@ -1,7 +1,7 @@
 language: generic
 dist: doesnotexist
 sudo: required
-install: true
+install: echo hi
 script: true
 notifications:
     email: never
