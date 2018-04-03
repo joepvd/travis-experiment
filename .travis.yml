@@ -1,7 +1,13 @@
 language: generic
-dist: doesnotexist
+dist: trusty
 sudo: required
+addons:
+    apt:
+        sources:
+            - mysql-5.7-trusty
 install: echo hi
-script: true
+script:
+    - "sudo -E apt-get -yq update"
+    - "travis_retry sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install mysql-server mysql-client"
 notifications:
     email: never
