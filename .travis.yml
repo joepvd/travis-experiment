@@ -1,13 +1,30 @@
-language: generic
+addons: 
+  apt:
+    sources: 
+      - mysql-5.7-trusty
 dist: trusty
 sudo: required
-addons:
-    apt:
-        sources:
-            - mysql-5.7-trusty
-install: echo hi
+env: 
+  - CI_NODE_INDEX=0
+  - CI_NODE_INDEX=1	
+  - CI_NODE_INDEX=2	
+  - CI_NODE_INDEX=3	
+  - CI_NODE_INDEX=4	
+  - CI_NODE_INDEX=5	
+  - CI_NODE_INDEX=6	
+  - CI_NODE_INDEX=7	
+  - CI_NODE_INDEX=8	
+  - CI_NODE_INDEX=9	
+  - CI_NODE_INDEX=10	
+  - CI_NODE_INDEX=11	
+  - CI_NODE_INDEX=12	
+  - CI_NODE_INDEX=13	
+  - CI_NODE_INDEX=14	
+  - CI_NODE_INDEX=15
+install: true
+language: ruby
 script:
-    - "sudo -E apt-get -yq update"
-    - "travis_retry sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install mysql-server mysql-client"
+    - ping -c 1 repo.mysql.com
+    - "for i in $(seq 1 30); do sudo mtr --report-wide --show-ips --tcp repo.mysql.com; done"
 notifications:
     email: never
