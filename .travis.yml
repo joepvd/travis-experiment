@@ -7,24 +7,14 @@ sudo: required
 env: 
   - CI_NODE_INDEX=0
   - CI_NODE_INDEX=1	
-  - CI_NODE_INDEX=2	
-  - CI_NODE_INDEX=3	
-  - CI_NODE_INDEX=4	
-  - CI_NODE_INDEX=5	
-  - CI_NODE_INDEX=6	
-  - CI_NODE_INDEX=7	
-  - CI_NODE_INDEX=8	
-  - CI_NODE_INDEX=9	
-  - CI_NODE_INDEX=10	
-  - CI_NODE_INDEX=11	
-  - CI_NODE_INDEX=12	
-  - CI_NODE_INDEX=13	
-  - CI_NODE_INDEX=14	
-  - CI_NODE_INDEX=15
 install: true
 language: ruby
-script:
-    - ping -c 1 repo.mysql.com
-    - "for i in $(seq 1 30); do sudo mtr --report-wide --show-ips --tcp repo.mysql.com; done"
+script: |
+    ping -c 1 repo.mysql.com
+    for port in 80 443; do
+        for packet in 30 500 1000 2000; do
+            sudo mtr --report-wide --show-ips --tcp -P $port -i 0.5 -s $packet repo.mysql.com
+        done
+    done
 notifications:
     email: never
