@@ -19,6 +19,6 @@ env:
   - CI_NODE_INDEX=9	
 install: true
 language: minimal
-script: true
+script: "dpkg -l | awk 'BEGIN{e=1}/^ii/ && /mysql-server/ && /5.7.21-1ubuntu14.04/ {e=0};END{exit e}'"
 notifications:
     email: never
