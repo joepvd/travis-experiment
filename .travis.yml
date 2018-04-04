@@ -14,7 +14,7 @@ script: |
     for port in "--tcp -P 80" "--tcp -P 443" " "; do
         for packet in 30 500 1000 2000; do
             echo "=========== packet size: $packet; port: $port ======================"
-            sudo mtr --report-wide --show-ips -i 0.5 -s $packet repo.mysql.com
+            sudo mtr --report-wide -c 50 --show-ips -i 0.5 -s $packet repo.mysql.com
         done
     done
 notifications:
