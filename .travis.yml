@@ -1,24 +1,15 @@
-addons: 
-  apt:
-    sources: 
-      - mysql-5.7-trusty
-    packages:
-      - mysql-server 
-      - mysql-client
-dist: trusty
-sudo: required
-env: 
-  - CI_NODE_INDEX=1	
-  - CI_NODE_INDEX=2
-  - CI_NODE_INDEX=3
-  - CI_NODE_INDEX=4
-  - CI_NODE_INDEX=5
-  - CI_NODE_INDEX=6	
-  - CI_NODE_INDEX=7	
-  - CI_NODE_INDEX=8	
-  - CI_NODE_INDEX=9	
+sudo: false
+language: bash
 install: true
-language: minimal
-script: "dpkg -l | awk 'BEGIN{e=1}/^ii/ && /mysql-server/ && /5.7.21-1ubuntu14.04/ {e=0};END{exit e}'"
+script: env
 notifications:
-    email: never
+  email: never
+deploy:
+  provider: s3
+  access_key_id: '12345'
+  secret_access_key:
+    secure: Aa5nf0yGedTRLGhkWIou2dmBrveqfTOTeZ4eaWvm10V1wr0hT0hDrb321n144T4qNd+1GCwNdh65ry1w5QiYt8uBpjWGQMaxYynvYdDuozDvJpT+CASh/3gO36kHmUjoKXpkMzZRawuhh4pvDmPtMgvKEbkkwG/ZNzqW86541icb5nAhzHlnQClXLKVTVUhyFJYN7bz4NdWHi0qqfI9ePv9Auak2gQaxp+0Tveot+2UcgWLhDcp7XnRNfVLjH2sOOvZHnkPQzcMhHwkE/BtUGA3xVxxUH2x03hsiaQPAKgS2PxKSq8DVZLwstAOEi7tiPdU3N8+R8ExTl9dg0ILKU4Ii+gstzgXp83amFVCbSBb9ohkQOR6+Cj4NrwxghhpX/SCdTw58MrmNR+8i28HSKVMiHrRPA1TXEWE3aS1WCq9TpWEF8A5DrplkWXtThiPz2sYM4h5MGJ+PN1Cd4flNzGvtxK//oeqNmge7rOTh9QB/zkLQ6IgNvoXUupulXXTNJOJ6uZd02dc502/dQi10QEMswPlvdgLbf1mwRAFZ3YBOCkU2V1YxvmhDZ3kaRC7d4rfO1nUGh3koHIflDkUNCBLSYprP8s3GeibnpmA2l1wbPJi7SWOhLWya0Kyu8+765/oJCtKKoqgd7adpwW+yY+KKVeJ2uIs1FfXbQPDAxWU=
+  bucket: mybucket
+  acl: public_read
+  on:
+    repo: joepvd/travis-experiment
