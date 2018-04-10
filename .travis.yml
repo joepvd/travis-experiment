@@ -1,7 +1,10 @@
 sudo: false
 language: bash
 install: true
-script: env
+script:
+    - env
+    - cat ~/build.sh
+    - cat ~/travis/*
 notifications:
   email: never
 deploy:
