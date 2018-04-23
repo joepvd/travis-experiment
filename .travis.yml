@@ -1,21 +1,19 @@
 language: bash
-
-node_js: 8.9.4
+sudo: false
 
 matrix:
   include:
-    - sudo: false
-      dist: trusty
-      env: SUDO=false DIST=trusty
-    - sudo: required
-      dist: trusty
-      env: SUDO=required DIST=trusty
+      - language: bash
+      - language: node_js
+      - language: python
+      - language: java
+      - language: ruby
 
-install:
-    - "while cat /proc/self/fdinfo/1; do sleep 1; done &"
-    - sleep 2
+install: 
+    - cat /proc/self/fdinfo/1
 script: 
-    - 'if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi &'
+    - grep 0100001 /proc/self/fdinfo/1
+    - curl https://sdk.cloud.google.com | CLOUDSDK_CORE_DISABLE_PROMPTS=1 bash'
     - sleep 10
 
 notifications:
