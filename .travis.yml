@@ -13,7 +13,7 @@ install:
     - cat /proc/self/fdinfo/1
 script: 
     - grep 0100001 /proc/self/fdinfo/1
-    - curl https://sdk.cloud.google.com | CLOUDSDK_CORE_DISABLE_PROMPTS=1 bash'
+    - curl https://sdk.cloud.google.com | CLOUDSDK_CORE_DISABLE_PROMPTS=1 bash
     - sleep 10
 
 notifications:
