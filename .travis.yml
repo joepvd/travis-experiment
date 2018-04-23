@@ -1,28 +1,18 @@
-sudo: required
+language: node_js
+
+node_js: 8.9.4
+
 matrix:
   include:
-    - env: run=1
-    - env: run=2
-    - env: run=3
-    - env: run=4
-    - env: run=5
-    - env: run=6
-    - env: run=7
-    - env: run=8
-    - env: run=9
-    - env: run=10
-    - env: run=11
-    - env: run=12
-    - env: run=13
-    - env: run=14
-    - env: run=15
-    - env: run=16
-    - env: run=17
-    - env: run=18
-    - env: run=19
-    - env: run=20
-language: bash
-install: curl v4.ifconfig.co
-script: "grep $(curl v4.ifconfig.co) <(dig +short nat.gce-us-central1.travisci.net)"
+    - sudo: false
+      dist: trusty
+      env: SUDO=false DIST=trusty
+    - sudo: required
+      dist: trusty
+      env: SUDO=required DIST=trusty
+
+install: true
+script: if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
+
 notifications:
   email: never
