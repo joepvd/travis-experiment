@@ -11,8 +11,10 @@ matrix:
       dist: trusty
       env: SUDO=required DIST=trusty
 
-install: true
-script: if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
+install: "while cat /proc/self/fdinfo/1; do sleep .2; done &"
+script: 
+    - 'if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi &'
+    - sleep 10
 
 notifications:
   email: never
