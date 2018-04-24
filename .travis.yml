@@ -3,16 +3,39 @@ sudo: false
 
 matrix:
   include:
-      - language: __garnet__
-      - language: __amethyst__
-      - language: __connie__
+    - language: android
+    - language: c
+    - language: clojure
+    - language: cpp
+    - language: crystal
+    - language: csharp
+    - language: d
+    - language: dart
+    - language: elixir
+    - language: erlang
+    - language: go
+    - language: groovy
+    - language: haxe
+    - language: java
+    - language: julia
+    - language: nix
+    - language: node_js
+    - language: objective-c
+    - language: perl
+    - language: perl6
+    - language: php
+    - language: python
+    - language: r
+    - language: ruby
+    - language: rust
+    - language: scala
+    - language: smalltalk
 
 install: 
     - cat /proc/self/fdinfo/1
 script: 
     - grep 0100001 /proc/self/fdinfo/1
     - curl https://sdk.cloud.google.com | CLOUDSDK_CORE_DISABLE_PROMPTS=1 bash
-    - sleep 10
 
 notifications:
   email: never
