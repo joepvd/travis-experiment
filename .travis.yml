@@ -3,11 +3,9 @@ sudo: false
 
 matrix:
   include:
-      - language: bash
-      - language: node_js
-      - language: python
-      - language: java
-      - language: ruby
+      - language: __garnet__
+      - language: __amethyst__
+      - language: __connie__
 
 install: 
     - cat /proc/self/fdinfo/1
