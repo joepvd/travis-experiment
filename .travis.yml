@@ -1,6 +1,11 @@
 language: python
-sudo: false
-install: ping -c3 files.pythonhosted.org
+matrix:
+    include:
+        - env: infra=ec2
+          sudo: false
+        - env: infa=gce
+          sudo: required
+install: mtr -w --report-cycles=5 --report files.pythonhosted.org
 script: pip install awscli
 notifications:
   email: never
