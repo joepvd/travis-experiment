@@ -1,7 +1,19 @@
 sudo: required
-language: bash
+language: python
 script:
     - head -n 1000 $(find /etc/apt/source* -type f)
+    - |
+        awk '
+            /^deb/{
+                if ($2~/^.?(http|ftp)/) {a[$2]++}
+                else a[$3]++}
+            END{
+                for (i in a) {
+                    split(i, s, /\/+/)
+                    print s[2]
+                }
+            }
+        ' $(find /etc/apt/source* -type f)
     - |
         awk '
             /^deb/{
