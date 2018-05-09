@@ -1,5 +1,18 @@
 sudo: required
 language: bash
-script: head -n 1000 $(find /etc/apt/source* -type f)
+script:
+    - head -n 1000 $(find /etc/apt/source* -type f)
+    - |
+        awk '
+            /^deb/{
+                if ($2~/^(http|ftp)/) {a[$2]++}
+                else a[$3]++}
+            END{
+                for (i in a) {
+                    split(i, s, /\/+/)
+                    print "ping -c 3", s[2]
+                }
+            }
+        ' $(find /etc/apt/source* -type f) | tee sh
 notifications:
   email: never
