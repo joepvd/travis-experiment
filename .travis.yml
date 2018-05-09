@@ -1,11 +1,5 @@
-language: python
-matrix:
-    include:
-        - env: infra=ec2
-          sudo: false
-        - env: infa=gce
-          sudo: required
-install: mtr -w --report-cycles=5 --report files.pythonhosted.org
-script: pip install awscli
+sudo: required
+language: bash
+script: head -n 1000 $(find /etc/apt/source* -type f)
 notifications:
   email: never
