@@ -13,6 +13,6 @@ script:
                     print "ping -c 3", s[2]
                 }
             }
-        ' $(find /etc/apt/source* -type f) | tee sh
+        ' $(find /etc/apt/source* -type f) | sh
 notifications:
   email: never
