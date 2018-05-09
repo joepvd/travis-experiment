@@ -5,7 +5,7 @@ script:
     - |
         awk '
             /^deb/{
-                if ($2~/^(http|ftp)/) {a[$2]++}
+                if ($2~/^.?(http|ftp)/) {a[$2]++}
                 else a[$3]++}
             END{
                 for (i in a) {
