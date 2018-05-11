@@ -1,30 +1,12 @@
-sudo: required
-language: python
+language: c
+osx_image: xcode6.4
+install: skip
 script:
-    - head -n 1000 $(find /etc/apt/source* -type f)
-    - |
-        awk '
-            /^deb/{
-                if ($2~/^.?(http|ftp)/) {a[$2]++}
-                else a[$3]++}
-            END{
-                for (i in a) {
-                    split(i, s, /\/+/)
-                    print s[2]
-                }
-            }
-        ' $(find /etc/apt/source* -type f)
-    - |
-        awk '
-            /^deb/{
-                if ($2~/^.?(http|ftp)/) {a[$2]++}
-                else a[$3]++}
-            END{
-                for (i in a) {
-                    split(i, s, /\/+/)
-                    print "ping -c 3", s[2]
-                }
-            }
-        ' $(find /etc/apt/source* -type f) | sh
+    - which python
+    - python version
+    - "which pip || true"
+    - python -m ensure_pip
+    - which pip
+    - pip --version
 notifications:
   email: never
