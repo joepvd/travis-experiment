@@ -1,12 +1,11 @@
-language: c
-osx_image: xcode6.4
+language: minimal
+sudo: true
+group: edge
+dist: trusty
 install: skip
 script:
-    - which python
-    - python version
-    - "which pip || true"
-    - python -m ensure_pip
-    - which pip
-    - pip --version
+    - export BUILDER=docker
+    - "if [[ \"${BUILDER}\" = \"docker\" ]] ; then sudo apt-get update -yqq ; sudo apt-get purge -o Dpkg::Options::=\"--force-confnew\" -yqq docker-ce ; sudo apt-get install -o Dpkg::Options::=\"--force-confnew\" -yqq docker-ce lvm2 xfsprogs ; echo 'DOCKER_OPTS=\"$DOCKER_OPTS --storage-driver devicemapper\"' | sudo tee -a /etc/default/docker ; sudo service docker restart ; fi"
+    - sudo ls -lRh /var/log
 notifications:
   email: never
