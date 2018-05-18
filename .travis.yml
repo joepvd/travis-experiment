@@ -1,7 +1,7 @@
 language: minimal
 sudo: true
-group: edge
-dist: xenial
+#group: edge
+dist: trusty
 install: skip
 script:
     - cat /etc/apt/sources.list
