@@ -4,9 +4,12 @@ group: edge
 dist: xenial
 install: skip
 script:
-    - systemctl list-units
-    - systemctl status
-    - pstree -Up
-    - head -n 1000 $(find /etc/apt/source* -type f)
+    - cat /etc/apt/sources.list
+    - sudo apt-get update
+    - sudo apt-get clean
+    - sudo apt-get update
+    - sudo apt-get clean
+    - sudo sed -i /deb-src/d /etc/apt/sources.list
+    - sudo apt-get update
 notifications:
   email: never
