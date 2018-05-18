@@ -7,8 +7,10 @@ script:
     - cat /etc/apt/sources.list
     - sudo apt-get update
     - sudo apt-get clean
+    - sudo rm /var/lib/apt/lists/*
     - sudo apt-get update
     - sudo apt-get clean
+    - sudo rm /var/lib/apt/lists/*
     - sudo sed -i /deb-src/d /etc/apt/sources.list
     - sudo apt-get update
 notifications:
