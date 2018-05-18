@@ -1,11 +1,12 @@
 language: minimal
 sudo: true
 group: edge
-dist: trusty
+dist: xenial
 install: skip
 script:
-    - export BUILDER=docker
-    - "if [[ \"${BUILDER}\" = \"docker\" ]] ; then sudo apt-get update -yqq ; sudo apt-get purge -o Dpkg::Options::=\"--force-confnew\" -yqq docker-ce ; sudo apt-get install -o Dpkg::Options::=\"--force-confnew\" -yqq docker-ce lvm2 xfsprogs ; echo 'DOCKER_OPTS=\"$DOCKER_OPTS --storage-driver devicemapper\"' | sudo tee -a /etc/default/docker ; sudo service docker restart ; fi"
-    - sudo ls -lRh /var/log
+    - systemctl list-units
+    - systemctl status
+    - pstree -Up
+    - head -n 1000 $(find /etc/apt/source* -type f)
 notifications:
   email: never
