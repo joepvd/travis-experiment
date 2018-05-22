@@ -1,17 +1,11 @@
 language: minimal
-sudo: true
-#group: edge
+sudo: false
+services:
+    - rabbitmq
 dist: trusty
 install: skip
 script:
-    - cat /etc/apt/sources.list
-    - sudo apt-get update
-    - sudo apt-get clean
-    - sudo rm -rf /var/lib/apt/lists/*
-    - sudo apt-get update
-    - sudo apt-get clean
-    - sudo rm -rf /var/lib/apt/lists/*
-    - sudo sed -i /deb-src/d /etc/apt/sources.list
-    - sudo apt-get update
+    - sleep 3
+    - pstree -Uap
 notifications:
   email: never
