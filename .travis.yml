@@ -1,7 +1,7 @@
 language: minimal
 sudo: required
 dist: xenial
-group: dev
+group: edge
 matrix:
     include:
         - env: run=1
