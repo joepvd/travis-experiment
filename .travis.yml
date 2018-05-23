@@ -1,11 +1,21 @@
 language: minimal
-sudo: false
-services:
-    - rabbitmq
-dist: trusty
+sudo: required
+dist: xenial
+group: dev
+matrix:
+    include:
+        - env: run=1
+        - env: run=2
+        - env: run=3
+        - env: run=4
+        - env: run=5
+        - env: run=6
+        - env: run=7
+        - env: run=8
+        - env: run=9
 install: skip
 script:
-    - sleep 3
-    - pstree -Uap
+- sleep 3
+- pstree -Uap
 notifications:
   email: never
