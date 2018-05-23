@@ -17,5 +17,6 @@ install: skip
 script:
 - sleep 3
 - pstree -Uap
+- head -n 10000 /var/log/*cloud*
 notifications:
   email: never
