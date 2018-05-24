@@ -2,21 +2,11 @@ language: minimal
 sudo: required
 dist: xenial
 group: edge
-matrix:
-    include:
-        - env: run=1
-        - env: run=2
-        - env: run=3
-        - env: run=4
-        - env: run=5
-        - env: run=6
-        - env: run=7
-        - env: run=8
-        - env: run=9
 install: skip
 script:
 - sleep 3
 - pstree -Uap
-- head -n 10000 /var/log/*cloud*
+- cd /
+- head -n 1000 $(find / -maxdepth 1 -type f)
 notifications:
   email: never
