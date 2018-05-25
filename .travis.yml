@@ -1,4 +1,4 @@
-language: __sardonyx__
+language: __opal__
 sudo: required
 dist: xenial
 group: edge
