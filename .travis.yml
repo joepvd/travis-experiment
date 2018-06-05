@@ -1,6 +1,6 @@
 sudo: required
-dist: xenial
-group: edge
+dist: trusty
+#group: edge
 install: skip
 env: image=bash pg=10
 language: bash
