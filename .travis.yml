@@ -2,80 +2,12 @@ sudo: required
 dist: xenial
 group: edge
 install: skip
-matrix:
-  include:
-  - env: image=__sardonyx__ pg=9.4
-    language: __sardonyx__
-    addons:
-      postgresql: 9.4
-    services:
-    - postgresql
-  - env: image=__sardonyx__ pg=9.5
-    language: __sardonyx__
-    addons:
-      postgresql: 9.5
-    services:
-    - postgresql
-  - env: image=__sardonyx__ pg=9.6
-    language: __sardonyx__
-    addons:
-      postgresql: 9.6
-    services:
-    - postgresql
-  - env: image=__sardonyx__ pg=10
-    language: __sardonyx__
-    addons:
-      postgresql: 10
-    services:
-    - postgresql
-  - env: image=__opal__ pg=9.4
-    language: __opal__
-    addons:
-      postgresql: 9.4
-    services:
-    - postgresql
-  - env: image=__opal__ pg=9.5
-    language: __opal__
-    addons:
-      postgresql: 9.5
-    services:
-    - postgresql
-  - env: image=__opal__ pg=9.6
-    language: __opal__
-    addons:
-      postgresql: 9.6
-    services:
-    - postgresql
-  - env: image=__opal__ pg=10
-    language: __opal__
-    addons:
-      postgresql: 10
-    services:
-    - postgresql
-  - env: image=__stevonnie__ pg=9.4
-    language: __stevonnie__
-    addons:
-      postgresql: 9.4
-    services:
-    - postgresql
-  - env: image=__stevonnie__ pg=9.5
-    language: __stevonnie__
-    addons:
-      postgresql: 9.5
-    services:
-    - postgresql
-  - env: image=__stevonnie__ pg=9.6
-    language: __stevonnie__
-    addons:
-      postgresql: 9.6
-    services:
-    - postgresql
-  - env: image=__stevonnie__ pg=10
-    language: __stevonnie__
-    addons:
-      postgresql: 10
-    services:
-    - postgresql
+env: image=bash pg=10
+language: bash
+addons:
+  postgresql: 10
+services:
+- postgresql
 script:
 - psql -c 'select * from version()'
 - |
