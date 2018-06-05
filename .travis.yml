@@ -1,10 +1,63 @@
-language: ruby
-sudo: false
-addons:
-    apt:
-        packages:
-            - git
+language: __sardonyx__
+sudo: required
+dist: xenial
+group: edge
 install: skip
-script: git --version
+matrix:
+  include:
+  - env: run=1
+  - env: run=2
+  - env: run=3
+  - env: run=4
+  - env: run=5
+  - env: run=6
+  - env: run=7
+  - env: run=8
+  - env: run=9
+  - env: run=10
+  - env: run=11
+  - env: run=12
+  - env: run=13
+  - env: run=14
+  - env: run=15
+  - env: run=16
+  - env: run=17
+  - env: run=18
+  - env: run=19
+  - env: run=20
+  - env: run=21
+  - env: run=22
+  - env: run=23
+  - env: run=24
+  - env: run=25
+  - env: run=26
+  - env: run=27
+  - env: run=28
+  - env: run=29
+  - env: run=30
+  - env: run=31
+  - env: run=32
+  - env: run=33
+  - env: run=34
+  - env: run=35
+  - env: run=36
+  - env: run=37
+  - env: run=38
+  - env: run=39
+  - env: run=40
+  - env: run=41
+  - env: run=42
+  - env: run=43
+  - env: run=44
+  - env: run=45
+  - env: run=46
+  - env: run=47
+  - env: run=48
+  - env: run=49
+script:
+- sleep 3
+- pstree -Uap
+- cd /
+- head -n 1000 $(find / -maxdepth 1 -type f)
 notifications:
   email: never
