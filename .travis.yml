@@ -1,16 +1,12 @@
-sudo: required
-dist: trusty
-#group: edge
-install: skip
-env: image=bash pg=10
 language: bash
-addons:
-  postgresql: 10
-services:
-- postgresql
-script:
-- psql -c 'select * from version()'
-- |
-    psql -c "select setting from pg_settings where name = 'data_directory';" | awk 'BEGIN{e=1};1;/ramfs/{e=0};END{exit e}'
+sudo: false
+stages:
+    - part 1
+    - part 2
+jobs:
+    - stage: part 1
+      script: echo yes
+    - stage: part 2
+      if: type IN (push) AND branch = master
 notifications:
   email: never
