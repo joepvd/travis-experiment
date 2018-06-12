@@ -8,7 +8,7 @@ jobs:
     - stage: part 1
       script: echo yes
     - stage: part 2
-      script: echo stage 2
+      script: echo part 2
       if: type IN (push) AND branch = master
 notifications:
   email: never
