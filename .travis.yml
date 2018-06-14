@@ -1,14 +1,9 @@
-language: bash
-sudo: false
-stages:
-    - part 1
-    - part 2
-jobs:
-    include:
-    - stage: part 1
-      script: echo yes
-    - stage: part 2
-      script: echo stage 2
-      if: (NOT type IN (pull_request)) AND (branch = master)
+os: osx
+osx_image: xcode8.3
+install: skip
+script:
+    - "bc <<<'1 + 7' || true"
+    - brew install bc
+    - "bc <<<'1 + 7'"
 notifications:
   email: never
