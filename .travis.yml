@@ -1,9 +1,8 @@
-os: osx
-osx_image: xcode8.3
+dist: precise
+sudo: required
+language: ruby
 install: skip
-script:
-    - "bc <<<'1 + 7' || true"
-    - brew install bc
-    - "bc <<<'1 + 7'"
+script: curl -Iv https://api.rubygems.org/specs.4.8.gz
 notifications:
   email: never
+
