@@ -1,8 +1,58 @@
-dist: precise
+dist: xenial
 sudo: required
-language: ruby
+group: edge
+language: java
 install: skip
-script: curl -Iv https://api.rubygems.org/specs.4.8.gz
+matrix:
+  include:
+  - env: name='postgres service xenial'
+    services:
+    - postgresql
+    script:
+    - psql -c "select * from version()"
+    - 'psql -c "select * from version()" | grep -F 9.6'
+    after_failure:
+    - "systemctl status postgresql@9.6-main.service"
+    - "journalctl -xe" 
+  - env: name='postgres service + addon xenial'
+    services:
+    - postgresql
+    addons:
+      postgresql: 10
+    script:
+    - psql -c "select * from version()"
+    - 'psql -c "select * from version()" | grep -F 10'
+    after_failure:
+    - "systemctl status postgresql@9.6-main.service"
+    - "journalctl -xe" 
+  - env: name='postgres service trusty'
+    dist: trusty
+    group: stable
+    services:
+    - postgresql
+    script:
+    - psql -c "select * from version()"
+    - 'psql -c "select * from version()" | grep -F 9.2'
+  - env: name='postgres addon trusty'
+    dist: trusty
+    group: stable
+    addons:
+      postgresql: 9.5
+    services:
+    - postgresql
+    script:
+    - psql -c "select * from version()"
+    - 'psql -c "select * from version()" | grep -F 9.5'
+  - env: name='postgres addon precise'
+    dist: precise
+    group: stable
+    addons:
+      postgresql: 9.2
+    services:
+    - postgresql
+    script:
+    - psql -c "select * from version()"
+    - 'psql -c "select * from version()" | grep -F 9.2'
 notifications:
   email: never
 
