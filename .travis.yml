@@ -1,17 +1,11 @@
-language: python
-python: 3.7
-sudo: true
-install: skip
-script:
-- python --version
-- python --version | grep -F 3.7
-jobs:
+services:
+- postgresql
+- redis
+- owyeah
+language: bash
+matrix:
   include:
-    - env: dist=xenial
-      dist: xenial
-    - env: dist=trusty
-      dist: trusty
-    - env: dist=precise
-      dist: precise
+  - env: run=1
+  - env: run=2
 notifications:
   email: never
