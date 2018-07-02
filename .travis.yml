@@ -1,11 +1,6 @@
-services:
-- postgresql
-- redis
-- owyeah
-language: bash
-matrix:
-  include:
-  - env: run=1
-  - env: run=2
+language: ruby
+rvm:
+  - jruby-9.0.5.0
+  - jruby-9.1.16.0
 notifications:
   email: never
