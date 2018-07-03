@@ -1,6 +1,7 @@
 language: python
 dist: xenial
 group: edge
+sudo: required
 install: skip
 matrix:
   include:
