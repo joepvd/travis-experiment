@@ -3,5 +3,14 @@ dist: trusty
 sudo: required
 install: skip
 services: mongodb
+jobs:
+    include:
+        - env: dist=precise
+          dist: precise
+        - env: dist=trusty
+          dist: trusty
+        - env: dist=xenial
+          dist: xenial
+script: mongo --eval 'db.version()'
 notifications:
   email: never
