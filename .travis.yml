@@ -2,7 +2,7 @@ language: python
 dist: trusty
 sudo: required
 install: skip
-services: mongodb
+services: mongod
 jobs:
     include:
         - env: dist=precise
