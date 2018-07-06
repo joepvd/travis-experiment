@@ -1,9 +1,11 @@
 language: python
-os: linux-ppc64le
+os: osx
+osx_image: xcode8.4
 install: skip
 script:
     - uname -i
     - uname -a
+    - uname -p
     - uname -m
 notifications:
   email: never
