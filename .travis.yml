@@ -1,4 +1,4 @@
-language: python
+language: bash
 os: osx
 osx_image: xcode8.4
 install: skip
