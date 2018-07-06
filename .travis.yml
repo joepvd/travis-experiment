@@ -1,11 +1,22 @@
 language: bash
-os: osx
-osx_image: xcode8.4
+sudo: true
 install: skip
 script:
-    - uname -i
-    - uname -a
-    - uname -p
-    - uname -m
+    - apt-get --version
+    - dpkg --version
+    - apt --version
+    - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages install language-pack-en-base
+jobs:
+    include:
+        - env: image=precise
+          dist: precise
+        - env: image=trusty-deprecated-2017Q2
+          dist: trusty
+          group: deprecated-2017Q2
+        - env: image=trusty-deprecated-2017Q4
+          dist: trusty
+          group: deprecated-2017Q4
+        - env: image=xenial
+          dist: xenial
 notifications:
   email: never
