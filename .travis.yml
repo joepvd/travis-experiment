@@ -1,50 +1,11 @@
 language: bash
 sudo: true
+os: linux-ppc64le
 install: skip
 script:
     - apt-get --version
     - dpkg --version
     - apt --version
     - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages install atool
-jobs:
-  include:
-  - env: dist=precise group=deprecated-2017Q1
-    dist: precise
-    group: deprecated-2017Q1
-  - env: dist=precise group=stable-20161201
-    dist: precise
-    group: stable-20161201
-  - env: dist=trusty group=deprecated-2017Q4
-    dist: trusty
-    group: deprecated-2017Q4
-  - env: dist=trusty group=stable-20161201
-    dist: trusty
-    group: stable-20161201
-  - env: dist=trusty group=stable-20170621
-    dist: trusty
-    group: stable-20170621
-  - env: dist=precise group=deprecated
-    dist: precise
-    group: deprecated
-  - env: dist=trusty group=deprecated-2017Q3
-    dist: trusty
-    group: deprecated-2017Q3
-  - env: dist=trusty group=deprecated-2017Q2
-    dist: trusty
-    group: deprecated-2017Q2
-  - env: dist=trusty group=deprecated
-    dist: trusty
-    group: deprecated
-  - env: dist=trusty group=stable
-    dist: trusty
-    group: stable
-  - env: dist=trusty group=stable-20161202
-    dist: trusty
-    group: stable-20161202
-  - env: dist=precise group=stable
-    dist: precise
-  - env: dist=xenial group=edge
-    dist: xenial
-    group: edge
 notifications:
   email: never
