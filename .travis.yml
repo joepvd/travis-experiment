@@ -1,16 +1,9 @@
 language: python
-dist: trusty
-sudo: required
+os: linux-ppc64le
 install: skip
-services: mongod
-jobs:
-    include:
-        - env: dist=precise
-          dist: precise
-        - env: dist=trusty
-          dist: trusty
-        - env: dist=xenial
-          dist: xenial
-script: mongo --eval 'db.version()'
+script:
+    - uname -i
+    - uname -a
+    - uname -m
 notifications:
   email: never
