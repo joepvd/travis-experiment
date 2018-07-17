@@ -1,11 +1,6 @@
 language: bash
-sudo: true
-os: linux-ppc64le
+sudo: false
 install: skip
-script:
-    - apt-get --version
-    - dpkg --version
-    - apt --version
-    - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --allow-downgrades --allow-remove-essential --allow-change-held-packages install atool
+script: "travis_retry false"
 notifications:
   email: never
