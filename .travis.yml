@@ -1,11 +1,10 @@
-language: php
-sudo: false
-install:
-- ls -la ~
-- find ~/virtualenv -name activate
-- source "$(find ~/virtualenv -name activate | head -n 1)"
+language: ruby
+sudo: required
+addons:
+    chrome: stable
+install: skip
 script:
-    - which python
-    - python --version
+    - which google-chrome-stable
+    - google-chrome-stable --version
 notifications:
   email: never
