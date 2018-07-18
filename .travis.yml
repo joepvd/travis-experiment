@@ -1,6 +1,15 @@
-language: bash
-sudo: false
+language: java
+jdk: oraclejdk8
+matrix:
+    include:
+        - env: install=none
+        - env: install=oracle
+          addons:
+            apt:
+              packages:
+              - oracle-java8-installer
+sudo: required
 install: skip
-script: "travis_retry false"
+script: java -version
 notifications:
   email: never
