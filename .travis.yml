@@ -1,10 +1,11 @@
-language: java
-jdk: oraclejdk10
-language: java
-sudo: required
-install: skip
+language: php
+sudo: false
+install:
+- ls -la ~
+- find ~/virtualenv -name active
+- source "$(find ~/virtualenv -name active | head -n 1)"
 script:
-    - java -version
-    - which java
+    - which python
+    - python --version
 notifications:
   email: never
