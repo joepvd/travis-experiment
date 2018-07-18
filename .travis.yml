@@ -2,8 +2,8 @@ language: php
 sudo: false
 install:
 - ls -la ~
-- find ~/virtualenv -name active
-- source "$(find ~/virtualenv -name active | head -n 1)"
+- find ~/virtualenv -name activate
+- source "$(find ~/virtualenv -name activate | head -n 1)"
 script:
     - which python
     - python --version
