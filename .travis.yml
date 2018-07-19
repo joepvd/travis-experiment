@@ -16,8 +16,9 @@ before_install:
   - sudo apt-cache search linux-headers-
   - sudo apt-get -y install -f linux-headers-$(uname -r)
   - sudo apt-get -y install -f linux-headers-generic 
+  - sudo apt-get -y install -f openafs-modules-dkms
 
-  - sudo apt-get install -y openafs-client openafs-modules-dkms openafs-krb5 krb5-user krb5-config
+  - sudo apt-get install -y openafs-client openafs-krb5 krb5-user krb5-config
 
 
 script:  
