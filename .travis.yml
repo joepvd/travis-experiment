@@ -9,15 +9,16 @@ dist:
   # - xenial
 
 before_install:
-    #- sudo add-apt-repository -y ppa:openafs/stable
+  - sudo add-apt-repository -y ppa:openafs/stable
   - sudo apt-get update -qq
 
   # Installing Linux Headers
-  #- sudo apt-cache search linux-headers-
-  #- sudo apt-get -y install -f linux-headers-$(uname -r)
-  #- sudo apt-get -y install -f linux-headers-generic 
-  #- sudo apt-cache madison openafs-modules-dkms
-  #- sudo apt-get -y install -f openafs-modules-dkms=1.6.22.2-0ppa1
+  - sudo apt-cache search linux-headers-
+  - sudo apt-get -y install -f linux-headers-$(uname -r)
+  - sudo apt-get -y install -f linux-headers-generic 
+  - sudo apt-cache madison openafs-modules-dkms
+  - sudo apt-get -y install -f openafs-modules-dkms
+  - sudo apt-get -y install systemtap
 
   - sudo apt-get install -y openafs-client openafs-krb5 krb5-user krb5-config
 
@@ -32,6 +33,16 @@ script:
   - cd /afs
   - ls
   - cd cs.stanford.edu
+  - |
+      cat <<'EOF' >syscall.stap
+      #!/usr/bin/env stap
+
+      probe module("ext3").function("*") {
+        printf("%25s\n", syscall)
+      }
+      EOF
+  - stap syscall.stap &
+  - sleep 1
   - sudo strace -f ls
   - sudo ls
 notifications:
