@@ -4,7 +4,9 @@ os:
 - linux
 dist:
 - xenial
-install: skip
+install:
+    - uname -a
+    - uname -r
 script: "dpkg -l | awk '/^ii/ && $2 ~/linux/'"
 notifications:
   email: never
