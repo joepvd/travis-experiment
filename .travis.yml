@@ -4,16 +4,19 @@ addons:
     apt:
         sources:
             - llvm-toolchain-precise
+            - llvm-toolchain-trusty
+            - llvm-toolchain-xenial
             - ubuntu-toolchain-r-test
         packages:
-            - clang-6.0
-            - clang-format-6.0
+            #- clang-6.0
+            #- clang-format-6.0
             - colordiff
 os: linux
 dist: trusty
 install:
     - uname -a
     - uname -r
+    - apt-cache madison clang
 script: "dpkg -l | awk '/^ii/ && $2 ~/linux/'"
 notifications:
   email: never
