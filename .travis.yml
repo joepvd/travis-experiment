@@ -3,10 +3,7 @@ sudo: true
 addons:
     apt:
         sources:
-            - llvm-toolchain-precise
-             #- llvm-toolchain-trusty
-             #- llvm-toolchain-xenial
-             #- ubuntu-toolchain-r-test
+             - llvm-toolchain-trusty
         packages:
             - clang-7
             - clang-format-7
