@@ -4,12 +4,12 @@ addons:
     apt:
         sources:
             - llvm-toolchain-precise
-            - llvm-toolchain-trusty
-            - llvm-toolchain-xenial
-            - ubuntu-toolchain-r-test
+             #- llvm-toolchain-trusty
+             #- llvm-toolchain-xenial
+             #- ubuntu-toolchain-r-test
         packages:
-            #- clang-6.0
-            #- clang-format-6.0
+            - clang-7
+            - clang-format-7
             - colordiff
 os: linux
 dist: trusty
