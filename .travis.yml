@@ -1,9 +1,16 @@
-language: bash
+language: c
 sudo: true
-os:
-- linux
-dist:
-- xenial
+addons:
+    apt:
+        sources:
+            - llvm-toolchain-trusty
+            - ubuntu-toolchain-r-test
+        packages:
+            - clang-6
+            - clang-format-6
+            - colordiff
+os: linux
+dist: trusty
 install:
     - uname -a
     - uname -r
