@@ -3,7 +3,7 @@ sudo: true
 addons:
     apt:
         sources:
-            - llvm-toolchain-trusty
+            - llvm-toolchain-precise
             - ubuntu-toolchain-r-test
         packages:
             - clang-6.0
