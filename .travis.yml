@@ -1,20 +1,10 @@
 language: c
-sudo: true
-addons:
-    apt:
-        sources:
-             - ubuntu-toolchain-r-test
-             - llvm-toolchain-trusty
-        packages:
-            - clang-7
-            - clang-format-7
-            - colordiff
-os: linux
+sudo: false
 dist: trusty
 install:
     - uname -a
     - uname -r
     - "apt-cache search 'clang*' | awk '$1~/^clang/'"
-script: "dpkg -l | awk '/^ii/ && $2 ~/linux/'"
+script: mount
 notifications:
   email: never
