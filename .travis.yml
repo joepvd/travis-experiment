@@ -6,6 +6,7 @@ script:
     - COLUMNS=1000 ps -jef --forest
     - ps aux | grep shutdown
     - atq
+    - date
     - sudo atq
 notifications:
   email: never
