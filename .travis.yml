@@ -1,10 +1,9 @@
 language: c
-sudo: false
+sudo: required
 dist: trusty
-install:
-    - uname -a
-    - uname -r
-    - "apt-cache search 'clang*' | awk '$1~/^clang/'"
-script: mount
+install: skip
+script:
+    - COLUMNS=1000 ps -jef --forest
+    - ps aux | grep shutdown
 notifications:
   email: never
