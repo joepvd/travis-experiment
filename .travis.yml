@@ -1,12 +1,7 @@
-language: c
+language: go
 sudo: required
 dist: trusty
-install: skip
-script:
-    - COLUMNS=1000 ps -jef --forest
-    - ps aux | grep shutdown
-    - atq
-    - date
-    - sudo atq
+install: gimme --version
+script: grep gimme ~/build.sh
 notifications:
   email: never
