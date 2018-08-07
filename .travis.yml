@@ -1,7 +1,7 @@
 language: python
 virtualenv:
     system_site_packages: true
-python: 3
+python: "3.4"
 sudo: false
 dist: trusty
 install: skip
