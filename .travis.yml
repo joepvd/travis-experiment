@@ -7,5 +7,6 @@ script:
     - pstree -Uap 0
     - sudo find /usr/share/dbus-1 -type f
     - sudo sh -c 'head -n 1000 $(find /usr/share/dbus-1 -type f)'
+    - sudo /usr/lib/x86_64-linux-gnu/systemd-shim
 notifications:
   email: never
