@@ -1,14 +1,19 @@
-language: python
-python:
-    - '3.5'
-    - '3.6'
-virtualenv:
-    system_site_packages: true
+language: java
+jdk:
+    - openjdk8
+    - openjdk9
+    - openjdk10
+    - openjdk11
+    - oraclejdk8
+    - oraclejdk9
+    - oraclejdk10
+    - oraclejdk11
 sudo: false
 dist: trusty
 install: skip
 script:
-    - which python
-    - ls -l ~/virt*
+    - which java
+    - java -version
+    - /usr/bin/java -version
 notifications:
   email: never
