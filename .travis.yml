@@ -1,11 +1,8 @@
-language: java
+language: go
+go: 1.x
 sudo: false
 dist: trusty
 install: skip
-script:
-    - which java
-    - java -version
-    - /usr/bin/java -version
-    - find /usr -name java
+script: go version
 notifications:
   email: never
