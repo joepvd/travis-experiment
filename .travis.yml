@@ -1,8 +1,10 @@
 language: go
 go: 1.x
-sudo: false
+sudo: required
 dist: trusty
 install: skip
-script: go version
+script:
+    - go version
+    - ip route show
 notifications:
   email: never
