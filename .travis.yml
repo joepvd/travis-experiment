@@ -1,9 +1,8 @@
 language: go
 
-go: master
-env:
-  - env=empty
-  - GO111MODULE=on
+go:
+    - master
+    - 1.x
 install: go version
 script: go version
 notifications:
