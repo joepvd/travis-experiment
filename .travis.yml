@@ -1,10 +1,6 @@
-language: julia
-julia:
-    - nightly
-    - 
-    - 0.6
-
+language: bash
+sudo: false
 install: skip
-script: skip
+script: travis_internal_ruby
 notifications:
   email: never
