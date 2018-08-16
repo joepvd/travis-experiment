@@ -1,9 +1,10 @@
-language: go
+language: julia
+julia:
+    - nightly
+    - 
+    - 0.6
 
-go:
-    - master
-    - 1.x
-install: go version
-script: go version
+install: skip
+script: skip
 notifications:
   email: never
