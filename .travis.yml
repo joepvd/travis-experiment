@@ -83,7 +83,26 @@ jobs:
   - env: dist=xcode6.4
     osx_image: xcode6.4
     os: osx
+  - stage: report
+    script:
+    - |
+        for job in $(
+          curl --silent \
+              -H "Travis-API-Version: 3" \
+              -H "User-Agent: API Explorer" \
+              -H "Authorization: token $token" \
+              https://api.travis-ci.org/build/$TRAVIS_BUILD_ID \
+          | jq '.jobs[].id')
+        do
+          [[ $job = $TRAVIS_JOB_ID ]] && continue
+          curl -L -H "Authorization: token $token" https://api.travis-ci.org/jobs/$job/log.txt >$job.log
+        done
+    - 'grep travis_internal_ruby: *.log'
+
 install: skip
 script: 'echo "travis_internal_ruby: $dist: $group: $(travis_internal_ruby)"'
+env:
+  global:
+    - secure: "sF7L6WekMDt5iQnBUiAJUNbiVkkbjEKrGqEkDk3wORNyd2YONM6dZrbadXWpHLIT5xg21aj0NvBsy1OoF+QzfFPNmCPrEsFm5n/vYazDe+cOLWNFDkPDd+TwrRp3HpnAnIyMe+C5hQJKZonSLWoaiYVWMk9oUqla4U4Tns5FT6bSGSRiMJUQP1HClkkwP9CljWBm+fJL2QNH5oCepwCbuLd/6TbQoCkI69X/zqk9jif0iS128oiuv+Cz0kjv4AT7IOHIzO3DD+h/myjgaRzSk0b0y7U+EjkM5ZTJU7FhxHZSRL5q0JzS1tnH8xfIFPmh5/WgVCehxkAr0FR3yfc80qi+4bxprT4Kdatq1nexCflqrN1Poqu4uFKn+asIN3Pp88eFH2AWfIrHIYnnfXVaWpnPG8PXQ4nvfMyVVeCNTgGRXHcPN5z1P6CsowYNJfm2lU3YAtulcVAEV/7SOmGLxf6T/O+cCC/umokGh7s7QbeD4uU1fjR0f6DDnK5Hn8B+SA3b/5RwaAj/VYKEnAWlzcqFQ2xgwcjnpvexCihuh4Ht/0JMWOHUZgL3PkhxoSJaHJvMqorLjZHaDPqh9RGi+05W/N+PvQz+LCG7brufjWWtTWpg76v7yHE5fl4QbSjgVHVvU5ktP1/cAX3ByLGYWaMAvB+JwqITemKL7nZ4zvM="
 notifications:
   email: never
