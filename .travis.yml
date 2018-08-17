@@ -2,15 +2,7 @@ language: bash
 jobs:
   include:
   - stage: test
-    env: dist=precise group=deprecated-2017Q1
-    dist: precise
-    group: deprecated-2017Q1
-    sudo: required
-  - env: dist=precise group=stable-20161201
-    dist: precise
-    group: stable-20161201
-    sudo: required
-  - env: dist=trusty group=deprecated-2017Q4
+    env: dist=trusty group=deprecated-2017Q4
     dist: trusty
     group: deprecated-2017Q4
     sudo: required
