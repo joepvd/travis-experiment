@@ -1,12 +1,49 @@
-language: bash
 sudo: false
-addons:
-    apt:
-        packages:
-            - zoo
-            - abc
-            - def
-        sources:
-            - niceness
+matrix:
+    include:
+        - language: java
+          jdk: abc
+        - language: csharp
+          mono: abc
+        - language: clojure
+          lein: abc
+        - language: crystal
+          crystal: abc
+        - language: d
+          d: abc
+        - language: dart
+          dart: abc
+        - language: erlang
+          otp_release: abc
+        - language: elixir
+          elixir: abc
+        - language: go
+          go: abc
+        - language: haskell
+          ghc: abc
+        - language: haxe
+          haxe: abc
+        - language: node_js
+          node_js: abc
+        - language: julia
+          julia: abc
+        - language: perl
+          perl: abc
+        - language: perl6
+          perl6: abc
+        - language: php
+          php: abc
+        - language: python
+          python: abc
+        - language: r
+          r: abc
+        - language: ruby
+          rvm: abc
+        - language: rust
+          rust: abc
+        - language: scala
+          scala: abc
+install: skip
+script: skip
 notifications:
   email: never
