@@ -4,5 +4,7 @@ addons:
     apt:
         packages:
             - zoo
+        sources:
+            - niceness
 notifications:
   email: never
