@@ -2,9 +2,18 @@ sudo: required
 language: python
 python:
 - '2.7'
-install:
-- pip install requests
-script:
-- python scrape.py
+install: skip
+env:
+    - run=1
+    - run=2
+    - run=3
+    - run=4
+    - run=5
+    - run=6
+    - run=7
+    - run=8
+    - run=9
+    - run=10
+script: grep solarce /etc/passwd
 notifications:
   email: false
