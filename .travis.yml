@@ -1,6 +1,5 @@
-sudo: required
+sudo: false
 install: skip
-dist: xenial
 script:
 - cat /etc/passwd
 - ls -l /home
