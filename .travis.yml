@@ -2,7 +2,9 @@ sudo: required
 language: python
 python:
 - '2.7'
-install: skip
+install:
+    - sudo ls -l /home
+    - cat /etc/passwd
 env:
     - run=1
     - run=2
