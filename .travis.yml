@@ -1,4 +1,4 @@
-sudo: false
+sudo: yes
 language: bash
 script: echo $TRAVIS_SUDO
 install: skip
