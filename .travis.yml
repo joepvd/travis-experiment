@@ -1,60 +1,6 @@
-sudo: required
-language: python
-addons:
-  apt:
-    packages:
-    - atool
-jobs:
-  include:
-  - env: dist=precise group=deprecated-2017Q1
-    dist: precise
-    group: deprecated-2017Q1
-  - env: dist=precise group=stable-20161201
-    dist: precise
-    group: stable-20161201
-  - env: dist=trusty group=deprecated-2017Q4
-    dist: trusty
-    group: deprecated-2017Q4
-  - env: dist=trusty group=stable-20161201
-    dist: trusty
-    group: stable-20161201
-  - env: dist=trusty group=stable-20170621
-    dist: trusty
-    group: stable-20170621
-  - env: dist=precise group=deprecated
-    dist: precise
-    group: deprecated
-  - env: dist=trusty group=deprecated-2017Q3
-    dist: trusty
-    group: deprecated-2017Q3
-  - env: dist=trusty group=deprecated-2017Q2
-    dist: trusty
-    group: deprecated-2017Q2
-  - env: dist=trusty group=deprecated
-    dist: trusty
-    group: deprecated
-  - env: dist=trusty group=stable
-    dist: trusty
-    group: stable
-  - env: dist=trusty group=stable-20161202
-    dist: trusty
-    group: stable-20161202
-  - env: dist=precise group=stable
-    dist: precise
-  - env: dist=xenial group=edge
-    dist: xenial
-    group: edge
+sudo: false
+language: bash
+script: echo $TRAVIS_SUDO
 install: skip
-script: |
-    apt-get --version | awk '
-                  $1 == "apt" {
-                    split($2, apt, ".")
-                    if ((apt[1]==1 && apt[2]>2) || apt[1]>1) {
-                      print "--allow-downgrades --allow-remove-essential --allow-change-held-packages"
-                    }
-                    else {print "--force-yes"}
-                    exit
-                  }
-                ' | tee | grep allow-remove-essential
 notifications:
   email: false
