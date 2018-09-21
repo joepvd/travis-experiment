@@ -1,6 +1,23 @@
-sudo: yes
+sudo: false
 language: bash
 script: echo $TRAVIS_SUDO
 install: skip
+deploy:
+  - provider: s3
+    edge:
+        source: travis-ci/dpl
+        branch: jvd-s3-endpoint-https
+    access-key-id: abcdefghij
+    secret-access-key: 1234567890
+    endpoint: myendpoint.com
+    bucket: bucket
+  - provider: s3
+    edge:
+        source: travis-ci/dpl
+        branch: jvd-s3-endpoint-https
+    access-key-id: abcdefghij
+    secret-access-key: 1234567890
+    endpoint: https://myendpoint.com
+    bucket: bucket
 notifications:
   email: false
