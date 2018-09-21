@@ -1,11 +1,15 @@
-sudo: yes
+sudo: false
 language: bash
-script: curl --verbose https://up.apex.sh/install >/dev/null
 install: skip
-env:
-    - run=1
-    - run=2
-    - run=3
-    - run=4
+script: skip
+deploy:
+  - provider: s3
+    edge:
+        source: travis-ci/dpl
+        branch: jvd-s3-endpoint-https
+    access-key-id: abcdefghij
+    secret-access-key: 1234567890
+    endpoint: myendpoint.com
+    bucket: bucket
 notifications:
   email: false
