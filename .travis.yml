@@ -1,20 +1,11 @@
-sudo: false
+sudo: yes
 language: bash
-script: echo $TRAVIS_SUDO
+script: curl --verbose https://up.apex.sh/install >/dev/null
 install: skip
-deploy:
-  - provider: s3
-    access-key-id: abcdefghij
-    secret-access-key: 1234567890
-    endpoint: myendpoint.com
-    bucket: bucket
-  - provider: s3
-    edge:
-        source: travis-ci/dpl
-        branch: jvd-s3-endpoint-https
-    access-key-id: abcdefghij
-    secret-access-key: 1234567890
-    endpoint: https://myendpoint.com
-    bucket: bucket
+env:
+    - run=1
+    - run=2
+    - run=3
+    - run=4
 notifications:
   email: false
