@@ -1,15 +1,9 @@
 sudo: false
-language: bash
+language: r
+repos:
+  CRAN: https://cloud.r-project.org
+  ropensci: http://packages.ropensci.org
 install: skip
 script: skip
-deploy:
-  - provider: s3
-    edge:
-        source: travis-ci/dpl
-        branch: jvd-s3-endpoint-https
-    access-key-id: abcdefghij
-    secret-access-key: 1234567890
-    endpoint: myendpoint.com
-    bucket: bucket
 notifications:
   email: false
