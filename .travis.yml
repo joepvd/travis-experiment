@@ -1,8 +1,12 @@
 sudo: false
-language: r
-repos:
-  CRAN: https://cloud.r-project.org
-  ropensci: http://packages.ropensci.org
+language: php
+php: 5.5
+matrix:
+    include:
+        - env: "trace=true"
+          trace: true
+        - env: "trace=false"
+          trace: false
 install: skip
 script: skip
 notifications:
