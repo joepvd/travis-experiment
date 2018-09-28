@@ -1,13 +1,11 @@
-sudo: false
-language: php
-php: 5.5
-matrix:
-    include:
-        - env: "trace=true"
-          trace: true
-        - env: "trace=false"
-          trace: false
+language: bash
 install: skip
-script: skip
+os: osx
+osx_image: xcode10
+script:
+    - make hello
+    - 'rm -f `which gtar`'
+    - 'which gtar && false || true'
+    - 'make hello && false || true'
 notifications:
   email: false
