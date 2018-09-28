@@ -2,6 +2,10 @@ language: bash
 install: skip
 os: osx
 osx_image: xcode10
+addons:
+    homebrew:
+        packages:
+            - gnu-tar
 script:
     - make hello
     - 'rm -f `which gtar`'
