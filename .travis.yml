@@ -5,5 +5,6 @@ install: skip
 script:
     - sudo systemd-analyze plot
     - sudo systemd-analyze critical-chain
+    - sleep 10
 notifications:
   email: false
