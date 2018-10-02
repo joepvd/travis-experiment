@@ -1,11 +1,6 @@
-language: __opal__
-dist: xenial
+language: ruby
 sudo: please
 install: skip
-script:
-    - java -version
-    - which -java
-    - sudo sh -c 'which java'
-    - sudo sh -c 'java -version'
+script: sudo systemd-analyze plot
 notifications:
   email: false
