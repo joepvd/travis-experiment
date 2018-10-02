@@ -1,15 +1,11 @@
-language: bash
+language: __opal__
+dist: xenial
+sudo: please
 install: skip
-os: osx
-osx_image: xcode10
-addons:
-    homebrew:
-        packages:
-            - gnu-tar
 script:
-    - make hello
-    - 'rm -f `which gtar`'
-    - 'which gtar && false || true'
-    - 'make hello && false || true'
+    - java -version
+    - which -java
+    - sudo sh -c 'which java'
+    - sudo sh -c 'java -version'
 notifications:
   email: false
