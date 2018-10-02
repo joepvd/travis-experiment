@@ -2,6 +2,8 @@ language: ruby
 sudo: please
 dist: xenial
 install: skip
-script: sudo systemd-analyze plot
+script:
+    - sudo systemd-analyze plot
+    - sudo systemd-analyze critical-chain
 notifications:
   email: false
