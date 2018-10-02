@@ -1,5 +1,6 @@
 language: ruby
 sudo: please
+dist: xenial
 install: skip
 script: sudo systemd-analyze plot
 notifications:
