@@ -1,5 +1,5 @@
 language: bash
-sudo: please
+sudo: false
 install: skip
 env:
 - run=1
