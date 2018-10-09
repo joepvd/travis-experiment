@@ -1,5 +1,5 @@
 language: bash
-sudo: required
+sudo: false
 os: linux-ppc64le
 install: skip
 script: sleep 20
