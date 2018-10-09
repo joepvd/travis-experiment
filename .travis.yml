@@ -1,20 +1,7 @@
 language: bash
 sudo: required
-addons:
-  apt:
-    packages:
-    - ghostscript
-    - libmagic-dev
-    - postgresql-9.5-postgis-2.3
-  postgresql: 9.5
-trace: true
-env:
-- run=1
-- run=2
-- run=3
-- run=4
-- run=5
+os: linux-ppc64le
 install: skip
-script: skip
+script: sleep 20
 notifications:
   email: false
