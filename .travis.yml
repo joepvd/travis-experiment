@@ -1,12 +1,12 @@
 language: bash
-sudo: false
-addons:
-  apt:
-    packages:
-    - ghostscript
-    - libmagic-dev
-    - postgresql-9.5-postgis-2.3
-  postgresql: 9.5
+sudo: prettyplease
+#addons:
+#  apt:
+#    packages:
+#    - ghostscript
+#    - libmagic-dev
+#    - postgresql-9.5-postgis-2.3
+#  postgresql: 9.5
 env:
 - run=1
 - run=2
@@ -15,6 +15,8 @@ env:
 - run=5
 trace: true
 install: skip
-script: skip
+script:
+- nslookup us-central1.gce.archive.ubuntu.com
+- nslookup -query=AAAA us-central1.gce.archive.ubuntu.com
 notifications:
   email: false
