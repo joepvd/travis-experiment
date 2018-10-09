@@ -1,6 +1,11 @@
 language: bash
-sudo: required
+sudo: false
 addons:
+  apt:
+    packages:
+    - ghostscript
+    - libmagic-dev
+    - postgresql-9.5-postgis-2.3
   postgresql: 9.5
 env:
 - run=1
@@ -9,7 +14,7 @@ env:
 - run=4
 - run=5
 trace: true
-install: sudo apt-get update
-script: sudo -E apt-get -yq --no-install-suggests --no-install-recommends -o "Acquire::ForceIPv4=true" $(travis_apt_get_options) install ghostscript libmagic-dev postgresql-9.5-postgis-2.3
+install: skip
+script: skip
 notifications:
   email: false
