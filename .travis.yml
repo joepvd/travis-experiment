@@ -1,12 +1,12 @@
 language: bash
 sudo: required
-#addons:
-#  apt:
-#    packages:
-#    - ghostscript
-#    - libmagic-dev
-#    - postgresql-9.5-postgis-2.3
-#  postgresql: 9.5
+addons:
+  apt:
+    packages:
+    - ghostscript
+    - libmagic-dev
+    - postgresql-9.5-postgis-2.3
+  postgresql: 9.5
 trace: true
 env:
 - run=1
@@ -14,12 +14,7 @@ env:
 - run=3
 - run=4
 - run=5
-install: curl https://whereami.travis-ci.com
-script:
-- echo $TRAVIS_INFRA
-- export TRAVIS_INFRA=ec2
-- sudo sed -ie "s,http://.*\\.ubuntu\\.com/ubuntu/,http://us-east-1.ec2.archive.ubuntu.com/ubuntu/," /etc/apt/sources.list
-- sudo apt-get update
-- sudo -E apt-get install -yq ghostscript libmagic-dev postgresql-9.5-postgis-2.3
+install: skip
+script: skip
 notifications:
   email: false
