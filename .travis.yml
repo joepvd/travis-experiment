@@ -10,7 +10,7 @@ sudo: false
 trace: true
 install: curl https://whereami.travis-ci.com
 script:
-- export 
+- echo $TRAVIS_INFRA
 - nslookup us-central1.gce.archive.ubuntu.com
 - nslookup -query=AAAA us-central1.gce.archive.ubuntu.com
 notifications:
