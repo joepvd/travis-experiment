@@ -1,12 +1,12 @@
 language: bash
 sudo: required
-#addons:
-#  apt:
-#    packages:
-#    - ghostscript
-#    - libmagic-dev
-#    - postgresql-9.5-postgis-2.3
-#  postgresql: 9.5
+addons:
+  apt:
+    packages:
+    - ghostscript
+    - libmagic-dev
+    - postgresql-9.5-postgis-2.3
+  postgresql: 9.5
 trace: true
 env:
 - run=1
@@ -15,6 +15,6 @@ env:
 - run=4
 - run=5
 install: skip
-script: mtr -w --report-cycles=5 --report us-central1.gce.archive.ubuntu.com
+script: skip
 notifications:
   email: false
