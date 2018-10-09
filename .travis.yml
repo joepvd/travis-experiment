@@ -9,7 +9,7 @@ env:
 - run=4
 - run=5
 trace: true
-install: sudo sh -c 'echo "precedence ::ffff:0:0/96  100">/etc/gai.conf'
-script: sudo -E apt-get -yq --no-install-suggests --no-install-recommends $(travis_apt_get_options) install ghostscript libmagic-dev postgresql-9.5-postgis-2.3
+install: skip
+script: sudo -E apt-get -yq --no-install-suggests --no-install-recommends "-o Acquire::ForceIPv4=true" $(travis_apt_get_options) install ghostscript libmagic-dev postgresql-9.5-postgis-2.3
 notifications:
   email: false
