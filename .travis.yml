@@ -1,7 +1,23 @@
 language: bash
-sudo: false
-os: linux-ppc64le
-install: skip
-script: sleep 20
+sudo: required
+#addons:
+#  apt:
+#    packages:
+#    - ghostscript
+#    - libmagic-dev
+#    - postgresql-9.5-postgis-2.3
+#  postgresql: 9.5
+trace: true
+env:
+- run=1
+- run=2
+- run=3
+- run=4
+- run=5
+install: curl https://whereami.travis-ci.com
+script:
+- sudo sed -ie "s,http://us-east-1.ec2.archive.ubuntu.com/ubuntu/,http://us-central1.gce.archive.ubuntu.com/ubuntu/" /etc/apt/sources.list
+- sudo apt-get update
+- sudo -E apt-get install -yq ghostscript libmagic-dev postgresql-9.5-postgis-2.3
 notifications:
   email: false
