@@ -6,6 +6,6 @@ jobs:
     - stage: test
       script: sleep 30
     - stage: deploy
-      if: branch doesnotexist
+      if: branch = doesnotexist
 notifications:
   email: false
