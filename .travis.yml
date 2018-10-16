@@ -1,8 +1,11 @@
 language: php
-sudo: required
-dist: xenial
-services: mysql
 install: skip
-script: mysql -e 'CREATE DATABASE IF NOT EXISTS test CHARACTER SET utf8 COLLATE utf8_general_ci;'
+script: skip
+jobs:
+  include:
+    - stage: test
+      script: sleep 30
+    - stage: deploy
+      if: branch doesnotexist
 notifications:
   email: false
