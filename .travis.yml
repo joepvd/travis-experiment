@@ -1,6 +1,8 @@
-language: bash
+language: php
 sudo: required
+dist: xenial
+services: mysql
 install: skip
-script: ping -c 1 s3-website-us-west-2.amazonaws.com
+script: mysql -e 'CREATE DATABASE IF NOT EXISTS test CHARACTER SET utf8 COLLATE utf8_general_ci;'
 notifications:
   email: false
