@@ -1,11 +1,10 @@
-language: php
+language: java
+jdk:
+  - orackejdk10
+  - oraclejdk8
+  - oraclejdk9
+  - oraclejdk11
 install: skip
 script: skip
-jobs:
-  include:
-    - stage: test
-      script: sleep 30
-    - stage: deploy
-      if: branch = master
 notifications:
   email: false
