@@ -13,5 +13,6 @@ install: skip
 script:
   - find / -name '*libssh*' 2>/dev/null
   - ldd $(which sshd)
+  - "for p in $(tr : ' ' <<<$PATH); do ldd -v $p/* | awk '/:$/{bin=$0};/libssh/{print bin, $0}'; done"
 notifications:
   email: false
