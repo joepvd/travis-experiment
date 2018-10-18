@@ -9,7 +9,7 @@ jobs:
       dist: precise
 services:
   - postgresql
-install: skip
+install: dpkg-query -l 'libssh*'
 script:
   - "find / -name '*libssh*' 2>/dev/null || true"
   - ldd $(which sshd)
