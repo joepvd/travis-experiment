@@ -11,8 +11,8 @@ services:
   - postgresql
 install: skip
 script:
-  - find / -name '*libssh*' 2>/dev/null
+  - "find / -name '*libssh*' 2>/dev/null || true"
   - ldd $(which sshd)
-  - "for p in $(tr : ' ' <<<$PATH); do ldd -v $p/* | awk '/:$/{bin=$0};/libssh/{print bin, $0}'; done"
+  - "for p in $(tr : ' ' <<<$PATH); do ldd -v $(find $p -depth 1 -type f) | awk '/:$/{bin=$0};/libssh/{print bin, $0}'; done"
 notifications:
   email: false
