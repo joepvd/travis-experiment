@@ -6,7 +6,7 @@ install: skip
 script: |
   for i in $(seq 1 1000); do
     psql -c 'drop table if exists counter;'
-    psql -c 'create table counter (integer idx);'
+    psql -c 'create table counter (idx integer);'
     awk '
       BEGIN {for (i=i; i<=10000; i++) print "insert into counter (idx) values (%s);\n", i}
     ' | psql
