@@ -1,18 +1,10 @@
-language: ruby
-jobs:
-  include:
-    - env: dist=trusty
-      dist: trusty
-    - env: dist=xenial
-      dist: xenial
-    - env: dist=precise
-      dist: precise
-services:
-  - postgresql
-install: dpkg-query -l 'libssh*'
+language: java
+os: osx
+osx_image: xcode9.3
+install: skip
 script:
-  - "find / -name '*libssh*' 2>/dev/null || true"
-  - ldd $(which sshd)
-  - "for p in $(tr : ' ' <<<$PATH); do ldd -v $p/* | awk '/:$/{bin=$0};/libssh/{print bin, $0}'; done 2>/dev/null"
+  - which java
+  - java -version
+  - ls -l $(basename $(which java))
 notifications:
   email: false
