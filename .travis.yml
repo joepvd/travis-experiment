@@ -1,10 +1,18 @@
 language: bash
 os: osx
-osx_image: xcode9.3
+matrix:
+  include:
+    - env: run=jdk10_new
+      osx_image: xcode10
+    - env: run=jdk10_old
+      osx_image: xcode9.4
+    - env: run=jdk8
+      osx_image: xcode9.3
+    - env: run=jdk8_old
+      osx_image: xcode8
 install: skip
 script:
   - which java
   - java -version
-  - ls -l $(basename $(which java))
 notifications:
   email: false
