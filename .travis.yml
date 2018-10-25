@@ -1,11 +1,7 @@
 language: bash
-matrix:
-  include:
-    - env: dist=xenial
-      dist: xenial
-    - env: dist=trusty
-      dist: trusty
 install: skip
+dist: xenial
+sudo: please
 script: tar --version
 notifications:
   email: false
