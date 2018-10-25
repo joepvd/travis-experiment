@@ -2,6 +2,15 @@ language: bash
 install: skip
 dist: xenial
 sudo: please
-script: tar --version
+addons:
+  apt:
+    packages:
+      - tree
+script:
+  - cat /var/log/cloud-init.log
+  - cloud-init analyze show -i /var/log/cloud-init.log
+  - cloud-init analyze blame -i /var/log/cloud-init.log
+  - tree /etc/cloud
+  - head -n 1000 $(find /etc/cloud -type f)
 notifications:
   email: false
