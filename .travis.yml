@@ -1,16 +1,6 @@
 install: skip
 dist: xenial
 group: edge
-sudo: please
-script:
-  - "COLUMNS=1000 systemctl | grep running"
-jobs:
-  include:
-    - env: image=stevonnie
-      language: __stevonnie__
-    - env: image=sardonyx
-      language: __sardonyx__
-    - env: image=opal
-      language: __opal__
+script: echo $TRAVIS_INTERNAL_RUBY_REGEX
 notifications:
   email: false
