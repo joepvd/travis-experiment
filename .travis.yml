@@ -1,16 +1,16 @@
-language: bash
 install: skip
 dist: xenial
+group: edge
 sudo: please
-addons:
-  apt:
-    packages:
-      - tree
 script:
-  - cat /var/log/cloud-init.log
-  - cloud-init analyze show -i /var/log/cloud-init.log
-  - cloud-init analyze blame -i /var/log/cloud-init.log
-  - tree /etc/cloud
-  - head -n 1000 $(find /etc/cloud -type f)
+  - "COLUMNS=1000 systemctl | grep running"
+jobs:
+  include:
+    - env: image=stevonnie
+      language: __stevonnie__
+    - env: image=sardonyx
+      language: __sardonyx__
+    - env: image=opal
+      language: __opal__
 notifications:
   email: false
