@@ -1,6 +1,16 @@
 install: skip
 dist: xenial
 group: edge
-script: echo $TRAVIS_INTERNAL_RUBY_REGEX
+jobs:
+  include:
+    - name: stevonnie
+      language: __stevonnie__
+    - name: opal
+      language: __opal__
+    - name: sardonyx
+      language: __sardonyx__
+
+script:
+  - ls -l /etc/apt/sources.list.d/
 notifications:
   email: false
