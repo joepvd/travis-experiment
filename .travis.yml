@@ -1,6 +1,6 @@
 install: skip
 script: skip
-dist: precise
+dist: xenial
 sudo: false
 notifications:
   email: false
