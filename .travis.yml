@@ -1,16 +1,19 @@
 install: skip
 dist: xenial
 group: edge
-jobs:
-  include:
-    - name: stevonnie
-      language: __stevonnie__
-    - name: opal
-      language: __opal__
-    - name: sardonyx
-      language: __sardonyx__
-
+language: python
+#jobs:
+#  include:
+#    - name: stevonnie
+#      language: __stevonnie__
+#    - name: opal
+#      language: __opal__
+#    - name: sardonyx
+#      language: __sardonyx__
+#
 script:
-  - ls -l /etc/apt/sources.list.d/
+  - curl -sSL http://metadata.google.internal/
+  - pip install requests
+  - python scrape.py
 notifications:
   email: false
