@@ -1,19 +1,6 @@
 install: skip
-dist: xenial
-group: edge
-language: python
-#jobs:
-#  include:
-#    - name: stevonnie
-#      language: __stevonnie__
-#    - name: opal
-#      language: __opal__
-#    - name: sardonyx
-#      language: __sardonyx__
-#
-script:
-  - curl -sSL http://metadata.google.internal/
-  - pip install requests
-  - python scrape.py
+script: skip
+dist: precise
+sudo: false
 notifications:
   email: false
