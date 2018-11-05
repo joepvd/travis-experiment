@@ -1,5 +1,11 @@
+language: bash
 install: skip
-script: skip
+script:
+  - git --version
+  - git-lfs --version
+  - hg --version
+  - svn --version
+  - docker --version
 dist: xenial
 sudo: false
 notifications:
