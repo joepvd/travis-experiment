@@ -1,16 +1,7 @@
-
 install: skip
-dist: xenial
-group: edge
-script:
-  - "COLUMNS=1000 systemctl | grep running"
-jobs:
-  include:
-    - name: stevonnie services
-      language: __stevonnie__
-    - name: sardonyx services
-      language: __sardonyx__
-    - name: opal services
-      language: __opal__
+script: skip
+dist: trusty
+group: doesnotexist
+sudo: required
 notifications:
   email: false<Paste>
