@@ -1,6 +1,10 @@
 install: skip
-script: skip
-dist: trusty
+script:
+  - grep -r travis-ci /etc/sources*
+  - head -n 1000 $(grep -rl travis-ci /etc/sources*)
+dist: precise
 sudo: required
+group: stable
+language: ruby
 notifications:
   email: false
