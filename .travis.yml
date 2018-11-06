@@ -1,7 +1,7 @@
 install: skip
 script:
-  - grep -r travis-ci /etc/sources*
-  - head -n 1000 $(grep -rl travis-ci /etc/sources*)
+  - grep -r travis-ci /etc/apt/sources*
+  - head -n 1000 $(grep -rl travis-ci /etc/apt/sources*)
 dist: precise
 sudo: required
 group: stable
