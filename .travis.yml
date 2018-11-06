@@ -1,9 +1,16 @@
-language: bash
+
 install: skip
-script:
-  - cat /etc/systemd/system.conf.d/limits.conf
-  - sudo ulimit -n
 dist: xenial
-sudo: false
+group: edge
+script:
+  - "COLUMNS=1000 systemctl | grep running"
+jobs:
+  include:
+    - name: stevonnie services
+      language: __stevonnie__
+    - name: sardonyx services
+      language: __sardonyx__
+    - name: opal services
+      language: __opal__
 notifications:
-  email: false
+  email: false<Paste>
