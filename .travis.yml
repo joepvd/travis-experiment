@@ -1,7 +1,6 @@
 install: skip
 script: skip
 dist: trusty
-group: doesnotexist
 sudo: required
 notifications:
-  email: false<Paste>
+  email: false
