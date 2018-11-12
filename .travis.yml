@@ -4,7 +4,7 @@ install: skip
 script:
   - which java
   - java -version
-  - ls ls $(which java)
+  - ls $(which java)
   - time brew cask ls --versions java
 language: ruby
 notifications:
