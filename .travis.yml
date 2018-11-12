@@ -1,11 +1,11 @@
+os: osx
+osx_image: xcode7.3
 install: skip
 script:
-  - grep -r travis-ci /etc/apt/sources*
-  - head -n 1000 $(grep -rl travis-ci /etc/apt/sources*)
-  - sudo apt-get update
-dist: precise
-sudo: required
-group: stable
+  - which java
+  - java -version
+  - ls ls $(which java)
+  - time brew cask ls --versions java
 language: ruby
 notifications:
   email: false
