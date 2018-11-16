@@ -1,7 +1,16 @@
-language: php
-install: skip
-sudo: required
+dist: xenial
+language: __sardonyx__
+jobs:
+  include:
+    - name: stable
+      group: stable
+    - name: dev
+      group: dev
+    - name: edge
+      group: edge
 script:
-  - grep -r hhvm /etc/apt/
+  - which firefox
+  - firefox --version
+language: ruby
 notifications:
-  email: never
+  email: false
