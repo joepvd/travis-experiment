@@ -2,10 +2,6 @@ dist: xenial
 language: __sardonyx__
 jobs:
   include:
-    - name: stable
-      group: stable
-    - name: dev
-      group: dev
     - name: edge
       group: edge
 script:
