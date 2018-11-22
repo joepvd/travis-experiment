@@ -1,12 +1,15 @@
+language: ruby
+dist: trusty
 jobs:
   include:
-    - name: xenial
-      dist: xenial
-    - name: trusty
-      dist: trusty
-language: java
-jdk: openjdk8
-script:
-  - java -version
+    - name: without group
+    - name: group stable
+      group: stable
+    - name: group edge
+      group: edge
+    - name: group dev
+      group: dev
+install: skip
+script: skip
 notifications:
   email: false
