@@ -1,14 +1,8 @@
-language: ruby
-dist: trusty
 jobs:
   include:
-    - name: without group
-    - name: group stable
-      group: stable
-    - name: group edge
-      group: edge
-    - name: group dev
-      group: dev
+    - language: bash
+    - language: shell
+dist: trusty
 install: skip
 script: skip
 notifications:
