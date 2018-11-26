@@ -1,8 +1,11 @@
 jobs:
   include:
-    - language: bash
-    - language: shell
-dist: trusty
+    - name: os: linux-ppc64le
+      os: linux-ppc64le
+    - name: arch: amd64
+      arch: amd64
+dist: xenial
+language: bash
 install: skip
 script: skip
 notifications:
