@@ -2,8 +2,8 @@ jobs:
   include:
     - name: os=linux-ppc64le
       os: linux-ppc64le
-    - name: arch=amd64
-      arch: amd64
+    - name: arch=ppc64le
+      arch: ppc64le
 dist: xenial
 language: bash
 install: skip
