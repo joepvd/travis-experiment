@@ -3,10 +3,10 @@ arch: ppc64le
 dist: xenial
 language: perl
 perl: 5.24
-install:
+install: skip
+script:
   - which perl
   - perl --version
   - perl -e 'print "yeah"'
-script: skip
 notifications:
   email: false
