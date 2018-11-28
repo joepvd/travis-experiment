@@ -1,12 +1,12 @@
-jobs:
-  include:
-    - name: os=linux-ppc64le
-      os: linux-ppc64le
-    - name: arch=ppc64le
-      arch: ppc64le
+name: arch=ppc64le
+arch: ppc64le
 dist: xenial
-language: bash
-install: skip
+language: python
+python: "3.7.0"
+install:
+  - which python
+  - python --version
+  - python -c 'import time;print(time.time())'
 script: skip
 notifications:
   email: false
