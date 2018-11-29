@@ -3,25 +3,41 @@ jobs:
   include:
   - name: oraclejdk7
     jdk: oraclejdk7
+    before_install: export vendor=oraclejdk version=oraclejdk7
   - name: oraclejdk8
     jdk: oraclejdk8
+    before_install: export vendor=oraclejdk version=oraclejdk8
   - name: oraclejdk9
     jdk: oraclejdk9
+    before_install: export vendor=oraclejdk version=oraclejdk9
   - name: oraclejdk10
     jdk: oraclejdk10
+    before_install: export vendor=oraclejdk version=oraclejdk10
   - name: oraclejdk11
     jdk: oraclejdk11
+    before_install: export vendor=oraclejdk version=oraclejdk11
   - name: openjdk7
     jdk: openjdk7
+    before_install: export vendor=openjdk version=openjdk7
   - name: openjdk8
     jdk: openjdk8
+    before_install: export vendor=openjdk version=openjdk8
   - name: openjdk9
     jdk: openjdk9
+    before_install: export vendor=openjdk version=openjdk9
   - name: openjdk10
     jdk: openjdk10
+    before_install: export vendor=openjdk version=openjdk10
   - name: openjdk11
     jdk: openjdk11
+    before_install: export vendor=openjdk version=openjdk11
 install: skip
-script: java -version
+script:
+  - java -version
+  - java -version |& awk '/HotSpot/{print "oracle";exit};END{print "openjdk"}'
+  - |
+      [[ "$(java -version |& awk '/HotSpot/{print "oracle";exit};END{print "openjdk"}')" == "$vendor" ]]
+  - |
+      java -version |& awk -F"'" -v version=$version 'BEGIN{if(version<9)version = "1\."version}{if ($2~version){exit 0} else {exit 1}'
 notifications:
   email: false
