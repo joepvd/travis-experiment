@@ -1,13 +1,27 @@
-name: arch=ppc64le
-arch: ppc64le
-dist: xenial
-language: perl
-perl: 5.24
+language: java
+jobs:
+  include:
+  - name: openjdk7
+    jdk: openjdk7
+  - name: openjdk8
+    jdk: openjdk8
+  - name: openjdk9
+    jdk: openjdk9
+  - name: openjdk10
+    jdk: openjdk10
+  - name: openjdk11
+    jdk: openjdk11
+  - name: openjdk7
+    jdk: openjdk7
+  - name: openjdk8
+    jdk: openjdk8
+  - name: openjdk9
+    jdk: openjdk9
+  - name: openjdk10
+    jdk: openjdk10
+  - name: openjdk11
+    jdk: openjdk11
 install: skip
-script:
-  - which perl
-  - perl --version
-  - |
-    perl -e 'print "yeah\n"'
+script: java -version
 notifications:
   email: false
