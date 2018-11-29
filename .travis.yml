@@ -1,16 +1,16 @@
 language: java
 jobs:
   include:
-  - name: openjdk7
-    jdk: openjdk7
-  - name: openjdk8
-    jdk: openjdk8
-  - name: openjdk9
-    jdk: openjdk9
-  - name: openjdk10
-    jdk: openjdk10
-  - name: openjdk11
-    jdk: openjdk11
+  - name: oraclejdk7
+    jdk: oraclejdk7
+  - name: oraclejdk8
+    jdk: oraclejdk8
+  - name: oraclejdk9
+    jdk: oraclejdk9
+  - name: oraclejdk10
+    jdk: oraclejdk10
+  - name: oraclejdk11
+    jdk: oraclejdk11
   - name: openjdk7
     jdk: openjdk7
   - name: openjdk8
