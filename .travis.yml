@@ -38,6 +38,6 @@ script:
   - |
     [[ "$(java -version |& awk 'BEGIN{vendor="openjdk"}/HotSpot/{vendor="oraclejdk"};END{print vendor}')" == "$vendor" ]]
   - |
-    java -version |& awk -F'"' -v version=$version 'BEGIN{if(version<9)version = "1\\."version"; version=version"\\."}/version/{print version, $2; if ($2~version)exit 0; exit 1}'
+    java -version |& awk -F'"' -v version=$version 'BEGIN{if(version<9)version = "1\\."version; version=version"\\."}/version/{print version, $2; if ($2~version)exit 0; exit 1}'
 notifications:
   email: false
