@@ -1,43 +1,7 @@
-language: java
-jobs:
-  include:
-  - name: oraclejdk7
-    jdk: oraclejdk7
-    before_install: export vendor=oraclejdk version=7
-  - name: oraclejdk8
-    jdk: oraclejdk8
-    before_install: export vendor=oraclejdk version=8
-  - name: oraclejdk9
-    jdk: oraclejdk9
-    before_install: export vendor=oraclejdk version=9
-  - name: oraclejdk10
-    jdk: oraclejdk10
-    before_install: export vendor=oraclejdk version=10
-  - name: oraclejdk11
-    jdk: oraclejdk11
-    before_install: export vendor=oraclejdk version=11
-  - name: openjdk7
-    jdk: openjdk7
-    before_install: export vendor=openjdk version=7
-  - name: openjdk8
-    jdk: openjdk8
-    before_install: export vendor=openjdk version=8
-  - name: openjdk9
-    jdk: openjdk9
-    before_install: export vendor=openjdk version=9
-  - name: openjdk10
-    jdk: openjdk10
-    before_install: export vendor=openjdk version=10
-  - name: openjdk11
-    jdk: openjdk11
-    before_install: export vendor=openjdk version=11
+dist: xenial
+group: edge
 install: skip
-script:
-  - java -version
-  - java -version |& awk '/HotSpot/{print "oracle";exit};END{print "openjdk"}'
-  - |
-    [[ "$(java -version |& awk 'BEGIN{vendor="openjdk"}/HotSpot/{vendor="oraclejdk"};END{print vendor}')" == "$vendor" ]]
-  - |
-    java -version |& awk -F'"' -v version=$version 'BEGIN{if(version<9)version = "1\\."version; version=version"\\."}/version/{if ($2~version)exit 0; exit 1}'
+script: skip
+language: python
 notifications:
   email: false
