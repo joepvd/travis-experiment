@@ -1,7 +1,9 @@
 dist: xenial
-group: edge
+group: dev
 install: skip
-script: skip
-language: python
+script:
+  - sudo systemctl start xvfb.service
+  - xset -q
+language: __sardonyx__
 notifications:
   email: false
