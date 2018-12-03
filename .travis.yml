@@ -3,6 +3,7 @@ group: dev
 install: skip
 script:
   - sudo systemctl start xvfb.service
+  - sleep 1
   - DISPLAY=:99.0 xset -q
 language: __sardonyx__
 notifications:
