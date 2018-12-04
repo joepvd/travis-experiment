@@ -1,14 +1,11 @@
 install: skip
 script:
   - which awk
-  - which gawk
   - awk --version
-  - gawk --version
-  - mawk --version
   - |
     java -version 2>&1 | awk 'BEGIN{vendor="openjdk"}/HotSpot/{vendor="oraclejdk"};END{print vendor}'
   - |
-    version=7 java -version 2>&1 | awk -F'"' -v version=$version 'BEGIN{if(version<9)version = "1\\."version; version=version"\\."}/version/{if ($2~version)exit 0; exit 1}'
+    version=8 java -version 2>&1 | awk -F'"' -v version=$version 'BEGIN{if(version<9)version = "1\\."version; version=version"\\."}/version/{if ($2~version)exit 0; exit 1}'
 language: bash
 os: osx
 osx_image: xcode6.4
