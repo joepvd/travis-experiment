@@ -1,10 +1,7 @@
 dist: xenial
 group: dev
 install: skip
-script:
-  - sudo systemctl start xvfb.service
-  - sleep 1
-  - DISPLAY=:99.0 xset -q
+script: grep __timestamp .node-attributes.yml
 language: __sardonyx__
 notifications:
   email: false
