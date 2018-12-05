@@ -2,10 +2,12 @@ install: skip
 script:
   - which awk
   - awk --version
+  - java -version
+  - version=8
   - |
     java -version 2>&1 | awk 'BEGIN{vendor="openjdk"}/HotSpot/{vendor="oraclejdk"};END{print vendor}'
   - |
-    version=8 java -version 2>&1 | awk -F'"' -v version=$version 'BEGIN{if(version<9)version = "1\\."version; version=version"\\."}/version/{if ($2~version)exit 0; exit 1}'
+    java -version 2>&1 | awk -F'"' -v version=$version 'BEGIN{if(version<9)version = "1\\."version; version=version"\\."}/version/{if ($2~version){exit 0}; exit 1}'
 language: bash
 os: osx
 osx_image: xcode9.2
