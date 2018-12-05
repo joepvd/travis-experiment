@@ -1,13 +1,13 @@
 os: osx
 jobs:
   include:
-  - osx_image: xcode10.1
-    name: xcode10.1
   - osx_image: xcode10
     name: xcode10
+  - osx_image: xcode9
+    name: xcode9
 install:
-  - version=11
-  - vendor=openjdk
+  - version=8
+  - vendor=orackejdk
 script:
   - java -version
   - |
