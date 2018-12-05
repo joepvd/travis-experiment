@@ -1,19 +1,5 @@
-os: osx
-jobs:
-  include:
-  - osx_image: xcode10
-    name: xcode10
-  - osx_image: xcode9
-    name: xcode9
-install:
-  - version=8
-  - vendor=orackejdk
-script:
-  - java -version
-  - |
-    java -version 2>&1 | awk -v vendor=$vendor 'BEGIN{v="openjdk"}/HotSpot/{v="oraclejdk"};END{if(vendor==v)exit 0; exit 1}'
-  - |
-    java -version 2>&1 | awk -F'"' -v version=$version 'BEGIN{if(version<9)version = "1\\."version; version="^"version"\\."}/version/{if ($2~version){exit 0}; exit 1}'
-language: bash
+dist: xenial
+language: java
+group: dev
 notifications:
   email: false
