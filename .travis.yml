@@ -24,7 +24,7 @@ jobs:
   - osx_image: xcode6.4
     name: xcode6.4
 install:
-  - version=10
+  - version=8
   - vendor=oraclejdk
 script:
   - java -version
