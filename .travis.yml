@@ -7,7 +7,7 @@ jobs:
     name: xcode10
 install:
   - version=11
-  - vendor=oraclejdk
+  - vendor=openjdk
 script:
   - java -version
   - |
