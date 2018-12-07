@@ -3,13 +3,16 @@ jobs:
   include:
     - name: sardonyx
       language: __sardonyx__
-    - name: opal
-      language: __opal__
-    - name: stevonnie
-      language: __stevonnie__
 install: skip
 script:
-  - sudo updatedb
-  - locate phantom
+  - phantomjs -v
+  - |
+    echo "
+       var page = require('webpage').create();
+       page.open('http://www.google.com', function(status) {
+       console.log('Status: ' + status);
+       phantom.exit();
+       });" >test.js
+  - phantomjs test.js
 notifications:
   email: false
