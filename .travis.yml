@@ -1,5 +1,15 @@
 dist: xenial
-language: java
-group: dev
+jobs:
+  include:
+    - name: sardonyx
+      language: __sardonyx__
+    - name: opal
+      language: __opal__
+    - name: stevonnie
+      language: __stevonnie__
+install: skip
+script:
+  - sudo updatedb
+  - locate phantom
 notifications:
   email: false
