@@ -1,6 +1,7 @@
 dist: trusty
 language: __garnet__
 script:
+  - ls -l /etc/init.d/*rabbit*
   - time curl -L https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey | sudo apt-key add -
   - sudo apt update
 notifications:
