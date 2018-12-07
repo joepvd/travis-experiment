@@ -1,7 +1,7 @@
 dist: trusty
 language: __garnet__
 script:
-  - curl -L https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey | sudo apt-key add -
+  - time curl -L https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey | sudo apt-key add -
   - sudo apt update
 notifications:
   email: false
