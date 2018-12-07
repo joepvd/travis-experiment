@@ -1,7 +1,7 @@
 dist: trusty
 language: __garnet__
 script:
-  - curl https://raw.githubusercontent.com/travis-ci/apt-source-safelist/master/keys/rabbitmq-trusty.asc | sudo apt-key add -
+  - curl -L https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey | sudo apt-key add -
   - sudo apt update
 notifications:
   email: false
