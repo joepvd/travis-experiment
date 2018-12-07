@@ -1,6 +1,5 @@
-dist: trusry
-language: bash
-services: rabbitmq
+dist: trusty
+language: __garnet__
 script: sudo apt-get update
 notifications:
   email: false
