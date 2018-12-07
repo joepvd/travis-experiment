@@ -1,18 +1,6 @@
-dist: xenial
-jobs:
-  include:
-    - name: sardonyx
-      language: __sardonyx__
-install: skip
-script:
-  - phantomjs -v
-  - |
-    echo "
-       var page = require('webpage').create();
-       page.open('http://www.google.com', function(status) {
-       console.log('Status: ' + status);
-       phantom.exit();
-       });" >test.js
-  - phantomjs test.js
+dist: trusry
+language: bash
+services: rabbitmq
+script: sudo apt-get update
 notifications:
   email: false
