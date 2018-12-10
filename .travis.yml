@@ -1,8 +1,16 @@
-dist: trusty
-language: __garnet__
+jobs:
+  include:
+    - name: trusty
+      dist: trusty
+    - name: xenial
+      dist: xenial
+language: php
+php: 7.3snapshot
+install: skip
 script:
-  - ls -l /etc/init.d/*rabbit*
-  - time curl -L https://packagecloud.io/rabbitmq/rabbitmq-server/gpgkey | sudo apt-key add -
-  - sudo apt update
+  - which php
+  - ~/.phpenv/versions/7.3snapshot/bin/php --version
+  - ls -l ~/.phpenv/versions
+  - ldd ~/.phpenv/versions/7.3snapshot/bin/php
 notifications:
   email: false
