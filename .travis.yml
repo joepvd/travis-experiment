@@ -1,16 +1,14 @@
 jobs:
   include:
+    - name: precise
+      dist: precise
     - name: trusty
       dist: trusty
     - name: xenial
       dist: xenial
-language: php
-php: 7.3snapshot
+language: python
 install: skip
 script:
-  - which php
-  - ~/.phpenv/versions/7.3snapshot/bin/php --version
-  - ls -l ~/.phpenv/versions
-  - ldd ~/.phpenv/versions/7.3snapshot/bin/php
+  - grep -rE 'rabbit|packagecloud' /etc/apt
 notifications:
   email: false
