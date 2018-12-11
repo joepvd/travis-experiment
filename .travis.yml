@@ -1,14 +1,7 @@
-jobs:
-  include:
-    - name: precise
-      dist: precise
-    - name: trusty
-      dist: trusty
-    - name: xenial
-      dist: xenial
-language: python
+language: minimal
 install: skip
-script:
-  - grep -rE 'rabbit|packagecloud' /etc/apt
+script: skip
+dist: trusty
+group: edge
 notifications:
   email: false
