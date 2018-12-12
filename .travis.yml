@@ -1,7 +1,4 @@
-matrix:
-  include:
-    - sudo: deprecated
-    - sudo: required
+dist: xenial
 
 addons:
   apt_packages:
@@ -9,7 +6,7 @@ addons:
   - libmcrypt-dev
 
 install: skip
-script: gem install tiny_tds -v 1.0.5
+script: gem install tiny_tds -v 2.1.0
 after_failure: cat  /home/travis/.rvm/gems/*/extensions/x86_64-linux/*/tiny_tds*/mkmf.log
 language: ruby
 rvm: 2.3.4
