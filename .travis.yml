@@ -1,15 +1,17 @@
-jobs:
+matrix:
   include:
-    - name: stevonnie
-      language: __stevonnie__
-    - name: opal
-      language: __opal__
-    - name: sardony
-      language: __sardonyx__
+    - sudo: deprecated
+    - sudo: required
+
+addons:
+  apt_packages:
+  - freetds-dev
+  - libmcrypt-dev
+
 install: skip
-script:
-  - df -h
-  - mount
-dist: xenial
+script: gem install tiny_tds -v 2.1.0
+after_failure: cat  /home/travis/.rvm/gems/*/extensions/x86_64-linux/*/tiny_tds*/mkmf.log
+language: ruby
+rvm: 2.3.4
 notifications:
-  email: false
+  email: true
