@@ -1,9 +1,10 @@
-dist: xenial
-
 addons:
-  apt_packages:
-  - freetds-dev
-  - libmcrypt-dev
+  apt:
+    packages:
+    - freetds-dev
+    - libmcrypt-dev
+    sources:
+      - ppa:jamiewillis/freetds
 
 install: skip
 script: gem install tiny_tds -v 2.1.0
