@@ -1,7 +1,7 @@
 install:
-  - sudo add-apt-repository ppa:jamiewillis/freetds
+  - sudo add-apt-repository -y ppa:jamiewillis/freetds
   - sudo apt-get update
-  - sudo apt-get install freetds-dev libmcrypt-dev
+  - sudo apt-get install -y freetds-dev libmcrypt-dev
 script: gem install tiny_tds -v 2.1.0
 after_failure: cat  /home/travis/.rvm/gems/*/extensions/x86_64-linux/*/tiny_tds*/mkmf.log
 language: ruby
