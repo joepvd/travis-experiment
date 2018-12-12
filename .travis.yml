@@ -1,7 +1,15 @@
-language: minimal
+jobs:
+  include:
+    - name: stevonnie
+      language: __stevonnie__
+    - name: opal
+      language: __opal__
+    - name: sardony
+      language: __sardonyx__
 install: skip
-script: skip
-dist: trusty
-group: edge
+script:
+  - dh -h
+  - mount
+dist: xenial
 notifications:
   email: false
