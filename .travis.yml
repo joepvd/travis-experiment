@@ -8,7 +8,7 @@ jobs:
       language: __sardonyx__
 install: skip
 script:
-  - dh -h
+  - df -h
   - mount
 dist: xenial
 notifications:
