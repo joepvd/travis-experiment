@@ -1,10 +1,12 @@
-install:
-  - sudo add-apt-repository -y ppa:jamiewillis/freetds
-  - sudo apt-get update
-  - sudo apt-get install -y freetds libmcrypt-dev
-script: gem install tiny_tds -v 2.1.0
-after_failure: cat  /home/travis/.rvm/gems/*/extensions/x86_64-linux/*/tiny_tds*/mkmf.log
+dist: xenial
+services:
+  - mongodb
+install: skip
+script:
+  - sleep 10
+  - mongo --eval 'db.version();'
+  - cat /etc/hosts
+  - cat /etc/resolv.conf
 language: ruby
-rvm: 2.3.4
 notifications:
   email: true
