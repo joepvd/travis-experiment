@@ -1,8 +1,8 @@
 jobs:
   include:
-    - os: linux-ppc66le
+    - arch: ppc66le
       dist: trusty
-    - os: linux-ppc64le
+    - arch: ppc64le
       dist: xenial
 language: bash
 install: skip
