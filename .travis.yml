@@ -1,12 +1,11 @@
-dist: xenial
-services:
-  - mongodb
+jobs:
+  include:
+    - os: linux-ppc66le
+      dist: trusty
+    - os: linux-ppc64le
+      dist: xenial
+language: bash
 install: skip
-script:
-  - sleep 10
-  - mongo --eval 'db.version();'
-  - cat /etc/hosts
-  - cat /etc/resolv.conf
-language: ruby
+script: '[[ "$MACHTYPE" =~ ppc6 ]]'
 notifications:
   email: true
