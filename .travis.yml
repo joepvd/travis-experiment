@@ -2,7 +2,7 @@ jobs:
   include:
     - name: precise
       dist: precise
-    - name: trusyu
+    - name: trusty
       dist: trusty
     - name: xenial
       dist: xenial
@@ -11,5 +11,8 @@ install: skip
 script:
   - cat ~/.rvmrc
   - 'cat /etc/rvmrc || true'
+  - gem install travis
+  - [[ -f ~/.rvmrc ]] && sed 's/--no-ri//g' ~/.rvmrc
+  - gem install travis
 notifications:
   email: true
