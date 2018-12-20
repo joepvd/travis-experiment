@@ -9,7 +9,7 @@ jobs:
 language: ruby
 install: skip
 script:
-  - cat ~/.rmvrc
-  - cat /etc/rvmrc
+  - cat ~/.rvmrc
+  - 'cat /etc/rvmrc || true'
 notifications:
   email: true
