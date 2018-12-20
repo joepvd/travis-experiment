@@ -1,11 +1,15 @@
 jobs:
   include:
-    - arch: ppc66le
+    - name: precise
+      dist: precise
+    - name: trusyu
       dist: trusty
-    - arch: ppc64le
+    - name: xenial
       dist: xenial
-language: bash
+language: ruby
 install: skip
-script: '[[ "$MACHTYPE" =~ ppc6 ]]'
+script:
+  - cat ~/.rmvrc
+  - cat /etc/rvmrc
 notifications:
   email: true
