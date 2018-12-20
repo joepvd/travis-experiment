@@ -6,7 +6,7 @@ jobs:
       dist: trusty
     - name: xenial
       dist: xenial
-language: ruby
+language: bash
 install: skip
 script:
   - cat ~/.rvmrc
