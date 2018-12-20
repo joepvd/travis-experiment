@@ -12,7 +12,7 @@ script:
   - cat ~/.rvmrc
   - 'cat /etc/rvmrc || true'
   - gem install travis
-  - [[ -f ~/.rvmrc ]] && sed 's/--no-ri//g' ~/.rvmrc
+  - "[[ -f ~/.rvmrc ]] && sed 's/--no-ri//g' ~/.rvmrc"
   - gem install travis
 notifications:
   email: true
