@@ -1,18 +1,6 @@
-jobs:
-  include:
-    - name: precise
-      dist: precise
-    - name: trusty
-      dist: trusty
-    - name: xenial
-      dist: xenial
 language: bash
+dist: xenial
 install: skip
-script:
-  - cat ~/.rvmrc
-  - 'cat /etc/rvmrc || true'
-  - gem install travis
-  - "[[ -f ~/.rvmrc ]] && sed 's/--no-ri//g' ~/.rvmrc"
-  - gem install travis
+script: sudo apt-get update
 notifications:
-  email: true
+  email: false
