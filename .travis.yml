@@ -1,6 +1,6 @@
 language: bash
 dist: xenial
-install: skip
+install: find /etc/apt/sources.list.d -type f
 script: sudo apt-get update
 notifications:
   email: false
