@@ -1,13 +1,14 @@
-language: java
+language: php
 dist: xenial
+group: edge
 jobs:
   include:
-    - name: stable
-      group: stable
-    - name: edge
-      group: edge
-    - name: dev
-      group: dev
+    - name: hhvm
+      php: hhvm
+    - name: hhvm-3.18
+      php: hhvm-3.18
+    - name: hhvm-nightly
+      php: hhvm-nightly
 install: skip
 script: cat /etc/hosts
 notifications:
