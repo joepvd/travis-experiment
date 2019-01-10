@@ -1,12 +1,14 @@
-language: __sardonyx__
+language: java
 dist: xenial
 jobs:
   include:
-    - name: edge
-      group: edge
     - name: stable
       group: stable
-install: find /etc/apt/sources.list.d -type f
-script: sudo apt-get update
+    - name: edge
+      group: edge
+    - name: dev
+      group: dev
+install: skip
+script: cat /etc/hosts
 notifications:
-  email: false
+  email: never
