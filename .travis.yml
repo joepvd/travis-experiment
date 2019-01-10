@@ -1,5 +1,11 @@
-language: bash
+language: __sardonyx__
 dist: xenial
+jobs:
+  include:
+    - name: edge
+      group: edge
+    - name: stable
+      group: stable
 install: find /etc/apt/sources.list.d -type f
 script: sudo apt-get update
 notifications:
