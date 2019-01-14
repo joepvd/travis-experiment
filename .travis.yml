@@ -1,4 +1,12 @@
-language: php
+jobs:
+  include:
+    - language: __stevonnie__
+    - language: __opal__
+    - language: __sardonyx__
+    - language: bash
+    - language: node_js
+    - language: java
+    - language: perl
 dist: xenial
 install: skip
 script: cat /etc/hosts
