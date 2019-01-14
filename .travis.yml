@@ -1,14 +1,5 @@
 language: php
 dist: xenial
-group: edge
-jobs:
-  include:
-    - name: hhvm
-      php: hhvm
-    - name: hhvm-3.18
-      php: hhvm-3.18
-    - name: hhvm-nightly
-      php: hhvm-nightly
 install: skip
 script: cat /etc/hosts
 notifications:
