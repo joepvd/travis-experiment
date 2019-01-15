@@ -5,6 +5,9 @@ dist: xenial
 install: skip
 script:
   - google-chrome &
+  - xclock &
   - sleep 3
+  - ps aux | grep '[x]clock'
+  - ps aux | grep '[g]oogle-chrome'
 notifications:
   email: never
