@@ -3,6 +3,10 @@ services:
   - xvfb
 dist: xenial
 install: skip
+addons:
+  apt:
+    packages:
+      - x11-apps
 script:
   - google-chrome &
   - xclock &
