@@ -2,5 +2,6 @@ language: python
 dist: xenial
 install: skip
 script: ls -l /etc/apt/sources.list.d
+trace: true
 notifications:
   email: never
