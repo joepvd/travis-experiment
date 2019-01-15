@@ -1,18 +1,6 @@
 language: python
-services:
-  - xvfb
 dist: xenial
 install: skip
-addons:
-  apt:
-    packages:
-      - x11-apps
-script:
-  - google-chrome &
-  - xclock &
-  - sleep 3
-  - pstree -Ua
-  - ps aux | grep '[x]clock'
-  - ps aux | grep '[g]oogle-chrome'
+script: ls -l /etc/apt/sources.list.d
 notifications:
   email: never
