@@ -1,14 +1,10 @@
-jobs:
-  include:
-    - language: __stevonnie__
-    - language: __opal__
-    - language: __sardonyx__
-    - language: bash
-    - language: node_js
-    - language: java
-    - language: perl
+language: python
+services:
+  - xvfb
 dist: xenial
 install: skip
-script: cat /etc/hosts
+script:
+  - google-chrome &
+  - sleep 3
 notifications:
   email: never
