@@ -11,6 +11,7 @@ script:
   - google-chrome &
   - xclock &
   - sleep 3
+  - pstree -Ua
   - ps aux | grep '[x]clock'
   - ps aux | grep '[g]oogle-chrome'
 notifications:
