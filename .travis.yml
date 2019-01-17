@@ -1,9 +1,5 @@
-language: php
+language: python
 dist: xenial
-php:
-  - 7.1
-  - 5.6
-  - 7.2
 install: skip
 script:
   - ls -l ~/.phpenv/versions
