@@ -9,6 +9,8 @@ jobs:
 dist: xenial
 group: edge
 install: skip
-script: apt --version
+script:
+  - apt --version
+  - apt-cache show apt
 notifications:
   email: never
