@@ -1,8 +1,14 @@
-language: python
+jobs:
+  include:
+    - language: __sardonyx__
+      name: sardonyx
+    - language: __opal__
+      name: opal
+    - language: __stevonnie__
+      name: stevonnie
 dist: xenial
+group: edge
 install: skip
-script:
-  - ls -l ~/.phpenv/versions
-  - ls -l ~/.phpenv/versions/*/bin/php
+script: apt --version
 notifications:
   email: never
