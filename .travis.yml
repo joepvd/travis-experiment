@@ -8,7 +8,7 @@ jobs:
       name: stevonnie
 dist: xenial
 group: edge
-install: sudo sh -c 'echo "Acquire::http::AllowRedirect=false">/etc/apt/apt.conf.d/99no-redirect'
+install: sudo sh -c 'echo "Acquire::http::AllowRedirect \"false\";">/etc/apt/apt.conf.d/99no-redirect'
 script:
   - apt --version
   - apt-cache show apt
