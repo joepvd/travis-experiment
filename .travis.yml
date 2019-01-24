@@ -8,9 +8,12 @@ jobs:
       name: stevonnie
 dist: xenial
 group: edge
-install: skip
+install: sudo sh -c 'echo "Acquire::http::AllowRedirect=false">/etc/apt/apt.conf.d/99no-redirect'
 script:
   - apt --version
   - apt-cache show apt
+  - sudo apt-get update
+  - sudo apt-get install --no-upgrade apt
+  - sudo apt-get install tree
 notifications:
   email: never
