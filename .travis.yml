@@ -1,19 +1,7 @@
-jobs:
-  include:
-    - language: __sardonyx__
-      name: sardonyx
-    - language: __opal__
-      name: opal
-    - language: __stevonnie__
-      name: stevonnie
-dist: xenial
-group: edge
-install: sudo sh -c 'echo "Acquire::http::AllowRedirect \"false\";">/etc/apt/apt.conf.d/99no-redirect'
-script:
-  - apt --version
-  - apt-cache show apt
-  - sudo apt-get update
-  - sudo apt-get install --no-upgrade apt
-  - sudo apt-get install tree
+dist: bionic
+group: dev
+language: bash
+install: uname -a
+script: skip
 notifications:
   email: never
