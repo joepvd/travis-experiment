@@ -1,4 +1,4 @@
-dist: the_future
+dist: xenial
 language: __peridot__
 install: uname -a
 script: skip
