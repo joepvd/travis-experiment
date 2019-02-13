@@ -1,6 +1,5 @@
-dist: bionic
-group: dev
-language: bash
+dist: the_future
+language: __peridot__
 install: uname -a
 script: skip
 notifications:
