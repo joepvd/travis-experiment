@@ -1,4 +1,5 @@
-language: bash
+language: __peridot__
+dist: the_future
 install: uname -a
 script: skip
 notifications:
