@@ -1,6 +1,14 @@
-language: __peridot__
-dist: the_future
-install: uname -a
-script: skip
+language: php
+php: 7.2
+jobs:
+  include:
+    - name: xenial
+      dist: xenial
+    - name: trusty
+      dist: trusty
+    - name: precise
+      dist: precise
+install: php --version
+script: php --version
 notifications:
   email: never
