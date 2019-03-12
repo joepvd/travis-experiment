@@ -1,14 +1,7 @@
-language: php
-php: 7.2
-jobs:
-  include:
-    - name: xenial
-      dist: xenial
-    - name: trusty
-      dist: trusty
-    - name: precise
-      dist: precise
+language: perl6
+perl6: '2018.12'
+dist: xenial
 install: php --version
-script: php --version
+script: lsb_release -cs | grep xenial
 notifications:
   email: never
