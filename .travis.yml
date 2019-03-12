@@ -1,7 +1,8 @@
-language: perl6
+language: doesnotexist
+feature: perlbrew
 perl6: '2018.12'
 dist: xenial
-install: php --version
+install: perl --version
 script: lsb_release -cs | grep xenial
 notifications:
   email: never
