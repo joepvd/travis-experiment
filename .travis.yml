@@ -1,5 +1,4 @@
-feature: perlbrew
-perl6: '2018.12'
+language: does_not_exist
 dist: xenial
 install: perl --version
 script: lsb_release -cs | grep xenial
