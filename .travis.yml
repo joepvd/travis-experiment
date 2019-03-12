@@ -1,4 +1,3 @@
-language: doesnotexist
 feature: perlbrew
 perl6: '2018.12'
 dist: xenial
