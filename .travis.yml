@@ -1,6 +1,43 @@
-language: does_not_exist
-dist: xenial
-install: perl --version
-script: lsb_release -cs | grep xenial
+jobs:
+  include:
+  - env: dist=precise group=deprecated-2017Q1
+    dist: precise
+    group: deprecated-2017Q1
+  - env: dist=precise group=stable-20161201
+    dist: precise
+    group: stable-20161201
+  - env: dist=trusty group=deprecated-2017Q4
+    dist: trusty
+    group: deprecated-2017Q4
+  - env: dist=trusty group=stable-20161201
+    dist: trusty
+    group: stable-20161201
+  - env: dist=trusty group=stable-20170621
+    dist: trusty
+    group: stable-20170621
+  - env: dist=precise group=deprecated
+    dist: precise
+    group: deprecated
+  - env: dist=trusty group=deprecated-2017Q3
+    dist: trusty
+    group: deprecated-2017Q3
+  - env: dist=trusty group=deprecated-2017Q2
+    dist: trusty
+    group: deprecated-2017Q2
+  - env: dist=trusty group=deprecated
+    dist: trusty
+    group: deprecated
+  - env: dist=trusty group=stable
+    dist: trusty
+    group: stable
+  - env: dist=trusty group=stable-20161202
+    dist: trusty
+    group: stable-20161202
+  - env: dist=precise group=stable
+    dist: precise
+  - env: dist=xenial group=edge
+    dist: xenial
+    group: edge
+script: cat /etc/docker/daemon.json
 notifications:
   email: never
