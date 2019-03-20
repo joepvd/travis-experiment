@@ -38,6 +38,6 @@ jobs:
   - env: dist=xenial group=edge
     dist: xenial
     group: edge
-script: cat /etc/docker/daemon.json
+script: sudo cat /etc/docker/daemon.json
 notifications:
   email: never
