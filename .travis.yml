@@ -1,43 +1,11 @@
-jobs:
-  include:
-  - env: dist=precise group=deprecated-2017Q1
-    dist: precise
-    group: deprecated-2017Q1
-  - env: dist=precise group=stable-20161201
-    dist: precise
-    group: stable-20161201
-  - env: dist=trusty group=deprecated-2017Q4
-    dist: trusty
-    group: deprecated-2017Q4
-  - env: dist=trusty group=stable-20161201
-    dist: trusty
-    group: stable-20161201
-  - env: dist=trusty group=stable-20170621
-    dist: trusty
-    group: stable-20170621
-  - env: dist=precise group=deprecated
-    dist: precise
-    group: deprecated
-  - env: dist=trusty group=deprecated-2017Q3
-    dist: trusty
-    group: deprecated-2017Q3
-  - env: dist=trusty group=deprecated-2017Q2
-    dist: trusty
-    group: deprecated-2017Q2
-  - env: dist=trusty group=deprecated
-    dist: trusty
-    group: deprecated
-  - env: dist=trusty group=stable
-    dist: trusty
-    group: stable
-  - env: dist=trusty group=stable-20161202
-    dist: trusty
-    group: stable-20161202
-  - env: dist=precise group=stable
-    dist: precise
-  - env: dist=xenial group=edge
-    dist: xenial
-    group: edge
-script: sudo cat /etc/docker/daemon.json
+dist: xenial
+group: edge
+language: php
+php:
+  - 7.2
+  - 5.6
+  - 7.3
+install: php --version
+script: php --version
 notifications:
   email: never
