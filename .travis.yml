@@ -1,6 +1,6 @@
 dist: xenial
-group: dev
 language: bash
-script: docker run alpine echo hello
+services: docker
+script: lsb_release -cs | tee /dev/stderr | grep xenial
 notifications:
   email: never
