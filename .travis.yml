@@ -1,11 +1,6 @@
 dist: xenial
-group: edge
-language: php
-php:
-  - 7.2
-  - 5.6
-  - 7.3
-install: php --version
-script: php --version
+group: dev
+language: bash
+script: docker run alpine echo hello
 notifications:
   email: never
