@@ -1,6 +1,25 @@
+jobs:
+  include:
+  - name: stevonnie-stable
+    language: __stevonnie__
+    group: stable
+  - name: stevonnie-edge
+    language: __stevonnie__
+    group: edge
+  - name: opal-stable
+    language: __opal__
+    group: stable
+  - name: opal-edge
+    language: __opal__
+    group: edge
+  - name: sardonyx-stable
+    language: __sardonyx__
+    group: stable
+  - name: sardonyx-edge
+    language: __sardonyx__
+    group: edge
 dist: xenial
-language: bash
-services: docker
-script: lsb_release -cs | tee /dev/stderr | grep xenial
+install: skip
+script: skip
 notifications:
   email: never
