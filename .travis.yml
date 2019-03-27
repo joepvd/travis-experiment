@@ -1,7 +1,7 @@
 dist: xenial
 language: scala
 scala: 2.11.8 
-jdk: openjdk10 
+jdk: oraclejdk11
 install: true
 script: java -version
 notifications:
