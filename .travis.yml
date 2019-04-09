@@ -1,8 +1,6 @@
-dist: xenial
-language: scala
-scala: 2.11.8 
-jdk: openjdk12
+dist: trusty
+language: python
 install: true
-script: java -version
+script: mount
 notifications:
   email: never
