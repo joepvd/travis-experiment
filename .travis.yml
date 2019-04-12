@@ -1,6 +1,6 @@
-dist: trusty
-language: python
+dist: xenial
+language: bash
 install: true
-script: mount
+script: ping -c 4 gcr.io
 notifications:
   email: never
