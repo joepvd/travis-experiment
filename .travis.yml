@@ -1,5 +1,12 @@
 dist: xenial
-language: bash
+language: python
+jobs:
+  include:
+    - name: stable
+    - name: deprecated
+      group: deprecated
+addons:
+  mariadb: 10.1
 install: true
 script: ping -c 4 gcr.io
 notifications:
