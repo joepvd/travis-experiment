@@ -1,13 +1,7 @@
-dist: xenial
-language: python
-jobs:
-  include:
-    - name: stable
-    - name: deprecated
-      group: deprecated
-addons:
-  mariadb: 10.1
+dist: trusty
+services: docker
+language: bash
 install: true
-script: ping -c 4 gcr.io
+script: docker run alpine /bin/sh -c "mount; cat /etc/resolv.conf"
 notifications:
   email: never
