@@ -1,7 +1,6 @@
 dist: the_future
-services: docker
 language: bash
 install: true
-script: docker run alpine /bin/sh -c "mount; cat /etc/resolv.conf"
+script: true
 notifications:
   email: never
