@@ -1,12 +1,4 @@
-dist: xenial
-jobs:
-  include:
-    - name: stable
-      group: stable
-    - name: edge
-      group: edge
-    - name: dev
-      group: dev
+dist: the_future
 services: docker
 language: bash
 install: true
