@@ -1,4 +1,12 @@
-dist: trusty
+dist: xenial
+jobs:
+  include:
+    - name: stable
+      group: stable
+    - name: edge
+      group: edge
+    - name: dev
+      group: dev
 services: docker
 language: bash
 install: true
