@@ -1,5 +1,6 @@
-dist: the_future
-language: bash
+dist: bionic
+group: dev
+language: __peridot__
 install: true
 script: true
 notifications:
