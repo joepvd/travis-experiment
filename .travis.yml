@@ -1,7 +1,7 @@
 dist: bionic
 group: dev
-language: __peridot__
+language: bash
 install: true
-script: true
+script: uname -a
 notifications:
   email: never
